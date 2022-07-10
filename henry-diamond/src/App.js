@@ -6,15 +6,12 @@ import './App.css';
 function App() {
   return (
 
-   <div>
+   <div className="bodyApp">
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Landing/>} />
       </Routes>
     </BrowserRouter>
-    
-
-
    </div>
       
   );
