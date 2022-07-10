@@ -1,4 +1,4 @@
-import { FILTER, URL } from "../actions/typeActions";
+import { FILTER, /*URL*/ } from "../actions/typeActions";
 
 const inicialState = {
     items: [],

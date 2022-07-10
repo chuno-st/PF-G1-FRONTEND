@@ -14,13 +14,9 @@ const Landing = () => {
       <br/>
       <Filter/>
       <div>
-        <Footer>
-
-        </Footer>
-
+        <Footer/>
       </div>
     </div>
-    
   );
 };
 

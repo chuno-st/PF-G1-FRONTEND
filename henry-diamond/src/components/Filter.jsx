@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import { FilterBy } from "../actions/actions";
 
-const pruebaCategory = [
+/*const pruebaCategory = [
     [
         {
             id: 716426,
@@ -66,7 +66,7 @@ const pruebaCategory = [
             imageType: "jpg",
         },
     ],
-];
+];*/
 
 export default function Filter() {
     const dispatch = useDispatch();
@@ -83,8 +83,8 @@ export default function Filter() {
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     label="Filter by"
-                    onChange={handleChange}
-                >   {
+                    onChange={handleChange}>   
+                    { 
                         //     <select className="select" onChange={(e) => filterbytype(e.target)}>
                         //     {options.map((k) => {
                         //       return (
