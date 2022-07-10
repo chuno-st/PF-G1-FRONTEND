@@ -1,4 +1,12 @@
 body {
     display: grid;
+    position: relative;
+    margin-bottom: 1em;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+    
 }
 
+.footer {
+    margin-top: auto;
+}
