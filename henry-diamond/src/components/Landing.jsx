@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Footer from "./Footer/Footer.jsx";
-
+import Filter from "./Filter"
 const Landing = () => {
   return (
     <>
@@ -12,8 +12,9 @@ const Landing = () => {
       </Link>
       <Link className="link" to="/About">About</Link>
     </div>
+    <Filter/>
     <div>
-      <Footer/>
+    <Footer/>
     </div>
       
     

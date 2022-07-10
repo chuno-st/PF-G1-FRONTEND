@@ -1,12 +1,11 @@
 import * as React from 'react'
 
 import Container from '@mui/material/Container'
-
+import styles from './Footer.css'
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid'
 import { Link } from 'react-router-dom';
-import './Footer.css'
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import InstagramIcon from '@mui/icons-material/Instagram';
 //import Link from '@mui/material/Link';
@@ -15,7 +14,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 
 export default function Footer (){
     return(
-        <footer>
+        <footer >
               <Box bgcolor='ActiveBorder' color='white'>
                 <Container>
                     <Grid container spacing={5}>
