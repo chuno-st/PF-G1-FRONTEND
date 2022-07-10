@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 
 import Container from '@mui/material/Container'
 
@@ -7,6 +7,9 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid'
 import { Link } from 'react-router-dom';
 import './Footer.css'
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import InstagramIcon from '@mui/icons-material/Instagram';
+//import Link from '@mui/material/Link';
 
 
 
@@ -17,37 +20,39 @@ export default function Footer (){
                 <Container>
                     <Grid container spacing={5}>
                         <Grid item xs={12} sm={4}>
-                            <Box borderBottom={1}>Dev Team</Box>
-                            <Box>
-                                <Button variant='outlined'>
-                                <Link to="/About" size='small'></Link>
-                                About
-                                </Button>
+                            <Box borderBottom={1}>About</Box>
+                            <Box paddingTop={1}>
+                                <Link to="/About" size='small'>Dev Team</Link>
                             </Box>
 
                             <Box>
-                                <Button variant='outlined' size='small'>
-                                    <Link to="/"></Link>
-                                Contact
-                                </Button>
+                                <Link to="/">Contact us</Link>
                             </Box>
                         </Grid>
 
                         <Grid item xs={12} sm={4}>
-                            <Box borderBottom={1}>Account</Box>
-                            <Box>
-                                <Button variant='outlined'>
-                                <Link to="/About" size='small'></Link>
-                                Register
-                                </Button>
+                            <Box borderBottom={1}>Services</Box>
+                            <Box paddingTop={1}>
+                                <Link to="/" size='small'>Custom Products</Link>
+                                
+                            </Box>
+                          
+                        </Grid>
+
+
+                        <Grid item xs={12} sm={4}>
+                            <Box borderBottom={1} >Follow Us</Box>
+                            <Box paddingTop={1}>
+                                <Link to="/" size='small' color='white'>Whatsapp</Link>
+                                <InstagramIcon/>
                             </Box>
 
                             <Box>
-                                <Button variant='outlined' size='small' className="Button">
-                                    <Link to="/"></Link>
-                                Log-in
-                                </Button>
+                             
+                                <Link to="/" size='small'>Instagram</Link>
                             </Box>
+
+                          
                         </Grid>
 
 
@@ -55,8 +60,9 @@ export default function Footer (){
                           
 
                     </Grid>
-                    <Box  textAlign='center' pt={{xs: 5, sm: 10}} pb={{xs:5, sm:0}}>
-                        Henry Diamond &reg; {new Date().getFullYear()}
+                    <Box  textAlign='center' sx={{ width: 'auto' }} pt={{xs: 5, sm: 1}} pb={{sm:1}}  /* pb={{xs:3, sm:3}} */ bgcolor='black' className='rights'>
+                        Henry Diamond -
+                        All rights reserved &reg; {new Date().getFullYear()}
                     </Box>
                 </Container>
             </Box>
