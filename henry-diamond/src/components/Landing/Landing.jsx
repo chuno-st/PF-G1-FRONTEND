@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import Footer from "../Footer/Footer.jsx";
 import Filter from "../Filter/Filter"
 import { useAuth0 } from "@auth0/auth0-react";
-import { LoginButton } from "./Login";
-import { LogoutButton } from "./Logout";
-import { Profile } from "./Profile";
+import { LoginButton } from "../Login/Login";
+import { LogoutButton } from "../Logout/Logout";
+import { Profile } from "../Profile/Profile";
 const Landing = () => {
   const { isAuthenticated } = useAuth0();
 
