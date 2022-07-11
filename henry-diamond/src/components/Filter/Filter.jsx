@@ -1,7 +1,7 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, {useEffect, useState}from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
-import { FilterBy } from "../../actions/actions";
+import { FilterBy,Category, SubCategory } from "../../actions/actions";
 
 /*const pruebaCategory = [
     [
@@ -70,36 +70,64 @@ import { FilterBy } from "../../actions/actions";
 
 export default function Filter() {
     const dispatch = useDispatch();
-
+    const category = useSelector(state => state.category);
+    const subCategory = useSelector(state => state.subcategory);
+    const [filter,setFilter] = useState({
+        category: "",
+        subcategory: "",
+    });
+    
+   useEffect(() => {
+        dispatch(Category());
+        dispatch(SubCategory());
+    }, []);
     const handleChange = (e) => {
-        dispatch(FilterBy(e.target.value));
+        
+        setFilter({
+            ...filter,
+            [e.target.name]: e.target.value,
+        });
+        
     };
 
     return (
         <div style={{ width: "30%" }}>
             <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">Filter By</InputLabel>
+                <InputLabel id="demo-simple-select-label">Category</InputLabel>
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
-                    label="Filter by"
+                    name="category"
                     onChange={handleChange}>   
-                    { 
-                        //     <select className="select" onChange={(e) => filterbytype(e.target)}>
-                        //     {options.map((k) => {
-                        //       return (
-                        //         <>
-                        //           <option value={k.value}>{k.label} </option>
-                        //         </>
-                        //       );
-                        //     })}
-                        //   </select>
+                    {   
+                        category.map((item,index) => {
+                            
+                            return (
+                                <MenuItem key={index} value={item.category_id}>{item.name}</MenuItem>
+                            )
+                        })
                     }
-                    <MenuItem value={"Category 1"}> Pureza </MenuItem>
-                    <MenuItem value={"Category 2"}> Dureza</MenuItem>
-                    <MenuItem value={"Category 3"}> Color</MenuItem>
                 </Select>
             </FormControl>
+            <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">SubCategory</InputLabel>
+                <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    
+                    name='subcategory'
+                    onChange={handleChange}>    
+                    {   
+                        subCategory.map((item,index) => {
+                        
+                            return (
+                                <MenuItem key={index} value={item.subCategory_id}>{item.name}</MenuItem>
+                            )
+                        })
+                    }
+                </Select>
+            </FormControl>
+            <button onClick={() => {dispatch(FilterBy(filter))}}>filtrar</button>
         </div>
     );
 }
