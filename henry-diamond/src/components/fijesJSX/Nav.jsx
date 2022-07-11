@@ -5,6 +5,7 @@ import  {makeStyles} from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import Container from '@material-ui/core/Container';
 // import {AdbIcon} from  "@material-ui/icons"
+import SearcbBar from "./SearchBar"
 
 import React from "react";
 import { IconButton } from "@material-ui/core";
@@ -23,6 +24,7 @@ const Navbar = () => {
         <div>
             <AppBar position="fixed" color="secondary">
                 <Container maxWidth="xl">
+                    <SearcbBar/>
                     <Toolbar disableGutters>
                         {/* <AdbIcon className={classes.MenuIcon} /> */}
                         <Typography variant="h6">
