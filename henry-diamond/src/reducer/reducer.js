@@ -1,14 +1,16 @@
 import { FILTER, ALL_ITEMS, /*URL*/ } from "../actions/typeActions";
+import {GET_PRODUCT} from '../actions/typeActions'
 
 const inicialState = {
-    items: [],
+    allProducts: [],
 };
 
 const reducer = (state = inicialState, { type, payload }) => {
     switch (type) {
-        case ALL_ITEMS:
+        case GET_PRODUCT:
+          // console.log(payload, type, 'estoy en reducer')
             return { ...state, 
-                   items: payload };
+                   allProducts: payload };
 
         case FILTER:
           return {
