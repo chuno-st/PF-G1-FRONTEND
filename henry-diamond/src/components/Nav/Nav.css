@@ -1,0 +1,9 @@
+.backgroundGral{
+    background-image: url(https://i.pinimg.com/originals/11/b9/1f/11b91f068caec29920b0baa9edc55928.png);
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    background-color: #7f00b2;
+    padding: 10px;
+    box-shadow: 2px 2px 4px #7f00b2;
+}
