@@ -11,6 +11,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import lime from "@material-ui/core/colors/lime";
 import amber from "@material-ui/core/colors/amber";
 // import { PaletteColor } from "@material-ui/core/styles/createPalette";
+import ConteinerCards from "../ConteinerCards/ConteinerCards"
 import { createTheme } from "@material-ui/core/styles";
 import Navbar from "../Nav/Nav";
 import Footer from "../Footer/Footer";
@@ -51,6 +52,7 @@ export function Home() {
     
          <ThemeProvider theme={theme}>
           <Navbar />
+          <ConteinerCards/>
           <Typography variant="h2" color="main">Landing Page en construccion</Typography>
           <Typography variant="body1" color="inherit" align="center">
             parrafo de la landing
