@@ -4,11 +4,12 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import './Cards.css'
 
 export default function BasicCard(props) {
     const {item} = props;
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345 }} className="card">
       <CardMedia
         component="img"
         height="140"
@@ -26,6 +27,7 @@ export default function BasicCard(props) {
       <CardActions>
         <Button size="small">Share</Button>
         <Button size="small">Learn More</Button>
+        <Typography gutterBottom variant="h5" component="div">${item.price}</Typography>
       </CardActions>
     </Card>
   );

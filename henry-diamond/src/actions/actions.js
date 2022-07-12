@@ -61,21 +61,7 @@ export const FilterBy = ({category,subcategory,limite,desde}) => {
 }
 
 
-/*
-export const FilterBy = ({category,subcategory,limite,desde}) => {
-    return dispatch => {
-        axios
-        .get (`${URL}product/category?category=${category}&subcategory=${subcategory}&limite=${limite}&desde=${desde}`)
-        .then((res) => {
-            console.log(res.data)
-        dispatch ({
-            type: FILTER,
-            payload: res.data
-        })        
-        })
-    }
-}
-*/
+
 export const Category = ()=>{
     return dispatch => {
         axios

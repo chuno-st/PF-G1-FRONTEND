@@ -15,7 +15,7 @@ import ConteinerCards from "../ConteinerCards/ConteinerCards"
 import { createTheme } from "@material-ui/core/styles";
 import Navbar from "../Nav/Nav";
 import Footer from "../Footer/Footer";
-
+import {useState}from "react";
 
 const theme = createTheme({
     palette: {
@@ -45,46 +45,15 @@ const theme = createTheme({
 
 
 export function Home() {
-
   // const classesLanding = useStyle()
 
   return (
-    
+
          <ThemeProvider theme={theme}>
           <Navbar />
           <ConteinerCards/>
-          <Typography variant="h2" color="main">Landing Page en construccion</Typography>
-          <Typography variant="body1" color="inherit" align="center">
-            parrafo de la landing
-          </Typography>
-
-          <Button 
-            // className={classesLanding.claseLanding}
-            color="primary" 
-            variant="text"
-            endIcon={<AccessAlarm />}
-            >
-            hi
-          </Button>
-          <Button
-          // className={classesLanding.claseLanding}
-          color="secondary" 
-          variant="contained"
-          >  
-            <Link className="link" to="/Home">
-              Home
-            </Link>
-          </Button>
-          
-          <Button
-            // className={classesLanding.claseLanding}
-            color="secondary" 
-            variant="outlined"
-          >
-            <Link className="link" to="/About">About</Link>
-        </Button>
-        <Footer/>
-      </ThemeProvider> 
+          <Footer/>
+         </ThemeProvider> 
     
   );
 };

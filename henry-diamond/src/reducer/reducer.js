@@ -12,7 +12,7 @@ const reducer = (state = inicialState, { type, payload }) => {
         case GET_PRODUCT:
           // console.log(payload, type, 'estoy en reducer')
             return { ...state, 
-                   allProducts: payload };
+                   items: payload };
         case ALL_ITEMS:
             return { ...state,
               items: payload };
