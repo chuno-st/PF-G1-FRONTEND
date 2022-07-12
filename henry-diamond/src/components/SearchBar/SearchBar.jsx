@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {useSelector, useDispatch} from 'react-redux';
 import { getAllProduct } from "../../actions/actions";
-// import './SearchBar.css'
+import Button from '@mui/material/Button';
+import './SearchBar.css'
 
 export default function SearcbBar(){
     const dispatch = useDispatch();
@@ -23,8 +24,8 @@ export default function SearcbBar(){
   
       return(
           <div className="containerSearch">
-              <input className='searchImput' type='text' placeholder='Search your product...' onChange={(e) => handleSearchBar(e)} />
-              <button className="Search" type='submit' onClick={(e) => handleSubmit(e)}>Buscar</button>
+              <input className="searchImput" type='text' placeholder='Search your product...' onChange={(e) => handleSearchBar(e)} />
+              <Button variant="outlined" className="Search" type='submit' onClick={(e) => handleSubmit(e)}>Buscar</Button>
           </div>
       )
   };
