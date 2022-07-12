@@ -1,8 +1,9 @@
 import React, {useEffect, useState}from "react";
+import Button from '@mui/material/Button';
 import { useDispatch, useSelector } from "react-redux";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import { FilterBy,Category, SubCategory } from "../../actions/actions";
-
+import styles from './Filter.css'
 /*const pruebaCategory = [
     [
         {
@@ -73,8 +74,11 @@ export default function Filter() {
     const category = useSelector(state => state.category);
     const subCategory = useSelector(state => state.subcategory);
     const [filter,setFilter] = useState({
-        category: "",
-        subcategory: "",
+        category: '',
+        subcategory: '',
+        limite:"",
+        desde: "0"
+
     });
     
    useEffect(() => {
@@ -91,10 +95,12 @@ export default function Filter() {
     };
 
     return (
-        <div style={{ width: "30%" }}>
-            <FormControl fullWidth>
+        <div style={{ width: "100%" }}>
+            <div className="DivSelect">
+            <FormControl fullWidth className="Select">
                 <InputLabel id="demo-simple-select-label">Category</InputLabel>
                 <Select
+                    size="small"
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     name="category"
@@ -112,6 +118,7 @@ export default function Filter() {
             <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">SubCategory</InputLabel>
                 <Select
+                    size="small"
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     
@@ -127,7 +134,9 @@ export default function Filter() {
                     }
                 </Select>
             </FormControl>
-            <button onClick={() => {dispatch(FilterBy(filter))}}>filtrar</button>
+
+            <Button variant="outlined" onClick={() => {dispatch(FilterBy(filter))}} className="Button">filtrar</Button>
+            </div>
         </div>
     );
 }

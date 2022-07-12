@@ -15,10 +15,10 @@ import axios from "axios";
 
 
 export function getAllProduct(name){
-    // console.log('estoy en la action')
+    // console.log('estoy en la action'
     return async (dispatch) =>{
         let allProducts = await axios.get(`http://localhost:3001/product?name=${name}`)
-        // console.log(payload, "? actionBack")
+        console.log(allProducts)
         return dispatch({
             type: GET_PRODUCT,
             payload: allProducts.data
@@ -38,10 +38,30 @@ export function getAllItems(){
     }
 }
 
+export const FilterBy = ({category,subcategory,limite,desde}) => {
+    if(limite){
+        return async (dispatch) => {
+            let filterProducts = await axios.get (`${URL}product/category?category=${category}&subcategory=${subcategory}&limite=${limite}&desde=${desde}`)
+            console.log(filterProducts)
+            return dispatch ({
+                type: FILTER,
+                payload: filterProducts.data
+            })        
+    }}else{
+        return async (dispatch) => {
+            let filterProducts = await axios.get (`${URL}product/category?category=${category}&subcategory=${subcategory}&desde=${desde}`)
+            console.log(filterProducts)
+            return dispatch ({
+                type: FILTER,
+                payload: filterProducts.data
+            }) 
+    }
+        
+    }
+}
 
 
-
-
+/*
 export const FilterBy = ({category,subcategory,limite,desde}) => {
     return dispatch => {
         axios
@@ -55,7 +75,7 @@ export const FilterBy = ({category,subcategory,limite,desde}) => {
         })
     }
 }
-
+*/
 export const Category = ()=>{
     return dispatch => {
         axios

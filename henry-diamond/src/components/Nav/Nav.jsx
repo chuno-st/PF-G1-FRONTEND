@@ -11,7 +11,7 @@ import Filter from "../Filter/Filter";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton } from "../Login/Login";
-import { LogoutButton } from "../Logout/Logout";
+
 import { Profile } from "../Profile/Profile";
 import { IconButton } from "@material-ui/core";
 
@@ -29,37 +29,41 @@ const Navbar = () => {
     // const classes = useStyle()
     return (
         <div className="backgroundGral">
-            <AppBar position="fixed" color="secondary">
-                <Container maxWidth="xl">
+                <Container  className="contenedorNavCss" maxWidth="xl">
+                    <div className="divContainer">
                     <SearchBar />
+                    </div>
+                    <div className="divContainerFilter">
                         <Filter/>
-                            <div className="containerNav">
+                    </div>
+                    
+                            {/*<div className="containerNav">
                                 <Link className="tittleNav" to='/home'>
                                     <button className="buttonNav">Home</button>
-                                </Link>
-                            </div>
-                            <div>
+                                    </Link>
+                            </div>*/}
+                    <div className="divContainer">
                                 
-                                <Link  to="/Home">
+                                {/*<Link  to="/Home">
                                     Home
                                 </Link>
                                 <Link  to="/About">About</Link>
-
+                                                                */}
                                 {isAuthenticated ? (
                                 <div>
                                     <Profile />
-                                    <LogoutButton />
                                 </ div>
                                 ) : (
                                 <LoginButton />
                                
                                 )
                                 }
-                        </div>
+                    </div>
+                    
                         
                 </Container>
-            </AppBar>
-            <h1> Landing Page en construccion</h1>
+
+            <h1> </h1>
             {/* <div className={classes.offset}></div> */}
         </div>
     )
