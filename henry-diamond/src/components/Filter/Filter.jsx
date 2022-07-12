@@ -76,7 +76,7 @@ export default function Filter() {
     const [filter,setFilter] = useState({
         category: '',
         subcategory: '',
-        limite:"2",
+        limite:"",
         desde: "0"
 
     });
