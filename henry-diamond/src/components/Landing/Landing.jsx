@@ -43,50 +43,50 @@ const theme = createTheme({
 
 
 
-const Landing = () => {
+// const Landing = () => {
 
-  // const classesLanding = useStyle()
+//   // const classesLanding = useStyle()
 
-  return (
+//   return (
     
-         <ThemeProvider theme={theme}>
-          <Navbar />
-          <Typography variant="h2" color="main">Landing Page en construccion</Typography>
-          <Typography variant="body1" color="inherit" align="center">
-            parrafo de la landing
-          </Typography>
+//          <ThemeProvider theme={theme}>
+//           <Navbar />
+//           {/* <Typography variant="h2" color="main">Landing Page en construccion</Typography>
+//           <Typography variant="body1" color="inherit" align="center">
+//             parrafo de la landing
+//           </Typography> */}
 
-          <Button 
-            // className={classesLanding.claseLanding}
-            color="primary" 
-            variant="text"
-            endIcon={<AccessAlarm />}
-            >
-            hi
-          </Button>
-          <Button
-          // className={classesLanding.claseLanding}
-          color="secondary" 
-          variant="contained"
-          >  
-            <Link className="link" to="/Home">
-              Home
-            </Link>
-          </Button>
-          
-          <Button
-            // className={classesLanding.claseLanding}
-            color="secondary" 
-            variant="outlined"
-          >
-            <Link className="link" to="/About">About</Link>
-        </Button>
-        <ConteinerCards></ConteinerCards>
-        <Footer/>
-      </ThemeProvider> 
+//           {/* <Button 
+//             // className={classesLanding.claseLanding}
+//             color="primary" 
+//             variant="text"
+//             endIcon={<AccessAlarm />}
+//             >
+//             hi
+//           </Button>
+//           <Button
+//           // className={classesLanding.claseLanding}
+//           color="secondary" 
+//           variant="contained"
+//           >  
+//             <Link className="link" to="/Home">
+//               Home
+//             </Link>
+//           </Button>
+//            */}
+//           {/* <Button
+//             // className={classesLanding.claseLanding}
+//             color="secondary" 
+//             variant="outlined"
+//           >
+//             <Link className="link" to="/About">About</Link>
+//         </Button> */}
+//         <ConteinerCards></ConteinerCards>
+//         <Footer/>
+//       </ThemeProvider> 
     
-  );
-};
+//   );
+// };
 
 
 

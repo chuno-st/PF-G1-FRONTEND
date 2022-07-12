@@ -1,0 +1,9 @@
+.containerCards{
+    background-color: white;
+    box-shadow: 4px 4px 8px rgb(77, 14, 91);
+    flex-direction:row;
+    display: flex;
+    flex-basis: auto;
+    align-items: center;
+    justify-content:center;
+}

@@ -1,0 +1,14 @@
+.backgrounCard{
+    background-size: cover;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.backcadaCard{
+    background-image: url(https://http2.mlstatic.com/D_NQ_NP_920852-MLA42250063339_062020-O.jpg);
+    align-items: center;
+    justify-content: center;
+    
+    
+}

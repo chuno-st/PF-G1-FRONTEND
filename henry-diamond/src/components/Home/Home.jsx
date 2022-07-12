@@ -11,23 +11,23 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import lime from "@material-ui/core/colors/lime";
 import amber from "@material-ui/core/colors/amber";
 // import { PaletteColor } from "@material-ui/core/styles/createPalette";
-import ConteinerCards from "../ConteinerCards/ConteinerCards"
 import { createTheme } from "@material-ui/core/styles";
+import ConteinerCards from "../ConteinerCards/ConteinerCards"
 import Navbar from "../Nav/Nav";
 import Footer from "../Footer/Footer";
 
 
-const theme = createTheme({
-    palette: {
-      primary:{
-        main: lime[500],
-      },
-      secondary:{
-        main:amber[800],
-      }
-    },
+// const theme = createTheme({
+//     palette: {
+//       primary:{
+//         main: lime[500],
+//       },
+//       secondary:{
+//         main:amber[800],
+//       }
+//     },
    
-});
+// });
 
 
 // const useStyle = makeStyles({
@@ -49,24 +49,25 @@ export function Home() {
   // const classesLanding = useStyle()
 
   return (
-    
-         <ThemeProvider theme={theme}>
-          <Navbar />
-          <ConteinerCards/>
-          <Typography variant="h2" color="main">Landing Page en construccion</Typography>
-          <Typography variant="body1" color="inherit" align="center">
-            parrafo de la landing
-          </Typography>
+      <div>
+       
+            <Navbar />
+              <ConteinerCards />
 
-          <Button 
-            // className={classesLanding.claseLanding}
-            color="primary" 
-            variant="text"
-            endIcon={<AccessAlarm />}
-            >
+                {/* <Typography variant="h2" color="main">Landing Page en construccion</Typography>
+                <Typography variant="body1" color="inherit" align="center">
+                  parrafo de la landing
+                </Typography> */}
+
+                {/* <Button 
+                    // className={classesLanding.claseLanding}
+                    color="primary" 
+                    variant="text"
+                    endIcon={<AccessAlarm />}
+                >
             hi
-          </Button>
-          <Button
+          </Button> */}
+          {/* <Button
           // className={classesLanding.claseLanding}
           color="secondary" 
           variant="contained"
@@ -74,18 +75,18 @@ export function Home() {
             <Link className="link" to="/Home">
               Home
             </Link>
-          </Button>
+          </Button> */}
           
-          <Button
+          {/* <Button
             // className={classesLanding.claseLanding}
             color="secondary" 
             variant="outlined"
           >
             <Link className="link" to="/About">About</Link>
-        </Button>
+        </Button> */}
         <Footer/>
-      </ThemeProvider> 
-    
+      
+      </div>
   );
 };
 
