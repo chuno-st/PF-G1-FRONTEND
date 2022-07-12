@@ -1,0 +1,77 @@
+import React from "react";
+import {
+    FILTER,
+    URL,
+    GET_PRODUCT,
+    ALL_ITEMS,
+    ALL_CAREGORY,
+    ALL_SUBCATEGORY
+} from "./typeActions";
+// import {getProduct} from '../../../../PF-G1-BACKEND/src/controllers/productControllers'
+import axios from "axios";
+
+
+// const axios = require('axios')
+
+
+export function getAllProduct(name){
+    // console.log('estoy en la action')
+    return async (dispatch) =>{
+        let allProducts = await axios.get(`http://localhost:3001/product?name=${name}`)
+        // console.log(payload, "? actionBack")
+        return dispatch({
+            type: GET_PRODUCT,
+            payload: allProducts.data
+            
+        })
+    }
+}
+
+
+
+
+
+
+
+export const FilterBy = ({category,subcategory,limite,desde}) => {
+    return dispatch => {
+        axios
+        .get (`${URL}product/category?category=${category}&subcategory=${subcategory}&limite=${limite}&desde=${desde}`)
+        .then((res) => {
+            console.log(res.data)
+        dispatch ({
+            type: FILTER,
+            payload: res.data
+        })        
+        })
+    }
+}
+
+export const Category = ()=>{
+    return dispatch => {
+        axios
+        .get (`${URL}category`)
+        .then((res) => {
+           
+        dispatch ({
+            type: ALL_CAREGORY,
+            payload: res.data
+        })        
+        })
+    }
+
+}
+export const SubCategory = ()=>{
+    return dispatch => {
+        axios
+        .get (`${URL}subcategory`)
+        .then((res) => {
+         
+        dispatch ({
+            type: ALL_SUBCATEGORY,
+            payload: res.data
+        })        
+        })
+    }
+
+}
