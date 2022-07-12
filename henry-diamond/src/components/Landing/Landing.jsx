@@ -14,7 +14,7 @@ import amber from "@material-ui/core/colors/amber";
 import { createTheme } from "@material-ui/core/styles";
 import Navbar from "../Nav/Nav";
 import Footer from "../Footer/Footer";
-
+import ConteinerCards from "../ConteinerCards/ConteinerCards";
 
 const theme = createTheme({
     palette: {
@@ -81,6 +81,7 @@ const Landing = () => {
           >
             <Link className="link" to="/About">About</Link>
         </Button>
+        <ConteinerCards></ConteinerCards>
         <Footer/>
       </ThemeProvider> 
     

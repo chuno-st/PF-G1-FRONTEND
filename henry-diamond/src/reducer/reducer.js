@@ -13,6 +13,9 @@ const reducer = (state = inicialState, { type, payload }) => {
           // console.log(payload, type, 'estoy en reducer')
             return { ...state, 
                    allProducts: payload };
+        case ALL_ITEMS:
+            return { ...state,
+              items: payload };
 
         case FILTER:
           return {

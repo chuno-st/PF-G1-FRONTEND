@@ -27,7 +27,16 @@ export function getAllProduct(name){
     }
 }
 
-
+export function getAllItems(){
+    return async (dispatch) =>{
+        let allItems = await axios.get(`${URL}product`)
+        return dispatch({
+            type: ALL_ITEMS,
+            payload: allItems.data
+            
+        })
+    }
+}
 
 
 
