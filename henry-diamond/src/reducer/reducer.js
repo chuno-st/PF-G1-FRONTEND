@@ -15,7 +15,7 @@ const reducer = (state = inicialState, { type, payload }) => {
                    items: payload };
         case ALL_ITEMS:
             return { ...state,
-              items: payload };
+                   items: payload };
 
         case FILTER:
           return {
