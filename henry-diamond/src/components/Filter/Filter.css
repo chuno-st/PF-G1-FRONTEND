@@ -1,0 +1,13 @@
+.DivSelect{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.Select{
+    width: 45%;
+}
+
+.Button{
+    width: 50%;
+}

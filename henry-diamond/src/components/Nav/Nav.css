@@ -1,0 +1,35 @@
+.backgroundGral{
+    /*background-image: url(https://i.pinimg.com/originals/11/b9/1f/11b91f068caec29920b0baa9edc55928.png);*/
+    background-color:bisque;
+    display:inline-flex!important;
+    flex-direction: column!important;
+    align-items: center;
+    width: 100%!important;
+    /*background-color: #7f00b2;*/
+    padding: 10px;
+    box-shadow: 2px 2px 4px #fd2bf3;
+    position: sticky;
+    top: 0;
+}
+
+.contenedorNavCss{
+    width: 100%!important;
+    display: flex !important;
+    flex-direction: row!important;
+    justify-content: space-between!important;
+}
+
+.divContainer{
+    height: 100%!important;
+    width: 100% !important;
+    display: flex  !important;
+    align-content: center !important;
+    justify-content: center !important;
+}
+
+.divContainerFilter{
+    width: 100% !important;
+    display: flex !important;
+    align-content: center !important;
+    justify-content: center !important;
+}

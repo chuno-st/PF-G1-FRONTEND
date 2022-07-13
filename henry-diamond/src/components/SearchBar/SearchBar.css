@@ -1,0 +1,12 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+
+.searchImput{
+    background-color: transparent;
+    height: 100%;
+    border: 1px solid rgb(35, 119, 189);
+    border-radius: 5px;
+}
