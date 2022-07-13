@@ -25,8 +25,8 @@ export default function BasicCard(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" className='buttonCard'>Share</Button>
-        <Button size="small" className='buttonCard'>Learn More</Button>
+        <Button size="small" className='buttonCard'>Compartir</Button>
+        <Button size="small" className='buttonCard'>Detalles</Button>
         <Typography gutterBottom variant="h5" component="div">${item.price}</Typography>
       </CardActions>
     </Card>

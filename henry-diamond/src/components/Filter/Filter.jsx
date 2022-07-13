@@ -98,7 +98,7 @@ export default function Filter() {
         <div style={{ width: "100%" }}>
             <div className="DivSelect">
             <FormControl fullWidth className="Select">
-                <InputLabel id="demo-simple-select-label">Category</InputLabel>
+                <InputLabel id="demo-simple-select-label">Categorias</InputLabel>
                 <Select
                     size="small"
                     labelId="demo-simple-select-label"
@@ -116,12 +116,11 @@ export default function Filter() {
                 </Select>
             </FormControl>
             <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">SubCategory</InputLabel>
+                <InputLabel id="demo-simple-select-label">Sub-Categorias</InputLabel>
                 <Select
                     size="small"
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
-                    
                     name='subcategory'
                     onChange={handleChange}>    
                     {   
@@ -135,7 +134,7 @@ export default function Filter() {
                 </Select>
             </FormControl>
 
-            <Button variant="outlined" onClick={() => {dispatch(FilterBy(filter))}} className="Button">filtrar</Button>
+            <Button variant="outlined" onClick={() => {dispatch(FilterBy(filter))}} className="Button">Filtrar</Button>
             </div>
         </div>
     );

@@ -20,30 +20,29 @@ export default function Footer (){
                 <Container className='container'>
                     <Grid container spacing={5}>
                         <Grid item xs={12} sm={4}>
-                            <Box borderBottom={1}>About</Box>
+                            <Box borderBottom={1}>Sobre Nosotros</Box>
                             <Box paddingTop={1} className='itemColumn'>
-                                <Link to="/About" size='small' className='link'>Dev Team</Link>
+                                <Link to="/About" size='small' className='link'>Equipo de desarrollo</Link>
                                 <CodeIcon fontSize='small'/>
                             </Box>
 
                             <Box className='itemColumn'>
-                                <Link to="/" className='link'>Contact us</Link>
+                                <Link to="/" className='link'>Nuestro Contacto</Link>
                             </Box>
                         </Grid>
 
                         <Grid item xs={12} sm={4}>
-                            <Box borderBottom={1}>Services</Box>
+                            <Box borderBottom={1}>Servicios</Box>
                             <Box paddingTop={1} className='itemColumn'>
-                                <Link to="/" size='small' className='link'>Custom Products</Link>
-                                
-                                
+                                <Link to="/" size='small' className='link'>Productos</Link>
+                                               
                             </Box>
                           
                         </Grid>
 
 
                         <Grid item xs={12} sm={4}>
-                            <Box borderBottom={1} >Follow Us</Box>
+                            <Box borderBottom={1} >Seguinos</Box>
                             <Box paddingTop={1} className='itemColumn'>
                                 <Link to="/" className='link'>Whatsapp</Link>
                                 <WhatsAppIcon fontSize='small'/>
@@ -65,7 +64,7 @@ export default function Footer (){
                     </Grid>
                     <Box  className='rights' /* pt={{xs: 5, sm: 1}} pb={{sm:1}} */ /* bgcolor='black' */ >
                         <p className='diamond'>Henry Diamond </p> 
-                        <p className='reserved'> - All rights reserved &reg; {new Date().getFullYear()}</p>
+                        <p className='reserved'> - Marca Registrada &reg; {new Date().getFullYear()}</p>
                     </Box>
                 </Container>
             </Box>

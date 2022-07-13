@@ -6,7 +6,7 @@ export const Profile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div>Cargando...</div>;
   }
 
   return (

@@ -23,7 +23,7 @@ return (
           items.map(item => (    //map para recorrer el array de items
               <BasicCard key={item.id} item={item} /> ))
         ):(
-          <h1>Loading ...</h1>
+          <h1>Cargando...</h1>
         )
         }
 

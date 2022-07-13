@@ -24,7 +24,7 @@ export default function SearcbBar(){
   
       return(
           <div className="containerSearch">
-              <input className="searchImput" type='text' placeholder='Search your product...' onChange={(e) => handleSearchBar(e)} />
+              <input className="searchImput" type='text' placeholder='Buscar el producto' onChange={(e) => handleSearchBar(e)} />
               <Button variant="outlined" className="Search" type='submit' onClick={(e) => handleSubmit(e)}>Buscar</Button>
           </div>
       )
