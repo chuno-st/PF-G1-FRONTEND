@@ -5,6 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import './Cards.css'
+import { capitalizeLetter } from "../../Utils/utils.js"
 
 export default function BasicCard(props) {
     const {item} = props;
@@ -18,10 +19,10 @@ export default function BasicCard(props) {
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {item.name}
+          {capitalizeLetter(item.name)}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {item.description}
+          {capitalizeLetter(item.description)}
         </Typography>
       </CardContent>
       <CardActions>
