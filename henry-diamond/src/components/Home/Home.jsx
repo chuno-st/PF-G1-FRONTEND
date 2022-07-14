@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Grid } from '@material-ui/core'
 
 import {Button} from "@material-ui/core";
 import { AccessAlarm } from "@material-ui/icons";
@@ -15,6 +16,7 @@ import ConteinerCards from "../ConteinerCards/ConteinerCards"
 import { createTheme } from "@material-ui/core/styles";
 import Navbar from "../Nav/Nav";
 import Footer from "../Footer/Footer";
+
 import {useState}from "react";
 
 const theme = createTheme({
@@ -50,9 +52,23 @@ export function Home() {
   return (
 
          <ThemeProvider theme={theme}>
-          <Navbar />
-          <ConteinerCards/>
-          <Footer/>
+          <Grid container sx={{
+            hight:'100%',
+            width:'100%'
+          }}>
+            <Grid item xs={12} sm={12} xl={12}>
+              <Navbar />
+              </Grid>
+            <Grid item xs={12} sm={12} xl={12}>
+              <ConteinerCards/>
+              </Grid>
+            <Grid item xs={12} sm={12} xl={12}>
+              <Footer/>
+              
+              </Grid>
+
+          </Grid>
+          
          </ThemeProvider> 
     
   );
