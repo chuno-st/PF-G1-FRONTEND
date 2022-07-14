@@ -15,7 +15,7 @@ import CodeIcon from '@mui/icons-material/Code';
 
 export default function Footer (){
     return(
-        <footer className='footer' width={"100%"}>
+        <footer  width={"100%"}>
               <Box bgcolor='ActiveBorder' color='white' className='container'>
                 <Container className='container'>
                     <Grid container spacing={5}>
