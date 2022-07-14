@@ -4,7 +4,7 @@ import { getAllProduct } from "../../actions/actions";
 import Button from '@mui/material/Button';
 import './SearchBar.css'
 
-export default function SearcbBar(){
+export default function SearchBar(){
     const dispatch = useDispatch();
     const [name, setName] = useState("")
    
