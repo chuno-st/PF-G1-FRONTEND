@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getAllItems} from "../../actions/actions";
 import BasicCard from "../Card/Card";
-import './ConteinerCards.css'
+import { Grid,Box } from "@mui/material";
+// import './ConteinerCards.css'
 
 export default function ContainerCards() {
 const items = useSelector(state => state.items);
@@ -14,19 +15,32 @@ useEffect(() => {
 return (
 
 
-    <div className="containerCards">
+    <div>
+      <Box sx={{ 
+        marginRight: 5,
+        marginLeft: 5,
+        marginTop: 5,
+        marginBottom: 10,
 
+      }}>
+
+      
+      <Grid container spacing={0.5}>
 
 
         {items.length ? (
-
+    
           items.map(item => (    //map para recorrer el array de items
-              <BasicCard key={item.id} item={item} /> ))
+            <Grid item xs={12} sm={6} md={2} key={item.id}>
+              <BasicCard key={item.id} item={item} />
+            </Grid>
+              ))
         ):(
           <h1>Cargando...</h1>
         )
         }
-
+      </Grid>
+      </Box>
     </div>
 )
 
