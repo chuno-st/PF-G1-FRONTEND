@@ -1,17 +1,19 @@
-import React, {useEffect, useState} from "react";
-import {useSelector, useDispatch} from 'react-redux';
+import React, { useState} from "react";
+import {useDispatch} from 'react-redux';
 import { getAllProduct } from "../../actions/actions";
 import Button from '@mui/material/Button';
-import './SearchBar.css'
+// import TextField from '@material-ui/core/TextField';
+// import './SearchBar.css'
+import { Autocomplete } from "@mui/material";
 
-export default function SearcbBar(){
+export default function SearchBar(){
     const dispatch = useDispatch();
     const [name, setName] = useState("")
    
   
       const handleSearchBar = (e) => {
           setName(e.target.value)
-          console.log(e.target.value, 'en searchBar')
+          
       }
       
       // console.log(name)
@@ -23,8 +25,19 @@ export default function SearcbBar(){
       }
   
       return(
-          <div className="containerSearch">
-              <input className="searchImput" type='text' placeholder='Buscar el producto' onChange={(e) => handleSearchBar(e)} />
+        //export default function FreeSolo() {
+            //   return (
+            //     <div style={{ width: 300 }}>
+            //       <Autocomplete
+            //         id="free-solo-demo"
+            //         freeSolo
+            //         options={top100Films.map((option) => option.title)}
+            //         renderInput={(params) => (
+            //           <TextField {...params} label="freeSolo" margin="normal" variant="outlined" />
+            //         )}
+            //       />
+          <div style={{ width: 300 }}>
+              <SearchBar id="searchImput" onChange={(e) => handleSearchBar(e)} />
               <Button variant="outlined" className="Search" type='submit' onClick={(e) => handleSubmit(e)}>Buscar</Button>
           </div>
       )
