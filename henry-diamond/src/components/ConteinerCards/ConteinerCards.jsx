@@ -5,7 +5,6 @@ import BasicCard from "../Card/Card";
 import { Grid,Box } from "@mui/material";
 // import './ConteinerCards.css'
 import './ConteinerCards.css'
-import { Box } from '@material-ui/core'
 import { margin } from "@mui/system";
 import { useState } from "react";
 
