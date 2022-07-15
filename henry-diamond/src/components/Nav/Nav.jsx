@@ -1,24 +1,24 @@
 import React from "react";
 import  AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import {IconButton} from "@material-ui/core";
-import  Typography  from "@material-ui/core/Typography";
-import  {makeStyles, alpha} from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import InputBase from '@material-ui/core/InputBase';
+import  Typography  from "@material-ui/core/Typography";
 import SearchIcon from '@material-ui/icons/Search';
-import SearchBar from "../SearchBar/SearchBar"
-
-
+import Button from '@mui/material/Button';
 import Container from '@material-ui/core/Container';
-// import {AdbIcon} from  "@material-ui/icons"
-import Filter from "../Filter/Filter";
+import {IconButton} from "@material-ui/core";
+import  {makeStyles, alpha} from "@material-ui/core/styles";
+import { useState} from "react";
+import {useDispatch} from 'react-redux';
+import { getAllProduct } from "../../actions/actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton } from "../Login/Login";
 import { Profile } from "../Profile/Profile";
-// import { IconButton } from "@material-ui/core";
+import PermanentDrawerLeft from "../SideBar/SideBar"
 
-import './Nav.css'
+
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -82,19 +82,36 @@ const useStyles = makeStyles((theme) => ({
   export default function SearchAppBar() {
     const { isAuthenticated } = useAuth0();
     const classes = useStyles()
+    const dispatch = useDispatch();
+    const [name, setName] = useState("")
+   
+  
+      const handleSearchBar = (e) => {
+          setName(e.target.value)
+      }
+      
+      // console.log(name)
+  
+      const handleSubmit =(e) => {
+          e.preventDefault() // para que no refresque la pag si no hay info nueva, con el click.
+          dispatch(getAllProduct(name))
+      }
+  
+
 
     return (
         <div className={classes.root}>
             <Container  className="contenedorNavCss" maxWidth="xl">
                 <AppBar position="static">
                     <Toolbar>
+                      <PermanentDrawerLeft />
                         <IconButton
                             edge="start"
                             className={classes.menuButton}
                             color="inherit"
                             aria-label="open drawer"
                         >
-                        <MenuIcon />
+                          <MenuIcon />
                         </IconButton>
                         <Typography className={classes.title} variant="h6" noWrap>
                             Material-UI
@@ -104,34 +121,22 @@ const useStyles = makeStyles((theme) => ({
                                 <SearchIcon />
                                 </div>
                                     <InputBase
-                                        placeholder="Search…"
+                                        placeholder="Buscar..."
                                         classes={{
                                             root: classes.inputRoot,
                                             input: classes.inputInput,
                                         }}
                                         inputProps={{ 'aria-label': 'search' }}
+                                        onChange={handleSearchBar}
                                     />
-                            </div>
-                    
-                    {/* <div className="divContainer">
-                    <SearchBar />
-                    </div>
-                    <div className="divContainerFilter">
-                    <Filter/>
-                    </div>
-                */}
-                            {/*<div className="containerNav">
-                                <Link className="tittleNav" to='/home'>
-                                <button className="buttonNav">Home</button>
-                                </Link>
-                            </div>*/}
-                    {/* <div className="divContainer"> */}
-                                
-                                {/*<Link  to="/Home">
-                                    Home
-                                    </Link>
-                                    <Link  to="/About">About</Link>
-                                */}
+                                    <Button 
+                                        variant="outlined" 
+                                        className="Search" 
+                                        type='submit' 
+                                        onClick={(e) => handleSubmit(e)}
+                                        > Buscar
+                                    </Button>
+                            </div>                          
                                 {
                                     isAuthenticated ? (
                                         <div>
@@ -141,10 +146,7 @@ const useStyles = makeStyles((theme) => ({
                                     <LoginButton />
                                     
                                     )
-                                }
-                    {/* </div> */}
-                    
-                        
+  }
                     </Toolbar>
                 </AppBar>
             </Container>
