@@ -116,7 +116,7 @@ export default function PersistentDrawerLeft() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Persistent drawer
+            Agregar el Navbar que ya está listo
           </Typography>
         </Toolbar>
       </AppBar>
