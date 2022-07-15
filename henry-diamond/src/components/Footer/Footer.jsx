@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import Container from '@mui/material/Container'
-import styles from './Footer.css'
+//import styles from './Footer.css'
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid'
@@ -10,12 +10,13 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import InstagramIcon from '@mui/icons-material/Instagram';
 //import Link from '@mui/material/Link';
 import CodeIcon from '@mui/icons-material/Code';
+import {BottomNavigation} from '@material-ui/core'
 
 
 
 export default function Footer (){
     return(
-        <footer className='footer' width={"100%"}>
+        <footer  width={"100%"}>
               <Box bgcolor='ActiveBorder' color='white' className='container'>
                 <Container className='container'>
                     <Grid container spacing={5}>
