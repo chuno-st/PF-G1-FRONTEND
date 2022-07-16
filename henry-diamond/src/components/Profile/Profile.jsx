@@ -14,6 +14,7 @@ export const Profile = () => {
       <div className="divPerfil">
         <img 
         className="imgPerfil" 
+        
         src={user.picture} 
         // alt={user.name}
         />

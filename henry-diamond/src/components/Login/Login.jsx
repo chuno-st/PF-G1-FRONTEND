@@ -6,5 +6,5 @@ import PersonIcon from '@material-ui/icons/Person';
 export const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
 
-  return <Button variant="outlined" startIcon={<PersonIcon />} onClick={() => loginWithRedirect()}>Iniciar Sesión</Button>;
+  return <Button  startIcon={<PersonIcon />} onClick={() => loginWithRedirect()}>Iniciar Sesión</Button>;
 };

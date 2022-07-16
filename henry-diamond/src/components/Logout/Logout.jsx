@@ -3,5 +3,9 @@ import Button from '@mui/material/Button';
 export const LogoutButton = () => {
   const { logout } = useAuth0();
 
-  return <Button variant="outlined" onClick={() => logout()}>Cerrar Sesion</Button>;
+  return <Button 
+            onClick={() => logout()}
+          >
+          Cerrar Sesion
+          </Button>;
 };

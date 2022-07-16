@@ -121,14 +121,15 @@ const useStyles = makeStyles((theme) => ({
                                         inputProps={{ 'aria-label': 'search' }}
                                         onChange={handleSearchBar}
                                     />
-                                    <Button 
+                            </div>
+                            <Button 
                                         variant="outlined" 
                                         className="Search" 
                                         type='submit' 
                                         onClick={(e) => handleSubmit(e)}
                                         > Buscar
-                                    </Button>
-                                {
+                                    </Button>   
+                            {
                                     isAuthenticated ? (
                                         <div>
                                     <Profile />
@@ -137,8 +138,7 @@ const useStyles = makeStyles((theme) => ({
                                     <LoginButton />
                                     
                                     )
-                                }
-                            </div>                          
+                                }                       
                     </Toolbar>
                 </AppBar>
             </Container>
