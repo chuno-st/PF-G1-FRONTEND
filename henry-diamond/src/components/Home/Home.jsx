@@ -14,7 +14,7 @@ import amber from "@material-ui/core/colors/amber";
 // import { PaletteColor } from "@material-ui/core/styles/createPalette";
 import ConteinerCards from "../ConteinerCards/ConteinerCards"
 import { createTheme } from "@material-ui/core/styles";
-import Navbar from "../Nav/Nav";
+import SearchAppBar from "../Nav/Nav";
 import Footer from "../Footer/Footer";
 
 import {useState}from "react";
@@ -57,7 +57,7 @@ export function Home() {
             width:'100%'
           }}>
             <Grid item xs={12} sm={12} xl={12}>
-              <Navbar />
+              <SearchAppBar />
               </Grid>
             <Grid item xs={12} sm={12} xl={12}>
               <ConteinerCards/>
