@@ -20,8 +20,10 @@ font-size: 20.5px;
 .imgPerfil{
     height: 36px;
     padding: 3px;
+    border-radius: 25px;
 }
 
 .logOut{
+    border: 0px;
     margin-left: 3px;
 }

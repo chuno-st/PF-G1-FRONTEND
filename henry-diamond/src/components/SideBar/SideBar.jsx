@@ -25,6 +25,7 @@ import PersonIcon from '@material-ui/icons/Person';
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton } from "../Login/Login";
 import { Profile } from "../Profile/Profile";
+import { theme } from "../../themeConfig";
 
 
 const drawerWidth = 240;
