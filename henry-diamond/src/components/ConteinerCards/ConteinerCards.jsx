@@ -36,7 +36,7 @@ return (
      <>
      <Button onClick={handleClick2} disabled={desde<=0}>Anterior</Button>
      <Button onClick={handleClick} disabled={items.length!==12}>Siguiente</Button>
-     {console.log(items.length)}
+     {/* {console.log(items.length)} */}
      </>
       <Box sx={{ 
         marginRight: 5,
