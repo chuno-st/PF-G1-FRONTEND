@@ -22,6 +22,9 @@ import SpaIcon from '@material-ui/icons/Spa';
 import StorefrontIcon from '@material-ui/icons/Storefront';
 import CallIcon from '@material-ui/icons/Call';
 import PersonIcon from '@material-ui/icons/Person';
+import { useAuth0 } from "@auth0/auth0-react";
+import { LoginButton } from "../Login/Login";
+import { Profile } from "../Profile/Profile";
 
 
 const drawerWidth = 240;
@@ -84,6 +87,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function PersistentDrawerLeft() {
+  const { loginWithRedirect,  user, isAuthenticated, isLoading } = useAuth0();
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -178,14 +182,23 @@ export default function PersistentDrawerLeft() {
             </ListItem>
           ))}
         </List>
-        <List>
-          {['Iniciar Sesión'].map((text) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{<PersonIcon /> }</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
+          {
+             <List>
+                    
+            {
+              isAuthenticated ? (
+                  <div>
+              <Profile />
+          </ div>
+          ) : (
+              <LoginButton />
+              
+              )
+          }
+            </List>
+          }
+            
+        
       </Drawer>
       <main
         className={clsx(classes.content, {

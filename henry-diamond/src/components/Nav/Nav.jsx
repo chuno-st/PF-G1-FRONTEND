@@ -1,13 +1,13 @@
 import React from "react";
 import  AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import MenuIcon from "@material-ui/icons/Menu";
+// import MenuIcon from "@material-ui/icons/Menu";
 import InputBase from '@material-ui/core/InputBase';
 import  Typography  from "@material-ui/core/Typography";
 import SearchIcon from '@material-ui/icons/Search';
 import Button from '@mui/material/Button';
 import Container from '@material-ui/core/Container';
-import {IconButton} from "@material-ui/core";
+// import {IconButton} from "@material-ui/core";
 import  {makeStyles, alpha} from "@material-ui/core/styles";
 import { useState} from "react";
 import {useDispatch} from 'react-redux';
@@ -106,7 +106,7 @@ const useStyles = makeStyles((theme) => ({
                     <Toolbar>
                       <PermanentDrawerLeft />
                         <Typography className={classes.title} variant="h6" noWrap>
-                            Material-UI
+                            Piedras
                         </Typography>
                             <div className={classes.search}>
                                 <div className={classes.searchIcon}>
@@ -128,7 +128,6 @@ const useStyles = makeStyles((theme) => ({
                                         onClick={(e) => handleSubmit(e)}
                                         > Buscar
                                     </Button>
-                            </div>                          
                                 {
                                     isAuthenticated ? (
                                         <div>
@@ -138,7 +137,8 @@ const useStyles = makeStyles((theme) => ({
                                     <LoginButton />
                                     
                                     )
-  }
+                                }
+                            </div>                          
                     </Toolbar>
                 </AppBar>
             </Container>

@@ -12,11 +12,15 @@ export const Profile = () => {
   return (
     isAuthenticated && (
       <div className="divPerfil">
-        <img className="imgPerfil" src={user.picture} alt={user.name} />
-        <div className="nameEmail">
-        <h2 className="name">{user.name}</h2>
-        <p className="email">{user.email}</p>
-        </div>
+        <img 
+        className="imgPerfil" 
+        src={user.picture} 
+        // alt={user.name}
+        />
+        {/* <div className="nameEmail"> */}
+        {/* <h2 className="name">{user.name}</h2>
+        <p className="email">{user.email}</p> */}
+        {/* </div> */}
         <LogoutButton  className="logOut" />
       </div>
     )
