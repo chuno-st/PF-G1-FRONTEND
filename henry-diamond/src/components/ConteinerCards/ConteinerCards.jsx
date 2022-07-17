@@ -5,38 +5,45 @@ import BasicCard from "../Card/Card";
 import { Grid,Box,Button } from "@mui/material";
 // import { margin } from "@mui/system";
 import { useState } from "react";
+import Paginate from '../Paginate/Paginate.jsx'
 
 
 export default function ContainerCards() {
 const items = useSelector(state => state.items);
-const [desde, setdesde] = useState(0);
-const [hasta, sethasta] = useState(12);
+/* const [desde, setdesde] = useState(0); */
+/* const [hasta, sethasta] = useState(12); */
 const dispatch = useDispatch();
+const { desde, hasta} = useSelector(state => state.paginado)
 
 useEffect(() => {
   dispatch(getAllItems(desde,hasta))}
   , [dispatch,desde,hasta]);
 
-  const handleClick = () => {
+ /*  const handleClick = () => {
     setdesde(desde + 8);
    
-  }
-  const handleClick2 = () => {
+  } */
+  /* const handleClick2 = () => {
    
       setdesde(desde - 8);
    
    
    
-  }
+  } */
 
 return (
 
 
     <div>
      <>
-     <Button onClick={handleClick2} disabled={desde<=0}>Anterior</Button>
-     <Button onClick={handleClick} disabled={items.length!==12}>Siguiente</Button>
+     {/* <Button onClick={handleClick2} disabled={desde<=0}>Anterior</Button>
+     <Button onClick={handleClick} disabled={items.length!==12}>Siguiente</Button> */}
      {/* {console.log(items.length)} */}
+     {
+      <Paginate>
+
+      </Paginate>
+     }
      </>
       <Box sx={{ 
         marginRight: 5,
