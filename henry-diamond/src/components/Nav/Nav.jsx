@@ -142,8 +142,7 @@ const useStyles = makeStyles((theme) => ({
                                         onChange={handleSearchBar}
                                     />
                             </div>
-                            <Button 
-                                        variant="outlined" 
+                            <Button  
                                         className="Search" 
                                         type='submit' 
                                         color= 'secondary'
