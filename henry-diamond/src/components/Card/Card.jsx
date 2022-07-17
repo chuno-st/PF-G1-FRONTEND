@@ -15,7 +15,7 @@ export default function BasicCard(props) {
     <Card sx={{ maxWidth: 345,height:'100%' }} className="card">
       <CardMedia
         component="img"
-        height="140"
+        height="200"
         image={item.image}
         alt="green iguana"
       />
@@ -24,7 +24,7 @@ export default function BasicCard(props) {
           {capitalizeLetter(item.name)}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {capitalizeLetter(item.description)+" "+"$"+item.price}
+          {"$"+item.price}
         </Typography>
       </CardContent>
       <CardActions>

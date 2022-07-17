@@ -8,7 +8,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import Button from '@mui/material/Button';
 import Container from '@material-ui/core/Container';
 // import {IconButton} from "@material-ui/core";
-import  {makeStyles, alpha} from "@material-ui/core/styles";
+import  {makeStyles} from "@material-ui/core/styles";
 import { useState} from "react";
 import {useDispatch} from 'react-redux';
 import { getAllProduct } from "../../actions/actions";
@@ -16,10 +16,30 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton } from "../Login/Login";
 import { Profile } from "../Profile/Profile";
 import PermanentDrawerLeft from "../SideBar/SideBar"
+import { brown, amber, deepOrange } from "@material-ui/core/colors";
+import { createTheme } from "@material-ui/core";
 
 
-
-
+const theme = createTheme({
+  palette: {
+    primary:{
+      main: brown[200]
+    },
+    secondary:{
+      main: amber[500]
+    },
+    warning:{
+      main: deepOrange[500]
+    }
+  },
+  typography: {
+      fontFamily: 'Arima',
+      fontWeightLight: 400,
+      fontWeightRegular: 500,
+      fontWeightMedium: 600,
+      fontWeightBold: 700
+  }
+})
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -38,9 +58,9 @@ const useStyles = makeStyles((theme) => ({
     search: {
       position: 'relative',
       borderRadius: theme.shape.borderRadius,
-      backgroundColor: alpha(theme.palette.common.white, 0.15),
+      backgroundColor: (theme.palette.secondary, 0.15),
       '&:hover': {
-        backgroundColor: alpha(theme.palette.common.white, 0.25),
+        backgroundColor: (theme.palette.common.white, 0.25),
       },
       marginLeft: 0,
       width: '100%',
@@ -126,6 +146,7 @@ const useStyles = makeStyles((theme) => ({
                                         variant="outlined" 
                                         className="Search" 
                                         type='submit' 
+                                        color= 'secondary'
                                         onClick={(e) => handleSubmit(e)}
                                         > Buscar
                                     </Button>   
