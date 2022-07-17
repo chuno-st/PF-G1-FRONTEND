@@ -90,3 +90,13 @@ export const SubCategory = ()=>{
     }
 
 }
+
+export const SET_PAGINADO = (payload) => {
+    console.log(payload)
+    return dispatch => {
+       dispatch ( {
+            type: SET_PAGINADO,
+            payload: payload
+        })
+    }
+}
