@@ -1,4 +1,5 @@
-import React from 'react';
+import { React, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Checkbox from '@mui/material/Checkbox';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -11,61 +12,61 @@ export default function FilterCategory() {
         <FormLabel component="legend">Por color</FormLabel>
             <FormGroup aria-label="position" row>
                 <FormControlLabel
-                    value="end"
+                    value="marron"
                     control={<Checkbox />}
                     label="Marrón"
                     labelPlacement="end"
                 />
                 <FormControlLabel
-                    value="end"
+                    value="gris"
                     control={<Checkbox />}
                     label="Gris"
                     labelPlacement="end"
                 />
                 <FormControlLabel
-                    value="end"
+                    value="rosa"
                     control={<Checkbox />}
                     label="Rosa"
                     labelPlacement="end"
                 />
                 <FormControlLabel
-                    value="end"
+                    value="violeta"
                     control={<Checkbox />}
                     label="Violeta"
                     labelPlacement="end"
                 />
                 <FormControlLabel
-                    value="end"
+                    value="rojo"
                     control={<Checkbox />}
                     label="Rojo"
                     labelPlacement="end"
                 />
                 <FormControlLabel
-                    value="end"
+                    value="amarillo"
                     control={<Checkbox />}
                     label="Amarillo"
                     labelPlacement="end"
                 />
                 <FormControlLabel
-                    value="end"
+                    value="blanco"
                     control={<Checkbox />}
                     label="Blanco"
                     labelPlacement="end"
                 />
                 <FormControlLabel
-                    value="end"
+                    value="azul"
                     control={<Checkbox />}
                     label="Azul"
                     labelPlacement="end"
                 />
                 <FormControlLabel
-                    value="end"
+                    value="turqueza"
                     control={<Checkbox />}
                     label="Turqueza"
                     labelPlacement="end"
                 />
                 <FormControlLabel
-                    value="end"
+                    value="verde"
                     control={<Checkbox />}
                     label="Verde"
                     labelPlacement="end"
