@@ -1,9 +1,32 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { LogoutButton } from "../Logout/Logout";
 import './Profile.css'
+import React, {useEffect, useState}from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser } from "../../actions/actions";
+
 
 export const Profile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
+  const dispatch = useDispatch();
+  const [newUser, setNewUser] = useState({
+    id : "asdadasd",
+    userName : "jose",
+    email : "jose@gmail"
+  })
+  
+
+
+  /*
+  setNewUser({
+    id: user.sub,
+    userName: user.name,
+    email : user.email
+})
+*/
+
+
+  dispatch(addUser([newUser]))
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -15,7 +38,7 @@ export const Profile = () => {
         <img className="imgPerfil" src={user.picture} alt={user.name} />
         <div className="nameEmail">
         <h2 className="name">{user.name}</h2>
-        <p className="email">{user.email}</p>
+        <p className="email">{user.sub}</p>
         </div>
         <LogoutButton  className="logOut" />
       </div>

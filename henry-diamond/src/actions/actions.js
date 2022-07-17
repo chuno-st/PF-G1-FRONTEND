@@ -5,7 +5,8 @@ import {
     GET_PRODUCT,
     ALL_ITEMS,
     ALL_CAREGORY,
-    ALL_SUBCATEGORY
+    ALL_SUBCATEGORY,
+    ADD_USER
 } from "./typeActions";
 // import {getProduct} from '../../../../PF-G1-BACKEND/src/controllers/productControllers'
 import axios from "axios";
@@ -60,7 +61,11 @@ export const FilterBy = ({category,subcategory,limite,desde}) => {
     }
 }
 
-
+export function addUser(data){
+    return async (dispatch) =>{
+        let user = await axios.post(`${URL}adduser`, data)
+    }
+}
 
 export const Category = ()=>{
     return dispatch => {

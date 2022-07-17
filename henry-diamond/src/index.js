@@ -16,7 +16,8 @@ ReactDOM.render(
             <Auth0Provider
             domain="dev-j62go36g.us.auth0.com"
             clientId="699duSJquLgBQ2pD3pC07dDh5vLMs8k8"
-            redirectUri={window.location.origin}>
+            redirectUri={window.location.origin}
+            cacheLocation="localstorage">
                 <BrowserRouter>
                     <App />
                 </BrowserRouter>

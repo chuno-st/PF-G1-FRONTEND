@@ -22,7 +22,7 @@ export default function Footer (){
                         <Grid item xs={12} sm={4}>
                             <Box borderBottom={1}>About</Box>
                             <Box paddingTop={1} className='itemColumn'>
-                                <Link to="/About" size='small' className='link'>Dev Team</Link>
+                                <Link to="/admin/about" size='small' className='link'>Dev Team</Link>
                                 <CodeIcon fontSize='small'/>
                             </Box>
 
