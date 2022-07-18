@@ -44,6 +44,8 @@ const theme = createTheme({
 const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
+      backgroundColor: '#d1c4e9',
+      color: '#827717'
     },
     menuButton: {
       marginRight: theme.spacing(2),
@@ -79,11 +81,11 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: 'center',
     },
     inputRoot: {
-      color: 'inherit',
+      color: '#827717',
     },
     inputInput: {
 
-        
+      color:'#827717',
       padding: theme.spacing(1, 1, 1, 0),
       // vertical padding + font size from searchIcon
       paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
@@ -120,9 +122,9 @@ const useStyles = makeStyles((theme) => ({
 
 
     return (
-        <div className={classes.root}>
-            <Container  className="contenedorNavCss" maxWidth="xl">
-                <AppBar position="static">
+        <div >
+            <Container maxWidth="xl">
+                <AppBar className={classes.root} position="static">
                     <Toolbar>
                       <PermanentDrawerLeft />
                         <Typography className={classes.title} variant="h6" noWrap>
@@ -145,7 +147,7 @@ const useStyles = makeStyles((theme) => ({
                             <Button  
                                         className="Search" 
                                         type='submit' 
-                                        color= 'secondary'
+                                        color= 'primary'
                                         onClick={(e) => handleSubmit(e)}
                                         > Buscar
                                     </Button>   

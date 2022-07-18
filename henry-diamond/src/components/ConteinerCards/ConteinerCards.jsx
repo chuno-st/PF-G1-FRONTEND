@@ -35,39 +35,46 @@ return (
 
 
     <div>
-     <>
+   
      {/* <Button onClick={handleClick2} disabled={desde<=0}>Anterior</Button>
      <Button onClick={handleClick} disabled={items.length!==12}>Siguiente</Button> */}
      {/* {console.log(items.length)} */}
      {
-      <Paginate>
-
-      </Paginate>
+        <Paginate />
      }
-     </>
-      <Box sx={{ 
+     
+      <Box 
+        
+        sx={{ 
         marginRight: 5,
         marginLeft: 5,
         marginTop: 5,
         marginBottom: 10,
-
-      }}>
+      }}
+      
+      >
 
       
-      <Grid container spacing={3}>
+      <Grid container spacing={3} >
 
 
         {items.length ? (
 
           items.map(item => (    //map para recorrer el array de items
-            <Grid item xs={12} sm={6} md={4} lg={2}>
+            <Grid item 
+            xs={12} 
+            sm={6} 
+            md={4} 
+            lg={4}
+            >
               <BasicCard key={item.id} item={item} /> 
               </Grid>))
         ):(
           <Box sx={{
             hight: 'auto',
             marginTop: '17%',
-            marginBottom: '17%'
+            marginBottom: '17%',
+            
 
           }}>
             

@@ -44,7 +44,8 @@ export const LoginButton = () => {
         <ThemeProvider theme={theme}>
             <Button
             className={classes.styleButton}
-            startIcon={<PersonIcon />} onClick={() => loginWithRedirect()}>Iniciar Sesión</Button>
+            startIcon={<PersonIcon />} 
+            onClick={() => loginWithRedirect()}>Iniciar Sesión</Button>
         </ThemeProvider>    
     </div>
   );

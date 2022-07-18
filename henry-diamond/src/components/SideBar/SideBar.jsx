@@ -47,6 +47,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
   },
+  text: {
+    color: '#827717',
+  },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
@@ -63,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     marginRight: theme.spacing(2),
-    color: '#b26a00'
+    color: '#827717'
   },
   hide: {
     display: 'none',
@@ -76,7 +79,8 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerPaper: {
     width: drawerWidth,
-    background:'linear-gradient(90deg, #ffbb66 30%, #b28035 90%)',
+    background:'#d1c4e9',
+    borderBlockColor: '#b39ddb'
   },
   drawerHeader: {
     color: '#ff6d00',
@@ -152,25 +156,25 @@ export default function PersistentDrawerLeft() {
         <List>
             <ListItem Button>
               <ListItemIcon>{<SpaIcon />}</ListItemIcon>
-              <ListItemText>{<h4>Productos</h4>}</ListItemText>
+              <ListItemText className={classes.text}>{<h4>Productos</h4>}</ListItemText>
             </ListItem>
         </List>
         <List>
             <ListItem button>
               <ListItemIcon>{<LocalFloristIcon />}</ListItemIcon>
-              <ListItemText>{<h4>Precio</h4>}</ListItemText>
+              <ListItemText className={classes.text}>{<h4>Precio</h4>}</ListItemText>
             </ListItem>
         </List>
         <List>
             <ListItem button>
               <ListItemIcon>{<EcoIcon />}</ListItemIcon>
-              <ListItemText>{<h4>Por nombre</h4>}</ListItemText>
+              <ListItemText className={classes.text}>{<h4>Por nombre</h4>}</ListItemText>
             </ListItem>
         </List>
         <List>
             <ListItem button>
               <ListItemIcon>{<FilterVintageIcon />}</ListItemIcon>
-              <ListItemText>{<h4>Por color</h4>}</ListItemText>
+              <ListItemText className={classes.text}>{<h4>Por color</h4>}</ListItemText>
             </ListItem>
         </List>
         <Divider />
@@ -178,16 +182,17 @@ export default function PersistentDrawerLeft() {
         <List>
             <ListItem button>
               <ListItemIcon>{<StorefrontIcon />}</ListItemIcon>
-              <ListItemText>{<h4>¿Cómo comprar?</h4>}</ListItemText>
+              <ListItemText className={classes.text}>{<h4>¿Cómo comprar?</h4>}</ListItemText>
             </ListItem>
         </List>
         <List>
             <ListItem button>
               <ListItemIcon>{<CallIcon />}</ListItemIcon>
-              <ListItemText>{<h4>Contacto</h4>}</ListItemText>
+              <ListItemText className={classes.text}>{<h4>Contacto</h4>}</ListItemText>
             </ListItem>
         </List>
         <Divider />
+        
           {
              <ListItem button>  
             {
