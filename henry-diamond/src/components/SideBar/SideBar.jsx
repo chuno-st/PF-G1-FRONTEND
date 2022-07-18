@@ -21,11 +21,9 @@ import FilterVintageIcon from '@material-ui/icons/FilterVintage';
 import SpaIcon from '@material-ui/icons/Spa';
 import StorefrontIcon from '@material-ui/icons/Storefront';
 import CallIcon from '@material-ui/icons/Call';
-import PersonIcon from '@material-ui/icons/Person';
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton } from "../Login/Login";
 import { Profile } from "../Profile/Profile";
-import { theme } from "../../themeConfig";
 
 
 const drawerWidth = 240;
@@ -64,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
   drawerHeader: {
     display: 'flex',
     alignItems: 'center',
-    padding: theme.spacing(0, 1),
+    padding: theme.spacing(0, 0),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
@@ -104,7 +102,6 @@ export default function PersistentDrawerLeft() {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      
         <Toolbar>
           <IconButton
             color="inherit"
@@ -115,10 +112,7 @@ export default function PersistentDrawerLeft() {
           >
             <MenuIcon />
           </IconButton>
-         
         </Toolbar>
-      
-    
       <Drawer
         className={classes.drawer}
         variant="persistent"
@@ -135,73 +129,55 @@ export default function PersistentDrawerLeft() {
         </div>
         <Divider />
         <List>
-          {['Productos'].map((text) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{<SpaIcon /> }</ListItemIcon>
-              <ListItemText primary={text} />
+            <ListItem button>
+              <ListItemIcon>{<SpaIcon />}</ListItemIcon>
+              <ListItemText>{<h4>Productos</h4>}</ListItemText>
             </ListItem>
-          ))}
         </List>
         <List>
-          {['Por Precio'].map((text) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{<LocalFloristIcon /> }</ListItemIcon>
-              <ListItemText primary={text} />
+            <ListItem button>
+              <ListItemIcon>{<LocalFloristIcon />}</ListItemIcon>
+              <ListItemText>{<h4>Precio</h4>}</ListItemText>
             </ListItem>
-          ))}
         </List>
         <List>
-          {['Por Nombre'].map((text) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{<EcoIcon /> }</ListItemIcon>
-              <ListItemText primary={text} />
+            <ListItem button>
+              <ListItemIcon>{<EcoIcon />}</ListItemIcon>
+              <ListItemText>{<h4>Por nombre</h4>}</ListItemText>
             </ListItem>
-          ))}
         </List>
         <List>
-          {['Por Color'].map((text) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{<FilterVintageIcon /> }</ListItemIcon>
-              <ListItemText primary={text} />
+            <ListItem button>
+              <ListItemIcon>{<FilterVintageIcon />}</ListItemIcon>
+              <ListItemText>{<h4>Por color</h4>}</ListItemText>
             </ListItem>
-          ))}
         </List>
         <Divider />
+        <Divider />
         <List>
-          {['¿Cómo Comprar?'].map((text) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{<StorefrontIcon /> }</ListItemIcon>
-              <ListItemText primary={text} />
+            <ListItem button>
+              <ListItemIcon>{<StorefrontIcon />}</ListItemIcon>
+              <ListItemText>{<h4>¿Cómo comprar?</h4>}</ListItemText>
             </ListItem>
-          ))}
         </List>
         <List>
-          {['Contacto'].map((text) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{<CallIcon /> }</ListItemIcon>
-              <ListItemText primary={text} />
+            <ListItem button>
+              <ListItemIcon>{<CallIcon />}</ListItemIcon>
+              <ListItemText>{<h4>Contacto</h4>}</ListItemText>
             </ListItem>
-          ))}
         </List>
         <Divider />
-
           {
-             <List>
-                    
+             <ListItem button>  
             {
               isAuthenticated ? (
-                  <div>
               <Profile />
-          </ div>
           ) : (
               <LoginButton />
-              
               )
           }
-            </List>
+            </ListItem>
           }
-            
-        
       </Drawer>
       <main
         className={clsx(classes.content, {
