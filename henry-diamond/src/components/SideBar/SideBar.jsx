@@ -162,7 +162,6 @@ export default function PersistentDrawerLeft() {
               <ListItemIcon>{<StorefrontIcon />}</ListItemIcon>
               <ListItemText>{<h4>¿Cómo comprar?</h4>}</ListItemText>
               <HowToBuyModal />
-
             </ListItem>
         </List>
         <List>
