@@ -8,6 +8,7 @@ import Grid from '@mui/material/Grid'
 import { Link  } from 'react-router-dom';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
 
 import CodeIcon from '@mui/icons-material/Code';
 
@@ -40,8 +41,12 @@ export default function Footer (){
                                 }}/>
                             </Box>
 
-                            <Box className='itemColumn'>
+                            <Box className='itemColumn' sx={{
+                                justifyContent: 'space-between',
+                                display: 'flex'
+                            }}>
                                 <Link to="/" className='link'>Nuestro Contacto</Link>
+                                <ConnectWithoutContactIcon fontSize='small' />
                             </Box>
                         </Grid>
 
