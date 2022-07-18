@@ -25,6 +25,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton } from "../Login/Login";
 import { Profile } from "../Profile/Profile";
 import HowToBuyModal from "../HowToBuyModal/HowToBuyModal"
+import FilterProduct from "../Filter/FilterProduct"
+import { UserInfo } from "../UserInfo/UserInfo"
 
 
 const drawerWidth = 300;
@@ -150,7 +152,7 @@ export default function PersistentDrawerLeft() {
         <List>
             <ListItem button>
               <ListItemIcon>{<FilterVintageIcon />}</ListItemIcon>
-              <ListItemText>{<h4>Por color</h4>}</ListItemText>
+              <ListItemText>{<h4>Por material</h4>}</ListItemText>
             </ListItem>
         </List>
         <Divider />
@@ -174,19 +176,28 @@ export default function PersistentDrawerLeft() {
              <ListItem button>  
             {
               isAuthenticated ? (
-              <Profile />
+              <div>
+                    <Profile />
+                    <UserInfo />
+              </div>
           ) : (
+            
               <LoginButton />
+           
               )
           }
             </ListItem>
           }
+          <Divider />
+         
+
       </Drawer>
       <main
         className={clsx(classes.content, {
           [classes.contentShift]: open,
         })}
       >
+        
       </main>
     </div>
   );

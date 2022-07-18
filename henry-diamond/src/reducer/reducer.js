@@ -1,8 +1,9 @@
-import { FILTER, ALL_ITEMS, ALL_CAREGORY, ALL_SUBCATEGORY, SET_PAGINADO } from "../actions/typeActions";
+import { FILTER, ALL_ITEMS, ALL_CAREGORY, ALL_SUBCATEGORY, SET_PAGINADO, SET_CATEGORY, SET_SUBCATEGORY } from "../actions/typeActions";
 import {GET_PRODUCT} from '../actions/typeActions'
 const inicialState = {
     allProducts: [],
     items: [],
+    filter: {},
     category: [],
     subcategory: [],
     paginado: {
@@ -38,8 +39,21 @@ const reducer = (state = inicialState, { type, payload }) => {
           return {
             ...state,
             paginado: payload
-          }          
-      
+          }  
+        case SET_CATEGORY:
+          return { 
+            ...state,
+            category: payload
+          }
+          case SET_SUBCATEGORY:
+          return { 
+            ...state,
+            category: payload
+          }
+
+          
+                  
+        
 
 
         default:

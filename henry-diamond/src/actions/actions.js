@@ -5,7 +5,9 @@ import {
     GET_PRODUCT,
     ALL_ITEMS,
     ALL_CAREGORY,
-    ALL_SUBCATEGORY
+    ALL_SUBCATEGORY, 
+    SET_CATEGORY, 
+    SET_SUBCATEGORY,
 } from "./typeActions";
 // import {getProduct} from '../../../../PF-G1-BACKEND/src/controllers/productControllers'
 import axios from "axios";
@@ -97,6 +99,24 @@ export const SET_PAGINADO = (payload) => {
        dispatch ( {
             type: SET_PAGINADO,
             payload: payload
+        })
+    }
+}
+
+export const setCategory = (payload) => {
+    return dispatch => {
+        dispatch ({
+            type: SET_CATEGORY,
+            payload: payload
+        })
+    }
+}
+
+export const setSubCategory = (payload) => {
+    return dispatch => {
+        dispatch ({
+            type: SET_SUBCATEGORY,
+            payload: payload 
         })
     }
 }
