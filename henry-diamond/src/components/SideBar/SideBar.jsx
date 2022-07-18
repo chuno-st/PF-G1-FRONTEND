@@ -31,9 +31,27 @@ import { UserInfo } from "../UserInfo/UserInfo"
 
 const drawerWidth = 300;
 
+// const StyledButton = withStyles({
+//   root: {
+//     background: 'linear-gradient(90deg, #ffee33 30%, #a2cf6e 90%)',
+//     border: 0,
+//     color: '#b26a00',
+//     textShadow: '0 3px 5px 2px rgba(255, 105, 135, .8)',
+//     height: 30,
+//     padding: '0 30px',
+//     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+//   },
+//   label: {
+//     textTransform: 'capitalize',
+//   },
+// })(Button);
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+  },
+  text: {
+    color: '#827717',
   },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
@@ -51,18 +69,24 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     marginRight: theme.spacing(2),
+    color: '#827717'
   },
   hide: {
     display: 'none',
   },
   drawer: {
+    
     width: drawerWidth,
     flexShrink: 0,
+    
   },
   drawerPaper: {
     width: drawerWidth,
+    background:'#d1c4e9',
+    borderBlockColor: '#b39ddb'
   },
   drawerHeader: {
+    color: '#ff6d00',
     display: 'flex',
     alignItems: 'center',
     padding: theme.spacing(0, 0),
@@ -72,7 +96,7 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
+    padding: theme.spacing(0),
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -91,6 +115,7 @@ const useStyles = makeStyles((theme) => ({
 export default function PersistentDrawerLeft() {
   const { loginWithRedirect,  user, isAuthenticated, isLoading } = useAuth0();
   const classes = useStyles();
+  
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -132,27 +157,27 @@ export default function PersistentDrawerLeft() {
         </div>
         <Divider />
         <List>
-            <ListItem button>
+            <ListItem Button>
               <ListItemIcon>{<SpaIcon />}</ListItemIcon>
-              <ListItemText>{<h4>Productos</h4>}</ListItemText>
+              <ListItemText className={classes.text}>{<h4>Productos</h4>}</ListItemText>
             </ListItem>
         </List>
         <List>
             <ListItem button>
               <ListItemIcon>{<LocalFloristIcon />}</ListItemIcon>
-              <ListItemText>{<h4>Precio</h4>}</ListItemText>
+              <ListItemText className={classes.text}>{<h4>Precio</h4>}</ListItemText>
             </ListItem>
         </List>
         <List>
             <ListItem button>
               <ListItemIcon>{<EcoIcon />}</ListItemIcon>
-              <ListItemText>{<h4>Por nombre</h4>}</ListItemText>
+              <ListItemText className={classes.text}>{<h4>Por nombre</h4>}</ListItemText>
             </ListItem>
         </List>
         <List>
             <ListItem button>
               <ListItemIcon>{<FilterVintageIcon />}</ListItemIcon>
-              <ListItemText>{<h4>Por material</h4>}</ListItemText>
+              <ListItemText className={classes.text}>{<h4>Por color</h4>}</ListItemText>
             </ListItem>
         </List>
         <Divider />
@@ -160,17 +185,18 @@ export default function PersistentDrawerLeft() {
         <List>
             <ListItem button>
               <ListItemIcon>{<StorefrontIcon />}</ListItemIcon>
-              <ListItemText>{<h4>¿Cómo comprar?</h4>}</ListItemText>
+              <ListItemText className={classes.text}>{<h4>¿Cómo comprar?</h4>}</ListItemText>
               <HowToBuyModal />
             </ListItem>
         </List>
         <List>
             <ListItem button>
               <ListItemIcon>{<CallIcon />}</ListItemIcon>
-              <ListItemText>{<h4>Contacto</h4>}</ListItemText>
+              <ListItemText className={classes.text}>{<h4>Contacto</h4>}</ListItemText>
             </ListItem>
         </List>
         <Divider />
+        
           {
              <ListItem button>  
             {
