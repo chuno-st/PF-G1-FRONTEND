@@ -27,9 +27,9 @@ export function getAllProduct(name){
     }
 }
 
-export function getAllItems(){
+export function getAllItems(desde,limite){
     return async (dispatch) =>{
-        let allItems = await axios.get(`${URL}product`)
+        let allItems = await axios.get(`${URL}product/pagination?desde=${desde}&limite=${limite}`)
         return dispatch({
             type: ALL_ITEMS,
             payload: allItems.data
@@ -89,4 +89,14 @@ export const SubCategory = ()=>{
         })
     }
 
+}
+
+export const SET_PAGINADO = (payload) => {
+    console.log(payload)
+    return dispatch => {
+       dispatch ( {
+            type: SET_PAGINADO,
+            payload: payload
+        })
+    }
 }

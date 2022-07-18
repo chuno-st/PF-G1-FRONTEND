@@ -2,63 +2,86 @@ import { useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getAllItems} from "../../actions/actions";
 import BasicCard from "../Card/Card";
+<<<<<<< HEAD
 import { Grid,Box } from "@mui/material";
 // import './ConteinerCards.css'
 //import './ConteinerCards.css'
 //import { margin } from "@mui/system";
+=======
+import { Grid,Box,Button } from "@mui/material";
+// import { margin } from "@mui/system";
+>>>>>>> 793dc420a39460d66da82d72695549c9d5121085
 import { useState } from "react";
+import Paginate from '../Paginate/Paginate.jsx'
 
 
 export default function ContainerCards() {
 const items = useSelector(state => state.items);
+/* const [desde, setdesde] = useState(0); */
+/* const [hasta, sethasta] = useState(12); */
 const dispatch = useDispatch();
-
-const [paginate, setPaginate] = useState(8);
-const [base, setBase] = useState(0);
+const { desde, hasta} = useSelector(state => state.paginado)
 
 useEffect(() => {
-  dispatch(getAllItems())}
-  , [dispatch])
+  dispatch(getAllItems(desde,hasta))}
+  , [dispatch,desde,hasta]);
 
-
-  const nextPage = () => {
-        
-    setPaginate((prevValue) => prevValue + 8);
-    setBase((prevBase) => prevBase + 8)
-};
-
-
-const previousPage = () => {
-    
-    setPaginate((prevValue) => prevValue -8);
-    setBase((prevBase) => prevBase -8)
-};  
+ /*  const handleClick = () => {
+    setdesde(desde + 8);
+   
+  } */
+  /* const handleClick2 = () => {
+   
+      setdesde(desde - 8);
+   
+   
+   
+  } */
 
 return (
 
 
     <div>
-      <Box sx={{ 
+   
+     {/* <Button onClick={handleClick2} disabled={desde<=0}>Anterior</Button>
+     <Button onClick={handleClick} disabled={items.length!==12}>Siguiente</Button> */}
+     {/* {console.log(items.length)} */}
+     {
+        <Paginate />
+     }
+     
+      <Box 
+        
+        sx={{ 
         marginRight: 5,
         marginLeft: 5,
         marginTop: 5,
         marginBottom: 10,
-
-      }}>
+      }}
+      
+      >
 
       
-      <Grid container spacing={0.5}>
+      <Grid container spacing={3} >
 
 
         {items.length ? (
 
-          items.slice(base, paginate).map(item => (    //map para recorrer el array de items
-              <BasicCard key={item.id} item={item} /> ))
+          items.map(item => (    //map para recorrer el array de items
+            <Grid item 
+            xs={12} 
+            sm={6} 
+            md={4} 
+            lg={4}
+            >
+              <BasicCard key={item.id} item={item} /> 
+              </Grid>))
         ):(
           <Box sx={{
             hight: 'auto',
             marginTop: '17%',
-            marginBottom: '17%'
+            marginBottom: '17%',
+            
 
           }}>
             
