@@ -24,9 +24,10 @@ import CallIcon from '@material-ui/icons/Call';
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton } from "../Login/Login";
 import { Profile } from "../Profile/Profile";
+import HowToBuyModal from "../HowToBuyModal/HowToBuyModal"
 
 
-const drawerWidth = 240;
+const drawerWidth = 300;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -158,6 +159,8 @@ export default function PersistentDrawerLeft() {
             <ListItem button>
               <ListItemIcon>{<StorefrontIcon />}</ListItemIcon>
               <ListItemText>{<h4>¿Cómo comprar?</h4>}</ListItemText>
+              <HowToBuyModal />
+
             </ListItem>
         </List>
         <List>
