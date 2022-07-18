@@ -28,6 +28,21 @@ import { Profile } from "../Profile/Profile";
 
 const drawerWidth = 240;
 
+// const StyledButton = withStyles({
+//   root: {
+//     background: 'linear-gradient(90deg, #ffee33 30%, #a2cf6e 90%)',
+//     border: 0,
+//     color: '#b26a00',
+//     textShadow: '0 3px 5px 2px rgba(255, 105, 135, .8)',
+//     height: 30,
+//     padding: '0 30px',
+//     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+//   },
+//   label: {
+//     textTransform: 'capitalize',
+//   },
+// })(Button);
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -48,18 +63,23 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     marginRight: theme.spacing(2),
+    color: '#b26a00'
   },
   hide: {
     display: 'none',
   },
   drawer: {
+    
     width: drawerWidth,
     flexShrink: 0,
+    
   },
   drawerPaper: {
     width: drawerWidth,
+    background:'linear-gradient(90deg, #ffbb66 30%, #b28035 90%)',
   },
   drawerHeader: {
+    color: '#ff6d00',
     display: 'flex',
     alignItems: 'center',
     padding: theme.spacing(0, 0),
@@ -69,7 +89,7 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
+    padding: theme.spacing(0),
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -88,6 +108,7 @@ const useStyles = makeStyles((theme) => ({
 export default function PersistentDrawerLeft() {
   const { loginWithRedirect,  user, isAuthenticated, isLoading } = useAuth0();
   const classes = useStyles();
+  
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -129,7 +150,7 @@ export default function PersistentDrawerLeft() {
         </div>
         <Divider />
         <List>
-            <ListItem button>
+            <ListItem Button>
               <ListItemIcon>{<SpaIcon />}</ListItemIcon>
               <ListItemText>{<h4>Productos</h4>}</ListItemText>
             </ListItem>
