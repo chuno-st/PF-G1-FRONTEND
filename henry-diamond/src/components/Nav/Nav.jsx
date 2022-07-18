@@ -18,6 +18,7 @@ import { Profile } from "../Profile/Profile";
 import PermanentDrawerLeft from "../SideBar/SideBar"
 import { brown, amber, deepOrange } from "@material-ui/core/colors";
 import { createTheme } from "@material-ui/core";
+import { ShoppingCartButton } from '../ShoppingCartButton/ShoppingCartButton'
 
 
 const theme = createTheme({
@@ -126,7 +127,7 @@ const useStyles = makeStyles((theme) => ({
                     <Toolbar>
                       <PermanentDrawerLeft />
                         <Typography className={classes.title} variant="h6" noWrap>
-                            Piedras
+                            LOGO + NOMBRE DEL NEGOCIO
                         </Typography>
                             <div className={classes.search}>
                                 <div className={classes.searchIcon}>
@@ -141,24 +142,25 @@ const useStyles = makeStyles((theme) => ({
                                         inputProps={{ 'aria-label': 'search' }}
                                         onChange={handleSearchBar}
                                     />
-                            </div>
-                            <Button  
-                                        className="Search" 
-                                        type='submit' 
-                                        color= 'secondary'
-                                        onClick={(e) => handleSubmit(e)}
-                                        > Buscar
-                                    </Button>   
+                                </div>
+                                <Button  
+                                      className="Search" 
+                                      type='submit' 
+                                      color= 'primary'
+                                      onClick={(e) => handleSubmit(e)}
+                                      > Buscar
+                                </Button>
+                                 
                             {
                                     isAuthenticated ? (
                                         <div>
-                                    <Profile />
+                                <Profile />
                                 </ div>
                                 ) : (
-                                    <LoginButton />
-                                    
+                                <LoginButton />
                                     )
-                                }                       
+                                }
+                                <ShoppingCartButton />                         
                     </Toolbar>
                 </AppBar>
             </Container>
