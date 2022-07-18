@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import Container from '@mui/material/Container'
-//import styles from './Footer.css'
+import styles from './Footer.css'
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid'
@@ -16,15 +16,28 @@ import {BottomNavigation} from '@material-ui/core'
 
 export default function Footer (){
     return(
-        <footer  width={"100%"}>
-              <Box bgcolor='ActiveBorder' color='white' className='container'>
-                <Container className='container'>
-                    <Grid container spacing={5}>
-                        <Grid item xs={12} sm={4}>
+    <Box bgcolor='ActiveBorder' color='white' className='container' sx={{
+        margin:0,
+        hight: "100%",
+        display: 'flex',
+        borderBottom: 0,
+        position: 'relative',
+        color: 'white',
+        textDecoration: 'inherit'
+    }}>
+        <Container className='container'>
+            <Grid container spacing={5} mt={0}>
+                        <Grid item xs={12} sm={4} >
                             <Box borderBottom={1}>Sobre Nosotros</Box>
-                            <Box paddingTop={1} className='itemColumn'>
+                            <Box paddingTop={1} /* className='itemColumn' */ sx={{
+                                justifyContent: 'space-between',
+                                display: 'flex'
+                            }}>
                                 <Link to="/About" size='small' className='link'>Equipo de desarrollo</Link>
-                                <CodeIcon fontSize='small'/>
+                                <CodeIcon fontSize='small' sx={{
+                                    flex: 'display',
+                                    flexDirection:'row-reverse'
+                                }}/>
                             </Box>
 
                             <Box className='itemColumn'>
@@ -44,12 +57,18 @@ export default function Footer (){
 
                         <Grid item xs={12} sm={4}>
                             <Box borderBottom={1} >Seguinos</Box>
-                            <Box paddingTop={1} className='itemColumn'>
+                            <Box paddingTop={1} sx={{
+                                justifyContent: 'space-between',
+                                display: 'flex'
+                            }}>
                                 <Link to="/" className='link'>Whatsapp</Link>
                                 <WhatsAppIcon fontSize='small'/>
                             </Box>
 
-                            <Box className='itemColumn'>
+                            <Box className='itemColumn'sx={{
+                                justifyContent: 'space-between',
+                                display: 'flex'
+                            }}>
                              
                                 <Link to="/" size='small' className='link'>Instagram</Link>
                                 <InstagramIcon fontSize="small" className='icon' />
@@ -63,14 +82,17 @@ export default function Footer (){
                           
 
                     </Grid>
-                    <Box  className='rights' /* pt={{xs: 5, sm: 1}} pb={{sm:1}} */ /* bgcolor='black' */ >
+                    <Box  className='rights' sx={{
+                        mb:0,
+                        display:'flex',
+                        justifyContent: 'center'
+                    }}>
                         <p className='diamond'>Henry Diamond </p> 
                         <p className='reserved'> - Marca Registrada &reg; {new Date().getFullYear()}</p>
                     </Box>
                 </Container>
             </Box>
 
-        </footer>
-          
+        
         
 )}
