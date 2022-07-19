@@ -1,15 +1,14 @@
 import { Navigate } from "react-router-dom";
-import { withAuth0 } from "@auth0/auth0-react";
+import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
 import { checkRole } from "../../actions/actions";
 import {useEffect, useState, react }from "react";
 
 export function PrivateDash({ children }) {
-  const { user, isAuthenticated} = useAuth0();
+  const { user, isAuthenticated, isLoading} = useAuth0();
     const dispatch = useDispatch();
-    const id = "";
-    const role = useSelector(state => state.role);
-
+    let id = "";
+    let role = useSelector(state => state.role);
 
     useEffect(() => {
       dispatch(checkRole(id));
@@ -20,5 +19,11 @@ export function PrivateDash({ children }) {
         id = user.sub
     }
 
-  return role ? children : <Navigate to="/" />;
+    if (isLoading) {
+      return <div>Loading...</div>;
+    }
+
+    return (
+          role &&( role ? children : <Navigate to="/" />)
+    )
 }

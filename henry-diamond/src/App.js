@@ -5,8 +5,8 @@ import { Routes, Route, } from "react-router-dom"
 import Home from "./components/Home/Home.jsx";
 import './App.css';
 import About from "./components/About/About";
-// import  {PrivateDash}  from "./components/PrivateDash/PrivateDash"; función que validaba roles, ahora lo hace auth0 vvvvvvvv
-import ProtectedRoute from "./auth/protected-route.js";
+import  {PrivateDash}  from "./components/PrivateDash/PrivateDash"; //función que validaba roles, ahora lo hace auth0 vvvvvvvv
+//import ProtectedRoute from "./auth/protected-route.js";
 
 function App() {
   return (
@@ -15,9 +15,9 @@ function App() {
         <Route
           path="/admin/about"
           element={
-            <ProtectedRoute>
+            <PrivateDash>
               <About />
-            </ProtectedRoute>
+            </PrivateDash>
           }
         />
         <Route path="/" element={<Home />} />

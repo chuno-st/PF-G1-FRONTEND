@@ -63,17 +63,14 @@ export const FilterBy = ({category,subcategory,limite,desde}) => {
 }
 
 export function addUser(data){
-    console.log(data)
     return async (dispatch) =>{
         let user = await axios.post(`${URL}adduser`, data)
     }
 }
 
 export function checkRole (id){
-    console.log(id)
     return async (dispatch) =>{
-        let Role = await axios.get(`${URL}checkuser?id=${id}`)
-        console.log(Role)
+        let Role = await axios.get(`${URL}adduser/checkrole?id=${id}`)
         return dispatch ({
             type: CHECK_ROLE,
             payload: Role.data

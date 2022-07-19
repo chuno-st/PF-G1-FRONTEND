@@ -5,13 +5,13 @@ const inicialState = {
     items: [],
     category: [],
     subcategory: [],
-    role: ""
+    role:false
 };
 
 const reducer = (state = inicialState, { type, payload }) => {
     switch (type) {
         case GET_PRODUCT:
-          // console.log(payload, type, 'estoy en reducer')
+
             return { ...state, 
                    items: payload };
         case ALL_ITEMS:
