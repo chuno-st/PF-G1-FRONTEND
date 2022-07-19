@@ -11,7 +11,7 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: 500,
   bgcolor: 'background.paper',
-  border: '6px solid #5d4037',
+  border: '6px solid #6a1b9a',
   boxShadow: 24,
   p: 4,
 };
@@ -37,15 +37,10 @@ export default function HowToBuyModal() {
           <Typography id="modal-modal-description" sx={{ mt: 20 }}>
           <h4>¡Comprar en nuestra tienda online es muy fácil!
 
-          Pasos a seguir:
+          <p>-Elegí el producto que querés comprar.</p>
+          <p>-Hacé click en el botón "Agregar al Carrito". De esta manera se agregará el producto a tu carrito y te llevará al mismo.</p>
+          
 
-          -Paso 1: (texto1)
-
-          -Paso 2: (texto2)
-              .
-              .
-              .
-          -Paso n: (texton)
           </h4>
 
         </Typography>
