@@ -8,6 +8,7 @@ import { ThemeProvider } from "@material-ui/core"
 import { createTheme } from "@material-ui/core";
 import { brown, amber, deepOrange } from "@material-ui/core/colors";
 import MyAccount from '../../henry-diamond/src/components/MyAccount/MyAccount'
+import Detail from './components/Details/Detail'
 
 
 const theme = createTheme({
@@ -40,6 +41,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/myaccount" element={<MyAccount />} />
+          <Route path="/:id" element={<Detail/>}/>
         </Routes>
   </ThemeProvider>
 </div>

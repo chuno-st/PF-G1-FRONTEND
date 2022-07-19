@@ -9,7 +9,9 @@ const inicialState = {
     paginado: {
       desde: 0,
       hasta: 12
-    }
+    },
+    product:{},
+    matches: []
 };
 
 const reducer = (state = inicialState, { type, payload }) => {
@@ -50,6 +52,16 @@ const reducer = (state = inicialState, { type, payload }) => {
             ...state,
             category: payload
           }
+          case 'GET_PRODUCT_ID':
+            return {
+              ...state,
+              product: payload
+            }
+          case 'FIND_MATCH':
+            return {
+              ...state,
+              matches: payload
+            }  
 
           
                   

@@ -120,3 +120,23 @@ export const setSubCategory = (payload) => {
         })
     }
 }
+
+export const getProductById =  (id) => {
+    return async dispatch => {
+        const productID = await axios.get(`${URL}product/${id}`)
+        dispatch({
+            type: 'GET_PRODUCT_ID',
+            payload: productID.data
+        })
+    }
+}
+
+export const findMatch = (category) => {
+    return async dispatch => {
+         let filterProducts = await axios.get (`${URL}product/category?category=${category}`)
+         dispatch({
+            type: 'FIND_MATCH',
+            payload: filterProducts.data
+         })
+    }
+}

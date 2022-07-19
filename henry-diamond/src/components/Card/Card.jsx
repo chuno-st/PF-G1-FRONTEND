@@ -7,9 +7,15 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 // import './Cards.css'
 import { capitalizeLetter } from "../../Utils/utils.js"
+import { useNavigate } from 'react-router-dom';
 
 export default function BasicCard(props) {
     const {item} = props;
+     const navigate = useNavigate()
+
+     const handleclick = () => {
+      navigate(`/${item.product_id}`)
+    }
   return (
     
     <Card sx={{ maxWidth: 345,height:'100%' }} className="card">
@@ -29,7 +35,7 @@ export default function BasicCard(props) {
       </CardContent>
       <CardActions>
         <Button size="small" className='buttonCard'>Compartir</Button>
-        <Button size="small" className='buttonCard'>Detalles</Button>
+        <Button size="small" className='buttonCard' onClick={handleclick}>Detalles</Button>
         
       </CardActions>
     </Card>
