@@ -20,6 +20,7 @@ import { brown, amber, deepOrange } from "@material-ui/core/colors";
 import { createTheme } from "@material-ui/core";
 import { ShoppingCartButton } from '../ShoppingCartButton/ShoppingCartButton'
 import Filter  from '../Filter/Filter';
+import Logo from '../Logo/Logo'
 
 const theme = createTheme({
   palette: {
@@ -129,11 +130,9 @@ const useStyles = makeStyles((theme) => ({
                     <Toolbar>
                       <PermanentDrawerLeft />
                         <Typography className={classes.title} variant="h6" noWrap>
-                            LOGO + NOMBRE DEL NEGOCIO
+                            <Logo />
                         </Typography>
                         <div><Filter /></div>
-
-
                             <div className={classes.search}>
                                 <div className={classes.searchIcon}>
                                 <SearchIcon />

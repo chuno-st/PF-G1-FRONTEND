@@ -5,8 +5,8 @@ export const UserInfo = () => {
 
   return (
     <div>
-      <Button >Información Usuario</Button>
-      <UserInfoModal />
+      <Button >Perfil usuario<UserInfoModal /></Button>
+      
     </div>
     
   ) 
