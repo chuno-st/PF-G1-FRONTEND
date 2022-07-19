@@ -4,8 +4,6 @@ import { FilterBy, Category, SubCategory, getAllItems    } from "../../actions/a
 import { InputLabel, MenuItem, FormHelperText, FormControl, Select, Button } from "@mui/material";
 import { capitalizeLetter } from "../../Utils/utils.js";
 
-//________________________________________________________
-
 export default function Filter() {
     const dispatch = useDispatch();
     const category = useSelector((state) => state.category);

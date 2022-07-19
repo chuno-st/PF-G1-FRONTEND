@@ -1,7 +1,7 @@
 import React from "react";
 import {Routes,Route,} from "react-router-dom"
 //import Landing from "./components/Landing/Landing"
-import  Home  from "./components/Home/Home.jsx";
+import Home from "./components/Home/Home.jsx";
 import './App.css';
 //import { dark } from "@material-ui/core/styles/createPalette.js";
 import { ThemeProvider } from "@material-ui/core"
@@ -10,7 +10,7 @@ import { brown, amber, deepOrange } from "@material-ui/core/colors";
 import MyAccount from '../../henry-diamond/src/components/MyAccount/MyAccount'
 import Detail from './components/Details/Detail'
 import Admin from "../src/components/DashBoard/index"
-
+import  {PrivateDash}  from "./components/PrivateDash/PrivateDash";
 
 const theme = createTheme({
   palette: {

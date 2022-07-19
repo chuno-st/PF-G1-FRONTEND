@@ -11,3 +11,5 @@ export const SET_SUBCATEGORY= "SET_SUBCATEGORY";
 
 
 
+export const ADD_USER = "ADD_USER"
+export const CHECK_ROLE = "CHECK_ROLE"

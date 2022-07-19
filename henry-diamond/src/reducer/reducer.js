@@ -1,4 +1,4 @@
-import { FILTER, ALL_ITEMS, ALL_CAREGORY, ALL_SUBCATEGORY, SET_PAGINADO, SET_CATEGORY, SET_SUBCATEGORY } from "../actions/typeActions";
+import { FILTER, ALL_ITEMS, ALL_CAREGORY, ALL_SUBCATEGORY, SET_PAGINADO, SET_CATEGORY, SET_SUBCATEGORY, CHECK_ROLE } from "../actions/typeActions";
 import {GET_PRODUCT} from '../actions/typeActions'
 const inicialState = {
     allProducts: [],
@@ -11,13 +11,14 @@ const inicialState = {
       hasta: 12
     },
     product:{},
-    matches: []
+    matches: [],
+    role:false
 };
 
 const reducer = (state = inicialState, { type, payload }) => {
     switch (type) {
         case GET_PRODUCT:
-          // console.log(payload, type, 'estoy en reducer')
+
             return { ...state, 
                    items: payload };
         case ALL_ITEMS:
@@ -63,9 +64,10 @@ const reducer = (state = inicialState, { type, payload }) => {
               matches: payload
             }  
 
-          
-                  
-        
+        case CHECK_ROLE:
+          return {...state,
+               role: payload
+          }
 
 
         default:

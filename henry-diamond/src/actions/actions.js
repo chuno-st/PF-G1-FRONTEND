@@ -8,6 +8,8 @@ import {
     ALL_SUBCATEGORY, 
     SET_CATEGORY, 
     SET_SUBCATEGORY,
+    ADD_USER,
+    CHECK_ROLE
 } from "./typeActions";
 // import {getProduct} from '../../../../PF-G1-BACKEND/src/controllers/productControllers'
 import axios from "axios";
@@ -62,7 +64,21 @@ export const FilterBy = ({category,subcategory,limite,desde}) => {
     }
 }
 
+export function addUser(data){
+    return async (dispatch) =>{
+        let user = await axios.post(`${URL}adduser`, data)
+    }
+}
 
+export function checkRole (id){
+    return async (dispatch) =>{
+        let Role = await axios.get(`${URL}adduser/checkrole?id=${id}`)
+        return dispatch ({
+            type: CHECK_ROLE,
+            payload: Role.data
+        }) 
+    }
+}
 
 export const Category = ()=>{
     return dispatch => {
