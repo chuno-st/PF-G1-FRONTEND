@@ -10,37 +10,37 @@ import Paginate from '../Paginate/Paginate.jsx'
 
 export default function ContainerCards() {
 const items = useSelector(state => state.items);
-/* const [desde, setdesde] = useState(0); */
-/* const [hasta, sethasta] = useState(12); */
-const dispatch = useDispatch();
-const { desde, hasta} = useSelector(state => state.paginado)
+const [desde, setdesde] = useState(0); 
+const [hasta, sethasta] = useState(12); 
+// const dispatch = useDispatch();
+// const { desde, hasta} = useSelector(state => state.paginado)
 
-useEffect(() => {
-  dispatch(getAllItems(desde,hasta))}
-  , [dispatch,desde,hasta]);
+// useEffect(() => {
+//   dispatch(getAllItems(desde,hasta))}
+//   , [dispatch,desde,hasta]);
+const products = items.slice(desde,hasta);
 
- /*  const handleClick = () => {
-    setdesde(desde + 8);
+   const handleClick = () => {
+    setdesde(desde + 12);
+    sethasta(hasta + 12);
+   }
+  
+  const handleClick2 = () => {
    
-  } */
-  /* const handleClick2 = () => {
-   
-      setdesde(desde - 8);
-   
-   
-   
-  } */
+      setdesde(desde - 12);
+      sethasta(hasta - 12);
+  } 
 
 return (
 
 
     <div>
    
-     {/* <Button onClick={handleClick2} disabled={desde<=0}>Anterior</Button>
-     <Button onClick={handleClick} disabled={items.length!==12}>Siguiente</Button> */}
-     {/* {console.log(items.length)} */}
+     <Button onClick={handleClick2} disabled={desde<=0}>Anterior</Button>
+     <Button onClick={handleClick} disabled={products.length!==12}>Siguiente</Button> 
+      {console.log(items.length)}
      {
-        <Paginate />
+        // <Paginate />
      }
      
       <Box 
@@ -55,17 +55,17 @@ return (
       >
 
       
-      <Grid container spacing={3} >
+      <Grid container spacing={1} >
 
 
         {items.length ? (
 
-          items.map(item => (    //map para recorrer el array de items
+          products.map(item => (    //map para recorrer el array de items
             <Grid item 
             xs={12} 
             sm={6} 
             md={4} 
-            lg={4}
+            lg={2}
             >
               <BasicCard key={item.id} item={item} /> 
               </Grid>))

@@ -29,9 +29,9 @@ export function getAllProduct(name){
     }
 }
 
-export function getAllItems(desde,limite){
+export function getAllItems(){
     return async (dispatch) =>{
-        let allItems = await axios.get(`${URL}product/pagination?desde=${desde}&limite=${limite}`)
+        let allItems = await axios.get(`${URL}product`)
         return dispatch({
             type: ALL_ITEMS,
             payload: allItems.data

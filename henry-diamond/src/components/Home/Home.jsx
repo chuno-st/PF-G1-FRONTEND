@@ -5,6 +5,9 @@ import Footer from "../Footer/Footer";
 import { ThemeProvider } from "@material-ui/core"
 import { createTheme } from "@material-ui/core";
 import { brown, amber, deepOrange } from "@material-ui/core/colors";
+import {useDispatch} from "react-redux";
+import {getAllItems} from "../../actions/actions";
+import { useEffect } from "react";
 
 
 const theme = createTheme({
@@ -29,6 +32,10 @@ const theme = createTheme({
 })
 
 export default function Home() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllItems())
+  }, [dispatch]);
   return (
 <div>
     <ThemeProvider theme={theme}>
