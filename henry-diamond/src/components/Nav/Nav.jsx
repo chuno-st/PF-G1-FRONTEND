@@ -19,7 +19,7 @@ import PermanentDrawerLeft from "../SideBar/SideBar"
 import { brown, amber, deepOrange } from "@material-ui/core/colors";
 import { createTheme } from "@material-ui/core";
 import { ShoppingCartButton } from '../ShoppingCartButton/ShoppingCartButton'
-
+import Filter  from '../Filter/Filter';
 
 const theme = createTheme({
   palette: {
@@ -131,6 +131,9 @@ const useStyles = makeStyles((theme) => ({
                         <Typography className={classes.title} variant="h6" noWrap>
                             LOGO + NOMBRE DEL NEGOCIO
                         </Typography>
+                        <div><Filter /></div>
+
+
                             <div className={classes.search}>
                                 <div className={classes.searchIcon}>
                                 <SearchIcon />
