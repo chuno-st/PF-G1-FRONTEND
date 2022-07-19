@@ -43,7 +43,9 @@ function App() {
           <Route path="/" element={<Home/>} />
           <Route path="/myaccount" element={<MyAccount />} />
           <Route path="/:id" element={<Detail/>}/>
-          <Route path="/admin" element={<Admin/>} />
+          <Route path="/admin" element={<PrivateDash>
+            <Admin/>
+          </PrivateDash>} />
         </Routes>
           
   </ThemeProvider>
