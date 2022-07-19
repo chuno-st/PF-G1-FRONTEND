@@ -5,3 +5,4 @@ export const GET_PRODUCT = "GET_PRODUCT";
 export const ALL_CAREGORY = "ALL_CAREGORY";
 export const ALL_SUBCATEGORY = "ALL_SUBCATEGORY";
 export const ADD_USER = "ADD_USER"
+export const CHECK_ROLE = "CHECK_ROLE"

@@ -5,25 +5,25 @@ import React, {useEffect, useState}from "react";
 import { addUser } from "../../actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 
+
 export const Profile = () => {
-  const { user, isAuthenticated, isLoading } = useAuth0();
   const dispatch = useDispatch();
+  const { user, isAuthenticated, isLoading } = useAuth0();
 
-  const [newUser,setNewUser] = useState({
-    id : "",
-    newUser: "",
-    email: ""
-});
+  let data = {}
 
 
-  if (user){
-    setNewUser({
-      ...newUser,
-      id : user.sub,
-      newUser: user.name,
+  useEffect(() => {
+    dispatch(addUser(data));
+    }, [isAuthenticated]);
+
+  if (isAuthenticated) {
+    data = { 
+      id: user.sub,
+      userName: user.name,
       email: user.email
-    })
-    dispatch(addUser(newUser))
+    }
+    console.log(data)
   }
 
   if (isLoading) {
@@ -32,6 +32,7 @@ export const Profile = () => {
 
   return (
     isAuthenticated && (
+
       <div className="divPerfil">
         <img className="imgPerfil" src={user.picture} alt={user.name} />
         <div className="nameEmail">

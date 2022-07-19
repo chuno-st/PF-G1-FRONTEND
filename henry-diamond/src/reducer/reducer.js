@@ -1,10 +1,11 @@
-import { FILTER, ALL_ITEMS, ALL_CAREGORY, ALL_SUBCATEGORY } from "../actions/typeActions";
+import { FILTER, ALL_ITEMS, ALL_CAREGORY, ALL_SUBCATEGORY, CHECK_ROLE } from "../actions/typeActions";
 import {GET_PRODUCT} from '../actions/typeActions'
 const inicialState = {
     allProducts: [],
     items: [],
     category: [],
     subcategory: [],
+    role: ""
 };
 
 const reducer = (state = inicialState, { type, payload }) => {
@@ -28,7 +29,10 @@ const reducer = (state = inicialState, { type, payload }) => {
         case ALL_SUBCATEGORY:
             return { ...state,
                     subcategory: payload };
-          
+        case CHECK_ROLE:
+          return {...state,
+               role: payload
+          }
 
 
         default:

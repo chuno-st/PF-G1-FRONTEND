@@ -10,23 +10,22 @@ import store from './store/store.js';
 import { BrowserRouter } from 'react-router-dom';
 const domain = process.env.REACT_APP_AUTH0_DOMAIN;
 const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
-const audience = process.env.REACT_APP_AUTH0_AUDIENCE;
+
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
-            <BrowserRouter>
-                <Auth0Provider
-                domain={domain}
-                clientId={clientId}
-                audience={audience}
-                cacheLocation="localstorage"
-                >
+            <Auth0Provider
+            domain={domain}
+            clientId={clientId}
+            redirectUri={window.location.origin}
+            cacheLocation="localstorage">
+                <BrowserRouter>
                     <App />
-                </Auth0Provider>
-            </BrowserRouter>
+                </BrowserRouter>
+            </Auth0Provider>
         </Provider>
     </React.StrictMode>,
-    document.getElementById('root')
+document.getElementById('root')
 );
 
 reportWebVitals();
