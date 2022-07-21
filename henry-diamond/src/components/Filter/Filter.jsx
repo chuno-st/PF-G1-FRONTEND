@@ -19,7 +19,7 @@ export default function Filter() {
     useEffect(() => {
         dispatch(Category());
         dispatch(SubCategory());
-    }, []);
+    }, [category, subCategory]);
     const handleChange = (e) => {
         setFilter({
             ...filter,
@@ -36,7 +36,6 @@ export default function Filter() {
         });
     }
     
-    if (!category && !subCategory) return <Loading />;
 
     return (
         <div style={{ width: "100%" }}>
