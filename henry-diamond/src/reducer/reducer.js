@@ -12,7 +12,8 @@ const inicialState = {
     },
     product:{},
     matches: [],
-    role:false
+    role:false,
+    shoppingCart: []
 };
 
 const reducer = (state = inicialState, { type, payload }) => {
@@ -68,11 +69,13 @@ const reducer = (state = inicialState, { type, payload }) => {
           return {...state,
                role: payload
           }
-
+         case 'ADD_CART': { 
+         return { ...state, shoppingCart: [...state.shoppingCart, payload] }
+       }
 
         default:
             return state;
     }
 };
-
+  
 export default reducer;
