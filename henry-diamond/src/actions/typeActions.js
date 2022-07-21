@@ -1,4 +1,4 @@
-export const URL = "http://localhost:9000/";
+export const URL = process.env.BACK || "http://localhost:9000/";
 export const FILTER = "FILTER";
 export const ALL_ITEMS = "ALL_ITEMS";
 export const GET_PRODUCT = "GET_PRODUCT";
