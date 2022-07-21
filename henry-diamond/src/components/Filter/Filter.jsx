@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { FilterBy, Category, SubCategory, getAllItems    } from "../../actions/actions";
 import { InputLabel, MenuItem, FormHelperText, FormControl, Select, Button } from "@mui/material";
 import { capitalizeLetter } from "../../Utils/utils.js";
+import { Loading } from "../Loading/loading";
 
 export default function Filter() {
     const dispatch = useDispatch();
@@ -34,6 +35,8 @@ export default function Filter() {
             desde: "0",
         });
     }
+    
+    if (!category && !subCategory) return <Loading />;
 
     return (
         <div style={{ width: "100%" }}>
