@@ -12,7 +12,7 @@ const inicialState = {
     },
     product:{},
     matches: [],
-    role:false
+    role:""
 };
 
 const reducer = (state = inicialState, { type, payload }) => {
@@ -65,6 +65,7 @@ const reducer = (state = inicialState, { type, payload }) => {
             }  
 
         case CHECK_ROLE:
+          console.log(payload, "estoy en reducer")
           return {...state,
                role: payload
           }

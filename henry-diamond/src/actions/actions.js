@@ -6,12 +6,11 @@ import {
     ALL_SUBCATEGORY, 
     SET_CATEGORY, 
     SET_SUBCATEGORY,
-    ADD_USER,
     CHECK_ROLE
 } from "./typeActions";
 // import {getProduct} from '../../../../PF-G1-BACKEND/src/controllers/productControllers'
 import axios from "axios";
-const URL = "https://henry-diamonds.herokuapp.com/"
+const URL = process.env.BACK || "https://henry-diamonds.herokuapp.com/"
 
 
 // const axios = require('axios')
