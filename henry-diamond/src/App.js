@@ -3,6 +3,7 @@ import {Routes,Route,} from "react-router-dom"
 //import Landing from "./components/Landing/Landing"
 import Home from "./components/Home/Home.jsx";
 import './App.css';
+import { Loading } from "./components/Loading/loading.jsx";
 //import { dark } from "@material-ui/core/styles/createPalette.js";
 import { ThemeProvider } from "@material-ui/core"
 import { createTheme } from "@material-ui/core";
@@ -11,6 +12,9 @@ import MyAccount from '../../henry-diamond/src/components/MyAccount/MyAccount'
 import Detail from './components/details/Detail.jsx'
 import Admin from "../src/components/DashBoard/index"
 import  {PrivateDash}  from "./components/PrivateDash/PrivateDash";
+//import { useDispatch, useSelector } from "react-redux";
+//import {useEffect, useState, react }from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const theme = createTheme({
   palette: {
@@ -35,6 +39,10 @@ const theme = createTheme({
 
 
 function App() {
+  const {isLoading} = useAuth0();
+
+  if (isLoading) return <Loading />;
+
   return (
 
 <div className="bodyApp">

@@ -1,7 +1,5 @@
-import React from "react";
 import {
     FILTER,
-    URL,
     GET_PRODUCT,
     ALL_ITEMS,
     ALL_CAREGORY,
@@ -13,6 +11,7 @@ import {
 } from "./typeActions";
 // import {getProduct} from '../../../../PF-G1-BACKEND/src/controllers/productControllers'
 import axios from "axios";
+const URL = "https://henry-diamonds.herokuapp.com/"
 
 
 // const axios = require('axios')
@@ -21,7 +20,7 @@ import axios from "axios";
 export function getAllProduct(name){
     // console.log('estoy en la action'
     return async (dispatch) =>{
-        let allProducts = await axios.get(`http://localhost:3001/product?name=${name}`)
+        let allProducts = await axios.get(`${URL}product?name=${name}`)
         console.log(allProducts)
         return dispatch({
             type: GET_PRODUCT,

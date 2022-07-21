@@ -33,7 +33,7 @@ const theme = createTheme({
 
 export default function MyAccount() {
   const { user, isAuthenticated, isLoading } = useAuth0();
-  console.log(user)
+  console.log(isAuthenticated, "componente MY ACOUNT")
   return (
 <div>
     <ThemeProvider theme={theme}>
