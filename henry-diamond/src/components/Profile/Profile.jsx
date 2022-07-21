@@ -23,7 +23,6 @@ export const Profile = () => {
       userName: user.name,
       email: user.email
     }
-    console.log(data)
   }
 
   if (isLoading) {
