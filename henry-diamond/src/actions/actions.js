@@ -149,3 +149,13 @@ export const findMatch = (category) => {
          })
     }
 }
+export const addShoppingCart = (obj)=>{
+    console.log(obj)
+    return dispatch => {
+        dispatch({
+            type: 'ADD_CART',
+            payload: obj
+        })
+    }
+
+}

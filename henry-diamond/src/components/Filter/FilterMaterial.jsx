@@ -34,16 +34,19 @@ export default function FilterMaterial() {
     console.log(filter.subcategory)
     dispatch(FilterBy(filter));
    }
+   
 
 
   return (
     <>
     <Autocomplete
-      disablePortal
+      
       id="combo-box-demo"
       options={arrayPrice}
       sx={{ width: 300 }}
-      onChange={(event, newValue) =>setFilter({...filter, price: newValue.value})}
+      onChange={(event, newValue) =>{
+        if(!newValue) return;
+        setFilter({...filter, price: newValue.value})}}
       renderInput={(params) => <TextField {...params} label="Por productos" />}
       />
     <Autocomplete
@@ -51,7 +54,9 @@ export default function FilterMaterial() {
       id="combo-box-demo"
       options={product}
       sx={{ width: 300 }}
-      onChange={(event, newValue) =>setFilter({...filter, subcategory: newValue.value})}
+      onChange={(event, newValue) =>{
+        if(!newValue) return;
+        setFilter({...filter, subcategory: newValue.value})}}
       renderInput={(params) => <TextField {...params} label="Por productos" />}
       />
       <Button onClick={()=>{

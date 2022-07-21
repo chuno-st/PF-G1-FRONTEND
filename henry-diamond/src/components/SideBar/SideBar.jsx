@@ -3,10 +3,8 @@ import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -17,7 +15,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import LocalFloristIcon from '@material-ui/icons/LocalFlorist';
 import EcoIcon from '@material-ui/icons/Eco';
-import FilterVintageIcon from '@material-ui/icons/FilterVintage';
+
 import SpaIcon from '@material-ui/icons/Spa';
 import StorefrontIcon from '@material-ui/icons/Storefront';
 import CallIcon from '@material-ui/icons/Call';
@@ -25,7 +23,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton } from "../Login/Login";
 import { Profile } from "../Profile/Profile";
 import HowToBuyModal from "../HowToBuyModal/HowToBuyModal"
-import FilterProduct from "../Filter/FilterProduct"
 import { UserInfo } from "../UserInfo/UserInfo"
 import FilterMaterial from "../Filter/FilterMaterial"
 

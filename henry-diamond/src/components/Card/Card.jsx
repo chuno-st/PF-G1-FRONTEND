@@ -8,14 +8,22 @@ import Typography from '@mui/material/Typography';
 // import './Cards.css'
 import { capitalizeLetter } from "../../Utils/utils.js"
 import { useNavigate } from 'react-router-dom';
+import {addShoppingCart} from '../../actions/actions.js'
+import { useDispatch } from 'react-redux';
 
 export default function BasicCard(props) {
     const {item} = props;
-     const navigate = useNavigate()
+    const dispatch = useDispatch();
+    const navigate = useNavigate()
 
      const handleclick = () => {
       navigate(`/${item.product_id}`)
+
     }
+     const handleBuy = () => {
+      localStorage.setItem('compras',item)
+    }
+     
   return (
     
     <Card sx={{ maxWidth: 345,height:'100%' }} className="card">
@@ -34,12 +42,12 @@ export default function BasicCard(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" className='buttonCard'>Compartir</Button>
         <Button size="small" className='buttonCard' onClick={handleclick}>Detalles</Button>
+        <Button size="small" className='buttonCard' onClick={handleBuy}>Agregar al carrito</Button>
         
       </CardActions>
     </Card>
    
-  );
-}
+   );
+  }
   
