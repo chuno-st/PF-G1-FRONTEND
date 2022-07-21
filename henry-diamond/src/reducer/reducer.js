@@ -69,9 +69,14 @@ const reducer = (state = inicialState, { type, payload }) => {
           return {...state,
                role: payload
           }
-         case 'ADD_CART': { 
-         return { ...state, shoppingCart: [...state.shoppingCart, payload] }
+
+        case 'ADD_CART': { 
+         return { 
+          ...state, 
+          shoppingCart: [...state.shoppingCart, payload] 
+        }
        }
+
 
         default:
             return state;

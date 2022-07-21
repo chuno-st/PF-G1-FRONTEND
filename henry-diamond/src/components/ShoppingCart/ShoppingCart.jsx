@@ -1,14 +1,22 @@
 import {useState} from "react";
 import {useSelector,useDispatch} from "react-redux";
 import BasicCard from "../Card/Card";
+
+
 export default function ShoppingCart(){
-const carrito = useSelector(state => state.shoppingCart);
-console.log(carrito)
-return (
+   const miStorage = window.localStorage;
+    const carrito = useSelector(state => state.shoppingCart);
+    console.log(carrito)
+    const [carritoStorage, setCarrito] = useState(miStorage)
+    let Productos = Object.values(miStorage)
+    
+
+    
+    return (
     <>
     <h4>usted esta aqui</h4>
     {
-        carrito.map(item => <BasicCard  item={item}        ></BasicCard>)
+        Productos.map(item => <BasicCard  item={JSON.parse(item)}        ></BasicCard>)
     }
     </>
 )

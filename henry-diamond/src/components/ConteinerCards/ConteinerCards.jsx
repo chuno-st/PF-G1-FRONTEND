@@ -31,6 +31,9 @@ const products = items.slice(desde,hasta);
       sethasta(hasta - 12);
   } 
 
+  const miStorage = window.localStorage;
+  console.log(miStorage)
+
 return (
 
 

@@ -21,7 +21,7 @@ export default function BasicCard(props) {
 
     }
      const handleBuy = () => {
-      localStorage.setItem('compras',item)
+      localStorage.setItem(item.product_id ,JSON.stringify(item) )
     }
      
   return (
