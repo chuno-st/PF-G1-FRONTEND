@@ -143,24 +143,9 @@ export default function PersistentDrawerLeft() {
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </div>
-        <List>
-            <ListItem Button>
-              <ListItemIcon>{<SpaIcon />}</ListItemIcon>
-              <ListItemText className={classes.text}>{<h4>Productos</h4>}</ListItemText>
-            </ListItem>
-        </List>
-        <List>
-            <ListItem button>
-              <ListItemIcon>{<LocalFloristIcon />}</ListItemIcon>
-              <ListItemText className={classes.text}>{<h4>Precio</h4>}</ListItemText>
-            </ListItem>
-        </List>
-        <List>
-            <ListItem button>
-              <ListItemIcon>{<EcoIcon />}</ListItemIcon>
-              <ListItemText className={classes.text}>{<h4>Por nombre</h4>}</ListItemText>
-            </ListItem>
-        </List>
+        
+        
+        
         <List>
            <FilterMaterial />
         </List>
