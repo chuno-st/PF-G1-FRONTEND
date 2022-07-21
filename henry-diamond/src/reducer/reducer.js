@@ -12,7 +12,7 @@ const inicialState = {
     },
     product:{},
     matches: [],
-    role:""
+    role:"none"
 };
 
 const reducer = (state = inicialState, { type, payload }) => {
