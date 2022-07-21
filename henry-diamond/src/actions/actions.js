@@ -1,5 +1,5 @@
 import React from "react";
-const URL = process.env.BACK || "http://localhost:9000/"
+const URL = "https://henry-diamonds.herokuapp.com/"
 import {
     FILTER,
     GET_PRODUCT,
