@@ -1,7 +1,7 @@
 import React from "react";
+const URL = process.env.BACK || "http://localhost:9000/"
 import {
     FILTER,
-    URL,
     GET_PRODUCT,
     ALL_ITEMS,
     ALL_CAREGORY,
