@@ -23,7 +23,7 @@ const Logo = () => {
          *
          */
         <>
-            <img src={'logo_negocio.png'} alt="logo" width="20" />
+            <img src={'logo_negocio.png'} alt="logo" width="40" />
         
             {/* <svg width="118" height="35" viewBox="0 0 118 35" fill="none" xmlns="logo.svg">
                 <path

@@ -29,27 +29,16 @@ import FilterMaterial from "../Filter/FilterMaterial"
 
 const drawerWidth = 300;
 
-// const StyledButton = withStyles({
-//   root: {
-//     background: 'linear-gradient(90deg, #ffee33 30%, #a2cf6e 90%)',
-//     border: 0,
-//     color: '#b26a00',
-//     textShadow: '0 3px 5px 2px rgba(255, 105, 135, .8)',
-//     height: 30,
-//     padding: '0 30px',
-//     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-//   },
-//   label: {
-//     textTransform: 'capitalize',
-//   },
-// })(Button);
+
 
 const useStyles = makeStyles((theme) => ({
+  
   root: {
     display: 'flex',
   },
   text: {
-    color: '#827717',
+    fontFamily: 'Roboto',
+    color: 'primary',
   },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
@@ -67,23 +56,24 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     marginRight: theme.spacing(2),
-    color: '#827717'
+    color: 'primary'
   },
   hide: {
     display: 'none',
   },
   drawer: {
-    
+    paddinTop: 30,
     width: drawerWidth,
     flexShrink: 0,
     
   },
   drawerPaper: {
     width: drawerWidth,
-    background:'#d1c4e9',
-    borderBlockColor: '#b39ddb'
+    background: '#e0e0e0',
+    borderBlockColor: 'secondary'
   },
   drawerHeader: {
+    paddingTop: 80,
     color: '#ff6d00',
     display: 'flex',
     alignItems: 'center',
@@ -130,11 +120,11 @@ export default function PersistentDrawerLeft() {
       <CssBaseline />
         <Toolbar>
           <IconButton
-            color="inherit"
+            color="primary"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            className={clsx(classes.menuButton, open && classes.hide)}
+            className={clsx(open && classes.hide)}
           >
             <MenuIcon />
           </IconButton>
@@ -153,7 +143,6 @@ export default function PersistentDrawerLeft() {
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </div>
-        <Divider />
         <List>
             <ListItem Button>
               <ListItemIcon>{<SpaIcon />}</ListItemIcon>

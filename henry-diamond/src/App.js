@@ -1,13 +1,9 @@
 import React from "react";
 import {Routes,Route,} from "react-router-dom"
-
 import Home from "./components/Home/Home.jsx";
 import './App.css';
 import { Loading } from "./components/Loading/loading.jsx";
-
-import { ThemeProvider } from "@material-ui/core"
-import { createTheme } from "@material-ui/core";
-import { brown, amber, deepOrange } from "@material-ui/core/colors";
+//import { dark } from "@material-ui/core/styles/createPalette.js";
 import MyAccount from '../../henry-diamond/src/components/MyAccount/MyAccount'
 import Detail from '../src/components/Details/Detail.jsx'
 import Admin from "../src/components/DashBoard/index"
@@ -15,26 +11,6 @@ import  {PrivateDash}  from "./components/PrivateDash/PrivateDash";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import { useAuth0 } from "@auth0/auth0-react";
 
-const theme = createTheme({
-  palette: {
-    primary:{
-      main: brown[200]
-    },
-    secondary:{
-      main: amber[500]
-    },
-    warning:{
-      main: deepOrange[500]
-    }
-  },
-  typography: {
-      fontFamily: 'Arima',
-      fontWeightLight: 400,
-      fontWeightRegular: 500,
-      fontWeightMedium: 600,
-      fontWeightBold: 700
-  }
-})
 
 
 function App() {
@@ -45,7 +21,6 @@ function App() {
   return (
 
 <div className="bodyApp">
-  <ThemeProvider theme={theme}>
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/myaccount" element={<MyAccount />} />
@@ -56,7 +31,6 @@ function App() {
           </PrivateDash>} />
         </Routes>
           
-  </ThemeProvider>
 </div>
    
       
