@@ -8,7 +8,7 @@ import { Card } from "@material-ui/core";
 import BasicCard from "../Card/Card";
 
 
-export default function () {
+export default function Detail () {
 
     const matches = useSelector(state => state.matches)
     const { id } = useParams()

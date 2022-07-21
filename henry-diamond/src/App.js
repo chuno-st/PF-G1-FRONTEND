@@ -9,7 +9,7 @@ import { ThemeProvider } from "@material-ui/core"
 import { createTheme } from "@material-ui/core";
 import { brown, amber, deepOrange } from "@material-ui/core/colors";
 import MyAccount from '../../henry-diamond/src/components/MyAccount/MyAccount'
-import Detail from './components/details/Detail.jsx'
+import Detail from '../src/components/Details/Detail.jsx'
 import Admin from "../src/components/DashBoard/index"
 import  {PrivateDash}  from "./components/PrivateDash/PrivateDash";
 //import { useDispatch, useSelector } from "react-redux";
