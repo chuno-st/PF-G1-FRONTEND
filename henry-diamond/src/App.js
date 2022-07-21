@@ -15,6 +15,7 @@ import  {PrivateDash}  from "./components/PrivateDash/PrivateDash";
 //import { useDispatch, useSelector } from "react-redux";
 //import {useEffect, useState, react }from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+export const URL = process.env.BACK
 const theme = createTheme({
   palette: {
     primary:{
@@ -42,6 +43,7 @@ function App() {
 
   if (isLoading) return <Loading />;
 
+  if (!URL)return <Loading />;
 
   return (
 
