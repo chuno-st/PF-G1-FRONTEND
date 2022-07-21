@@ -23,19 +23,9 @@ import Filter  from '../Filter/Filter';
 import Logo from '../Logo/Logo'
 
 const theme = createTheme({
-  palette: {
-    primary:{
-      main: brown[200]
-    },
-    secondary:{
-      main: amber[500]
-    },
-    warning:{
-      main: deepOrange[500]
-    }
-  },
+  
   typography: {
-      fontFamily: 'Arima',
+      fontFamily: 'Roboto',
       fontWeightLight: 400,
       fontWeightRegular: 500,
       fontWeightMedium: 600,
@@ -44,10 +34,12 @@ const theme = createTheme({
 })
 
 const useStyles = makeStyles((theme) => ({
+
     root: {
       flexGrow: 1,
-      backgroundColor: '#d1c4e9',
-      color: '#827717'
+      padding: 20,
+      backgroundColor: '#e0e0e0',
+      color: '#212121'
     },
     menuButton: {
       marginRight: theme.spacing(2),
@@ -84,10 +76,11 @@ const useStyles = makeStyles((theme) => ({
     },
     inputRoot: {
       color: '#827717',
+      paddingRight: 100
     },
     inputInput: {
 
-      color:'#827717',
+      color:'#212121',
       padding: theme.spacing(1, 1, 1, 0),
       // vertical padding + font size from searchIcon
       paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
@@ -132,37 +125,38 @@ const useStyles = makeStyles((theme) => ({
                         <Typography className={classes.title} variant="h6" noWrap>
                             <Logo />
                         </Typography>
-                        <div><Filter /></div>
+                        {/* <div><Filter /></div> */}
                             <div className={classes.search}>
                                 <div className={classes.searchIcon}>
                                 <SearchIcon />
                                 </div>
                                     <InputBase
                                         placeholder="Buscar..."
+                                        label="Outlined secondary"
                                         classes={{
-                                            root: classes.inputRoot,
-                                            input: classes.inputInput,
+                                          root: classes.inputRoot,
+                                          input: classes.inputInput,
                                         }}
                                         inputProps={{ 'aria-label': 'search' }}
                                         onChange={handleSearchBar}
-                                    />
+                                        />
                                 </div>
                                 <Button  
                                       className="Search" 
                                       type='submit' 
                                       color= 'primary'
                                       onClick={(e) => handleSubmit(e)}
-                                      > Buscar
+                                      > BUSCAR
                                 </Button>
                                  
                             {
-                                    isAuthenticated ? (
-                                        <div>
+                              isAuthenticated ? (
+                                <div>
                                 <Profile />
                                 </ div>
                                 ) : (
-                                <LoginButton />
-                                    )
+                                  <LoginButton />
+                                  )
                                 }
                                 <ShoppingCartButton />                         
                     </Toolbar>

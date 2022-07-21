@@ -13,31 +13,40 @@ import { useEffect } from "react";
 const theme = createTheme({
   palette: {
     primary:{
-      main: brown[200]
+      main: '#1976d2'
     },
     secondary:{
-      main: amber[500]
+      main: '#9c27b0'
     },
     warning:{
-      main: deepOrange[500]
+      main: '#ed6c02'
+    },
+    text: {
+      primary: 'rgba(0,0,0,0.87)',
+      secondary: 'rgba(0,0,0,0.6)',
+      disabled: 'rgba(0,0,0,0.38)'
     }
   },
   typography: {
-      fontFamily: 'Arima',
+      fontFamily: 'Roboto',
       fontWeightLight: 400,
       fontWeightRegular: 500,
       fontWeightMedium: 600,
       fontWeightBold: 700
-  }
+  },
 })
 
 export default function Home() {
+
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getAllItems())
   }, [dispatch]);
+
+
   return (
-<div>
+  <div>
     <ThemeProvider theme={theme}>
           <Grid container sx={{
             hight:'100%',
