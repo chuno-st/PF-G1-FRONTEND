@@ -11,7 +11,7 @@ import {
 } from "./typeActions";
 // import {getProduct} from '../../../../PF-G1-BACKEND/src/controllers/productControllers'
 import axios from "axios";
-const URL = process.env.BACK || "http://localhost:9000/"
+const URL = process.env.BACK
 
 
 // const axios = require('axios')
