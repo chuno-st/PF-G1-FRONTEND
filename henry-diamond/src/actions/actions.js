@@ -42,27 +42,21 @@ export function getAllItems(){
     }
 }
 
-export const FilterBy = ({category,subcategory,limite,desde}) => {
-    if(limite){
-        return async (dispatch) => {
-            let filterProducts = await axios.get (`${URL}product/category?category=${category}&subcategory=${subcategory}&limite=${limite}&desde=${desde}`)
-            console.log(filterProducts)
-            return dispatch ({
+export const FilterBy = ({subcategory,price}) => {
+    console.log(subcategory,price)
+    return dispatch =>{
+        axios.get(`${URL}product/subcategory?subcategory=${subcategory}&min=${price.min}&max=${price.max}`)
+        .then(res => {
+            dispatch({
                 type: FILTER,
-                payload: filterProducts.data
-            })        
-    }}else{
-        return async (dispatch) => {
-            let filterProducts = await axios.get (`${URL}product/category?category=${category}&subcategory=${subcategory}&desde=${desde}`)
-            console.log(filterProducts)
-            return dispatch ({
-                type: FILTER,
-                payload: filterProducts.data
-            }) 
+                payload: res.data
+            })
+        })
     }
+    
         
     }
-}
+
 
 export function addUser(data){
     return async (dispatch) =>{

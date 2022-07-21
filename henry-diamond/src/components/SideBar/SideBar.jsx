@@ -27,6 +27,7 @@ import { Profile } from "../Profile/Profile";
 import HowToBuyModal from "../HowToBuyModal/HowToBuyModal"
 import FilterProduct from "../Filter/FilterProduct"
 import { UserInfo } from "../UserInfo/UserInfo"
+import FilterMaterial from "../Filter/FilterMaterial"
 
 
 const drawerWidth = 300;
@@ -175,10 +176,7 @@ export default function PersistentDrawerLeft() {
             </ListItem>
         </List>
         <List>
-            <ListItem button>
-              <ListItemIcon>{<FilterVintageIcon />}</ListItemIcon>
-              <ListItemText className={classes.text}>{<h4>Por color</h4>}</ListItemText>
-            </ListItem>
+           <FilterMaterial />
         </List>
         <Divider />
         <Divider />
