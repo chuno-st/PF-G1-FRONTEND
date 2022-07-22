@@ -36,6 +36,7 @@ const reducer = (state = inicialState, { type, payload }) => {
                     category: payload };
 
         case ALL_SUBCATEGORY:
+          console.log(payload)
             return { ...state,
                     subcategory: payload };
 
