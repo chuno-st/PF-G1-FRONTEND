@@ -11,7 +11,7 @@ import {
 } from "./typeActions";
 // import {getProduct} from '../../../../PF-G1-BACKEND/src/controllers/productControllers'
 import axios from "axios";
-const URL = "http://localhost:9000/"
+const URL = "https://pf-g1-frontend-six.vercel.app/"
 
 
 // const axios = require('axios')
