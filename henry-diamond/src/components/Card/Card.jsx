@@ -29,12 +29,13 @@ export default function BasicCard(props) {
     <Card sx={{ maxWidth: 345,height:'100%' }} className="card">
       <CardMedia
         component="img"
-        height="200"
+        height="350"
+        width="350"
         image={item.image}
         alt="green iguana"
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h6" component="div">
           {capitalizeLetter(item.name)}
         </Typography>
         <Typography variant="body2" color="text.secondary">

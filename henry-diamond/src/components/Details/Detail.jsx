@@ -34,6 +34,7 @@ export default function Detail () {
         <p>{product.description}</p>
         <div>
        { matches.map( i => {
+        console.log(i.name,'estoy en detail')
         if(i.name === product.name) {
             return
         }
