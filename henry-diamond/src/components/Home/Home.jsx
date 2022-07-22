@@ -1,13 +1,15 @@
+import React from 'react';
 import { Grid } from '@material-ui/core'
 import ConteinerCards from "../ConteinerCards/ConteinerCards"
 import SearchAppBar from "../Nav/Nav";
 import Footer from "../Footer/Footer";
-import { ThemeProvider } from "@material-ui/core"
+import { ThemeProvider, Typography } from "@material-ui/core"
 import { createTheme } from "@material-ui/core";
 import { brown, amber, deepOrange } from "@material-ui/core/colors";
 import {useDispatch} from "react-redux";
 import {getAllItems} from "../../actions/actions";
 import { useEffect } from "react";
+
 
 
 const theme = createTheme({
@@ -47,11 +49,12 @@ export default function Home() {
 
   return (
   <div>
-    <ThemeProvider theme={theme}>
-          <Grid container sx={{
-            hight:'100%',
-            width:'100%'
-          }}>
+  <React.Fragment>
+      <ThemeProvider theme={theme}>
+            <Grid containerFluid sm={{
+              hight:1,
+              width:1
+            }}>
             <Grid item xs={12} sm={12} xl={12}>
               <SearchAppBar />
               </Grid>
@@ -62,7 +65,8 @@ export default function Home() {
               <Footer/>
               </Grid>
           </Grid>
-      </ThemeProvider>
+          </ThemeProvider>
+    </React.Fragment>
 </div>
           
     

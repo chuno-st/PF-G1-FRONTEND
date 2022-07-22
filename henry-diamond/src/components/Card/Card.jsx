@@ -7,7 +7,6 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { capitalizeLetter } from "../../Utils/utils.js"
 import { useNavigate } from 'react-router-dom';
-import {addShoppingCart} from '../../actions/actions.js'
 import { useDispatch } from 'react-redux';
   import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
@@ -25,6 +24,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import AddIcon from '@material-ui/icons/Add';
+import { blueGrey } from '@material-ui/core/colors';
 
 
 
@@ -32,7 +32,10 @@ import AddIcon from '@material-ui/icons/Add';
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
-    background: 'LightBlue'
+    
+  },
+  palette:{
+    backgroundColor: blueGrey
   },
   media: {
     height: 0,
@@ -49,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
     transform: 'rotate(180deg)',
   },
   avatar: {
-    backgroundColor: 'grey',
+    backgroundColor: '#4fc3f7',
   },
 }));
 
@@ -112,12 +115,12 @@ export default function RecipeReviewCard(props) {
       }
 
       const classes = useStyles();
-      const [expanded, setExpanded] = React.useState(false);
+      // const [expanded, setExpanded] = React.useState(false);
 
      
 
   return (
-    <Card  sx={{ maxWidth: 345,height:'100%' }} className={classes.root}>
+    <Card  md={{ maxWidth: 345,height:'100%' }}>
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}  >
@@ -139,23 +142,18 @@ export default function RecipeReviewCard(props) {
         image={item.image}
         title="Paella dish"
       />
-     
-      {/* <CardContent> */}
-        {/* <Typography variant="body2" color="textSecondary" component="p">
-          Color - Uso - Aclaración del trabajado ( si es subcategoría). Ej: Pulsera Violera, biyutería, piedra rodada perforada, cadena de plata.
-        </Typography> */}
-      {/* </CardContent> */}
+   
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
-        <IconButton onClick={handleclick}>
+        <IconButton onClick={handleBuy}>
           {"$"+item.price}
         </IconButton>
         <IconButton aria-label="share">
           <AddShoppingCartIcon  />
         </IconButton>
-        <IconButton arial-label='detail' onClick={handleBuy}>
+        <IconButton arial-label='detail' onClick={handleclick}>
           <AddIcon />
         </IconButton>
       </CardActions>

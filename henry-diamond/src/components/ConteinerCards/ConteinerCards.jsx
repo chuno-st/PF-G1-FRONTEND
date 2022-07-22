@@ -2,10 +2,12 @@ import { useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getAllItems} from "../../actions/actions";
 import BasicCard from "../Card/Card";
-import { Grid,Box,Button } from "@mui/material";
+import { Grid,Box,Button} from "@mui/material";
 // import { margin } from "@mui/system";
 import { useState } from "react";
-// import Paginate from '../Paginate/Paginate.jsx'
+// import Paginate from '../Paginate/Paginate.jsx';
+import {CssBaseline, Typography} from '@material-ui/core';
+import {Container} from '@material-ui/core';
 
 
 export default function ContainerCards() {
@@ -38,48 +40,55 @@ return (
 
 
     <div >
-   
-     <Button onClick={handleClick2} disabled={desde<=0}>Anterior</Button>
-     <Button onClick={handleClick} disabled={products.length!==12}>Siguiente</Button> 
-    
+   <CssBaseline />
+      <Container maxWidth = '1' maxHeigh='1' >
+        <Typography component="div" style={{ backgroundColor: 'white' }}>
+          <Button onClick={handleClick2} disabled={desde<=0}>Anterior</Button>
+           <Button onClick={handleClick} disabled={products.length!==12}>Siguiente</Button> 
+           
+      
      
       <Box 
         
         sx={{ 
-        hight:'100%',
-        width:'100%',
-        marginRight: 5,
-        marginLeft: 5,
-        marginTop: 5,
-        marginBottom: 10,
-      }} 
-      >
+          hight:'100%',
+          width:'100%',
+          marginRight: 5,
+          marginLeft: 5,
+          marginTop: 5,
+          marginBottom: 10,
+        }} 
+        >
       <Grid container spacing={3} >
         {items.length ? (
-
+          
           products.map(item => (    //map para recorrer el array de items
-            <Grid item 
-            xs={12}
-            sm={6} 
-            md={4}
-            lg={2} 
-            >
+          <Grid item 
+          xs={12}
+          sm={6} 
+          md={4}
+          lg={2} 
+          >
               <BasicCard key={item.id} item={item} /> 
       </Grid>))
         ):(
-          <Box sx={{
+          <Box md={{
             hight: 'auto',
-            // minWidth: '100%',
+            minWidth: '100%',
             marginTop: '17%',
             marginBottom: '17%',
+            marginLeft: 20,
+            marginRight: 20,
           }}>
             
             <h1>Cargando...</h1>
           </Box>
         )
-        }
+      }
       </Grid>
       </Box>
+      </Typography>
+      </Container>
     </div>
 )
 
