@@ -8,6 +8,7 @@ import { brown, amber, deepOrange } from "@material-ui/core/colors";
 import {useDispatch} from "react-redux";
 import {getAllItems} from "../../actions/actions";
 import { useEffect } from "react";
+import Carrousel from "../Carrousel/Carrousel"
 
 
 const theme = createTheme({
@@ -57,10 +58,15 @@ export default function Home() {
               </Grid>
             <Grid item xs={12} sm={12} xl={12}>
               <ConteinerCards/>
-              </Grid>
+            </Grid>
+            <Grid item xs={12} sm={12} xl={12}>
+              {/* <Carrousel /> */}
+            </Grid>
+
+
             <Grid item xs={12} sm={12} xl={12}>
               <Footer/>
-              </Grid>
+            </Grid>
           </Grid>
       </ThemeProvider>
 </div>
