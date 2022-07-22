@@ -11,7 +11,7 @@ import {
 } from "./typeActions";
 // import {getProduct} from '../../../../PF-G1-BACKEND/src/controllers/productControllers'
 import axios from "axios";
-const URL = "https://henry-diamonds.herokuapp.com/"
+const URL = "http://localhost:9000/"
 
 
 // const axios = require('axios')
@@ -140,9 +140,9 @@ export const getProductById =  (id) => {
     }
 }
 
-export const findMatch = (category) => {
+export const findMatch = (subcategory) => {
     return async dispatch => {
-         let filterProducts = await axios.get (`${URL}product/category?category=${category}`)
+         let filterProducts = await axios.get (`${URL}product/subCategory?subcategory=${subcategory}`)
          dispatch({
             type: 'FIND_MATCH',
             payload: filterProducts.data
@@ -158,4 +158,12 @@ export const addShoppingCart = (obj)=>{
         })
     }
 
+}
+export const resetMatch = () => {
+    return dispatch => {
+        dispatch({
+            type: 'RESET_MATCH',
+            payload: null
+        })
+    }
 }

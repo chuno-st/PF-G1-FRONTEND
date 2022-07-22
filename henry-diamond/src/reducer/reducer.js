@@ -76,6 +76,9 @@ const reducer = (state = inicialState, { type, payload }) => {
           shoppingCart: [...state.shoppingCart, payload] 
         }
        }
+       case 'RESET_MATCH': {
+        return {...state, matches:[]}
+       }
 
 
         default:

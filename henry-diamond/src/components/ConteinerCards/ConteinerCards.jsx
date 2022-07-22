@@ -49,19 +49,19 @@ return (
         hight:'100%',
         width:'100%',
         marginRight: 5,
-        marginLeft: 5,
+        marginLeft: 0,
         marginTop: 5,
         marginBottom: 10,
       }} 
       >
-      <Grid container spacing={3} >
+      <Grid container spacing={1.5} >
         {items.length ? (
 
           products.map(item => (    //map para recorrer el array de items
             <Grid item 
             xs={12}
             sm={6} 
-            md={4}
+            md={3}
             lg={2} 
             >
               <BasicCard key={item.id} item={item} /> 
