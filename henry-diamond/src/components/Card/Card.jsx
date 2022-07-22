@@ -140,11 +140,11 @@ export default function RecipeReviewCard(props) {
         title="Paella dish"
       />
      
-      <CardContent>
+      {/* <CardContent> */}
         {/* <Typography variant="body2" color="textSecondary" component="p">
           Color - Uso - Aclaración del trabajado ( si es subcategoría). Ej: Pulsera Violera, biyutería, piedra rodada perforada, cadena de plata.
         </Typography> */}
-      </CardContent>
+      {/* </CardContent> */}
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />

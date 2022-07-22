@@ -59,10 +59,10 @@ return (
 
           products.map(item => (    //map para recorrer el array de items
             <Grid item 
-            xs={12} spacing={3}
-            sm={6} spacing={3}
-            md={4} spacing={3}
-            lg={2} spacing={3}
+            xs={12}
+            sm={6} 
+            md={4}
+            lg={2} 
             >
               <BasicCard key={item.id} item={item} /> 
       </Grid>))
