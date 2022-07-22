@@ -3,10 +3,8 @@ import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -15,43 +13,29 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import LocalFloristIcon from '@material-ui/icons/LocalFlorist';
-import EcoIcon from '@material-ui/icons/Eco';
-import FilterVintageIcon from '@material-ui/icons/FilterVintage';
-import SpaIcon from '@material-ui/icons/Spa';
 import StorefrontIcon from '@material-ui/icons/Storefront';
 import CallIcon from '@material-ui/icons/Call';
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton } from "../Login/Login";
 import { Profile } from "../Profile/Profile";
 import HowToBuyModal from "../HowToBuyModal/HowToBuyModal"
-import FilterProduct from "../Filter/FilterProduct"
+import ContactModal from "../ContactModal/ContactModal"
 import { UserInfo } from "../UserInfo/UserInfo"
+import FilterMaterial from "../Filter/FilterMaterial"
 
 
 const drawerWidth = 300;
 
-// const StyledButton = withStyles({
-//   root: {
-//     background: 'linear-gradient(90deg, #ffee33 30%, #a2cf6e 90%)',
-//     border: 0,
-//     color: '#b26a00',
-//     textShadow: '0 3px 5px 2px rgba(255, 105, 135, .8)',
-//     height: 30,
-//     padding: '0 30px',
-//     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-//   },
-//   label: {
-//     textTransform: 'capitalize',
-//   },
-// })(Button);
+
 
 const useStyles = makeStyles((theme) => ({
+  
   root: {
     display: 'flex',
   },
   text: {
-    color: '#827717',
+    fontFamily: 'Roboto',
+    color: 'primary',
   },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
@@ -69,23 +53,24 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     marginRight: theme.spacing(2),
-    color: '#827717'
+    color: 'primary'
   },
   hide: {
     display: 'none',
   },
   drawer: {
-    
+    paddinTop: 30,
     width: drawerWidth,
     flexShrink: 0,
     
   },
   drawerPaper: {
     width: drawerWidth,
-    background:'#d1c4e9',
-    borderBlockColor: '#b39ddb'
+    background: '#e0e0e0',
+    borderBlockColor: 'secondary'
   },
   drawerHeader: {
+    paddingTop: 80,
     color: '#ff6d00',
     display: 'flex',
     alignItems: 'center',
@@ -132,11 +117,11 @@ export default function PersistentDrawerLeft() {
       <CssBaseline />
         <Toolbar>
           <IconButton
-            color="inherit"
+            color="primary"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            className={clsx(classes.menuButton, open && classes.hide)}
+            className={clsx(open && classes.hide)}
           >
             <MenuIcon />
           </IconButton>
@@ -155,44 +140,26 @@ export default function PersistentDrawerLeft() {
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </div>
-        <Divider />
+        
+        
+        
         <List>
-            <ListItem Button>
-              <ListItemIcon>{<SpaIcon />}</ListItemIcon>
-              <ListItemText className={classes.text}>{<h4>Productos</h4>}</ListItemText>
-            </ListItem>
-        </List>
-        <List>
-            <ListItem button>
-              <ListItemIcon>{<LocalFloristIcon />}</ListItemIcon>
-              <ListItemText className={classes.text}>{<h4>Precio</h4>}</ListItemText>
-            </ListItem>
-        </List>
-        <List>
-            <ListItem button>
-              <ListItemIcon>{<EcoIcon />}</ListItemIcon>
-              <ListItemText className={classes.text}>{<h4>Por nombre</h4>}</ListItemText>
-            </ListItem>
-        </List>
-        <List>
-            <ListItem button>
-              <ListItemIcon>{<FilterVintageIcon />}</ListItemIcon>
-              <ListItemText className={classes.text}>{<h4>Por color</h4>}</ListItemText>
-            </ListItem>
+           <FilterMaterial />
         </List>
         <Divider />
         <Divider />
         <List>
             <ListItem button>
               <ListItemIcon>{<StorefrontIcon />}</ListItemIcon>
-              <ListItemText className={classes.text}>{<h4>¿Cómo comprar?</h4>}</ListItemText>
-              <HowToBuyModal />
+              <ListItemIcon>{<HowToBuyModal />} </ListItemIcon>
+             
             </ListItem>
         </List>
+        <Divider />
         <List>
             <ListItem button>
               <ListItemIcon>{<CallIcon />}</ListItemIcon>
-              <ListItemText className={classes.text}>{<h4>Contacto</h4>}</ListItemText>
+              <ListItemIcon>{<ContactModal />} </ListItemIcon>
             </ListItem>
         </List>
         <Divider />
@@ -201,13 +168,31 @@ export default function PersistentDrawerLeft() {
              <ListItem button>  
             {
               isAuthenticated ? (
+                
               <div>
-                    <Profile />
-                    <UserInfo />
+                <List>
+                  <ListItem button>
+                    <ListItemText className={classes.text}>{<UserInfo />}</ListItemText>
+                  </ListItem>
+                </List>
+                <Divider />        <Divider />
+
+
+                <List>
+                  <ListItem button>
+                    <ListItemText className={classes.text}>{<Profile />}</ListItemText>
+                  </ListItem>
+                </List>
               </div>
           ) : (
-            
-              <LoginButton />
+            <div>
+            <List>
+                  <ListItem button>
+                    <ListItemText className={classes.text}>{ <LoginButton />}</ListItemText>
+                  </ListItem>
+                </List>
+            </div>
+             
            
               )
           }

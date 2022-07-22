@@ -10,7 +10,7 @@ import {
 } from "./typeActions";
 // import {getProduct} from '../../../../PF-G1-BACKEND/src/controllers/productControllers'
 import axios from "axios";
-const URL = "https://henry-diamonds.herokuapp.com/"
+const URL = "https://pf-g1-frontend-six.vercel.app/"
 
 
 // const axios = require('axios')
@@ -40,27 +40,21 @@ export function getAllItems(){
     }
 }
 
-export const FilterBy = ({category,subcategory,limite,desde}) => {
-    if(limite){
-        return async (dispatch) => {
-            let filterProducts = await axios.get (`${URL}product/category?category=${category}&subcategory=${subcategory}&limite=${limite}&desde=${desde}`)
-            console.log(filterProducts)
-            return dispatch ({
+export const FilterBy = ({subcategory,price}) => {
+    console.log(subcategory,price)
+    return dispatch =>{
+        axios.get(`${URL}product/subcategory?subcategory=${subcategory}&min=${price.min}&max=${price.max}`)
+        .then(res => {
+            dispatch({
                 type: FILTER,
-                payload: filterProducts.data
-            })        
-    }}else{
-        return async (dispatch) => {
-            let filterProducts = await axios.get (`${URL}product/category?category=${category}&subcategory=${subcategory}&desde=${desde}`)
-            console.log(filterProducts)
-            return dispatch ({
-                type: FILTER,
-                payload: filterProducts.data
-            }) 
+                payload: res.data
+            })
+        })
     }
+    
         
     }
-}
+
 
 export function addUser(data){
     return async (dispatch) =>{
@@ -145,12 +139,30 @@ export const getProductById =  (id) => {
     }
 }
 
-export const findMatch = (category) => {
+export const findMatch = (subcategory) => {
     return async dispatch => {
-         let filterProducts = await axios.get (`${URL}product/category?category=${category}`)
+         let filterProducts = await axios.get (`${URL}product/subCategory?subcategory=${subcategory}`)
          dispatch({
             type: 'FIND_MATCH',
             payload: filterProducts.data
          })
+    }
+}
+export const addShoppingCart = (obj)=>{
+    console.log(obj)
+    return dispatch => {
+        dispatch({
+            type: 'ADD_CART',
+            payload: obj
+        })
+    }
+
+}
+export const resetMatch = () => {
+    return dispatch => {
+        dispatch({
+            type: 'RESET_MATCH',
+            payload: null
+        })
     }
 }
