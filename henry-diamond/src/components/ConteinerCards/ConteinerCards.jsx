@@ -5,7 +5,7 @@ import BasicCard from "../Card/Card";
 import { Grid,Box,Button } from "@mui/material";
 // import { margin } from "@mui/system";
 import { useState } from "react";
-import Paginate from '../Paginate/Paginate.jsx'
+// import Paginate from '../Paginate/Paginate.jsx'
 
 
 export default function ContainerCards() {
@@ -32,61 +32,49 @@ const products = items.slice(desde,hasta);
   } 
 
   const miStorage = window.localStorage;
-  console.log(miStorage)
+  // console.log(miStorage)
 
 return (
 
 
-    <div>
+    <div >
    
      <Button onClick={handleClick2} disabled={desde<=0}>Anterior</Button>
      <Button onClick={handleClick} disabled={products.length!==12}>Siguiente</Button> 
-      {console.log(items.length)}
-     {
-        // <Paginate />
-     }
+    
      
       <Box 
         
         sx={{ 
+        hight:'100%',
+        width:'100%',
         marginRight: 5,
         marginLeft: 5,
         marginTop: 5,
         marginBottom: 10,
-      }}
-      
+      }} 
       >
-
-      
-      <Grid container spacing={1} >
-
-
+      <Grid container spacing={3} >
         {items.length ? (
 
           products.map(item => (    //map para recorrer el array de items
             <Grid item 
-            xs={12} 
-            sm={6} 
-            md={4} 
-            lg={2}
+            xs={12} spacing={3}
+            sm={6} spacing={3}
+            md={4} spacing={3}
+            lg={2} spacing={3}
             >
               <BasicCard key={item.id} item={item} /> 
-              </Grid>))
+      </Grid>))
         ):(
           <Box sx={{
             hight: 'auto',
+            // minWidth: '100%',
             marginTop: '17%',
             marginBottom: '17%',
-            
-
           }}>
             
             <h1>Cargando...</h1>
-
-            
-
-           
-
           </Box>
         )
         }
