@@ -58,6 +58,8 @@ export default function Productos() {
                 checkboxSelection
                 disableSelectionOnClick
             />
+
         </div>
     );
 }
+ 

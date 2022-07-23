@@ -163,19 +163,11 @@ export const addShoppingCart = (obj)=>{
 }
 
 export const createProduct = (body) => {
-    return async function (dispatch) {
+    return async function () {
       try {
-        let response = await axios.post(`${URL}`, body);
-        if (response.data.message) {
-          alert(response.data.message);
-        } else {
-          dispatch({
-            type: CREATE_PRODUCT,
-            payload: response.data,
-          });
-          alert("El producto fue creado correctamente");
-        }
-      } catch (err) {
+        await axios.post(`${URL}`, body);
+        alert("El producto fue creado correctamente");
+        } catch (err) {
         console.log(err);
       }
     };
