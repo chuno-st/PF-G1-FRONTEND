@@ -8,7 +8,6 @@ import { brown, amber, deepOrange } from "@material-ui/core/colors";
 import {useDispatch} from "react-redux";
 import {getAllItems} from "../../actions/actions";
 import { useEffect } from "react";
-import Carrousel from "../Carrousel/Carrousel"
 
 
 const theme = createTheme({

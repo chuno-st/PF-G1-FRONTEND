@@ -2,12 +2,30 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {getProductById, FilterBy, findMatch} from '../../actions/actions';
-import NavPelado from "../MyAccount/Navpelado";
+import NavMyAccount from "../MyAccount/NavMyAccount";
 import Footer from "../Footer/Footer";
 import { Button } from "@material-ui/core";
 import BasicCard from "../Card/Card";
+import { ThemeProvider } from "@material-ui/core"
+import { createTheme } from "@material-ui/core";
 
 
+
+const theme = createTheme({
+    palette: {
+      primary:{
+        main: '#e0e0e0'
+      },
+  
+    },
+    typography: {
+        fontFamily: 'Roboto',
+        fontWeightLight: 400,
+        fontWeightRegular: 500,
+        fontWeightMedium: 600,
+        fontWeightBold: 700
+    }
+  })
 export default function Detail () {
 
     const matches = useSelector(state => state.matches)
@@ -26,15 +44,15 @@ export default function Detail () {
     
    
     return (
-        
-        <div>
-        <NavPelado/>
-        <h2>{product.name}</h2>
-        <img src={product.image}></img>
-        <h3>{product.price}</h3>
-        <p>{product.description}</p>
-        <div>
-        
+        <ThemeProvider theme={theme}>
+            <div>
+                <NavMyAccount/>
+                    <h2>{product.name}</h2>
+                    <img src={product.image}></img>
+                    <h3>{product.price}</h3>
+                    <p>{product.description}</p>
+            <div>
+            
        <Button onClick={handleclick}>Ver productos similares</Button>
        { matches.map( i => {
         if(i.name === product.name) {return}
@@ -42,9 +60,9 @@ export default function Detail () {
     })
         } 
     </div>
-    
         <Footer></Footer>
     </div>
+    </ThemeProvider>
     
   )
 }
