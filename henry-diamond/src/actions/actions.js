@@ -7,7 +7,10 @@ import {
     SET_CATEGORY, 
     SET_SUBCATEGORY,
     ADD_USER,
-    CHECK_ROLE
+    CHECK_ROLE,
+    CREATE_PRODUCT,
+    CREATE_CATEGORY,
+    CREATE_SUBCATEGORY,
 } from "./typeActions";
 // import {getProduct} from '../../../../PF-G1-BACKEND/src/controllers/productControllers'
 import axios from "axios";
@@ -157,5 +160,23 @@ export const addShoppingCart = (obj)=>{
             payload: obj
         })
     }
-
 }
+
+export const createProduct = (body) => {
+    return async function (dispatch) {
+      try {
+        let response = await axios.post(`${URL}`, body);
+        if (response.data.message) {
+          alert(response.data.message);
+        } else {
+          dispatch({
+            type: CREATE_PRODUCT,
+            payload: response.data,
+          });
+          alert("El producto fue creado correctamente");
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+  };
