@@ -58,50 +58,9 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-// export default function BasicCard(props) {
-//     const {item} = props;
-//     const dispatch = useDispatch();
-//     const navigate = useNavigate()
-
-//      const handleclick = () => {
-//       navigate(`/${item.product_id}`)
-
-//     }
-//      const handleBuy = () => {
-//       localStorage.setItem(item.product_id ,JSON.stringify(item) )
-//     }
-     
-  // return (
-    
-  //   <Card sx={{ maxWidth: 345,height:'100%' }} className="card">
-  //     <CardMedia
-  //       component="img"
-  //       height="350"
-  //       width="350"
-  //       image={item.image}
-  //       alt="green iguana"
-  //     />
-  //     <CardContent>
-  //       <Typography gutterBottom variant="h6" component="div">
-  //         {capitalizeLetter(item.name)}
-  //       </Typography>
-  //       <Typography variant="body2" color="text.secondary">
-  //         {"$"+item.price}
-  //       </Typography>
-  //     </CardContent>
-  //     <CardActions>
-  //       <Button size="small" className='buttonCard' onClick={handleclick}>Detalles</Button>
-  //       <Button size="small" className='buttonCard' onClick={handleBuy}>Agregar al carrito</Button>
-        
-  //     </CardActions>
-  //   </Card>
-   
-  //  );
-  // }
 
 
-
-export default function RecipeReviewCard(props) {
+export default function BasicCard(props) {
   const {item} = props;
       const dispatch = useDispatch();
       const navigate = useNavigate()

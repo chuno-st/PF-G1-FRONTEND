@@ -37,7 +37,8 @@ const useStyles = makeStyles((theme) => ({
       flexGrow: 1,
       padding: 20,
       backgroundColor: '#e0e0e0',
-      color: '#212121'
+      color: '#212121',
+    
     },
     menuButton: {
       marginRight: theme.spacing(2),
@@ -62,6 +63,7 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: theme.spacing(1),
         width: 'auto',
       },
+      boxShadow: '4px 2px 6px #7a7a7a'
     },
     searchIcon: {
       padding: theme.spacing(0, 2),
@@ -71,6 +73,7 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
+      
     },
     inputRoot: {
       color: '#827717',
@@ -116,8 +119,8 @@ const useStyles = makeStyles((theme) => ({
 
     return (
         <div >
-            <Container maxWidth="xl">
-                <AppBar className={classes.root} position="static">
+            <Container maxWidth="xl" >
+                <AppBar className={classes.root} position="static" >
                     <Toolbar>
                       <SideBar />
                         <Typography className={classes.title} variant="h6" noWrap>

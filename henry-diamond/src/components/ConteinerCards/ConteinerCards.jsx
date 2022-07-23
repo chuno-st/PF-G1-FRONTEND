@@ -42,7 +42,7 @@ return (
     <div >
    <CssBaseline />
       <Container maxWidth = '1' maxHeigh='1' >
-        <Typography component="div" style={{ backgroundColor: 'white' }}>
+        <Typography component="div" style={{ backgroundColor: '#bababa' }}>
           <Button onClick={handleClick2} disabled={desde<=0}>Anterior</Button>
            <Button onClick={handleClick} disabled={products.length!==12}>Siguiente</Button> 
            
