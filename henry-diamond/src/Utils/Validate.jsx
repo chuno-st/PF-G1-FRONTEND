@@ -18,7 +18,6 @@ export default function Validate(input) {
     }
     if (!input.categoria) {
       error.categoria = "Por favor ingresa una categoria";
-      console.log('soy el error de validate',error.categoria)
     }
     if (!input.subCategoria) {
         error.subCategoria = "Por favor ingresa una Sub-Categoria";
