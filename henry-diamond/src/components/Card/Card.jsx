@@ -107,10 +107,12 @@ export default function RecipeReviewCard(props) {
       const navigate = useNavigate()
   
        const handleclick = () => {
-        navigate(`/${item.product_id}`)
+        console.log('aca entro manga de mancos')
+        navigate(`/${item.product_id}`,{ replace: true })
   
       }
        const handleBuy = () => {
+        console.log('aca estoy')
         localStorage.setItem(item.product_id ,JSON.stringify(item) )
       }
 
@@ -147,11 +149,11 @@ export default function RecipeReviewCard(props) {
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
-        <IconButton onClick={handleBuy}>
+        <IconButton>
           {"$"+item.price}
         </IconButton>
-        <IconButton aria-label="share">
-          <AddShoppingCartIcon  />
+        <IconButton aria-label="share" >
+          <AddShoppingCartIcon onClick={handleBuy} />
         </IconButton>
         <IconButton arial-label='detail' onClick={handleclick}>
           <AddIcon />

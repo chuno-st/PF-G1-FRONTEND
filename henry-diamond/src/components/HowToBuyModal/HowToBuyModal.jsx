@@ -34,7 +34,7 @@ export default function HowToBuyModal() {
           <Typography>
           <h4>¡Comprar en nuestra tienda online es muy fácil!
           <p>-Elegí el producto que querés comprar.</p>
-          <p>-Hacé click en el botón "Agregar al Carrito". De esta manera se agregará el producto a tu carrito y te llevará al mismo.</p>
+          <p>-Hacé click en el botón "Agregar al Carrito". De esta manera se agregará el producto a tu carrito.</p>
           </h4>
           </Typography>
         </Box>

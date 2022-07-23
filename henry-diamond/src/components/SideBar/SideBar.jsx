@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
     borderBlockColor: 'secondary'
   },
   drawerHeader: {
-    paddingTop: 80,
+    paddingTop: 60,
     color: '#ff6d00',
     display: 'flex',
     alignItems: 'center',
@@ -97,7 +97,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PersistentDrawerLeft() {
+export default function SideBar() {
   const { loginWithRedirect,  user, isAuthenticated, isLoading } = useAuth0();
   const classes = useStyles();
   
