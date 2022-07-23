@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {getProductById, FilterBy, findMatch} from '../../actions/actions';
 import NavPelado from "../MyAccount/Navpelado";
 import Footer from "../Footer/Footer";
-import { Card } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import BasicCard from "../Card/Card";
 
 
@@ -17,27 +17,27 @@ export default function Detail () {
 
     useEffect(() => {
         dispatch(getProductById(id))
-       
-    },[dispatch])
-
-   product.name && dispatch(findMatch(product.category_id))
-
- console.log(product)
- console.log(matches)
-  return (
-
-    <div>
+        
+    },[id])
+    
+    const handleclick = () => {
+        dispatch(findMatch(product.subCategory_id))    
+    }
+    
+   
+    return (
+        
+        <div>
         <NavPelado/>
         <h2>{product.name}</h2>
         <img src={product.image}></img>
         <h3>{product.price}</h3>
         <p>{product.description}</p>
         <div>
+        
+       <Button onClick={handleclick}>Ver productos similares</Button>
        { matches.map( i => {
-        console.log(i.name,'estoy en detail')
-        if(i.name === product.name) {
-            return
-        }
+        if(i.name === product.name) {return}
        return <BasicCard key={i.id} item={i}></BasicCard>
     })
         } 

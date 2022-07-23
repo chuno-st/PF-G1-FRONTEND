@@ -23,7 +23,7 @@ const theme = createTheme({
     }
   },
   typography: {
-      fontFamily: 'Arima',
+      fontFamily: 'Roboto',
       fontWeightLight: 400,
       fontWeightRegular: 500,
       fontWeightMedium: 600,
