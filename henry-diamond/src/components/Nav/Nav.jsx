@@ -1,13 +1,11 @@
 import React from "react";
 import  AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-// import MenuIcon from "@material-ui/icons/Menu";
 import InputBase from '@material-ui/core/InputBase';
 import  Typography  from "@material-ui/core/Typography";
 import SearchIcon from '@material-ui/icons/Search';
 import Button from '@mui/material/Button';
 import Container from '@material-ui/core/Container';
-// import {IconButton} from "@material-ui/core";
 import  {makeStyles} from "@material-ui/core/styles";
 import { useState} from "react";
 import {useDispatch} from 'react-redux';
@@ -15,7 +13,7 @@ import { getAllProduct } from "../../actions/actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton } from "../Login/Login";
 import { Profile } from "../Profile/Profile";
-import PermanentDrawerLeft from "../SideBar/SideBar"
+import SideBar from "../SideBar/SideBar"
 import { brown, amber, deepOrange } from "@material-ui/core/colors";
 import { createTheme } from "@material-ui/core";
 import { ShoppingCartButton } from '../ShoppingCartButton/ShoppingCartButton'
@@ -39,7 +37,8 @@ const useStyles = makeStyles((theme) => ({
       flexGrow: 1,
       padding: 20,
       backgroundColor: '#e0e0e0',
-      color: '#212121'
+      color: '#212121',
+    
     },
     menuButton: {
       marginRight: theme.spacing(2),
@@ -64,6 +63,7 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: theme.spacing(1),
         width: 'auto',
       },
+      boxShadow: '4px 2px 6px #7a7a7a'
     },
     searchIcon: {
       padding: theme.spacing(0, 2),
@@ -73,6 +73,7 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
+      
     },
     inputRoot: {
       color: '#827717',
@@ -118,10 +119,10 @@ const useStyles = makeStyles((theme) => ({
 
     return (
         <div >
-            <Container maxWidth="xl">
-                <AppBar className={classes.root} position="static">
+            <Container maxWidth="xl" >
+                <AppBar className={classes.root} position="static" >
                     <Toolbar>
-                      <PermanentDrawerLeft />
+                      <SideBar />
                         <Typography className={classes.title} variant="h6" noWrap>
                             <Logo />
                         </Typography>

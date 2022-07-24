@@ -16,17 +16,17 @@ export default function FilterMaterial() {
         dispatch(SubCategory());
     }, []);
     const arrayPrice = [{
-        label: "0-1000",
+        label: "$0 - $1000",
         value:{min: 0, max: 1000} },{
-        label:'1000-2000',
+        label:'$1000 - $2000',
         value:{min: 1000, max:2000}}, {
-        label:'2000-3000',
+        label:'$2000 - $3000',
         value:{min: 2000, max:3000}}, {
-        label:'3000-4000',
+        label:'$3000 - $4000',
         value:{min: 3000, max:4000}}, {
-        label:'4000-5000',
+        label:'$4000 - $5000',
         value: {min: 4000, max:5000}}, {
-        label:'5000-6000',
+        label:'$5000 - $6000',
         value:{min: 5000, max:6000}}];
    const product =[]
    const arraycategories = subcategory.map(e=> product.push({label:e.name, value:e.subCategory_id}));
@@ -47,8 +47,9 @@ export default function FilterMaterial() {
       onChange={(event, newValue) =>{
         if(!newValue) return;
         setFilter({...filter, price: newValue.value})}}
-      renderInput={(params) => <TextField {...params} label="Por productos" />}
+      renderInput={(params) => <TextField {...params} label="POR PRECIOS" />}
       />
+      
     <Autocomplete
       disablePortal
       id="combo-box-demo"
@@ -57,11 +58,14 @@ export default function FilterMaterial() {
       onChange={(event, newValue) =>{
         if(!newValue) return;
         setFilter({...filter, subcategory: newValue.value})}}
-      renderInput={(params) => <TextField {...params} label="Por productos" />}
+      renderInput={(params) => <TextField {...params} label="POR PRODUCTOS" />}
       />
-      <Button onClick={()=>{
+      <Button 
+        fullWidth
+        onClick={()=>{
         console.log('el boton anda')
-        handleChange()}}>Filtrar</Button>
+        handleChange()
+        }}>Filtrar</Button>
       </>
   );
 }

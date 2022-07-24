@@ -12,7 +12,7 @@ const inicialState = {
     },
     product:{},
     matches: [],
-    role:false,
+    role:"none",
     shoppingCart: []
 };
 
@@ -36,6 +36,7 @@ const reducer = (state = inicialState, { type, payload }) => {
                     category: payload };
 
         case ALL_SUBCATEGORY:
+          console.log(payload)
             return { ...state,
                     subcategory: payload };
 
@@ -66,6 +67,7 @@ const reducer = (state = inicialState, { type, payload }) => {
             }  
 
         case CHECK_ROLE:
+          console.log(payload, "estoy en reducer")
           return {...state,
                role: payload
           }
@@ -81,6 +83,10 @@ const reducer = (state = inicialState, { type, payload }) => {
         ...state,
         items: state.items.concat(payload),
         };
+       case 'RESET_MATCH': {
+        return {...state, matches:[]}
+       }
+
 
         default:
             return state;

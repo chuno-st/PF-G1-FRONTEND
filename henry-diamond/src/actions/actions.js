@@ -95,7 +95,7 @@ export const SubCategory = ()=>{
         axios
         .get (`${URL}subcategory`)
         .then((res) => {
-         
+         console.log(res)
         dispatch ({
             type: ALL_SUBCATEGORY,
             payload: res.data
@@ -143,9 +143,9 @@ export const getProductById =  (id) => {
     }
 }
 
-export const findMatch = (category) => {
+export const findMatch = (subcategory) => {
     return async dispatch => {
-         let filterProducts = await axios.get (`${URL}product/category?category=${category}`)
+         let filterProducts = await axios.get (`${URL}product/subCategory?subcategory=${subcategory}`)
          dispatch({
             type: 'FIND_MATCH',
             payload: filterProducts.data
@@ -172,3 +172,12 @@ export const createProduct = (body) => {
       }
     };
   };
+
+export const resetMatch = () => {
+    return dispatch => {
+        dispatch({
+            type: 'RESET_MATCH',
+            payload: null
+        })
+    }
+}

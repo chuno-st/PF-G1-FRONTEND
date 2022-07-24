@@ -13,16 +13,13 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import LocalFloristIcon from '@material-ui/icons/LocalFlorist';
-import EcoIcon from '@material-ui/icons/Eco';
-
-import SpaIcon from '@material-ui/icons/Spa';
 import StorefrontIcon from '@material-ui/icons/Storefront';
 import CallIcon from '@material-ui/icons/Call';
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton } from "../Login/Login";
 import { Profile } from "../Profile/Profile";
 import HowToBuyModal from "../HowToBuyModal/HowToBuyModal"
+import ContactModal from "../ContactModal/ContactModal"
 import { UserInfo } from "../UserInfo/UserInfo"
 import FilterMaterial from "../Filter/FilterMaterial"
 
@@ -73,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
     borderBlockColor: 'secondary'
   },
   drawerHeader: {
-    paddingTop: 80,
+    paddingTop: 60,
     color: '#ff6d00',
     display: 'flex',
     alignItems: 'center',
@@ -100,7 +97,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PersistentDrawerLeft() {
+export default function SideBar() {
   const { loginWithRedirect,  user, isAuthenticated, isLoading } = useAuth0();
   const classes = useStyles();
   
@@ -154,14 +151,15 @@ export default function PersistentDrawerLeft() {
         <List>
             <ListItem button>
               <ListItemIcon>{<StorefrontIcon />}</ListItemIcon>
-              <ListItemText className={classes.text}>{<h4>¿Cómo comprar?</h4>}</ListItemText>
-              <HowToBuyModal />
+              <ListItemIcon>{<HowToBuyModal />} </ListItemIcon>
+             
             </ListItem>
         </List>
+        <Divider />
         <List>
             <ListItem button>
               <ListItemIcon>{<CallIcon />}</ListItemIcon>
-              <ListItemText className={classes.text}>{<h4>Contacto</h4>}</ListItemText>
+              <ListItemIcon>{<ContactModal />} </ListItemIcon>
             </ListItem>
         </List>
         <Divider />
@@ -170,13 +168,31 @@ export default function PersistentDrawerLeft() {
              <ListItem button>  
             {
               isAuthenticated ? (
+                
               <div>
-                    <Profile />
-                    <UserInfo />
+                <List>
+                  <ListItem button>
+                    <ListItemText className={classes.text}>{<UserInfo />}</ListItemText>
+                  </ListItem>
+                </List>
+                <Divider />        <Divider />
+
+
+                <List>
+                  <ListItem button>
+                    <ListItemText className={classes.text}>{<Profile />}</ListItemText>
+                  </ListItem>
+                </List>
               </div>
           ) : (
-            
-              <LoginButton />
+            <div>
+            <List>
+                  <ListItem button>
+                    <ListItemText className={classes.text}>{ <LoginButton />}</ListItemText>
+                  </ListItem>
+                </List>
+            </div>
+             
            
               )
           }

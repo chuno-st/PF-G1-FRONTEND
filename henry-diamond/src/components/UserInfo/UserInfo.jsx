@@ -1,11 +1,10 @@
 import Button from '@mui/material/Button';
-import UserInfoModal from '../UserInfoModal/UserInfoModal'
 
 export const UserInfo = () => {
 
   return (
     <div>
-      <Button >Perfil usuario<UserInfoModal /></Button>
+      <Button href="/myaccount">PERFIL USUARIO</Button>
       
     </div>
     
@@ -13,3 +12,4 @@ export const UserInfo = () => {
   
   
 };
+
