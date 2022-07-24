@@ -17,6 +17,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import {useState} from "react";
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import Logo from '../Logo/Logo'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -42,7 +43,10 @@ const useStyles = makeStyles((theme) => ({
     transform: 'rotate(180deg)',
   },
   avatar: {
-    backgroundColor: '#4fc3f7',
+    backgroundColor: 'white',
+    variant: "square",
+    height: 'auto' ,
+    width: 'auto',
   },
 }));
 
@@ -69,7 +73,7 @@ export default function BasicCard(props) {
           console.log(item)
           localStorage.setItem(item.product_id ,JSON.stringify(item) )
         }else {
-          alert("Para comprar un producto debes estar logueado")
+          alert("Para comprar un producto, debes estar registrado")
         }
       }
       const handleUp = () => {
@@ -81,7 +85,7 @@ export default function BasicCard(props) {
         if (isAuthenticated){
           localStorage.setItem(item.product_id ,JSON.stringify(item) )
         }else {
-          alert("Para favear un producto debes estar logueado")
+          alert("Para agregar a favoritos un producto, debes estar registrado")
         }
       }
       const classes = useStyles();
@@ -94,14 +98,10 @@ export default function BasicCard(props) {
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}  >
-            HD
+            <Logo />
           </Avatar>
         }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
+        
         variant='h2'
         title={(item.name.toUpperCase())}
         
