@@ -143,7 +143,7 @@ const useStyles = makeStyles((theme) => ({
                                         />
                                 </div>
                                 <Button  
-                                      className="Search" 
+                                      className='Search' 
                                       type='submit' 
                                       color= 'primary'
                                       onClick={(e) => handleSubmit(e)}

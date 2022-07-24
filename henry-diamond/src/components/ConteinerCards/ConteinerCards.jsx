@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getAllItems} from "../../actions/actions";
 import BasicCard from "../Card/Card";
-import { Grid,Box,Button} from "@mui/material";
+import { Grid, Button} from "@mui/material";
+import { Box } from "@material-ui/core"
 // import { margin } from "@mui/system";
 import { useState } from "react";
 // import Paginate from '../Paginate/Paginate.jsx';
@@ -43,9 +44,8 @@ return (
    <CssBaseline />
       <Container maxWidth = '1' maxHeigh='1' >
         <Typography component="div" style={{ backgroundColor: '#bababa' }}>
-          <Button onClick={handleClick2} disabled={desde<=0}>Anterior</Button>
-           <Button onClick={handleClick} disabled={products.length!==12}>Siguiente</Button> 
-           
+
+       
       
      
       <Box 
@@ -64,10 +64,10 @@ return (
           
           products.map(item => (    //map para recorrer el array de items
             <Grid item 
-            xs={12}
-            sm={6} 
-            md={3}
-            lg={2} 
+              xs={12}
+              sm={6} 
+              md={3}
+              lg={2} 
             >
               <BasicCard key={item.id} item={item} /> 
       </Grid>))
@@ -85,9 +85,17 @@ return (
           </Box>
         )
       }
-      </Grid>
-      </Box>
-      </Typography>
+           </Grid>
+          </Box>
+          <Grid container>
+            <Grid item xs={12} sm={6} md={3} >
+                <Button onClick={handleClick2} disabled={desde<=0}>Anterior</Button>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}  >
+                <Button onClick={handleClick} disabled={products.length!==12}>Siguiente</Button> 
+            </Grid>
+          </Grid>
+        </Typography>
       </Container>
     </div>
 )

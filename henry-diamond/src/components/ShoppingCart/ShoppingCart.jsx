@@ -1,23 +1,25 @@
 import {useState} from "react";
 import {useSelector,useDispatch} from "react-redux";
-import BasicCard from "../Card/Card";
+import { useEffect } from "react";
+import CardCart from "../CardCart/CardCart";
 
 
 export default function ShoppingCart(){
    const miStorage = window.localStorage;
-    const carrito = useSelector(state => state.shoppingCart);
-    console.log(carrito)
-    const [carritoStorage, setCarrito] = useState(miStorage)
     let Productos = Object.values(miStorage)
-    
+    let objetos = Productos.map(producto => {return JSON.parse(producto)})
 
-    
     return (
     <>
     <h4>usted esta aqui</h4>
     {
-        Productos.map(item => <BasicCard  item={JSON.parse(item)}        ></BasicCard>)
-    }
+        objetos.map(producto => {
+            if (producto.hasOwnProperty('product_id')){
+                console.log(producto)
+                return <CardCart item={producto}/>
+            }else return
+        })
+}
     </>
 )
 }

@@ -117,7 +117,7 @@ export default function SideBar() {
       <CssBaseline />
         <Toolbar>
           <IconButton
-            color="primary"
+            color="black"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
