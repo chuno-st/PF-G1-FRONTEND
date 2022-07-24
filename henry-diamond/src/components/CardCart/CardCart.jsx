@@ -10,18 +10,16 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 import AddIcon from '@material-ui/icons/Add';
 import { blueGrey } from '@material-ui/core/colors';
 import { useAuth0 } from "@auth0/auth0-react";
-import {useState} from "react";
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+
 
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 345,
+    maxWidth: 100,
     
   },
   palette:{
@@ -50,33 +48,24 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export default function BasicCard(props) {
+export default function CardCart(props) {
   const {item} = props;
       const dispatch = useDispatch();
       const navigate = useNavigate()
       const { isAuthenticated } = useAuth0();
-      const [cantidad, setCantindad] = useState(1);
-  
   
        const handleclick = () => {
         navigate(`/${item.product_id}`,{ replace: true })
   
       }
        const handleBuy = () => {
-         if (isAuthenticated){
-          setCantindad(cantidad+1)
-          item.cantidad=cantidad;
-          console.log(item)
-          localStorage.setItem(item.product_id ,JSON.stringify(item) )
-        }else {
-          alert("Para comprar un producto debes estar logueado")
+        
+          localStorage.removeItem(item.product_id ,JSON.stringify(item) )
+          navigate(0)
+        
+         
         }
-      }
-      const handleUp = () => {
-        setCantindad(cantidad+1)
-        item.cantidad=cantidad;
-        console.log(item)
-      }
+      
       const handleFav = () => {
         if (isAuthenticated){
           localStorage.setItem(item.product_id ,JSON.stringify(item) )
@@ -121,13 +110,7 @@ export default function BasicCard(props) {
           {"$"+item.price}
         </IconButton>
         <IconButton aria-label="share" >
-          { cantidad===1
-          ?  <AddShoppingCartIcon onClick={handleBuy} />
-          : <><KeyboardArrowUpIcon onClick={handleUp}/><p>{cantidad}</p> <KeyboardArrowDownIcon onClick={()=>setCantindad(cantidad-1)}/></>
-
-          }
-         
-          
+          <RemoveShoppingCartIcon onClick={handleBuy} />
         </IconButton>
         <IconButton arial-label='detail' onClick={handleclick}>
           <AddIcon />

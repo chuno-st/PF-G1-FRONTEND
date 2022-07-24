@@ -14,7 +14,7 @@ import {
 } from "./typeActions";
 // import {getProduct} from '../../../../PF-G1-BACKEND/src/controllers/productControllers'
 import axios from "axios";
-const URL = "https://henry-diamonds.herokuapp.com/"
+const URL = "http://localhost:9000/"
 
 
 // const axios = require('axios')
