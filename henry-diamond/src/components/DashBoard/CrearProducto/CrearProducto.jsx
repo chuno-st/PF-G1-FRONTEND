@@ -158,7 +158,7 @@ export default function CrearProducto() {
                         </FormControl>
                     </Grid>
                 </Grid>
-                <Button variant="container" color="primary" justify="center">
+                <Button variant="container" color="primary" textAlign="center">
                     Crear Producto
                 </Button>
             </Container>

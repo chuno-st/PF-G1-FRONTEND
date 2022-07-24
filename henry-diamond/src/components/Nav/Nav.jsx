@@ -20,6 +20,7 @@ import { ShoppingCartButton } from '../ShoppingCartButton/ShoppingCartButton'
 import Filter  from '../Filter/Filter';
 import Logo from '../Logo/Logo'
 
+
 const theme = createTheme({
   
   typography: {
@@ -142,6 +143,7 @@ const useStyles = makeStyles((theme) => ({
                                         onChange={handleSearchBar}
                                         />
                                 </div>
+                              
                                 <Button  
                                       className="Search" 
                                       type='submit' 

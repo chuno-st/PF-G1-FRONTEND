@@ -14,8 +14,8 @@ export default function Validate(input) {
       error.precio = "Por favor ingresa el precio";
     } else if (input.precio < min || input.precio > max) {
       error.precio =`El valor del producto no puede ser menor a $${min} ni mayor a $${max}`;
-    } else if (typeof input.precio === "string"){
-      error.precio =`Por favor ingresa un numero valido`;
+    } else if ( typeof parseInt(input.precio) === 'string'){
+      error.precio =`Por favor ingresa un valor numerico`;
     }
     if (!input.categoria) {
       error.categoria = "Por favor ingresa una categoria";
