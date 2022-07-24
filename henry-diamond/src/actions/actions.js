@@ -91,7 +91,7 @@ export const SubCategory = ()=>{
         axios
         .get (`${URL}subcategory`)
         .then((res) => {
-         
+         console.log(res)
         dispatch ({
             type: ALL_SUBCATEGORY,
             payload: res.data
