@@ -14,7 +14,7 @@ import {
 } from "./typeActions";
 // import {getProduct} from '../../../../PF-G1-BACKEND/src/controllers/productControllers'
 import axios from "axios";
-const URL = "https://pf-g1-backend-production-3e79.up.railway.app/"
+const URL = "http://localhost:9000/"
 
 
 // const axios = require('axios')
@@ -179,5 +179,13 @@ export const resetMatch = () => {
             type: 'RESET_MATCH',
             payload: null
         })
+    }
+}
+
+export const postCart = (carrito, user) => {
+    return dispatch => {
+        console.log("Carrito=",carrito, "USER=", user)
+        axios.post(`${URL}payment?id=${user}`, carrito)
+        .then(res => console.log(res.data))
     }
 }
