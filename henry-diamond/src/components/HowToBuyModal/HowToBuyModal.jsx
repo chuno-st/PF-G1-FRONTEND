@@ -11,7 +11,7 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: 500,
   bgcolor: 'background.paper',
-  border: '6px solid #6a1b9a',
+  border: '2px solid #a1887f',
   boxShadow: 24,
   p: 4,
 };
@@ -23,7 +23,7 @@ export default function HowToBuyModal() {
 
   return (
     <div>
-      <Button onClick={handleOpen}><h6>&#10145;</h6></Button>
+      <Button fullWidth onClick={handleOpen}><h4>¿Cómo comprar?</h4></Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -31,19 +31,12 @@ export default function HowToBuyModal() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            ¿Cómo comprar en nuestra tienda online?
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 20 }}>
+          <Typography>
           <h4>¡Comprar en nuestra tienda online es muy fácil!
-
           <p>-Elegí el producto que querés comprar.</p>
-          <p>-Hacé click en el botón "Agregar al Carrito". De esta manera se agregará el producto a tu carrito y te llevará al mismo.</p>
-          
-
+          <p>-Hacé click en el botón "Agregar al Carrito". De esta manera se agregará el producto a tu carrito.</p>
           </h4>
-
-        </Typography>
+          </Typography>
         </Box>
       </Modal>
     </div>
