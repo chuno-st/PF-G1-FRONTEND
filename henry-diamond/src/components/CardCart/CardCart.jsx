@@ -14,6 +14,9 @@ import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 import AddIcon from '@material-ui/icons/Add';
 import { blueGrey } from '@material-ui/core/colors';
 import { useAuth0 } from "@auth0/auth0-react";
+import {useState} from "react";
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 
 
@@ -53,6 +56,7 @@ export default function CardCart(props) {
       const dispatch = useDispatch();
       const navigate = useNavigate()
       const { isAuthenticated } = useAuth0();
+        const [cantidad, setCantindad] = useState(item.cantidad);
   
        const handleclick = () => {
         navigate(`/${item.product_id}`,{ replace: true })
@@ -75,6 +79,23 @@ export default function CardCart(props) {
       }
       const classes = useStyles();
       // const [expanded, setExpanded] = React.useState(false);
+      const handleUp = () => {
+          setCantindad(cantidad+1)
+          item.cantidad=cantidad+1;
+          console.log(item)
+          localStorage.setItem(item.product_id ,JSON.stringify(item) )
+          navigate(0)
+      }
+      const handleDown = () => {
+          setCantindad(cantidad-1)
+          item.cantidad=cantidad-1;
+          console.log(item)
+          localStorage.setItem(item.product_id ,JSON.stringify(item) )
+          navigate(0)}
+        
+    if(item.cantidad===0){
+            handleBuy()
+        }
 
      
 
@@ -107,7 +128,12 @@ export default function CardCart(props) {
           <FavoriteIcon onClick={handleFav} />
         </IconButton>
         <IconButton>
-          {"$"+item.price}
+          {"$"+item.price*cantidad}
+        </IconButton>
+        <IconButton>
+             {
+                item.cantidad > 0 && <><KeyboardArrowUpIcon onClick={handleUp}/><p>{cantidad}</p> <KeyboardArrowDownIcon onClick={handleDown} /></>
+             }
         </IconButton>
         <IconButton aria-label="share" >
           <RemoveShoppingCartIcon onClick={handleBuy} />
