@@ -43,7 +43,7 @@ export const Profile = () => {
         {/* <h2 className="name">{user.name}</h2>
         <p className="email">{user.email}</p> */}
         {/* </div> */}
-        <LogoutButton  className="logOut" />
+        <LogoutButton className="logOut" />
       </div>
     )
   );

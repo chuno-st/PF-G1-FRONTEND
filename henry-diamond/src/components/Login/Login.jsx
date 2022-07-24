@@ -23,6 +23,7 @@ export const LoginButton = () => {
   return (
     <div>
             <Button
+            variant='#757575'
             className={classes.styleButton}
             startIcon={<PersonIcon />} 
             onClick={() => loginWithRedirect()}>Iniciar Sesión</Button>
