@@ -1,13 +1,11 @@
 import React from "react";
 import  AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-// import MenuIcon from "@material-ui/icons/Menu";
 import InputBase from '@material-ui/core/InputBase';
 import  Typography  from "@material-ui/core/Typography";
 import SearchIcon from '@material-ui/icons/Search';
 import Button from '@mui/material/Button';
 import Container from '@material-ui/core/Container';
-// import {IconButton} from "@material-ui/core";
 import  {makeStyles} from "@material-ui/core/styles";
 import { useState} from "react";
 import {useDispatch} from 'react-redux';
@@ -15,25 +13,17 @@ import { getAllProduct } from "../../actions/actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton } from "../Login/Login";
 import { Profile } from "../Profile/Profile";
-import PermanentDrawerLeft from "../SideBar/SideBar"
+import SideBar from "../SideBar/SideBar"
 import { brown, amber, deepOrange } from "@material-ui/core/colors";
 import { createTheme } from "@material-ui/core";
-
+import { ShoppingCartButton } from '../ShoppingCartButton/ShoppingCartButton'
+import Filter  from '../Filter/Filter';
+import Logo from '../Logo/Logo'
 
 const theme = createTheme({
-  palette: {
-    primary:{
-      main: brown[200]
-    },
-    secondary:{
-      main: amber[500]
-    },
-    warning:{
-      main: deepOrange[500]
-    }
-  },
+  
   typography: {
-      fontFamily: 'Arima',
+      fontFamily: 'Roboto',
       fontWeightLight: 400,
       fontWeightRegular: 500,
       fontWeightMedium: 600,
@@ -42,10 +32,13 @@ const theme = createTheme({
 })
 
 const useStyles = makeStyles((theme) => ({
+
     root: {
       flexGrow: 1,
-      backgroundColor: '#d1c4e9',
-      color: '#827717'
+      padding: 20,
+      backgroundColor: '#e0e0e0',
+      color: '#212121',
+    
     },
     menuButton: {
       marginRight: theme.spacing(2),
@@ -70,6 +63,7 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: theme.spacing(1),
         width: 'auto',
       },
+      boxShadow: '4px 2px 6px #7a7a7a'
     },
     searchIcon: {
       padding: theme.spacing(0, 2),
@@ -79,13 +73,15 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
+      
     },
     inputRoot: {
       color: '#827717',
+      paddingRight: 100
     },
     inputInput: {
 
-      color:'#827717',
+      color:'#212121',
       padding: theme.spacing(1, 1, 1, 0),
       // vertical padding + font size from searchIcon
       paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
@@ -123,44 +119,47 @@ const useStyles = makeStyles((theme) => ({
 
     return (
         <div >
-            <Container maxWidth="xl">
-                <AppBar className={classes.root} position="static">
+            <Container maxWidth="xl" >
+                <AppBar className={classes.root} position="static" >
                     <Toolbar>
-                      <PermanentDrawerLeft />
+                      <SideBar />
                         <Typography className={classes.title} variant="h6" noWrap>
-                            Piedras
+                            <Logo />
                         </Typography>
+                        {/* <div><Filter /></div> */}
                             <div className={classes.search}>
                                 <div className={classes.searchIcon}>
                                 <SearchIcon />
                                 </div>
                                     <InputBase
                                         placeholder="Buscar..."
+                                        label="Outlined secondary"
                                         classes={{
-                                            root: classes.inputRoot,
-                                            input: classes.inputInput,
+                                          root: classes.inputRoot,
+                                          input: classes.inputInput,
                                         }}
                                         inputProps={{ 'aria-label': 'search' }}
                                         onChange={handleSearchBar}
-                                    />
-                            </div>
-                            <Button  
-                                        className="Search" 
-                                        type='submit' 
-                                        color= 'primary'
-                                        onClick={(e) => handleSubmit(e)}
-                                        > Buscar
-                                    </Button>   
+                                        />
+                                </div>
+                                <Button  
+                                      className="Search" 
+                                      type='submit' 
+                                      color= 'primary'
+                                      onClick={(e) => handleSubmit(e)}
+                                      > BUSCAR
+                                </Button>
+                                 
                             {
-                                    isAuthenticated ? (
-                                        <div>
-                                    <Profile />
+                              isAuthenticated ? (
+                                <div>
+                                <Profile />
                                 </ div>
                                 ) : (
-                                    <LoginButton />
-                                    
-                                    )
-                                }                       
+                                  <LoginButton />
+                                  )
+                                }
+                                <ShoppingCartButton />                         
                     </Toolbar>
                 </AppBar>
             </Container>

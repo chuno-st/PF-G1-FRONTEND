@@ -5,90 +5,90 @@ import BasicCard from "../Card/Card";
 import { Grid,Box } from "@mui/material";
 // import { margin } from "@mui/system";
 import { useState } from "react";
-import Paginate from '../Paginate/Paginate.jsx'
+// import Paginate from '../Paginate/Paginate.jsx';
+import {CssBaseline, Typography} from '@material-ui/core';
+import {Container} from '@material-ui/core';
 
 
 export default function ContainerCards() {
 const items = useSelector(state => state.items);
-/* const [desde, setdesde] = useState(0); */
-/* const [hasta, sethasta] = useState(12); */
-const dispatch = useDispatch();
-const { desde, hasta} = useSelector(state => state.paginado)
+const [desde, setdesde] = useState(0); 
+const [hasta, sethasta] = useState(12); 
+// const dispatch = useDispatch();
+// const { desde, hasta} = useSelector(state => state.paginado)
 
-useEffect(() => {
-  dispatch(getAllItems(desde,hasta))}
-  , [dispatch,desde,hasta]);
+// useEffect(() => {
+//   dispatch(getAllItems(desde,hasta))}
+//   , [dispatch,desde,hasta]);
+const products = items.slice(desde,hasta);
 
- /*  const handleClick = () => {
-    setdesde(desde + 8);
+   const handleClick = () => {
+    setdesde(desde + 12);
+    sethasta(hasta + 12);
+   }
+  
+  const handleClick2 = () => {
    
-  } */
-  /* const handleClick2 = () => {
-   
-      setdesde(desde - 8);
-   
-   
-   
-  } */
+      setdesde(desde - 12);
+      sethasta(hasta - 12);
+  } 
+
+  const miStorage = window.localStorage;
+  // console.log(miStorage)
 
 return (
 
 
-    <div>
-   
-     {/* <Button onClick={handleClick2} disabled={desde<=0}>Anterior</Button>
-     <Button onClick={handleClick} disabled={items.length!==12}>Siguiente</Button> */}
-     {/* {console.log(items.length)} */}
-     {
-        <Paginate />
-     }
+    <div >
+   <CssBaseline />
+      <Container maxWidth = '1' maxHeigh='1' >
+        <Typography component="div" style={{ backgroundColor: '#bababa' }}>
+          <Button onClick={handleClick2} disabled={desde<=0}>Anterior</Button>
+           <Button onClick={handleClick} disabled={products.length!==12}>Siguiente</Button> 
+           
+      
      
       <Box 
         
         sx={{ 
+        hight:'100%',
+        width:'100%',
         marginRight: 5,
-        marginLeft: 5,
+        marginLeft: 0,
         marginTop: 5,
         marginBottom: 10,
-      }}
-      
+      }} 
       >
-
-      
-      <Grid container spacing={3} >
-
-
+      <Grid container spacing={1.5} >
         {items.length ? (
-
-          items.map(item => (    //map para recorrer el array de items
+          
+          products.map(item => (    //map para recorrer el array de items
             <Grid item 
-            xs={12} 
+            xs={12}
             sm={6} 
-            md={4} 
-            lg={4}
+            md={3}
+            lg={2} 
             >
               <BasicCard key={item.id} item={item} /> 
-              </Grid>))
+      </Grid>))
         ):(
-          <Box sx={{
+          <Box md={{
             hight: 'auto',
+            minWidth: '100%',
             marginTop: '17%',
             marginBottom: '17%',
-            
-
+            marginLeft: 20,
+            marginRight: 20,
           }}>
             
             <h1>Cargando...</h1>
-
-            
-
-           
-
           </Box>
         )
-        }
+      }
       </Grid>
       </Box>
+      </Typography>
+      </Container>
     </div>
 )
 
