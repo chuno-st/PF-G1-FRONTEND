@@ -16,8 +16,34 @@ import { useAuth0 } from "@auth0/auth0-react";
 import {useState} from "react";
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import Logo from '../Logo/Logo'
+import LogoCard from '../Logo/LogoCard'; 
+import { ThemeProvider , createTheme} from '@material-ui/core';
 
+const theme = createTheme({
+  palette: {
+    primary:{
+      main: '#1976d2'
+    },
+    secondary:{
+      main: '#9c27b0'
+    },
+    warning:{
+      main: '#ed6c02'
+    },
+    text: {
+      primary: 'rgba(0,0,0,0.87)',
+      secondary: 'rgba(0,0,0,0.6)',
+      disabled: 'rgba(0,0,0,0.38)'
+    }
+  },
+  typography: {
+      fontFamily: 'Roboto',
+      fontWeightLight: 400,
+      fontWeightRegular: 500,
+      fontWeightMedium: 600,
+      fontWeightBold: 700
+  },
+})
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
+    
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -46,6 +73,10 @@ const useStyles = makeStyles((theme) => ({
     variant: "square",
     height: 'auto' ,
     width: 'auto',
+    
+  },
+  text:{
+    alignItems:'right',
   },
 }));
 
@@ -98,47 +129,49 @@ export default function BasicCard(props) {
      
 
   return (
-    <Card  md={{ maxWidth: 345,height:'100%' }}>
-      <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}  >
-            <Logo />
-          </Avatar>
-        }
-        
-        variant='h2'
-        title={(item.name.toUpperCase())}
-        
-      />
+      <ThemeProvider theme={theme}>
+          <Card  md={{ maxWidth: '100%',height:'100%' }}>
+            <CardHeader
+              className={classes.text}
+              avatar={
+                <Avatar aria-label="recipe" className={classes.avatar}  >
+                  <LogoCard />
+                </Avatar>
+              }
+              variant='h1'
+              title={(item.name.toUpperCase())}
+              
+            />
 
-      <CardMedia
-        className={classes.media} 
-        image={item.image}
-        title="Imagen del producto"
-      />
-   
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon onClick={handleFav} />
-        </IconButton>
-        <IconButton>
-          {"$"+item.price}
-        </IconButton>
-        <IconButton aria-label="share" >
-          { cantidad===0
-          ?  <AddShoppingCartIcon onClick={handleUp} />
-          : <><KeyboardArrowUpIcon onClick={handleUp}/><p>{cantidad}</p> <KeyboardArrowDownIcon onClick={handleDown} /></>
+            <CardMedia
+              className={classes.media} 
+              image={item.image}
+              title="Imagen del producto"
+            />
+        
+            <CardActions disableSpacing>
+              <IconButton aria-label="add to favorites">
+                <FavoriteIcon onClick={handleFav} />
+              </IconButton>
+              <IconButton>
+                {"$"+item.price}
+              </IconButton>
+              <IconButton aria-label="share" >
+                { cantidad===0
+                ?  <AddShoppingCartIcon onClick={handleUp} />
+                : <><KeyboardArrowUpIcon onClick={handleUp}/><p>{cantidad}</p> <KeyboardArrowDownIcon onClick={handleDown} /></>
 
-          }
-         
-          
-        </IconButton>
-        <IconButton arial-label='detail' onClick={handleclick}>
-          <AddIcon />
-        </IconButton>
-      </CardActions>
-      
-    </Card>
+                }
+              
+                
+              </IconButton>
+              <IconButton arial-label='detail' onClick={handleclick}>
+                <AddIcon />
+              </IconButton>
+            </CardActions>
+            
+          </Card>
+    </ThemeProvider>
   );
 }
 

@@ -47,8 +47,8 @@ export default function ShoppingCart(){
     }
 
     return (
-    <>
-    <ThemeProvider theme={theme}>
+    <div>
+    <ThemeProvider theme={theme} >
         <NavMyAccount/>
         <Grid container xs={12} sm={8} md={6} lg={4}>
         {
@@ -60,15 +60,15 @@ export default function ShoppingCart(){
         })
         }
         </Grid>
-        <Footer />
-    </ThemeProvider>
 
     <h4>usted esta aqui</h4>
     {
         productos.map(producto => {return <CardCart item={producto}/> })
 } 
-    <Typography variant="h6" gutterBottom> Total: {subTotal.reduce( (acc,producto) =>acc+producto,0)}</Typography>
-    <Button variant="contained" color="primary" onClick={handlerSubmit} >  Comprar</Button>
-    </>
+            <Button variant="contained" color="primary" onClick={handlerSubmit} >  Comprar</Button>
+        <Typography variant="h6" gutterBottom> Total: {subTotal.reduce( (acc,producto) =>acc+producto,0)}</Typography>
+    <Footer />
+    </ThemeProvider>
+    </ div>
 )
 }
