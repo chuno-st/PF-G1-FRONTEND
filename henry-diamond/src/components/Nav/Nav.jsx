@@ -17,6 +17,8 @@ import SideBar from "../SideBar/SideBar"
 import { createTheme, Hidden } from "@material-ui/core";
 import { ShoppingCartButton } from '../ShoppingCartButton/ShoppingCartButton'
 import Logo from '../Logo/Logo'
+import IconButton from '@mui/material/IconButton';
+
 
 
 const theme = createTheme({
@@ -134,7 +136,7 @@ const useStyles = makeStyles((theme) => ({
                            
                             <div >
                                 <div className={classes.searchIcon}>
-                                <SearchIcon />
+                                
                                 </div>
                                     <InputBase
                                         className={classes.search}
@@ -149,13 +151,13 @@ const useStyles = makeStyles((theme) => ({
                                         onChange={handleSearchBar}
                                         />
                            
-                                <Button  
+                                <IconButton  
                                       className='Search' 
                                       type='submit' 
                                       color= 'primary'
                                       onClick={(e) => handleSubmit(e)}
-                                      > BUSCAR
-                                </Button>
+                                      > <SearchIcon />
+                                </IconButton>
                           </div>
                           <Hidden smDown>
                       
