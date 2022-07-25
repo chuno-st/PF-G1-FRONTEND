@@ -11,7 +11,7 @@ import { BrowserRouter } from 'react-router-dom';
 const domain = process.env.REACT_APP_AUTH0_DOMAIN;
 const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
 
-export const URL = process.env.BACK;
+export const URL = process.env.backend;
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
