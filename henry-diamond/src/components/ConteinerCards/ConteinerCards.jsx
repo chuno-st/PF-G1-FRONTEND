@@ -89,6 +89,7 @@ return (
       }
            </Grid>
           </Box>
+<<<<<<< HEAD
           
 
 
@@ -96,9 +97,29 @@ return (
           <Grid container  spacing={0}>
             <Grid item xs={12} sm={6} md={3} >
                 <Button onClick={handleClick2} disabled={desde<=0}>Anterior</Button>
+=======
+          <Grid item xs={12} sm={12} md={12} 
+          container
+          direction="row"
+          justifyContent="right"
+          alignItems="right"
+          padding= "20px"
+          
+          >
+            <Grid 
+            alignItems="center"
+            direction="colum"
+           
+            >
+                <Button onClick={handleClick2} disabled={desde<=0}  variant='outlined' color='inherit'>Anterior</Button>
+>>>>>>> 2a7fdf4b51562359fe117b2c0e51d05500d78163
             </Grid>
-            <Grid item xs={12} sm={6} md={3}  >
-                <Button onClick={handleClick} disabled={products.length!==12}>Siguiente</Button> 
+            <Grid  
+            alignItems="center" 
+            direction="colum"
+            
+            >
+                <Button onClick={handleClick} disabled={products.length!==12} variant='outlined' color='inherit'>Siguiente</Button> 
             </Grid>
           </Grid>
         </Typography>
