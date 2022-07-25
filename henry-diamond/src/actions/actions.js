@@ -10,8 +10,8 @@ import {
 } from "./typeActions";
 
 import axios from "axios";
-//import {URL} from "../index"
-const URL = "https://pf-g1-backend-production-3e79.up.railway.app/"
+import {URL} from "../index.js"
+//const URL = "https://pf-g1-backend-production-3e79.up.railway.app/"
 
 
 // const axios = require('axios')
