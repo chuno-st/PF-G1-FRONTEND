@@ -12,6 +12,7 @@ import { Profile } from "../Profile/Profile";
 import { useAuth0 } from "@auth0/auth0-react";
 import Logo from '../Logo/Logo';
 import Grid from '@material-ui/core/Grid';
+import {ShoppingCartButton} from '../ShoppingCartButton/ShoppingCartButton'
 
 
 
@@ -69,9 +70,14 @@ export default function NavMyAccount() {
                                 isAuthenticated ? (
                                     <div>
                                         <Button  size="large"><Profile className={classes.profile}/></Button>
+                                        <ShoppingCartButton />
+
                                     </ div>
                                     ) : (
+                                      <div>
                                         <LoginButton className={classes.loginButton} />
+                                        </ div>
+
                                     )
                                     }
 

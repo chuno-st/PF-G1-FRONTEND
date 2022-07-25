@@ -9,7 +9,6 @@ import CardHeader from '@material-ui/core/CardHeader';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import AddIcon from '@material-ui/icons/Add';
 import { blueGrey } from '@material-ui/core/colors';
@@ -75,7 +74,9 @@ export default function BasicCard(props) {
           item.cantidad=cantidad+1;
           console.log(item)
           localStorage.setItem(item.product_id ,JSON.stringify(item) )
+
         }else { alert("Para comprar un producto debes estar logueado")}
+// >>>>>>> eeee0b535fe37c40a8c1fedcf229ff92ecd00986
       }
       const handleDown = () => {
         if (isAuthenticated){
@@ -113,7 +114,7 @@ export default function BasicCard(props) {
       <CardMedia
         className={classes.media} 
         image={item.image}
-        title="Paella dish"
+        title="Imagen del producto"
       />
    
       <CardActions disableSpacing>

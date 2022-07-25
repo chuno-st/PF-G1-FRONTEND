@@ -14,11 +14,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton } from "../Login/Login";
 import { Profile } from "../Profile/Profile";
 import SideBar from "../SideBar/SideBar"
-import { brown, amber, deepOrange } from "@material-ui/core/colors";
 import { createTheme } from "@material-ui/core";
 import { ShoppingCartButton } from '../ShoppingCartButton/ShoppingCartButton'
-import Filter  from '../Filter/Filter';
 import Logo from '../Logo/Logo'
+
 
 const theme = createTheme({
   
@@ -159,7 +158,9 @@ const useStyles = makeStyles((theme) => ({
                                   <LoginButton />
                                   )
                                 }
-                                <ShoppingCartButton />                         
+                                 
+                                    <ShoppingCartButton />
+                                                         
                     </Toolbar>
                 </AppBar>
             </Container>
