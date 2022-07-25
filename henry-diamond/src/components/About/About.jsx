@@ -11,7 +11,7 @@ const About = () => {
       {/* <img> Imagen de perfil </img> */}
       <Link className="link" to="/Home">GitHub Bruno</Link>
       {/* <img> Imagen de perfil </img> */}
-      <Link className="link" to="/Home">GitHub Feli</Link>
+      <Link className="link" to="/Home">GitHub Fran</Link>
       {/* <img> Imagen de perfil </img> */}
       <Link className="link" to="/Home">GitHub Lauti</Link>
       {/* <img> Imagen de perfil </img> */}

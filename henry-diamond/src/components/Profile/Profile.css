@@ -1,0 +1,29 @@
+.divPerfil{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:center;
+}
+
+.nameEmail{
+    display: flex;
+    flex-direction: column;
+}
+
+.name{
+font-size: 20.5px;
+}
+.email{
+    font-size: 16px;
+}
+
+.imgPerfil{
+    height: 36px;
+    padding: 3px;
+    border-radius: 25px;
+}
+
+.logOut{
+    border: 0px;
+    margin-left: 3px;
+}

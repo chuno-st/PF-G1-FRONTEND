@@ -1,105 +1,84 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
-import { FilterBy } from "../../actions/actions";
+import { React, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { FilterBy, Category, SubCategory } from "../../actions/actions";
+import { InputLabel, MenuItem, FormHelperText, FormControl, Select, Button } from "@mui/material";
+import { capitalizeLetter } from "../../Utils/utils.js";
 
-/*const pruebaCategory = [
-    [
-        {
-            id: 716426,
-            title: "Anillo de oro",
-            image: "https://spoonacular.com/recipeImages/716426-312x231.jpg",
-            imageType: "jpg",
-        },
-        {
-            id: 715594,
-            title: "Pulsera de plata",
-            image: "https://spoonacular.com/recipeImages/715594-312x231.jpg",
-            imageType: "jpg",
-        },
-        {
-            id: 715497,
-            title: "Dije de oro y plata",
-            image: "https://spoonacular.com/recipeImages/715497-312x231.jpg",
-            imageType: "jpg",
-        },
-        {
-            id: 644387,
-            title: "Anillo de plata con piedritas",
-            image: "https://spoonacular.com/recipeImages/644387-312x231.jpg",
-            imageType: "jpg",
-        },
-        {
-            id: 716268,
-            title: "Combo pulsera y anillo de oro",
-            image: "https://spoonacular.com/recipeImages/716268-312x231.jpg",
-            imageType: "jpg",
-        },
-        {
-            id: 716381,
-            title: "Reloj pulsera de plata",
-            image: "https://spoonacular.com/recipeImages/716381-312x231.jpg",
-            imageType: "jpg",
-        },
-        {
-            id: 782601,
-            title: "Aritos de oro",
-            image: "https://spoonacular.com/recipeImages/782601-312x231.jpg",
-            imageType: "jpg",
-        },
-        {
-            id: 794349,
-            title: "Pulsera, collar y anillo de oro",
-            image: "https://spoonacular.com/recipeImages/794349-312x231.jpg",
-            imageType: "jpg",
-        },
-        {
-            id: 715446,
-            title: "Gema de plata y oro amarillo",
-            image: "https://spoonacular.com/recipeImages/715446-312x231.jpg",
-            imageType: "jpg",
-        },
-        {
-            id: 715415,
-            title: "Perlas bañandas en oro",
-            image: "https://spoonacular.com/recipeImages/715415-312x231.jpg",
-            imageType: "jpg",
-        },
-    ],
-];*/
+//________________________________________________________
 
 export default function Filter() {
     const dispatch = useDispatch();
+    const category = useSelector((state) => state.category);
+    const subCategory = useSelector((state) => state.subcategory);
+    const [filter, setFilter] = useState({
+        category: "",
+        subcategory: "",
+        limite: "",
+        desde: "0",
+    });
 
+    useEffect(() => {
+        dispatch(Category());
+        dispatch(SubCategory());
+    }, []);
     const handleChange = (e) => {
-        dispatch(FilterBy(e.target.value));
+        setFilter({
+            ...filter,
+            [e.target.name]: e.target.value,
+        });
     };
 
     return (
-        <div style={{ width: "30%" }}>
-            <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">Filter By</InputLabel>
-                <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    label="Filter by"
-                    onChange={handleChange}>   
-                    { 
-                        //     <select className="select" onChange={(e) => filterbytype(e.target)}>
-                        //     {options.map((k) => {
-                        //       return (
-                        //         <>
-                        //           <option value={k.value}>{k.label} </option>
-                        //         </>
-                        //       );
-                        //     })}
-                        //   </select>
-                    }
-                    <MenuItem value={"Category 1"}> Pureza </MenuItem>
-                    <MenuItem value={"Category 2"}> Dureza</MenuItem>
-                    <MenuItem value={"Category 3"}> Color</MenuItem>
-                </Select>
-            </FormControl>
+        <div style={{ width: "100%" }}>
+            <div>
+                <FormControl sx={{ m: -0.1, minWidth: 120, marginRight: 1 }}>
+                    <InputLabel id="demo-simple-select-helper-label">Categoria</InputLabel>
+                    <Select
+                        size="small"
+                        labelId="demo-simple-select-helper-label"
+                        id="demo-simple-select-helper"
+                        name="category"
+                        label="Category"
+                        onChange={handleChange}
+                    >
+                        {category.map((item, index) => {
+                            return (
+                                <MenuItem key={index} value={item.category_id}>
+                                    {capitalizeLetter(item.name)}
+                                </MenuItem>
+                            );
+                        })}
+                    </Select>
+                </FormControl>
+                <FormControl sx={{ m: -0.1 , minWidth: 160, marginRight: 1 }}>
+                    <InputLabel id="demo-simple-select-helper-label">Sub-Categoria</InputLabel>
+                    <Select
+                        size="small"
+                        labelId="demo-simple-select-helper-label"
+                        id="demo-simple-select-helper"
+                        name="subcategory"
+                        label="Sub-Category"
+                        onChange={handleChange}
+                    >
+                        {subCategory.map((item, index) => {
+                            return (
+                                <MenuItem key={index} value={item.subCategory_id}>
+                                    {capitalizeLetter(item.name)}
+                                </MenuItem>
+                            );
+                        })}
+                    </Select>
+                </FormControl>
+                <Button
+                    variant="outlined"
+                    onClick={() => {
+                        dispatch(FilterBy(filter));
+                    }}
+                    className="Button"
+                >
+                    Filtrar
+                </Button>
+            </div>
         </div>
     );
 }
