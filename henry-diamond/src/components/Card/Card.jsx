@@ -59,28 +59,31 @@ export default function BasicCard(props) {
       const dispatch = useDispatch();
       const navigate = useNavigate()
       const { isAuthenticated } = useAuth0();
-      const [cantidad, setCantindad] = useState(1);
+      const [cantidad, setCantindad] = useState(0);
   
   
        const handleclick = () => {
         navigate(`/${item.product_id}`,{ replace: true })
   
       }
-       const handleBuy = () => {
-         if (isAuthenticated){
-          setCantindad(cantidad+1)
-          item.cantidad=cantidad;
-          console.log(item)
-          localStorage.setItem(item.product_id ,JSON.stringify(item) )
-        }else {
-          alert("Para comprar un producto, debes estar registrado")
-        }
+      if(item.cantidad===0){
+          localStorage.removeItem(item.product_id ,JSON.stringify(item) )
       }
       const handleUp = () => {
-        setCantindad(cantidad+1)
-        item.cantidad=cantidad;
-        console.log(item)
+        if (isAuthenticated){
+          setCantindad(cantidad+1)
+          item.cantidad=cantidad+1;
+          console.log(item)
+          localStorage.setItem(item.product_id ,JSON.stringify(item) )
+        }else { alert("Para comprar un producto debes estar logueado")}
       }
+      const handleDown = () => {
+        if (isAuthenticated){
+          setCantindad(cantidad-1)
+          item.cantidad=cantidad-1;
+          console.log(item)
+          localStorage.setItem(item.product_id ,JSON.stringify(item) )
+        }else { alert("Para comprar un producto debes estar logueado")}}
       const handleFav = () => {
         if (isAuthenticated){
           localStorage.setItem(item.product_id ,JSON.stringify(item) )
@@ -121,9 +124,9 @@ export default function BasicCard(props) {
           {"$"+item.price}
         </IconButton>
         <IconButton aria-label="share" >
-          { cantidad===1
-          ?  <AddShoppingCartIcon onClick={handleBuy} />
-          : <><KeyboardArrowUpIcon onClick={handleUp}/><p>{cantidad}</p> <KeyboardArrowDownIcon onClick={()=>setCantindad(cantidad-1)}/></>
+          { cantidad===0
+          ?  <AddShoppingCartIcon onClick={handleUp} />
+          : <><KeyboardArrowUpIcon onClick={handleUp}/><p>{cantidad}</p> <KeyboardArrowDownIcon onClick={handleDown} /></>
 
           }
          
