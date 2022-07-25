@@ -6,6 +6,8 @@ import { Button } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { postCart } from "../../actions/actions";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useNavigate, Redirect } from "react-router-dom";
+
 
 export default function ShoppingCart(){
 
@@ -19,9 +21,16 @@ export default function ShoppingCart(){
     console.log(productos.reduce( (acc,producto) =>acc+producto.cantidad,0))
     const priceTotal= productos.reduce( (acc,producto) =>acc+producto.price,0)
     const subTotal = productos.map((producto)=>producto.price*producto.cantidad)
+    const link = useSelector(state => state.Cart)
+    const Navigate = useNavigate()
+
+    if(link.length>0) {
+        console.log(link)
+        window.location = `${link}` 
+    }
 
     const handlerSubmit = () =>{
-        dispatch(postCart(productos, user.sub))
+      dispatch(postCart(productos, user.sub))
     }
 
     return (
@@ -29,9 +38,10 @@ export default function ShoppingCart(){
     <h4>usted esta aqui</h4>
     {
         productos.map(producto => {return <CardCart item={producto}/> })
-} 
+    } 
     <Typography variant="h6" gutterBottom> Total: {subTotal.reduce( (acc,producto) =>acc+producto,0)}</Typography>
     <Button variant="contained" color="primary" onClick={handlerSubmit} >  Comprar</Button>
+    { link.length && window.location === link }
     </>
 )
 }

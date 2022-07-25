@@ -183,9 +183,13 @@ export const resetMatch = () => {
 }
 
 export const postCart = (carrito, user) => {
-    return dispatch => {
+    return async dispatch => {
         console.log("Carrito=",carrito, "USER=", user)
-        axios.post(`${URL}payment?id=${user}`, carrito)
-        .then(res => console.log(res.data))
+         let link = await axios.post(`${URL}payment?id=${user}`, carrito)
+         console.log(link)
+         return dispatch({
+            type: 'POST_CART',
+            payload: link.data
+        })
     }
 }

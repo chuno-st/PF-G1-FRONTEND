@@ -13,7 +13,8 @@ const inicialState = {
     product:{},
     matches: [],
     role:"none",
-    shoppingCart: []
+    shoppingCart: [],
+    Cart:""
 };
 
 const reducer = (state = inicialState, { type, payload }) => {
@@ -86,6 +87,12 @@ const reducer = (state = inicialState, { type, payload }) => {
        case 'RESET_MATCH': {
         return {...state, matches:[]}
        }
+
+       case 'POST_CART':
+        return {
+          ...state,
+          Cart: payload
+        }
 
 
         default:
