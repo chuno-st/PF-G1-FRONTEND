@@ -74,18 +74,7 @@ export default function BasicCard(props) {
           item.cantidad=cantidad+1;
           console.log(item)
           localStorage.setItem(item.product_id ,JSON.stringify(item) )
-<<<<<<< HEAD
-        }else {
-          alert("Para comprar un producto, debes estar registrado")
-        }
-      }
-      const handleUp = () => {
-        setCantindad(cantidad+1)
-        item.cantidad=cantidad;
-        console.log(item)
-=======
         }else { alert("Para comprar un producto debes estar logueado")}
->>>>>>> 8b185efbcc99adeaaf74cccc1f2d1c0130607352
       }
       const handleDown = () => {
         if (isAuthenticated){
