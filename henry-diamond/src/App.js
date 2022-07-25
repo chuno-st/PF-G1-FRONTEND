@@ -14,6 +14,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 
+
 // export default function SimpleContainer() {
 //   return (
 //     <React.Fragment>
@@ -42,10 +43,12 @@ function App() {
                   <Route path="/" element={<Home/>} />
                   <Route path="/myaccount" element={<MyAccount />} />
                   <Route path="/cart" element={<ShoppingCart/>} />
+                  <Route path="/cart" element={<ShoppingCart/>} />
                   <Route path="/:id" element={<Detail/>}/>
                   <Route path="/admin" element={<PrivateDash>
                     <Admin/>
                   </PrivateDash>} />
+
                 </Routes>
               </Typography>
           </Container>

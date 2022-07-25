@@ -9,7 +9,6 @@ import CardHeader from '@material-ui/core/CardHeader';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import AddIcon from '@material-ui/icons/Add';
 import { blueGrey } from '@material-ui/core/colors';
@@ -110,7 +109,7 @@ export default function BasicCard(props) {
       <CardMedia
         className={classes.media} 
         image={item.image}
-        title="Paella dish"
+        title="Imagen del producto"
       />
    
       <CardActions disableSpacing>

@@ -5,7 +5,6 @@ import SearchAppBar from "../Nav/Nav";
 import Footer from "../Footer/Footer";
 import { ThemeProvider, Typography } from "@material-ui/core"
 import { createTheme } from "@material-ui/core";
-import { brown, amber, deepOrange } from "@material-ui/core/colors";
 import {useDispatch} from "react-redux";
 import {getAllItems} from "../../actions/actions";
 import { useEffect } from "react";

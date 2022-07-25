@@ -37,6 +37,8 @@ const products = items.slice(desde,hasta);
   const miStorage = window.localStorage;
   // console.log(miStorage)
 
+
+
 return (
 
 
@@ -87,7 +89,11 @@ return (
       }
            </Grid>
           </Box>
-          <Grid container>
+          
+
+
+
+          <Grid container  spacing={0}>
             <Grid item xs={12} sm={6} md={3} >
                 <Button onClick={handleClick2} disabled={desde<=0}>Anterior</Button>
             </Grid>

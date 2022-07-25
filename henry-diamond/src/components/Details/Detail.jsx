@@ -123,10 +123,10 @@ export default function Detail () {
             </Grid>
           
           <Grid item xs={12}
-          container
-          direction="row"
-          justifyContent="center"
-          alignItems="center"
+            container
+            direction="row"
+            justifyContent="center"
+            alignItems="center"
           > 
             <Button variant= 'contained' onClick={handleclick}>Ver productos similares</Button>
             { matches.map( i => {
