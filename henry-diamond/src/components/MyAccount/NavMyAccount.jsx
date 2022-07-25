@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -13,8 +13,35 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Logo from '../Logo/Logo';
 import Grid from '@material-ui/core/Grid';
 import {ShoppingCartButton} from '../ShoppingCartButton/ShoppingCartButton'
+// import { ThemeProvider } from '@emotion/react';
+import { createTheme } from '@material-ui/core';
 
 
+const theme = createTheme({
+  palette: {
+    primary:{
+      main: '#1976d2'
+    },
+    secondary:{
+      main: '#9c27b0'
+    },
+    warning:{
+      main: '#ed6c02'
+    },
+    text: {
+      primary: 'rgba(0,0,0,0.87)',
+      secondary: 'rgba(0,0,0,0.6)',
+      disabled: 'rgba(0,0,0,0.38)'
+    }
+  },
+  typography: {
+      fontFamily: 'Roboto',
+      fontWeightLight: 400,
+      fontWeightRegular: 500,
+      fontWeightMedium: 600,
+      fontWeightBold: 700
+  },
+})
 
 
 
@@ -22,10 +49,11 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     textAlign: 'center',
-
+    padding: '0px',
+   
   },
   home: {
-
+    alignContent: 'center'
   },
   profile: {
 
@@ -34,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
 
   },
   logo: {
-
+    
   }
   
 }));
@@ -52,9 +80,10 @@ export default function NavMyAccount() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      {/* <ThemeProvider theme={theme}> */}
+      <AppBar position="static" >
         <Toolbar variant="dense">
-            <Grid container spacing={1}>
+            <Grid container spacing={0}>
 
                     <Grid item xs>
                         <Logo className={classes.logo} />
@@ -89,6 +118,7 @@ export default function NavMyAccount() {
 
         </Toolbar>
       </AppBar>
+    {/* </ThemeProvider> */}
     </div>
   );
 }

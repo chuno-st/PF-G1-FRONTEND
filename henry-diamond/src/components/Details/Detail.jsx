@@ -93,40 +93,50 @@ export default function Detail () {
     return (
       <div className={classes.root}>
       <ThemeProvider theme={theme}>
+          <NavMyAccount />
         <CssBaseline />
-          <NavMyAccount/>
-          <Grid item xs={12}
+          <Grid 
+            xs={12}
             container
             direction="colum"
             justifyContent="center"
             alignItems="center">
 
             <Grid item xs={6}
-            container
-            direction="row"
+            direction="column"
             justifyContent="center"
             alignItems="center"
             >
-                    <h2>{product.name}</h2>
-                    <img src={product.image}></img>
+                    <Box 
+                    padding={15}
+                    alignContent='center'
+                    alignItems='center'
+                    direction = 'column'
+                    >
+                    <h1>{(product.name)}</h1>
+                    <img src={product.image}
+                    ></img>
                     <h1> ${product.price}</h1>
+                    </Box>
            </Grid> 
           
-          
-           <Grid item xs={6}
+         
+           <Grid item xs={12} md={6}
            container
            direction="row"
            justifyContent="center"
            alignItems="center"
            >
-                    <p>{product.description}</p>
+            <h2>{product.description}</h2>
             </Grid>
-          
-          <Grid item xs={12}
+           
+
+          <Grid item xs={12} md={6}
             container
             direction="row"
             justifyContent="center"
             alignItems="center"
+            // marginBotton='10px'
           > 
             <Button variant= 'contained' onClick={handleclick}>Ver productos similares</Button>
             { matches.map( i => {
