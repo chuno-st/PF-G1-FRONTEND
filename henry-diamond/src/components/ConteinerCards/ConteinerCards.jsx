@@ -2,15 +2,8 @@ import { useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getAllItems} from "../../actions/actions";
 import BasicCard from "../Card/Card";
-<<<<<<< HEAD
 import { Grid,Box } from "@mui/material";
-// import './ConteinerCards.css'
-//import './ConteinerCards.css'
-//import { margin } from "@mui/system";
-=======
-import { Grid,Box,Button } from "@mui/material";
 // import { margin } from "@mui/system";
->>>>>>> 793dc420a39460d66da82d72695549c9d5121085
 import { useState } from "react";
 import Paginate from '../Paginate/Paginate.jsx'
 
