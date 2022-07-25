@@ -8,7 +8,7 @@ import {
     SET_SUBCATEGORY,
     CHECK_ROLE
 } from "./typeActions";
-// import {getProduct} from '../../../../PF-G1-BACKEND/src/controllers/productControllers'
+
 import axios from "axios";
 import {URL} from "../index"
 //const URL = "https://pf-g1-backend-production-3e79.up.railway.app/"
