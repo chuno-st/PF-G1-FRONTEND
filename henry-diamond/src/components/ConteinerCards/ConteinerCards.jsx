@@ -52,7 +52,7 @@ return (
       ld={{
         maxWidth: '100%'
       }}
-      padding={15}
+      padding={2}
            >
         <Typography component="div" style={{ backgroundColor: '#bababa' }}>
      

@@ -6,12 +6,14 @@ import { Button } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { postCart } from "../../actions/actions";
 import { useAuth0 } from "@auth0/auth0-react";
-<<<<<<< HEAD
 import NavMyAccount from '../MyAccount/NavMyAccount';
 import { ThemeProvider } from "@material-ui/core"
 import { createTheme } from "@material-ui/core";
 import { Grid } from "@mui/material";
 import Footer from "../Footer/Footer";
+import { useNavigate, Redirect } from "react-router-dom";
+
+
 
 
 const theme = createTheme({
@@ -29,9 +31,6 @@ const theme = createTheme({
         fontWeightBold: 700
     }
   })
-=======
-import { useNavigate, Redirect } from "react-router-dom";
->>>>>>> f421bea08c0b81e4d7588067dde98bfc22b1d513
 
 
 export default function ShoppingCart(){
@@ -60,7 +59,6 @@ export default function ShoppingCart(){
 
     return (
     <>
-<<<<<<< HEAD
     <ThemeProvider theme={theme}>
 
     <NavMyAccount />
@@ -70,10 +68,7 @@ export default function ShoppingCart(){
             direction="row"
             item
             sx={{ 
-            maxWidth: 'auto',
-
-
-
+            maxWidth: 'auto'
               }}
             sm={6} 
             md={4}
@@ -93,23 +88,16 @@ export default function ShoppingCart(){
                     direction="row"
                 >
                     <Typography variant="h6" gutterBottom> Total: {subTotal.reduce( (acc,producto) =>acc+producto,0)}</Typography>
-                    <Button variant="contained" color="primary" onClick={handlerSubmit} >Comprar</Button>
+                    <Button variant="contained" color="primary" onClick={handlerSubmit} >  Comprar</Button>
+                    { link.length && window.location === link }
+
                 </Grid>
+
         </Grid>
+        <Footer />
+        </ThemeProvider>
+
+
     
-
-    </ThemeProvider>
-    <Footer />
-
-=======
-    <h4>usted esta aqui</h4>
-    {
-        productos.map(producto => {return <CardCart item={producto}/> })
-    } 
-    <Typography variant="h6" gutterBottom> Total: {subTotal.reduce( (acc,producto) =>acc+producto,0)}</Typography>
-    <Button variant="contained" color="primary" onClick={handlerSubmit} >  Comprar</Button>
-    { link.length && window.location === link }
->>>>>>> f421bea08c0b81e4d7588067dde98bfc22b1d513
-    </>
-)
-}
+        </>)}
+   
