@@ -52,19 +52,42 @@ export default function ShoppingCart(){
     <ThemeProvider theme={theme}>
 
     <NavMyAccount />
-    <Grid container>
+        <Grid container 
 
-    {
-        productos.map(producto => {return <CardCart item={producto}/> })
-    } 
-        <Grid>
-            <Typography variant="h6" gutterBottom> Total: {subTotal.reduce( (acc,producto) =>acc+producto,0)}</Typography>
-            <Button variant="contained" color="primary" onClick={handlerSubmit} >  Comprar</Button>
+            padding={12}
+            direction="row"
+            item
+            sx={{ 
+            maxWidth: 'auto',
+
+
+
+              }}
+            sm={6} 
+            md={4}
+            lg={3} 
+            xl={2}
+        >
+
+                <Grid 
+                    direction="column"
+                >
+        {
+            productos.map(producto => {return <CardCart item={producto}/> })
+        } 
+                </Grid>
+
+                <Grid
+                    direction="row"
+                >
+                    <Typography variant="h6" gutterBottom> Total: {subTotal.reduce( (acc,producto) =>acc+producto,0)}</Typography>
+                    <Button variant="contained" color="primary" onClick={handlerSubmit} >Comprar</Button>
+                </Grid>
         </Grid>
-    </Grid>
-        <Footer />
+    
 
     </ThemeProvider>
+    <Footer />
 
     </>
 )
