@@ -181,3 +181,11 @@ export const resetMatch = () => {
         })
     }
 }
+
+export const postCart = (carrito, user) => {
+    return dispatch => {
+        console.log("Carrito=",carrito, "USER=", user)
+        axios.post(`${URL}payment?id=${user}`, carrito)
+        .then(res => console.log(res.data))
+    }
+}
