@@ -6,7 +6,7 @@ import { Button } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { postCart } from "../../actions/actions";
 import { useAuth0 } from "@auth0/auth0-react";
-
+import axios from "axios";
 export default function ShoppingCart() {
 
   const { user } = useAuth0();
@@ -24,29 +24,26 @@ export default function ShoppingCart() {
     dispatch(postCart(productos, user.sub))
   }
 
-  const [message, setMessage] = useState('');
-  const serverUrl = process.env.REACT_APP_SERVER_URL;
+
+  const serverUrl = "http://localhost:9000/"
 
   const { getAccessTokenSilently } = useAuth0();
 
   const callSecureApi = async () => {
     try {
-      const token = await getAccessTokenSilently();
-
-      const response = await fetch(
-        `${serverUrl}payment/button`,
-        {
+        const token = await getAccessTokenSilently();
+        const response = await fetch(`${serverUrl}payment/button`,
+        { 
           headers: {
             Authorization: `Bearer ${token}`,
           },
         },
-      );
+        )
 
-      const responseData = await response.json();
+        console.log(response)
 
-      setMessage(responseData.message);
     } catch (error) {
-      setMessage(error.message);
+      console.log(error, "error");
     }
   };
 

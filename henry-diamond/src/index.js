@@ -9,10 +9,8 @@ import store from './store/store.js';
 import { BrowserRouter } from 'react-router-dom';
 const domain = process.env.REACT_APP_AUTH0_DOMAIN;
 const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
-/*REACT_APP_AUTH0_DOMAIN=dev-qkovfz2t.us.auth0.com
-REACT_APP_AUTH0_CLIENT_ID=MLEfWPyhmbMJI7btV70HIyykJlB1lex1
-REACT_APP_AUTH0_AUDIENCE=https://express.sample/
-REACT_APP_SERVER_URL=http://localhost:3000/ */
+
+
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
@@ -20,7 +18,8 @@ ReactDOM.render(
             domain={domain}
             clientId={clientId}
             redirectUri={window.location.origin}
-            cacheLocation="localstorage">
+            cacheLocation="localstorage"
+            audience="https://express.sample">
                 <BrowserRouter>
                     <App />
                 </BrowserRouter>
