@@ -107,7 +107,7 @@ export default function BasicCard(props) {
           localStorage.setItem(item.product_id ,JSON.stringify(item) )
 
         }else { alert("Para comprar un producto debes estar logueado")}
-// >>>>>>> eeee0b535fe37c40a8c1fedcf229ff92ecd00986
+
       }
       const handleDown = () => {
         if (isAuthenticated){

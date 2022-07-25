@@ -2,16 +2,16 @@ import {useState} from "react";
 import {useSelector,useDispatch} from "react-redux";
 import { useEffect } from "react";
 import CardCart from "../CardCart/CardCart";
-import NavMyAccount from '../MyAccount/NavMyAccount'
+import { Button } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
+import { postCart } from "../../actions/actions";
+import { useAuth0 } from "@auth0/auth0-react";
+import NavMyAccount from '../MyAccount/NavMyAccount';
 import { ThemeProvider } from "@material-ui/core"
 import { createTheme } from "@material-ui/core";
 import { Grid } from "@mui/material";
 import Footer from "../Footer/Footer";
 
-import { Button } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
-import { postCart } from "../../actions/actions";
-import { useAuth0 } from "@auth0/auth0-react";
 
 const theme = createTheme({
     palette: {
@@ -28,6 +28,7 @@ const theme = createTheme({
         fontWeightBold: 700
     }
   })
+
 
 export default function ShoppingCart(){
 
@@ -47,28 +48,47 @@ export default function ShoppingCart(){
     }
 
     return (
-    <div>
-    <ThemeProvider theme={theme} >
-        <NavMyAccount/>
-        <Grid container xs={12} sm={8} md={6} lg={4}>
-        {
-        objetos.map(producto => {
-            if (producto.hasOwnProperty('product_id')){
-                console.log(producto)
-                return <CardCart key={producto.product_id} item={producto}/>
-            }else return
-        })
-        }
-        </Grid>
+    <>
+    <ThemeProvider theme={theme}>
 
-    <h4>usted esta aqui</h4>
-    {
-        productos.map(producto => {return <CardCart item={producto}/> })
-} 
-            <Button variant="contained" color="primary" onClick={handlerSubmit} >  Comprar</Button>
-        <Typography variant="h6" gutterBottom> Total: {subTotal.reduce( (acc,producto) =>acc+producto,0)}</Typography>
-    <Footer />
+    <NavMyAccount />
+        <Grid container 
+
+            padding={12}
+            direction="row"
+            item
+            sx={{ 
+            maxWidth: 'auto',
+
+
+
+              }}
+            sm={6} 
+            md={4}
+            lg={3} 
+            xl={2}
+        >
+
+                <Grid 
+                    direction="column"
+                >
+        {
+            productos.map(producto => {return <CardCart item={producto}/> })
+        } 
+                </Grid>
+
+                <Grid
+                    direction="row"
+                >
+                    <Typography variant="h6" gutterBottom> Total: {subTotal.reduce( (acc,producto) =>acc+producto,0)}</Typography>
+                    <Button variant="contained" color="primary" onClick={handlerSubmit} >Comprar</Button>
+                </Grid>
+        </Grid>
+    
+
     </ThemeProvider>
-    </ div>
+    <Footer />
+
+    </>
 )
 }
