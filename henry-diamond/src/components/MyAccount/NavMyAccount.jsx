@@ -84,7 +84,6 @@ export default function NavMyAccount() {
       <AppBar position="static" >
         <Toolbar variant="dense">
             <Grid container spacing={0}>
-
                     <Grid item xs>
                         <Logo className={classes.logo} />
                     </Grid>
@@ -100,22 +99,17 @@ export default function NavMyAccount() {
                                     <div>
                                         <Button  size="large"><Profile className={classes.profile}/></Button>
                                         <ShoppingCartButton />
-
                                     </ div>
                                     ) : (
-                                      <div>
+                                    <div>
                                         <LoginButton className={classes.loginButton} />
-                                        </ div>
+                                    </ div>
 
                                     )
                                     }
 
-                </Grid>
-
-
-          
+                    </Grid>
             </Grid>
-
         </Toolbar>
       </AppBar>
     {/* </ThemeProvider> */}

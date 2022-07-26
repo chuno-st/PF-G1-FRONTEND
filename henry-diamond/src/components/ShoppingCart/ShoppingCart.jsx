@@ -63,7 +63,6 @@ export default function ShoppingCart(){
     let Productos = Object.values(miStorage)
     let objetos = Productos.map(producto => {return JSON.parse(producto)})
     let productos = objetos.filter(producto => producto.hasOwnProperty('product_id'))
-    console.log(productos.reduce( (acc,producto) =>acc+producto.cantidad))
     const priceTotal= productos.reduce( (acc,producto) =>acc+producto.price)
     const subTotal = productos.map((producto)=>producto.price*producto.cantidad)
     const link = useSelector(state => state.Cart)
@@ -100,14 +99,10 @@ export default function ShoppingCart(){
 
           <Typography align='center' gutterBottom variant='h5'> 
             <Button variant="contained" color="primary" onClick={handlerSubmit} >Comprar</Button>
-                      { link.length && window.location === link }
           </Typography>
         </Grid>
-
-        
-      </Grid>
-    <Footer />
-
-</ThemeProvider>    
+        </Grid>
+          <Footer />
+      </ThemeProvider>    
 </div>)}
    
