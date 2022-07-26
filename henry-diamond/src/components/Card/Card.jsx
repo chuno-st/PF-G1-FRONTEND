@@ -18,6 +18,10 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import LogoCard from '../Logo/LogoCard'; 
 import { ThemeProvider , createTheme} from '@material-ui/core';
+import { addFavorite } from '../../actions/actions';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { checkFav } from '../../actions/actions';
+
 
 const theme = createTheme({
   palette: {
@@ -88,7 +92,7 @@ export default function BasicCard(props) {
   const {item} = props;
       const dispatch = useDispatch();
       const navigate = useNavigate()
-      const { isAuthenticated } = useAuth0();
+      const { isAuthenticated, user } = useAuth0();
       const [cantidad, setCantindad] = useState(0);
   
   
@@ -116,13 +120,21 @@ export default function BasicCard(props) {
           console.log(item)
           localStorage.setItem(item.product_id ,JSON.stringify(item) )
         }else { alert("Para comprar un producto debes estar logueado")}}
+
+
       const handleFav = () => {
-        if (isAuthenticated){
-          localStorage.setItem(item.product_id ,JSON.stringify(item) )
-        }else {
+        if (isAuthenticated) {
+          dispatch(addFavorite(item, user))
+        } else {
           alert("Para agregar a favoritos un producto, debes estar registrado")
         }
       }
+
+      console.log(checkFav(item, user))
+
+      /* const handleCheck = () => { */
+        checkFav(item, user)
+      /* } */
       const classes = useStyles();
       // const [expanded, setExpanded] = React.useState(false);
 
@@ -151,6 +163,7 @@ export default function BasicCard(props) {
         
             <CardActions disableSpacing>
               <IconButton aria-label="add to favorites">
+                { }
                 <FavoriteIcon onClick={handleFav} />
               </IconButton>
               <IconButton>

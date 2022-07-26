@@ -15,9 +15,10 @@ export const Profile = () => {
 
   let data = {}
 
-
+ console.log(user)
   useEffect(() => {
     dispatch(addUser(data));
+
     }, [isAuthenticated]);
 
   if (isAuthenticated) {

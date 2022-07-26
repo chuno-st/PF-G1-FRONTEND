@@ -14,7 +14,7 @@ import {
 } from "./typeActions";
 // import {getProduct} from '../../../../PF-G1-BACKEND/src/controllers/productControllers'
 import axios from "axios";
-const URL = "https://pf-g1-backend-production-3e79.up.railway.app/"
+const URL =  "http://localhost:9000" //"https://pf-g1-backend-production-3e79.up.railway.app/" */
 
 
 // const axios = require('axios')
@@ -192,4 +192,19 @@ export const postCart = (carrito, user) => {
             payload: link.data
         })
     }
+}
+
+export const addFavorite = (product_id, {sub} ) => {
+    return async () => {
+        let addFavorite = await axios.post(`${URL}favs/${sub}`, product_id)
+        console.log(addFavorite.data)
+
+    }
+}
+
+export const checkFav = (product_id, { sub }) => {
+    
+         /* axios.post(`${URL}favs/checkfav/${sub}`, product_id)
+         .then(res => res.data ) */
+   return     
 }
