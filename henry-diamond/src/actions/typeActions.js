@@ -1,4 +1,4 @@
-export const URL =  "http://localhost:9000/";
+export const URL =  "https://pf-g1-backend-production-3e79.up.railway.app/";
 export const FILTER = "FILTER";
 export const ALL_ITEMS = "ALL_ITEMS";
 export const GET_PRODUCT = "GET_PRODUCT";

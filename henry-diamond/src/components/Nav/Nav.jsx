@@ -4,7 +4,6 @@ import Toolbar from "@material-ui/core/Toolbar";
 import InputBase from '@material-ui/core/InputBase';
 import  Typography  from "@material-ui/core/Typography";
 import SearchIcon from '@material-ui/icons/Search';
-import Button from '@mui/material/Button';
 import Container from '@material-ui/core/Container';
 import  {makeStyles} from "@material-ui/core/styles";
 import { useState} from "react";
@@ -14,11 +13,12 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton } from "../Login/Login";
 import { Profile } from "../Profile/Profile";
 import SideBar from "../SideBar/SideBar"
-import { brown, amber, deepOrange } from "@material-ui/core/colors";
-import { createTheme } from "@material-ui/core";
+import { createTheme, Hidden } from "@material-ui/core";
 import { ShoppingCartButton } from '../ShoppingCartButton/ShoppingCartButton'
-import Filter  from '../Filter/Filter';
 import Logo from '../Logo/Logo'
+import IconButton from '@mui/material/IconButton';
+
+
 
 const theme = createTheme({
   
@@ -39,6 +39,10 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: '#e0e0e0',
       color: '#212121',
     
+    },
+    AppBar: {
+      width: `calc(100% - ${240}px)`,
+      marginLeft: 240,
     },
     menuButton: {
       marginRight: theme.spacing(2),
@@ -66,18 +70,18 @@ const useStyles = makeStyles((theme) => ({
       boxShadow: '4px 2px 6px #7a7a7a'
     },
     searchIcon: {
-      padding: theme.spacing(0, 2),
+      padding: theme.spacing(0),
       height: '100%',
       position: 'absolute',
       pointerEvents: 'none',
       display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
+      alignItems: 'left',
+      justifyContent: 'start',
       
     },
     inputRoot: {
       color: '#827717',
-      paddingRight: 100
+      paddingRight: 10
     },
     inputInput: {
 
@@ -126,12 +130,16 @@ const useStyles = makeStyles((theme) => ({
                         <Typography className={classes.title} variant="h6" noWrap>
                             <Logo />
                         </Typography>
-                        {/* <div><Filter /></div> */}
-                            <div className={classes.search}>
+                       
+                          
+                           
+                            <div >
                                 <div className={classes.searchIcon}>
-                                <SearchIcon />
+                                
                                 </div>
                                     <InputBase
+                                        className={classes.search}
+                                        mdDown='true'
                                         placeholder="Buscar..."
                                         label="Outlined secondary"
                                         classes={{
@@ -141,14 +149,17 @@ const useStyles = makeStyles((theme) => ({
                                         inputProps={{ 'aria-label': 'search' }}
                                         onChange={handleSearchBar}
                                         />
-                                </div>
-                                <Button  
-                                      className="Search" 
+                           
+                                <IconButton  
+                                      className='Search' 
                                       type='submit' 
                                       color= 'primary'
                                       onClick={(e) => handleSubmit(e)}
-                                      > BUSCAR
-                                </Button>
+                                      > <SearchIcon />
+                                </IconButton>
+                          </div>
+                          <Hidden smDown>
+                      
                                  
                             {
                               isAuthenticated ? (
@@ -159,7 +170,10 @@ const useStyles = makeStyles((theme) => ({
                                   <LoginButton />
                                   )
                                 }
-                                <ShoppingCartButton />                         
+                                    <ShoppingCartButton />
+                        </Hidden>
+                        
+                                                         
                     </Toolbar>
                 </AppBar>
             </Container>

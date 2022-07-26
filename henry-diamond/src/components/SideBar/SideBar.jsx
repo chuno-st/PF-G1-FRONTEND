@@ -117,7 +117,7 @@ export default function SideBar() {
       <CssBaseline />
         <Toolbar>
           <IconButton
-            color="primary"
+            color="black"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
@@ -170,19 +170,24 @@ export default function SideBar() {
               isAuthenticated ? (
                 
               <div>
+                <div>
                 <List>
                   <ListItem button>
                     <ListItemText className={classes.text}>{<UserInfo />}</ListItemText>
                   </ListItem>
                 </List>
-                <Divider />        <Divider />
+                </div>
 
-
+                <div>
                 <List>
                   <ListItem button>
                     <ListItemText className={classes.text}>{<Profile />}</ListItemText>
                   </ListItem>
                 </List>
+                </div>
+
+                
+
               </div>
           ) : (
             <div>

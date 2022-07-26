@@ -3,8 +3,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 import Button from '@mui/material/Button';
 import PersonIcon from '@material-ui/icons/Person';
-import { brown, amber, deepOrange } from "@material-ui/core/colors";
-import { createTheme } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyle = makeStyles({
@@ -23,6 +21,7 @@ export const LoginButton = () => {
   return (
     <div>
             <Button
+            variant='#757575'
             className={classes.styleButton}
             startIcon={<PersonIcon />} 
             onClick={() => loginWithRedirect()}>Iniciar Sesión</Button>

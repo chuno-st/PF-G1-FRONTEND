@@ -14,6 +14,7 @@ import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 import AddIcon from '@material-ui/icons/Add';
 import { blueGrey } from '@material-ui/core/colors';
 import { useAuth0 } from "@auth0/auth0-react";
+import Logo from '../Logo/Logo'
 import {useState} from "react";
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
@@ -43,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     transform: 'rotate(180deg)',
   },
   avatar: {
-    backgroundColor: '#4fc3f7',
+    backgroundColor: 'white',
   },
 }));
 
@@ -74,7 +75,7 @@ export default function CardCart(props) {
         if (isAuthenticated){
           localStorage.setItem(item.product_id ,JSON.stringify(item) )
         }else {
-          alert("Para favear un producto debes estar logueado")
+          alert("Para agregar un producto a favoritos, debes estar logueado")
         }
       }
       const classes = useStyles();
@@ -104,14 +105,10 @@ export default function CardCart(props) {
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}  >
-            HD
+            <Logo />
           </Avatar>
         }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
+        
         variant='h2'
         title={(item.name.toUpperCase())}
         
@@ -120,7 +117,7 @@ export default function CardCart(props) {
       <CardMedia
         className={classes.media} 
         image={item.image}
-        title="Paella dish"
+        title="imagen producto"
       />
    
       <CardActions disableSpacing>
