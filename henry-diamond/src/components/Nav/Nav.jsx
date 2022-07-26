@@ -4,7 +4,6 @@ import Toolbar from "@material-ui/core/Toolbar";
 import InputBase from '@material-ui/core/InputBase';
 import  Typography  from "@material-ui/core/Typography";
 import SearchIcon from '@material-ui/icons/Search';
-import Button from '@mui/material/Button';
 import Container from '@material-ui/core/Container';
 import  {makeStyles} from "@material-ui/core/styles";
 import { useState} from "react";
@@ -82,7 +81,7 @@ const useStyles = makeStyles((theme) => ({
     },
     inputRoot: {
       color: '#827717',
-      paddingRight: 100
+      paddingRight: 10
     },
     inputInput: {
 

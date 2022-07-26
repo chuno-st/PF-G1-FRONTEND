@@ -134,7 +134,7 @@ export default function BasicCard(props) {
             <CardHeader
               className={classes.text}
               avatar={
-                <Avatar aria-label="recipe" className={classes.avatar}  >
+                <Avatar aria-label="logo" className={classes.avatar} variant="square">
                   <LogoCard />
                 </Avatar>
               }
