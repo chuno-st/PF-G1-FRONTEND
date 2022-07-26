@@ -4,18 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 import {getProductById, FilterBy, findMatch} from '../../actions/actions';
 import NavMyAccount from "../MyAccount/NavMyAccount";
 import Footer from "../Footer/Footer";
-import { Card , CardHeader, Avatar, IconButton, CardMedia, CardActions, Box } from "@material-ui/core";
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { Box } from "@material-ui/core";
 import BasicCard from "../Card/Card";
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import { useNavigate } from 'react-router-dom';
-import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-import AddIcon from '@material-ui/icons/Add';
 import {CssBaseline} from '@material-ui/core';
-
+import Typography from "@material-ui/core/Typography";
 import Button from '@material-ui/core/Button'
 import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
@@ -102,7 +96,7 @@ export default function Detail () {
             justifyContent="center"
             alignItems="center">
 
-            <Grid item xs={6}
+            <Grid item xs={6} 
             direction="column"
             justifyContent="center"
             alignItems="center"
@@ -121,7 +115,7 @@ export default function Detail () {
            </Grid> 
           
          
-           <Grid item xs={12} md={6}
+           <Grid item xs={6} md={6}
            container
            direction="row"
            justifyContent="center"
@@ -129,24 +123,35 @@ export default function Detail () {
            >
             <h2>{product.description}</h2>
             </Grid>
-           
 
-          <Grid item xs={12} md={6}
+            <Typography align='center' gutterBottom variant='h5'> 
+              <Button variant= 'contained' onClick={handleclick}>Ver productos similares</Button>          
+            </Typography>
+            
+              
+           
+          <Grid    
             container
             direction="row"
-            justifyContent="center"
             alignItems="center"
+            justifyContent="space-between"
             // marginBotton='10px'
           > 
-            <Button variant= 'contained' onClick={handleclick}>Ver productos similares</Button>
             { matches.map( i => {
               if(i.name === product.name) {return}
-              return <BasicCard key={i.id} item={i}></BasicCard>
+              return (
+
+                <Grid  xs={12} sm={12} md={4} lg={3} xl={3} container > 
+                  <BasicCard key={i.id} item={i}></BasicCard>
+                </Grid> 
+            )
+              
               })
             } 
           </Grid> 
     </Grid>
     <Footer />
+
     </ThemeProvider>
     </div>
     
