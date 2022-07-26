@@ -19,6 +19,7 @@ export default function CrearProducto() {
     const [data, setData] = useState([]);
 
     const [input, setInput] = useState({
+        id:"",
         nombre: "",
         descripcion: "",
         precio: "",
@@ -30,6 +31,7 @@ export default function CrearProducto() {
     });
 
     const [error, setError] = useState({
+        id:"",
         nombre: "",
         descripcion: "",
         precio: "",
@@ -60,23 +62,6 @@ export default function CrearProducto() {
         });
     };
 
-    // function handleSubmit(e) {
-    //     e.preventDefault();
-    //     if (Object.keys(error).length === 0) {
-    //         setInput({
-    //             nombre: "",
-    //             descripcion: "",
-    //             precio: "",
-    //             imagen: "",
-    //             categoria: "",
-    //             subCategoria: "",
-    //             material_id: "",
-    //             //stock
-    //         });
-    //     } else {
-    //         alert("Por favor completa todas las celdas");
-    //     }
-    // }
 
     return (
         <div
@@ -89,6 +74,10 @@ export default function CrearProducto() {
                 alignItems: "center",
             }}
         >
+            
+          
+            
+            
             <Container>
                 <Grid container>
                     <Grid item md={12} margin={1.5}>
@@ -176,23 +165,13 @@ export default function CrearProducto() {
                         </FormControl>
                     </Grid>
                 </Grid>
-                {/* <VistaPrevia
-                    nombre={input.nombre}
-                    descripcion={input.descripcion}
-                    precio={input.precio}
-                    imagen={input.imagen}
-                    categoria={input.categoria}
-                    subcategoria={input.subcategoria}
-                    material_id={input.material_id}
-                    //stock
-                /> */}
                 <Button
                     variant="container"
                     color="primary"
                     textAlign="center"
                     onSubmit={handleCreate}
                 >
-                    Crear Producto
+                    Modificar Producto
                 </Button>
             </Container>
         </div>
