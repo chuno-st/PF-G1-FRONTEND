@@ -11,7 +11,7 @@ import config from './config'
 /*REACT_APP_AUTH0_DOMAIN=dev-qkovfz2t.us.auth0.com
 REACT_APP_AUTH0_CLIENT_ID=MLEfWPyhmbMJI7btV70HIyykJlB1lex1
 REACT_APP_AUTH0_AUDIENCE=https://express.sample/
-REACT_APP_SERVER_URL=http://localhost:3000/ */
+REACT_APP_SERVER_URL=http://localhost:3000/*/
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>

@@ -44,7 +44,7 @@ return (
       <Grid container 
       padding={2}
            >
-        <Typography component="div" style={{ backgroundColor: '#bababa' }}>
+        
      
             <Box 
               sx={{ 
@@ -109,7 +109,7 @@ return (
                 <Button onClick={handleClick} disabled={products.length!==12} variant='outlined' color='inherit'>Siguiente</Button> 
             </Grid>
           </Grid>
-        </Typography>
+        
       </Grid>
     </div>
 )
