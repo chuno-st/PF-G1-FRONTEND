@@ -10,8 +10,8 @@ import { capitalizeLetter } from "../../../Utils/utils";
 import  axios from "axios";
 import VistaPrevia from "./VistaPrevia";
 
-const URL = "http://localhost:9000/product/";
-
+//import {URL} from "../../../index"
+const URL = "https://pf-g1-backend-production-3e79.up.railway.app/"
 export default function CrearProducto() {
     const categorias = useSelector((state) => state.category);
     const subCategorias = useSelector((state) => state.subcategory);
@@ -21,7 +21,7 @@ export default function CrearProducto() {
     const [input, setInput] = useState({
         name: "",
         description: "",
-        price: 5000,
+        price: "",
         image: "",
         category_id: "",
         subCategory_id: "",
@@ -32,7 +32,7 @@ export default function CrearProducto() {
     const [error, setError] = useState({
         name: "",
         description: "",
-        price:0,
+        price:"",
         image: "",
         category_id: "",
         subCategory_id: "",
@@ -55,7 +55,7 @@ export default function CrearProducto() {
     }
 
     const handleCreate = async () => {
-        const response = await axios.post(URL, input)
+        const response = await axios.post(`${URL}product`, input)
         return setData(data.concat(response));
         
     };
@@ -113,18 +113,17 @@ export default function CrearProducto() {
                             />
                         </FormControl>
                     </Grid>
-                    {/* <Grid item md={12} margin={1.5}>
+                    <Grid item md={12} margin={1.5}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField 
                                 onChange={handleChange}
                                 error={error.price }
                                 label="Precio"
                                 name="price"
-                                type="number"
                                 helperText={error.price}
                             />
                         </FormControl>
-                    </Grid> */}
+                    </Grid>
                     <Grid item md={12} margin={1.5}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
