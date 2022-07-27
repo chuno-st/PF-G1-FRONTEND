@@ -9,9 +9,9 @@ import Validate from "../Utils/Validate";
 import { capitalizeLetter } from "../../../Utils/utils";
 import { axios } from "axios";
 import VistaPrevia from "./VistaPrevia";
+import config from "../../config"
 
-//import {URL} from "../../index.js"
-const URL = "https://pf-g1-backend-production-3e79.up.railway.app/product/";
+const URL = config.URL;
 
 export default function CrearProducto() {
     const categorias = useSelector((state) => state.category);
@@ -58,7 +58,7 @@ export default function CrearProducto() {
     }
 
     const handleCreate = async () => {
-        await axios.post(URL, input).then((response) => {
+        await axios.put(`${URL}product`, input).then((response) => {
             setData(data.concat(response.data));
         });
     };

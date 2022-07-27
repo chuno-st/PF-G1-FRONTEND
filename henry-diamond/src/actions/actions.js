@@ -12,10 +12,10 @@ import {
     CREATE_CATEGORY,
     CREATE_SUBCATEGORY,
 } from "./typeActions";
-
+import config from "../config"
 import axios from "axios";
 //import {URL} from "../index.js"
-const URL = "https://pf-g1-backend-production-3e79.up.railway.app/"
+const URL = config.URL
 //import {URL} from "../index.js"
 
 
