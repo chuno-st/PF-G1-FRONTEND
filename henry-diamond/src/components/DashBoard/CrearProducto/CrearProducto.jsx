@@ -10,7 +10,7 @@ import { capitalizeLetter } from "../../../Utils/utils";
 import  axios from "axios";
 import VistaPrevia from "./VistaPrevia";
 
-import {URL} from "../../../index"
+import {URL} from "../../../index.js"
 //const URL = "https://pf-g1-backend-production-3e79.up.railway.app/"
 export default function CrearProducto() {
     const categorias = useSelector((state) => state.category);
