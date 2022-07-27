@@ -19,7 +19,8 @@ ReactDOM.render(
             domain={domain}
             clientId={clientId}
             redirectUri={window.location.origin}
-            cacheLocation="localstorage">
+            cacheLocation="localstorage"
+            audience='https://express.sample'>
                 <BrowserRouter>
                     <App />
                 </BrowserRouter>

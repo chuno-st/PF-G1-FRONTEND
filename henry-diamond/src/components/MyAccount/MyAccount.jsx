@@ -3,27 +3,22 @@ import SearchAppBar from "../Nav/Nav";
 import Footer from "../Footer/Footer";
 import { ThemeProvider } from "@material-ui/core"
 import { createTheme } from "@material-ui/core";
-import { brown, amber, deepOrange } from "@material-ui/core/colors";
 import { Link } from 'react-router-dom';
-import NavPelado from './Navpelado';
+import NavMyAccount from './NavMyAccount';
 import { useAuth0 } from "@auth0/auth0-react";
-import './MyAccount.css'
+import './MyAccount.css';
+import Divider from '@material-ui/core/Divider';
 
 
 const theme = createTheme({
   palette: {
     primary:{
-      main: brown[200]
+      main: '#e0e0e0'
     },
-    secondary:{
-      main: amber[500]
-    },
-    warning:{
-      main: deepOrange[500]
-    }
+
   },
   typography: {
-      fontFamily: 'Arima',
+      fontFamily: 'Roboto',
       fontWeightLight: 400,
       fontWeightRegular: 500,
       fontWeightMedium: 600,
@@ -32,8 +27,10 @@ const theme = createTheme({
 })
 
 export default function MyAccount() {
+  
   const { user, isAuthenticated, isLoading } = useAuth0();
   console.log(isAuthenticated, "componente MY ACOUNT")
+
   return (
 <div>
     <ThemeProvider theme={theme}>
@@ -42,8 +39,12 @@ export default function MyAccount() {
             width:'100%'
           }}>
             <Grid item xs={12} sm={12} xl={12}>
-              <NavPelado></NavPelado>
-              </Grid>
+              <NavMyAccount/>              
+            </Grid>
+            <Grid item xs={12} sm={12} xl={12}>
+              <Typography>Bienvenido, {user.name}</Typography>
+            </Grid>
+
             <Grid item xs={12} sm={12} xl={12}>
               <div className='divDatos'>
                 <Avatar src={user.picture} sx={{
@@ -51,15 +52,17 @@ export default function MyAccount() {
                   hight: 200
                 }}  
                 ></Avatar>
-                <Typography>Bienvenido, {user.name}</Typography>
                 <Typography>{user.email}</Typography>
                 
               </div>
-       
               </Grid>
+            
             <Grid item xs={12} sm={12} xl={12}>
-              <Footer/>
-              </Grid>
+            
+    
+                <Footer></Footer>
+            
+            </Grid>
           </Grid>
       </ThemeProvider>
 </div>

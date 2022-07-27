@@ -49,6 +49,7 @@ export default function FilterMaterial() {
         setFilter({...filter, price: newValue.value})}}
       renderInput={(params) => <TextField {...params} label="POR PRECIOS" />}
       />
+      
     <Autocomplete
       disablePortal
       id="combo-box-demo"

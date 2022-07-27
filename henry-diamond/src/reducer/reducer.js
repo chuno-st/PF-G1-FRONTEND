@@ -1,4 +1,4 @@
-import { FILTER, ALL_ITEMS, ALL_CAREGORY, ALL_SUBCATEGORY, SET_PAGINADO, SET_CATEGORY, SET_SUBCATEGORY, CHECK_ROLE } from "../actions/typeActions";
+import { FILTER, ALL_ITEMS, ALL_CAREGORY, ALL_SUBCATEGORY, SET_PAGINADO, SET_CATEGORY, SET_SUBCATEGORY, CHECK_ROLE, CREATE_PRODUCT } from "../actions/typeActions";
 import {GET_PRODUCT} from '../actions/typeActions'
 const inicialState = {
     allProducts: [],
@@ -13,7 +13,8 @@ const inicialState = {
     product:{},
     matches: [],
     role:"none",
-    shoppingCart: []
+    shoppingCart: [],
+    Cart:""
 };
 
 const reducer = (state = inicialState, { type, payload }) => {
@@ -78,9 +79,20 @@ const reducer = (state = inicialState, { type, payload }) => {
           shoppingCart: [...state.shoppingCart, payload] 
         }
        }
+       case CREATE_PRODUCT:
+       return {
+        ...state,
+        items: state.items.concat(payload),
+        };
        case 'RESET_MATCH': {
         return {...state, matches:[]}
        }
+
+       case 'POST_CART':
+        return {
+          ...state,
+          Cart: payload
+        }
 
 
         default:

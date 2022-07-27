@@ -4,6 +4,9 @@ import './Profile.css'
 import React, {useEffect, useState}from "react";
 import { addUser } from "../../actions/actions";
 import { useDispatch, useSelector } from "react-redux";
+import Divider from '@material-ui/core/Divider';
+
+
 
 
 export const Profile = () => {
@@ -43,7 +46,7 @@ export const Profile = () => {
         {/* <h2 className="name">{user.name}</h2>
         <p className="email">{user.email}</p> */}
         {/* </div> */}
-        <LogoutButton  className="logOut" />
+        <LogoutButton className="logOut" />
       </div>
     )
   );

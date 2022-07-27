@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
     borderBlockColor: 'secondary'
   },
   drawerHeader: {
-    paddingTop: 80,
+    paddingTop: 60,
     color: '#ff6d00',
     display: 'flex',
     alignItems: 'center',
@@ -97,7 +97,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PersistentDrawerLeft() {
+export default function SideBar() {
   const { loginWithRedirect,  user, isAuthenticated, isLoading } = useAuth0();
   const classes = useStyles();
   
@@ -117,7 +117,7 @@ export default function PersistentDrawerLeft() {
       <CssBaseline />
         <Toolbar>
           <IconButton
-            color="primary"
+            color="black"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
@@ -170,19 +170,24 @@ export default function PersistentDrawerLeft() {
               isAuthenticated ? (
                 
               <div>
+                <div>
                 <List>
                   <ListItem button>
                     <ListItemText className={classes.text}>{<UserInfo />}</ListItemText>
                   </ListItem>
                 </List>
-                <Divider />        <Divider />
+                </div>
 
-
+                <div>
                 <List>
                   <ListItem button>
                     <ListItemText className={classes.text}>{<Profile />}</ListItemText>
                   </ListItem>
                 </List>
+                </div>
+
+                
+
               </div>
           ) : (
             <div>

@@ -6,7 +6,11 @@ import {
     ALL_SUBCATEGORY, 
     SET_CATEGORY, 
     SET_SUBCATEGORY,
-    CHECK_ROLE
+    ADD_USER,
+    CHECK_ROLE,
+    CREATE_PRODUCT,
+    CREATE_CATEGORY,
+    CREATE_SUBCATEGORY,
 } from "./typeActions";
 
 import axios from "axios";
@@ -157,13 +161,36 @@ export const addShoppingCart = (obj)=>{
             payload: obj
         })
     }
-
 }
+
+export const createProduct = (body) => {
+    return async function () {
+      try {
+        await axios.post(`${URL}`, body);
+        alert("El producto fue creado correctamente");
+        } catch (err) {
+        console.log(err);
+      }
+    };
+  };
+
 export const resetMatch = () => {
     return dispatch => {
         dispatch({
             type: 'RESET_MATCH',
             payload: null
+        })
+    }
+}
+
+export const postCart = (carrito, user) => {
+    return async dispatch => {
+        console.log("Carrito=",carrito, "USER=", user)
+         let link = await axios.post(`${URL}payment?id=${user}`, carrito)
+         console.log(link)
+         return dispatch({
+            type: 'POST_CART',
+            payload: link.data
         })
     }
 }

@@ -1,42 +1,62 @@
 import Card from '@mui/material/Card';
-import { Box } from '@mui/material';
 import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import { capitalizeLetter } from "../../Utils/utils.js"
 import { useNavigate } from 'react-router-dom';
-import {addShoppingCart} from '../../actions/actions.js'
 import { useDispatch } from 'react-redux';
-  import React from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
-// import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
-// import CardMedia from '@material-ui/core/CardMedia';
-// import CardContent from '@material-ui/core/CardContent';
-// import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
-// import Typography from '@material-ui/core/Typography';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import AddIcon from '@material-ui/icons/Add';
+import { blueGrey } from '@material-ui/core/colors';
+import { useAuth0 } from "@auth0/auth0-react";
+import {useState} from "react";
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import LogoCard from '../Logo/LogoCard'; 
+import { ThemeProvider , createTheme} from '@material-ui/core';
 
-
-
+const theme = createTheme({
+  palette: {
+    primary:{
+      main: '#1976d2'
+    },
+    secondary:{
+      main: '#9c27b0'
+    },
+    warning:{
+      main: '#ed6c02'
+    },
+    text: {
+      primary: 'rgba(0,0,0,0.87)',
+      secondary: 'rgba(0,0,0,0.6)',
+      disabled: 'rgba(0,0,0,0.38)'
+    }
+  },
+  typography: {
+      fontFamily: 'Roboto',
+      fontWeightLight: 400,
+      fontWeightRegular: 500,
+      fontWeightMedium: 600,
+      fontWeightBold: 700
+  },
+})
 
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
-    background: 'LightBlue'
+    
+  },
+  palette:{
+    backgroundColor: blueGrey
   },
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
+    
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -49,120 +69,109 @@ const useStyles = makeStyles((theme) => ({
     transform: 'rotate(180deg)',
   },
   avatar: {
-    backgroundColor: 'grey',
+    backgroundColor: 'white',
+    variant: "square",
+    height: 'auto' ,
+    width: 'auto',
+    
+  },
+  text:{
+    alignItems:'right',
   },
 }));
 
 
 
-// export default function BasicCard(props) {
-//     const {item} = props;
-//     const dispatch = useDispatch();
-//     const navigate = useNavigate()
-
-//      const handleclick = () => {
-//       navigate(`/${item.product_id}`)
-
-//     }
-//      const handleBuy = () => {
-//       localStorage.setItem(item.product_id ,JSON.stringify(item) )
-//     }
-     
-  // return (
-    
-  //   <Card sx={{ maxWidth: 345,height:'100%' }} className="card">
-  //     <CardMedia
-  //       component="img"
-  //       height="350"
-  //       width="350"
-  //       image={item.image}
-  //       alt="green iguana"
-  //     />
-  //     <CardContent>
-  //       <Typography gutterBottom variant="h6" component="div">
-  //         {capitalizeLetter(item.name)}
-  //       </Typography>
-  //       <Typography variant="body2" color="text.secondary">
-  //         {"$"+item.price}
-  //       </Typography>
-  //     </CardContent>
-  //     <CardActions>
-  //       <Button size="small" className='buttonCard' onClick={handleclick}>Detalles</Button>
-  //       <Button size="small" className='buttonCard' onClick={handleBuy}>Agregar al carrito</Button>
-        
-  //     </CardActions>
-  //   </Card>
-   
-  //  );
-  // }
 
 
-
-export default function RecipeReviewCard(props) {
+export default function BasicCard(props) {
   const {item} = props;
       const dispatch = useDispatch();
       const navigate = useNavigate()
+      const { isAuthenticated } = useAuth0();
+      const [cantidad, setCantindad] = useState(0);
+  
   
        const handleclick = () => {
-        console.log('aca entro manga de mancos')
         navigate(`/${item.product_id}`,{ replace: true })
   
       }
-       const handleBuy = () => {
-        console.log('aca estoy')
-        localStorage.setItem(item.product_id ,JSON.stringify(item) )
+      if(item.cantidad===0){
+          localStorage.removeItem(item.product_id ,JSON.stringify(item) )
       }
+      const handleUp = () => {
+        if (isAuthenticated){
+          setCantindad(cantidad+1)
+          item.cantidad=cantidad+1;
+          console.log(item)
+          localStorage.setItem(item.product_id ,JSON.stringify(item) )
 
+        }else { alert("Para comprar un producto debes estar logueado")}
+
+      }
+      const handleDown = () => {
+        if (isAuthenticated){
+          setCantindad(cantidad-1)
+          item.cantidad=cantidad-1;
+          console.log(item)
+          localStorage.setItem(item.product_id ,JSON.stringify(item) )
+        }else { alert("Para comprar un producto debes estar logueado")}}
+      const handleFav = () => {
+        if (isAuthenticated){
+          localStorage.setItem(item.product_id ,JSON.stringify(item) )
+        }else {
+          alert("Para agregar a favoritos un producto, debes estar registrado")
+        }
+      }
       const classes = useStyles();
-      const [expanded, setExpanded] = React.useState(false);
+      // const [expanded, setExpanded] = React.useState(false);
 
      
 
   return (
-    <Card  sx={{ maxWidth: 345,height:'100%' }} className={classes.root}>
-      <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}  >
-            HD
-          </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        variant='h2'
-        title={(item.name.toUpperCase())}
-        
-      />
+      <ThemeProvider theme={theme}>
+          <Card  md={{ maxWidth: '100%',height:'100%' }}>
+            <CardHeader
+              className={classes.text}
+              avatar={
+                <Avatar aria-label="logo" className={classes.avatar} variant="square">
+                  <LogoCard />
+                </Avatar>
+              }
+              variant='h1'
+              title={(item.name.toUpperCase())}
+              
+            />
 
-      <CardMedia
-        className={classes.media} 
-        image={item.image}
-        title="Paella dish"
-      />
-     
-      {/* <CardContent> */}
-        {/* <Typography variant="body2" color="textSecondary" component="p">
-          Color - Uso - Aclaración del trabajado ( si es subcategoría). Ej: Pulsera Violera, biyutería, piedra rodada perforada, cadena de plata.
-        </Typography> */}
-      {/* </CardContent> */}
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton>
-          {"$"+item.price}
-        </IconButton>
-        <IconButton aria-label="share" >
-          <AddShoppingCartIcon onClick={handleBuy} />
-        </IconButton>
-        <IconButton arial-label='detail' onClick={handleclick}>
-          <AddIcon />
-        </IconButton>
-      </CardActions>
-      
-    </Card>
+            <CardMedia
+              className={classes.media} 
+              image={item.image}
+              title="Imagen del producto"
+            />
+        
+            <CardActions disableSpacing>
+              <IconButton aria-label="add to favorites">
+                <FavoriteIcon onClick={handleFav} />
+              </IconButton>
+              <IconButton>
+                {"$"+item.price}
+              </IconButton>
+              <IconButton aria-label="share" >
+                { cantidad===0
+                ?  <AddShoppingCartIcon onClick={handleUp} />
+                : <><KeyboardArrowUpIcon onClick={handleUp}/><p>{cantidad}</p> <KeyboardArrowDownIcon onClick={handleDown} /></>
+
+                }
+              
+                
+              </IconButton>
+              <IconButton arial-label='detail' onClick={handleclick}>
+                <AddIcon />
+              </IconButton>
+            </CardActions>
+            
+          </Card>
+    </ThemeProvider>
   );
 }
 
