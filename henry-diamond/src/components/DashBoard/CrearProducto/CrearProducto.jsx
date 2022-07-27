@@ -14,6 +14,7 @@ import VistaPrevia from "./VistaPrevia";
 //import {URL} from "../../../index.js"
 const {URL} = require('../../../config')
 export default function CrearProducto() {
+    const navigate = useNavigate()
     const categorias = useSelector((state) => state.category);
     const subCategorias = useSelector((state) => state.subcategory);
 
@@ -58,7 +59,7 @@ export default function CrearProducto() {
     const handleCreate = async () => {
         const response = await axios.post(`${URL}product`, input)
         //return setData(data.concat(response));
-        useNavigate(0)
+        navigate(0)
     };
 
     // function handleSubmit(e) {
