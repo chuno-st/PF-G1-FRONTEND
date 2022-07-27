@@ -14,6 +14,7 @@ const inicialState = {
     matches: [],
     role:"none",
     shoppingCart: []
+    
 };
 
 const reducer = (state = inicialState, { type, payload }) => {

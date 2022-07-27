@@ -7,10 +7,10 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Validate from "../Utils/Validate";
 import { capitalizeLetter } from "../../../Utils/utils";
-import { axios } from "axios";
+import  axios from "axios";
 import VistaPrevia from "./VistaPrevia";
 
-const URL = "https://pf-g1-backend-production-3e79.up.railway.app/product/";
+const URL = "http://localhost:9000/product/";
 
 export default function CrearProducto() {
     const categorias = useSelector((state) => state.category);
@@ -19,23 +19,23 @@ export default function CrearProducto() {
     const [data, setData] = useState([]);
 
     const [input, setInput] = useState({
-        nombre: "",
-        descripcion: "",
-        precio: "",
-        imagen: "",
-        categoria: "",
-        subCategoria: "",
+        name: "",
+        description: "",
+        price: 5000,
+        image: "",
+        category_id: "",
+        subCategory_id: "",
         material_id: "",
         //stock
     });
 
     const [error, setError] = useState({
-        nombre: "",
-        descripcion: "",
-        precio: "",
-        imagen: "",
-        categoria: "",
-        subCategoria: "",
+        name: "",
+        description: "",
+        price:0,
+        image: "",
+        category_id: "",
+        subCategory_id: "",
         material_id: "",
         //stock
     });
@@ -55,9 +55,9 @@ export default function CrearProducto() {
     }
 
     const handleCreate = async () => {
-        await axios.post(URL, input).then((response) => {
-            setData(data.concat(response.data));
-        });
+        const response = await axios.post(URL, input)
+        return setData(data.concat(response));
+        
     };
 
     // function handleSubmit(e) {
@@ -95,10 +95,10 @@ export default function CrearProducto() {
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
-                                error={error.nombre || ""}
+                                error={error.name }
                                 label="Nombre"
-                                name="nombre"
-                                helperText={error.nombre}
+                                name="name"
+                                helperText={error.name}
                             />
                         </FormControl>
                     </Grid>
@@ -106,32 +106,33 @@ export default function CrearProducto() {
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
-                                error={error.descripcion || ""}
+                                error={error.description }
                                 label="Descripcion"
-                                name="descripcion"
-                                helperText={error.descripcion}
+                                name="description"
+                                helperText={error.description}
                             />
                         </FormControl>
                     </Grid>
-                    <Grid item md={12} margin={1.5}>
+                    {/* <Grid item md={12} margin={1.5}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
-                            <TextField
+                            <TextField 
                                 onChange={handleChange}
-                                error={error.precio || ""}
+                                error={error.price }
                                 label="Precio"
-                                name="precio"
-                                helperText={error.precio}
+                                name="price"
+                                type="number"
+                                helperText={error.price}
                             />
                         </FormControl>
-                    </Grid>
+                    </Grid> */}
                     <Grid item md={12} margin={1.5}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
-                                error={error.imagen || ""}
+                                error={error.image }
                                 label="Imagen"
-                                name="imagen"
-                                helperText={error.imagen}
+                                name="image"
+                                helperText={error.image}
                             />
                         </FormControl>
                     </Grid>
@@ -139,15 +140,15 @@ export default function CrearProducto() {
                         <FormControl sx={{ minWidth: 230 }}>
                             <InputLabel>Categoria</InputLabel>
                             <Select
-                                error={error.categoria || ""}
+                                error={error.category_id }
                                 label="Categorias"
-                                name="categoria"
+                                name="category_id"
                                 onChange={handleChange}
-                                helperText={error.categoria}
-                            >
+                                helperText={error.category_id}
+                              >
                                 {categorias.map((c) => {
                                     return (
-                                        <MenuItem value={c.category_id}>
+                                        <MenuItem value={c.category_id.toString()}>
                                             {capitalizeLetter(c.name)}
                                         </MenuItem>
                                     );
@@ -159,15 +160,15 @@ export default function CrearProducto() {
                         <FormControl sx={{ minWidth: 230 }}>
                             <InputLabel>Sub-Categoria</InputLabel>
                             <Select
-                                error={error.subCategoria || ""}
+                                error={error.subCategory_id }
                                 label="Sub Categorias"
-                                name="subCategorias"
+                                name="subCategory_id"
                                 onChange={handleChange}
-                                helperText={error.subCategoria}
-                            >
+                                helperText={error.subCategory_id}
+                                >
                                 {subCategorias.map((c) => {
                                     return (
-                                        <MenuItem value={c.subCategory_id}>
+                                        <MenuItem value={c.subCategory_id.toString()}>
                                             {capitalizeLetter(c.name)}
                                         </MenuItem>
                                     );
@@ -177,12 +178,12 @@ export default function CrearProducto() {
                     </Grid>
                 </Grid>
                 {/* <VistaPrevia
-                    nombre={input.nombre}
-                    descripcion={input.descripcion}
-                    precio={input.precio}
-                    imagen={input.imagen}
-                    categoria={input.categoria}
-                    subcategoria={input.subcategoria}
+                    nombre={input.name}
+                    descripcion={input.description}
+                    precio={input.price}
+                    imagen={input.image}
+                    categoria={input.category}
+                    subcategoria={input.subCategory}
                     material_id={input.material_id}
                     //stock
                 /> */}
@@ -190,7 +191,7 @@ export default function CrearProducto() {
                     variant="container"
                     color="primary"
                     textAlign="center"
-                    onSubmit={handleCreate}
+                    onClick={handleCreate}
                 >
                     Crear Producto
                 </Button>
