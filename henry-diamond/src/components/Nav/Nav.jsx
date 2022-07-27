@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: (theme.palette.common.white, 0.25),
       },
       marginLeft: 0,
-      width: '100%',
+      width: '70%',
       [theme.breakpoints.up('sm')]: {
         marginLeft: theme.spacing(1),
         width: 'auto',
@@ -123,7 +123,6 @@ const useStyles = makeStyles((theme) => ({
 
     return (
         <div >
-            <Container maxWidth="xl" >
                 <AppBar className={classes.root} position="static" >
                     <Toolbar>
                       <SideBar />
@@ -153,7 +152,6 @@ const useStyles = makeStyles((theme) => ({
                                 <IconButton  
                                       className='Search' 
                                       type='submit' 
-                                      color= 'primary'
                                       onClick={(e) => handleSubmit(e)}
                                       > <SearchIcon />
                                 </IconButton>
@@ -176,7 +174,6 @@ const useStyles = makeStyles((theme) => ({
                                                          
                     </Toolbar>
                 </AppBar>
-            </Container>
           
         </div>
    

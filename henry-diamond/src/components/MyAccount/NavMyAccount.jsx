@@ -81,19 +81,19 @@ export default function NavMyAccount() {
   return (
     <div className={classes.root}>
       {/* <ThemeProvider theme={theme}> */}
-      <AppBar position="static" >
+      <AppBar position="fixed" >
         <Toolbar variant="dense">
-            <Grid container spacing={0}>
-                    <Grid item xs>
+            <Grid container xs={12}>
+
+                    <Grid item xs={12} sm={4} xl={3}>
                         <Logo className={classes.logo} />
                     </Grid>
 
-                    <Grid item xs>
+                    <Grid item xs={12} sm={4} xl={3}>
                         <Button size="large" variant="contained" className={classes.home} onClick={handleclick} > HOME </Button>
                     </Grid>
                     
-
-                    <Grid item xs>
+                    <Grid item xs={12} sm={4} xl={3}>
                     {
                                 isAuthenticated ? (
                                     <div>
