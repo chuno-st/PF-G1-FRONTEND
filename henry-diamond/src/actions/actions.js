@@ -15,7 +15,7 @@ import {
 // import {getProduct} from '../../../../PF-G1-BACKEND/src/controllers/productControllers'
 import axios from "axios";
 const URL = "https://pf-g1-backend-production-3e79.up.railway.app/"
-
+//import {URL} from "../index"
 
 // const axios = require('axios')
 

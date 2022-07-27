@@ -20,6 +20,7 @@ import IconButton from '@mui/material/IconButton';
 
 
 
+
 const theme = createTheme({
   
   typography: {
@@ -148,9 +149,16 @@ const useStyles = makeStyles((theme) => ({
                                         inputProps={{ 'aria-label': 'search' }}
                                         onChange={handleSearchBar}
                                         />
+<<<<<<< HEAD
                            
                                 <IconButton  
                                       className='Search' 
+=======
+                                </div>
+                              
+                                <Button  
+                                      className="Search" 
+>>>>>>> bb90e9d4e44b91b8a884c8adbf0266f53240e487
                                       type='submit' 
                                       onClick={(e) => handleSubmit(e)}
                                       > <SearchIcon />

@@ -13,8 +13,13 @@ const inicialState = {
     product:{},
     matches: [],
     role:"none",
+<<<<<<< HEAD
     shoppingCart: [],
     Cart:""
+=======
+    shoppingCart: []
+    
+>>>>>>> bb90e9d4e44b91b8a884c8adbf0266f53240e487
 };
 
 const reducer = (state = inicialState, { type, payload }) => {
@@ -68,7 +73,7 @@ const reducer = (state = inicialState, { type, payload }) => {
             }  
 
         case CHECK_ROLE:
-          console.log(payload, "estoy en reducer")
+          // console.log(payload, "estoy en reducer")
           return {...state,
                role: payload
           }
