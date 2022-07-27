@@ -1,8 +1,27 @@
-import dotenv from "dotenv";
+const dotenv = require('dotenv')
 dotenv.config();
 
-export default {
-  CLIENT_ID: process.env.REACT_APP_AUTH0_CLIENT_ID,
-  AUTH0_DOMAIN: process.env.REACT_APP_AUTH0_DOMAIN,
-  URL: process.env.BACK 
-};
+
+  const CLIENT_ID = process.env.REACT_APP_AUTH0_CLIENT_ID;
+  const AUTH0_DOMAIN = process.env.REACT_APP_AUTH0_DOMAIN;
+  const URL = process.env.BACK;
+
+
+  if (!CLIENT_ID) {
+    throw new Error("falta env.clientid")
+  }
+
+  if (!AUTH0_DOMAIN) {
+    throw new Error("falta env.domain")
+  }
+
+  if (!URL) {
+    throw new Error("falta env.URL")
+  }
+
+
+  module.exports = {
+    CLIENT_ID,
+    AUTH0_DOMAIN,
+    URL
+  }
