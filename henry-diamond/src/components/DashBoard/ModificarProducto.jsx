@@ -9,7 +9,7 @@ import Validate from "../Utils/Validate";
 import { capitalizeLetter } from "../../../Utils/utils";
 import { axios } from "axios";
 import VistaPrevia from "./VistaPrevia";
-import config from "../../config"
+import config from "../../../config"
 
 const URL = config.URL;
 
