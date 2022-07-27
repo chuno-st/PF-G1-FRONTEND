@@ -8,6 +8,7 @@ import Select from "@mui/material/Select";
 import Validate from "../Utils/Validate";
 import { capitalizeLetter } from "../../../Utils/utils";
 import  axios from "axios";
+import { useNavigate } from "react-router-dom";
 import VistaPrevia from "./VistaPrevia";
 //import config from "../../../config"
 //import {URL} from "../../../index.js"
@@ -56,8 +57,8 @@ export default function CrearProducto() {
 
     const handleCreate = async () => {
         const response = await axios.post(`${URL}product`, input)
-        return setData(data.concat(response));
-        
+        //return setData(data.concat(response));
+        useNavigate(0)
     };
 
     // function handleSubmit(e) {
