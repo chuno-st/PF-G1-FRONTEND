@@ -47,7 +47,8 @@ const theme = createTheme({
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 345,
+    maxWidth: 250,
+    maxHeight: 250
     
   },
   palette:{
@@ -55,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
   },
   media: {
     height: 0,
-    paddingTop: '56.25%', // 16:9
+    paddingTop: '100%', // 16:9
     
   },
   expand: {
@@ -149,7 +150,7 @@ export default function BasicCard(props) {
               title="Imagen del producto"
             />
         
-            <CardActions disableSpacing>
+            <CardActions disableSpacing='true'>
               <IconButton aria-label="add to favorites">
                 <FavoriteIcon onClick={handleFav} />
               </IconButton>

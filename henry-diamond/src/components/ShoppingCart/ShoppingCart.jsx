@@ -93,6 +93,10 @@ export default function ShoppingCart(){
           <FormRow />
         </Grid>
         <Grid item xs={12} sm={4} md={3} gutterBottom variant='h4'>
+        <Typography align="center" gutterBottom variant='h4'>
+            Mi Carrito:
+          </Typography>
+          
           <Typography align='center' gutterBottom variant='h5'> 
               Total de la compra: {subTotal.reduce( (acc,producto) =>acc+producto)}
           </Typography>

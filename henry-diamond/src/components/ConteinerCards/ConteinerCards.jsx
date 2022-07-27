@@ -4,9 +4,7 @@ import {getAllItems} from "../../actions/actions";
 import BasicCard from "../Card/Card";
 import { Grid, Button} from "@mui/material";
 import { Box } from "@material-ui/core"
-// import { margin } from "@mui/system";
 import { useState } from "react";
-// import Paginate from '../Paginate/Paginate.jsx';
 import {CssBaseline, Typography} from '@material-ui/core';
 import {Container} from '@material-ui/core';
 
@@ -35,7 +33,6 @@ const products = items.slice(desde,hasta);
   } 
 
   const miStorage = window.localStorage;
-  // console.log(miStorage)
 
 
 
@@ -45,19 +42,11 @@ return (
     <div >
    <CssBaseline />
       <Grid container 
-      xs={{
-        maxWidth : 'auto' ,
-        maxHeight: '100%',
-      }}
-      ld={{
-        maxWidth: '100%'
-      }}
       padding={2}
            >
         <Typography component="div" style={{ backgroundColor: '#bababa' }}>
      
             <Box 
-              
               sx={{ 
               hight:'100%',
               width:'100%',
@@ -65,7 +54,7 @@ return (
             }}
             
             >
-                <Grid container spacing={3} 
+                <Grid container spacing={5} 
                 position='relative'
               
                 >
@@ -73,11 +62,11 @@ return (
                     
                     products.map(item => (    //map para recorrer el array de items
                       <Grid item 
-                        xs={7}
+                        xs={12}
                         sm={6} 
                         md={4}
                         lg={3} 
-                        xl={2}
+                        xl={3}
                       >
                         <BasicCard key={item.id} item={item} /> 
                 </Grid>))
