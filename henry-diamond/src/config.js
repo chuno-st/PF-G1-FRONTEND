@@ -16,6 +16,7 @@ dotenv.config();
   }
 
   if (!URL) {
+    console.log(URL)
     throw new Error("falta env.URL")
   }
 
