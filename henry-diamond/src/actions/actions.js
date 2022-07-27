@@ -12,7 +12,7 @@ import {
     CREATE_CATEGORY,
     CREATE_SUBCATEGORY,
 } from "./typeActions";
-import config from "../../config.js"
+import config from "../config.js"
 import axios from "axios";
 //import {URL} from "../index.js"
 const URL = config.URL
