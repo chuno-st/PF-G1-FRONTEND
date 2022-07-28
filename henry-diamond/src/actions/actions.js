@@ -193,3 +193,18 @@ export const postCart = (carrito, user) => {
         })
     }
 }
+
+export const addCart = () => {
+    const miStorage = window.localStorage;
+    let Productos = Object.values(miStorage)
+    let objetos = Productos.map(producto => {return JSON.parse(producto)})
+    let productos = objetos.filter(producto => producto.hasOwnProperty('product_id'))
+    const cantidad = productos.reduce( (acc,producto) =>acc+producto.cantidad, 0)
+
+    return dispatch => {
+        return dispatch ({
+            type: 'ADD_CART',
+            payload: productos  
+    })
+    }
+}

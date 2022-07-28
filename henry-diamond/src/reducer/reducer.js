@@ -76,7 +76,7 @@ const reducer = (state = inicialState, { type, payload }) => {
         case 'ADD_CART': { 
          return { 
           ...state, 
-          shoppingCart: [...state.shoppingCart, payload] 
+          shoppingCart: [...state.shoppingCart, payload]  
         }
        }
        case CREATE_PRODUCT:
@@ -93,6 +93,8 @@ const reducer = (state = inicialState, { type, payload }) => {
           ...state,
           Cart: payload
         }
+
+      
 
 
         default:

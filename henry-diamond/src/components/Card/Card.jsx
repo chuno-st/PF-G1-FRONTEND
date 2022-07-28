@@ -18,6 +18,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import LogoCard from '../Logo/LogoCard'; 
 import { ThemeProvider , createTheme} from '@material-ui/core';
+import { addCart } from "../../actions/actions";
 
 const theme = createTheme({
   palette: {
@@ -106,6 +107,8 @@ export default function BasicCard(props) {
           item.cantidad=cantidad+1;
           console.log(item)
           localStorage.setItem(item.product_id ,JSON.stringify(item) )
+          dispatch(addCart())
+    
 
         }else { alert("Para comprar un producto debes estar logueado")}
 
@@ -116,7 +119,9 @@ export default function BasicCard(props) {
           item.cantidad=cantidad-1;
           console.log(item)
           localStorage.setItem(item.product_id ,JSON.stringify(item) )
+          dispatch(addCart())
         }else { alert("Para comprar un producto debes estar logueado")}}
+
       const handleFav = () => {
         if (isAuthenticated){
           localStorage.setItem(item.product_id ,JSON.stringify(item) )
