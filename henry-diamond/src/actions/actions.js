@@ -222,9 +222,14 @@ export const addFavorite = (sub, item ) => {
 }
 
 export const checkFav = (sub, item ) => {
-   return async () =>{
-    const chequeo = await axios.post(`${URL}favs/checkfavs?id=${sub}`, item).data
-    console.log(chequeo)
+   return async dispatch =>{
+    const chequeo = await axios.get(`${URL}favs/${sub}`)
+    console.log(chequeo.data)
+    
+     return dispatch ({
+        type: 'CHECK_FAV',
+        payload: chequeo.data
+     })
 }
 
 

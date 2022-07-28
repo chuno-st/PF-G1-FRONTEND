@@ -2,8 +2,8 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardMedia from '@mui/material/CardMedia';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CardHeader from '@material-ui/core/CardHeader';
 import Avatar from '@material-ui/core/Avatar';
@@ -19,6 +19,8 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import LogoCard from '../Logo/LogoCard'; 
 import { ThemeProvider , createTheme} from '@material-ui/core';
 import { addCart, addFavorite, checkFav } from "../../actions/actions";
+import { useSelect } from '@mui/base';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 const theme = createTheme({
   palette: {
@@ -92,6 +94,10 @@ export default function BasicCard(props) {
       const navigate = useNavigate()
       const { isAuthenticated, user } = useAuth0();
       const [cantidad, setCantindad] = useState(0);
+      const favorites = useSelector(state => state.favorites)
+      const [fav, setFav] = useState(false)
+
+      
   
   
        const handleclick = () => {
@@ -117,12 +123,11 @@ export default function BasicCard(props) {
           localStorage.setItem(item.product_id ,JSON.stringify(item) )
           dispatch(addCart())}
 
-    /* const handleCheckFav = dispatch(checkFav(user.sub, item))
-    console.log(handleCheckFav) */   
+      
 
       const handleFav = () => {
         if (isAuthenticated){
-          dispatch(checkFav(user.sub, item))
+          dispatch(addFavorite(user.sub, item))
         }else {
           alert("Para agregar a favoritos un producto, debes estar registrado")
         }
@@ -130,6 +135,13 @@ export default function BasicCard(props) {
       const classes = useStyles();
       // const [expanded, setExpanded] = React.useState(false);
 
+      let estoyFavorito = favorites.filter( f => f.product_id == item.product_id)
+      
+
+      if(estoyFavorito.length > 0) {
+        
+         return () => setFav(true)
+      }
      
 
   return (
@@ -155,7 +167,12 @@ export default function BasicCard(props) {
         
             <CardActions disableSpacing='true'>
               <IconButton aria-label="add to favorites">
-                <FavoriteIcon onClick={handleFav} />
+                {
+                  fav ?  <FavoriteIcon />
+                  : <FavoriteBorderIcon onClick={handleFav}/>
+                  
+                }
+                
               </IconButton>
               <IconButton>
                 {"$"+item.price}
