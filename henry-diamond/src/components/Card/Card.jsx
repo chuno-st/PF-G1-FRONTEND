@@ -18,7 +18,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import LogoCard from '../Logo/LogoCard'; 
 import { ThemeProvider , createTheme} from '@material-ui/core';
-import { addCart } from "../../actions/actions";
+import { addCart, addFavorite, checkFav } from "../../actions/actions";
 
 const theme = createTheme({
   palette: {
@@ -90,7 +90,7 @@ export default function BasicCard(props) {
   const {item} = props;
       const dispatch = useDispatch();
       const navigate = useNavigate()
-      const { isAuthenticated } = useAuth0();
+      const { isAuthenticated, user } = useAuth0();
       const [cantidad, setCantindad] = useState(0);
   
   
@@ -116,9 +116,13 @@ export default function BasicCard(props) {
           console.log(item)
           localStorage.setItem(item.product_id ,JSON.stringify(item) )
           dispatch(addCart())}
+
+    /* const handleCheckFav = dispatch(checkFav(user.sub, item))
+    console.log(handleCheckFav) */   
+
       const handleFav = () => {
         if (isAuthenticated){
-          localStorage.setItem(item.product_id ,JSON.stringify(item) )
+          dispatch(checkFav(user.sub, item))
         }else {
           alert("Para agregar a favoritos un producto, debes estar registrado")
         }
