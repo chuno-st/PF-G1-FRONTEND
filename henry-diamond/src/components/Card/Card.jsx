@@ -102,26 +102,20 @@ export default function BasicCard(props) {
           localStorage.removeItem(item.product_id ,JSON.stringify(item) )
       }
       const handleUp = () => {
-        if (isAuthenticated){
+        
           setCantindad(cantidad+1)
           item.cantidad=cantidad+1;
           console.log(item)
           localStorage.setItem(item.product_id ,JSON.stringify(item) )
           dispatch(addCart())
-    
-
-        }else { alert("Para comprar un producto debes estar logueado")}
 
       }
       const handleDown = () => {
-        if (isAuthenticated){
           setCantindad(cantidad-1)
           item.cantidad=cantidad-1;
           console.log(item)
           localStorage.setItem(item.product_id ,JSON.stringify(item) )
-          dispatch(addCart())
-        }else { alert("Para comprar un producto debes estar logueado")}}
-
+          dispatch(addCart())}
       const handleFav = () => {
         if (isAuthenticated){
           localStorage.setItem(item.product_id ,JSON.stringify(item) )

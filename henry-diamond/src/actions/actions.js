@@ -25,6 +25,9 @@ export function getAllProduct(name){
     return async (dispatch) =>{
         let allProducts = await axios.get(`${URL}product?name=${name}`)
         console.log(allProducts)
+        if(allProducts.data.length === 0){
+            alert('Producto no encontrado')
+        }
         return dispatch({
             type: GET_PRODUCT,
             payload: allProducts.data

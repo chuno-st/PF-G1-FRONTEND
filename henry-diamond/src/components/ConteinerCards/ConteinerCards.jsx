@@ -13,12 +13,6 @@ export default function ContainerCards() {
 const items = useSelector(state => state.items);
 const [desde, setdesde] = useState(0); 
 const [hasta, sethasta] = useState(12); 
-// const dispatch = useDispatch();
-// const { desde, hasta} = useSelector(state => state.paginado)
-
-// useEffect(() => {
-//   dispatch(getAllItems(desde,hasta))}
-//   , [dispatch,desde,hasta]);
 const products = items.slice(desde,hasta);
 
    const handleClick = () => {
@@ -32,7 +26,7 @@ const products = items.slice(desde,hasta);
       sethasta(hasta - 12);
   } 
 
-  const miStorage = window.localStorage;
+  
 
 
 
