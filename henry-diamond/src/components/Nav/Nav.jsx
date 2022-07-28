@@ -17,6 +17,8 @@ import { createTheme, Hidden } from "@material-ui/core";
 import { ShoppingCartButton } from '../ShoppingCartButton/ShoppingCartButton'
 import Logo from '../Logo/Logo'
 import IconButton from '@mui/material/IconButton';
+import Button from '@material-ui/core/Button';
+
 
 
 
@@ -127,7 +129,9 @@ const useStyles = makeStyles((theme) => ({
                     <Toolbar>
                       <SideBar />
                         <Typography className={classes.title} variant="h6" noWrap>
-                            <Logo />
+                          <Button href="/">
+                              <Logo />
+                          </Button>
                         </Typography>
                        
                           
