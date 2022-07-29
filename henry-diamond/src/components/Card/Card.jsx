@@ -123,26 +123,22 @@ export default function BasicCard(props) {
           localStorage.setItem(item.product_id ,JSON.stringify(item) )
           dispatch(addCart())}
 
-      
+     
 
       const handleFav = () => {
         if (isAuthenticated){
           dispatch(addFavorite(user.sub, item))
+          setFav(true)
         }else {
           alert("Para agregar a favoritos un producto, debes estar registrado")
         }
       }
       const classes = useStyles();
-      // const [expanded, setExpanded] = React.useState(false);
 
       let estoyFavorito = favorites.filter( f => f.product_id == item.product_id)
       
 
-      if(estoyFavorito.length > 0) {
-        
-         return () => setFav(true)
-      }
-     
+  
 
   return (
       <ThemeProvider theme={theme}>
@@ -168,7 +164,8 @@ export default function BasicCard(props) {
             <CardActions disableSpacing='true'>
               <IconButton aria-label="add to favorites">
                 {
-                  fav ?  <FavoriteIcon />
+                  estoyFavorito.length || fav 
+                  ?  <FavoriteIcon />
                   : <FavoriteBorderIcon onClick={handleFav}/>
                   
                 }
