@@ -24,7 +24,8 @@ export const Profile = () => {
     data = { 
       id: user.sub,
       userName: user.name,
-      email: user.email
+      email: user.email,
+      picture: user.picture
     }
   }
 
