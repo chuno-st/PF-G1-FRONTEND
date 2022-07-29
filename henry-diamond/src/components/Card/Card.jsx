@@ -17,7 +17,7 @@ import {useState} from "react";
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import LogoCard from '../Logo/LogoCard'; 
-import { ThemeProvider , createTheme} from '@material-ui/core';
+import { ThemeProvider , createTheme, Box} from '@material-ui/core';
 import { addCart } from "../../actions/actions";
 
 const theme = createTheme({
@@ -130,7 +130,13 @@ export default function BasicCard(props) {
 
   return (
       <ThemeProvider theme={theme}>
-          <Card  md={{ maxWidth: '100%',height:'100%' }}>
+         
+        <Box 
+        borderRadius={25}
+        bgcolor='white'
+        boxShadow='4px 6px 8px #7a7a7a'
+            
+          >
             <CardHeader
               onClick = {handleclick}
               className={classes.text}
@@ -147,8 +153,8 @@ export default function BasicCard(props) {
             <CardMedia
               className={classes.media} 
               image={item.image}
-              title="Imagen del producto"
-              onClick = {handleclick}
+              title={item.name}
+              onClick = {handleclick}  
             />
         
             <CardActions disableSpacing='true'>
@@ -167,12 +173,13 @@ export default function BasicCard(props) {
               
                 
               </IconButton>
-              <IconButton arial-label='detail' onClick={handleclick}>
+              {/* <IconButton arial-label='detail' onClick={handleclick}>
                 <AddIcon />
-              </IconButton>
+              </IconButton> */}
             </CardActions>
             
-          </Card>
+          
+      </Box>
     </ThemeProvider>
   );
 }

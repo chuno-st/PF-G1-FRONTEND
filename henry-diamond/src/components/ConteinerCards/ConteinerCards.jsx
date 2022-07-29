@@ -54,14 +54,17 @@ return (
                         lg={3} 
                         xl={3}
                       >
+                   
                         <BasicCard key={item.id} item={item} /> 
+                 
+
                 </Grid>))
         ):(
                 <Container
                 maxWidth="xl"
                 >
                 <Box
-                pt={4}
+                pb={100}
                 >
                     <LinearIndeterminate />
                 </Box>
