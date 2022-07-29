@@ -144,6 +144,7 @@ export default function BasicCard(props) {
       <ThemeProvider theme={theme}>
           <Card  md={{ maxWidth: '100%',height:'100%' }}>
             <CardHeader
+              onClick = {handleclick}
               className={classes.text}
               avatar={
                 <Avatar aria-label="logo" className={classes.avatar} variant="square">
@@ -159,6 +160,7 @@ export default function BasicCard(props) {
               className={classes.media} 
               image={item.image}
               title="Imagen del producto"
+              onClick = {handleclick}
             />
         
             <CardActions disableSpacing>
