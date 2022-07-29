@@ -13,6 +13,7 @@ import VistaPrevia from "./VistaPrevia";
 //import {URL} from "../../../index"
 const URL = "https://pf-g1-backend-production-3e79.up.railway.app/"
 export default function CrearProducto() {
+    
     const categorias = useSelector((state) => state.category);
     const subCategorias = useSelector((state) => state.subcategory);
 
