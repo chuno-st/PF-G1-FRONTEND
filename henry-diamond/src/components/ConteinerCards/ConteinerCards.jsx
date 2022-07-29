@@ -7,6 +7,7 @@ import { Box } from "@material-ui/core"
 import { useState } from "react";
 import {CssBaseline, Typography} from '@material-ui/core';
 import {Container} from '@material-ui/core';
+import LinearIndeterminate from '../Loading/Loading2'
 
 
 export default function ContainerCards() {
@@ -38,15 +39,7 @@ return (
       <Grid container 
       padding={2}
            >
-     
-            <Box 
-              sx={{ 
-              hight:'100%',
-              width:'100%',
-              
-            }}
             
-            >
                 <Grid container spacing={5} 
                 position='relative'
               
@@ -64,21 +57,19 @@ return (
                         <BasicCard key={item.id} item={item} /> 
                 </Grid>))
         ):(
-                  <Box sx={{
-                    hight: 'auto',
-                    minWidth: '100%',
-                    marginTop: '17%',
-                    marginBottom: '17%',
-                    marginLeft: 20,
-                    marginRight: 20,
-                  }}>
-                    
-                    <h1>Cargando...</h1>
-                  </Box>
+                <Container
+                maxWidth="xl"
+                >
+                <Box
+                pt={4}
+                >
+                    <LinearIndeterminate />
+                </Box>
+                </Container>
         )
       }
            </Grid>
-          </Box>
+          
           <Grid item xs={12} sm={12} md={12} 
           container
           direction="row"
