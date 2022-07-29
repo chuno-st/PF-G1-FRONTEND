@@ -18,7 +18,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import LogoCard from '../Logo/LogoCard'; 
 import { ThemeProvider , createTheme} from '@material-ui/core';
-import { addCart, addFavorite, checkFav } from "../../actions/actions";
+import { addCart, addFavorite, deleteFavorite } from "../../actions/actions";
 import { useSelect } from '@mui/base';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import {Box} from '@material-ui/core';
@@ -134,6 +134,10 @@ export default function BasicCard(props) {
         }
       }
       const classes = useStyles();
+      const handleDelete=()=>{
+        dispatch(deleteFavorite(user.sub, item))
+        setFav(false)
+      }
 
       let estoyFavorito = favorites.filter( f => f.product_id == item.product_id)
       
@@ -173,7 +177,7 @@ export default function BasicCard(props) {
               <IconButton aria-label="add to favorites">
                 {
                   estoyFavorito.length || fav 
-                  ?  <FavoriteIcon />
+                  ?  <FavoriteIcon  onClick={handleDelete}/>
                   : <FavoriteBorderIcon onClick={handleFav}/>
                   
                 }
