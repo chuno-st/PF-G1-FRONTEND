@@ -12,12 +12,12 @@ import {
     CREATE_CATEGORY,
     CREATE_SUBCATEGORY,
 } from "./typeActions";
-// import {getProduct} from '../../../../PF-G1-BACKEND/src/controllers/productControllers'
+//import config from "../config.js"
 import axios from "axios";
-const URL = 'http://localhost:9000/' /* "https://pf-g1-backend-production-3e79.up.railway.app/" */
+//import {URL} from "../index.js"
+const {URL} = require('../config')
+//import {URL} from "../index.js"
 
-
-// const axios = require('axios')
 
 
 export function getAllProduct(name){
