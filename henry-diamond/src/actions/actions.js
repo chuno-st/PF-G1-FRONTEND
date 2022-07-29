@@ -214,7 +214,7 @@ export const addCart = () => {
 
 export const addFavorite = (sub, item ) => {
     return async () => {
-        console.log(item    )
+        console.log(item)
         let addFavorite = await axios.post(`${URL}favs/${sub}`, item)
         console.log(addFavorite.data)
 

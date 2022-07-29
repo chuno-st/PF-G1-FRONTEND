@@ -21,9 +21,7 @@ import { ThemeProvider , createTheme} from '@material-ui/core';
 import { addCart, addFavorite, checkFav } from "../../actions/actions";
 import { useSelect } from '@mui/base';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import Box from '@material-ui/core/Box';
-
-
+import {Box} from '@material-ui/core';
 const theme = createTheme({
   palette: {
     primary:{
