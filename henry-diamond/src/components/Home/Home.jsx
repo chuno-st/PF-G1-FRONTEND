@@ -1,23 +1,12 @@
-<<<<<<< HEAD
-import React from "react";
-import { Grid } from "@material-ui/core";
-import ConteinerCards from "../ConteinerCards/ConteinerCards";
-=======
 import React from 'react';
 import { Grid, Box } from '@material-ui/core'
 import ConteinerCards from "../ConteinerCards/ConteinerCards"
->>>>>>> 4d3e32c1b6662bfb7e531f0a40a05729580390e0
 import SearchAppBar from "../Nav/Nav";
 import Footer from "../Footer/Footer";
 import { ThemeProvider, Typography } from "@material-ui/core";
 import { createTheme } from "@material-ui/core";
-<<<<<<< HEAD
 import {useDispatch,useSelector} from "react-redux";
 import {checkFav, getAllItems} from "../../actions/actions";
-=======
-import { useDispatch } from "react-redux";
-import { getAllItems } from "../../actions/actions";
->>>>>>> de610ae396fff7bb684dd7b37c49d429ad3e841d
 import { useEffect } from "react";
 import { useAuth0 } from '@auth0/auth0-react'
 
@@ -48,9 +37,7 @@ const theme = createTheme({
 });
 
 export default function Home() {
-    const dispatch = useDispatch();
 
-<<<<<<< HEAD
   const dispatch = useDispatch();
   const { user, isAuthenticated, isLoading } = useAuth0();
   
@@ -100,42 +87,3 @@ export default function Home() {
     
   );
 };
-
-
-=======
-    useEffect(() => {
-        dispatch(getAllItems());
-    }, [dispatch]);
->>>>>>> de610ae396fff7bb684dd7b37c49d429ad3e841d
-
-    return (
-        <div>
-            <React.Fragment>
-                <ThemeProvider theme={theme}>
-                    <Grid
-                        containerFluid
-                        // sm={{
-                        //     hight: 1,
-                        //     width: 1,
-                        // }}
-                    >
-                        <Grid item xs={12} sm={12} xl={12}>
-                            <SearchAppBar />
-                           
-                        </Grid>
-                        <Grid item xs={12} sm={12} xl={12}>
-                            <ConteinerCards />
-                        </Grid>
-                        <Grid item xs={12} sm={12} xl={12}>
-                            {/* <Carrousel /> */}
-                        </Grid>
-
-                        <Grid item xs={12} sm={12} xl={12}>
-                            <Footer />
-                        </Grid>
-                    </Grid>
-                </ThemeProvider>
-            </React.Fragment>
-        </div>
-    );
-}
