@@ -5,6 +5,8 @@ import CardCart from "../CardCart/CardCart";
 import { Button } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { postCart } from "../../actions/actions";
+import { addCart } from "../../actions/actions";
+
 import { useAuth0 } from "@auth0/auth0-react";
 import NavMyAccount from '../MyAccount/NavMyAccount';
 import { ThemeProvider } from "@material-ui/core"
@@ -43,30 +45,15 @@ const theme = createTheme({
 
 export default function ShoppingCart(){
 
-  function FormRow() {
-    return (
-      <React.Fragment>
-        
-            {productos.map(producto => (
-              <Grid item xs={12} sm={8} md={6} lg={4}>
-                  <CardCart key={producto.id} item={producto}/> 
-              </Grid>
-              ))} 
-      </React.Fragment>
-    );
-  }
+ 
 
-    const { user } = useAuth0();
-
+    const { user,isAuthenticated } = useAuth0();
     const dispatch = useDispatch()
-    const miStorage = window.localStorage;
-    let Productos = Object.values(miStorage)
-    let objetos = Productos.map(producto => {return JSON.parse(producto)})
-    let productos = objetos.filter(producto => producto.hasOwnProperty('product_id'))
-    const priceTotal= productos.reduce( (acc,producto) =>acc+producto.price)
-    const subTotal = productos.map((producto)=>producto.price*producto.cantidad)
     const link = useSelector(state => state.Cart)
     const Navigate = useNavigate()
+    const productos = useSelector(state => state.shoppingCart)
+    // const subTotal = productos[0].map((producto)=>producto.price*producto.cantidad)
+    
 
     if(link.length>0) {
         console.log(link)
@@ -74,7 +61,21 @@ export default function ShoppingCart(){
     }
 
     const handlerSubmit = () =>{
-      dispatch(postCart(productos, user.sub))
+      if (isAuthenticated){
+        dispatch(postCart(productos, user.sub))
+
+      }else alert("Por favor inicia sesión para poder realizar la compra")
+    }
+
+    useEffect(() => {
+      dispatch(addCart())
+    }, [dispatch]);
+    
+    const handlesubtotal=()=>{
+      if(productos.length){
+       let subTotal = productos[0].map((producto)=>producto.price*producto.cantidad)
+      return subTotal.reduce( (acc,producto) =>acc+producto,0)
+      }else return 0
     }
 
     return (
@@ -90,7 +91,15 @@ export default function ShoppingCart(){
           </Typography>
         </Grid>
         <Grid item xs={12} sm={8} md={9} container spacing={2}>
-          <FormRow />
+
+             {
+             productos[0]?.map(producto => (
+              <Grid item xs={12} sm={8} md={6} lg={4}>
+                  <CardCart key={producto.id} item={producto}/> 
+              </Grid>
+              ))
+            } 
+  
         </Grid>
         <Grid item xs={12} sm={4} md={3} gutterBottom variant='h4'>
         <Typography align="center" gutterBottom variant='h4'>
@@ -98,7 +107,7 @@ export default function ShoppingCart(){
           </Typography>
           
           <Typography align='center' gutterBottom variant='h5'> 
-              Total de la compra: {subTotal.reduce( (acc,producto) =>acc+producto)}
+              Total de la compra: ${handlesubtotal()}
           </Typography>
 
           <Typography align='center' gutterBottom variant='h5'> 

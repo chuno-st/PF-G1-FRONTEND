@@ -73,7 +73,9 @@ export default function Detail () {
                       alignItems='center'
                       direction = 'column'
                     >
+                    
                     <img src={product.image}/>
+                   
                     </Box>
 
                     <Box 

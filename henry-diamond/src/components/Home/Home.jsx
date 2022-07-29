@@ -1,13 +1,14 @@
-import React from "react";
-import { Grid } from "@material-ui/core";
-import ConteinerCards from "../ConteinerCards/ConteinerCards";
+import React from 'react';
+import { Grid, Box } from '@material-ui/core'
+import ConteinerCards from "../ConteinerCards/ConteinerCards"
 import SearchAppBar from "../Nav/Nav";
 import Footer from "../Footer/Footer";
 import { ThemeProvider, Typography } from "@material-ui/core";
 import { createTheme } from "@material-ui/core";
-import { useDispatch } from "react-redux";
-import { getAllItems } from "../../actions/actions";
+import {useDispatch,useSelector} from "react-redux";
+import {checkFav, getAllItems} from "../../actions/actions";
 import { useEffect } from "react";
+import { useAuth0 } from '@auth0/auth0-react'
 
 const theme = createTheme({
     palette: {
@@ -36,40 +37,58 @@ const theme = createTheme({
 });
 
 export default function Home() {
-    const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getAllItems());
-    }, [dispatch]);
 
-    return (
-        <div>
-            <React.Fragment>
-                <ThemeProvider theme={theme}>
-                    <Grid
-                        containerFluid
-                        // sm={{
-                        //     hight: 1,
-                        //     width: 1,
-                        // }}
-                    >
-                        <Grid item xs={12} sm={12} xl={12}>
-                            <SearchAppBar />
-                           
-                        </Grid>
-                        <Grid item xs={12} sm={12} xl={12}>
-                            <ConteinerCards />
-                        </Grid>
-                        <Grid item xs={12} sm={12} xl={12}>
-                            {/* <Carrousel /> */}
-                        </Grid>
+  const dispatch = useDispatch();
+  const { user, isAuthenticated, isLoading } = useAuth0();
+  
 
-                        <Grid item xs={12} sm={12} xl={12}>
-                            <Footer />
-                        </Grid>
-                    </Grid>
-                </ThemeProvider>
-            </React.Fragment>
-        </div>
-    );
-}
+  useEffect(() => {
+    dispatch(getAllItems())
+    if(isAuthenticated) {
+      dispatch(checkFav(user.sub))
+    }
+    
+  }, [dispatch,]);
+
+  
+
+ 
+  return (
+  <div>
+  <React.Fragment>
+      <ThemeProvider theme={theme}>
+            <Grid containerFluid sm={{
+              hight:1,
+              width:1
+            }}>
+            <Grid item xs={12} sm={12} xl={12}>
+              <SearchAppBar />
+              </Grid>
+            <Grid item xs={12} sm={12} xl={12}>
+              <Box
+              p={8}
+              >
+              <ConteinerCards/>
+              </Box>
+            </Grid>
+            <Grid item xs={12} sm={12} xl={12}>
+              {/* <Carrousel /> */}
+            </Grid>
+
+
+            <Grid item xs={12} sm={12} xl={12}>
+              <Footer/>
+            </Grid>
+          </Grid>
+          </ThemeProvider>
+    </React.Fragment>
+</div>
+          
+    
+  );
+};
+
+
+
+

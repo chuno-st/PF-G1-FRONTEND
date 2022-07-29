@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+    import { React, useState } from "react";
 import { useSelector } from "react-redux";
 import TextField from "@mui/material/TextField";
 import { Container } from "@mui/system";
@@ -8,10 +8,11 @@ import Select from "@mui/material/Select";
 import Validate from "../Utils/Validate";
 import { capitalizeLetter } from "../../../Utils/utils";
 import  axios from "axios";
+import { useNavigate } from "react-router-dom";
 import VistaPrevia from "./VistaPrevia";
-
-//import {URL} from "../../../index"
-const URL = "https://pf-g1-backend-production-3e79.up.railway.app/"
+//import config from "../../../config"
+//import {URL} from "../../../index.js"
+const {URL} = require('../../../config')
 export default function CrearProducto() {
     
     const categorias = useSelector((state) => state.category);
