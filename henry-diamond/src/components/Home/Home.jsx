@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 import React from "react";
 import { Grid } from "@material-ui/core";
 import ConteinerCards from "../ConteinerCards/ConteinerCards";
+=======
+import React from 'react';
+import { Grid, Box } from '@material-ui/core'
+import ConteinerCards from "../ConteinerCards/ConteinerCards"
+>>>>>>> 4d3e32c1b6662bfb7e531f0a40a05729580390e0
 import SearchAppBar from "../Nav/Nav";
 import Footer from "../Footer/Footer";
 import { ThemeProvider, Typography } from "@material-ui/core";
@@ -72,7 +78,11 @@ export default function Home() {
               <SearchAppBar />
               </Grid>
             <Grid item xs={12} sm={12} xl={12}>
+              <Box
+              p={8}
+              >
               <ConteinerCards/>
+              </Box>
             </Grid>
             <Grid item xs={12} sm={12} xl={12}>
               {/* <Carrousel /> */}
