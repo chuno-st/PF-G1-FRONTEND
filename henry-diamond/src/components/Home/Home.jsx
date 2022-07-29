@@ -5,9 +5,10 @@ import SearchAppBar from "../Nav/Nav";
 import Footer from "../Footer/Footer";
 import { ThemeProvider, Typography } from "@material-ui/core"
 import { createTheme } from "@material-ui/core";
-import {useDispatch} from "react-redux";
-import {getAllItems} from "../../actions/actions";
+import {useDispatch,useSelector} from "react-redux";
+import {checkFav, getAllItems} from "../../actions/actions";
 import { useEffect } from "react";
+import { useAuth0 } from '@auth0/auth0-react'
 
 
 
@@ -40,12 +41,20 @@ const theme = createTheme({
 export default function Home() {
 
   const dispatch = useDispatch();
+  const { user, isAuthenticated, isLoading } = useAuth0();
+  
 
   useEffect(() => {
     dispatch(getAllItems())
-  }, [dispatch]);
+    if(isAuthenticated) {
+      dispatch(checkFav(user.sub))
+    }
+    
+  }, [dispatch,]);
 
+  
 
+ 
   return (
   <div>
   <React.Fragment>

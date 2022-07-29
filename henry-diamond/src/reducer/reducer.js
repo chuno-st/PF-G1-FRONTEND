@@ -11,6 +11,7 @@ const inicialState = {
       hasta: 12
     },
     product:{},
+    favorites: [],
     matches: [],
     role:"none",
     shoppingCart: [],
@@ -37,7 +38,7 @@ const reducer = (state = inicialState, { type, payload }) => {
                     category: payload };
 
         case ALL_SUBCATEGORY:
-          console.log(payload)
+          
             return { ...state,
                     subcategory: payload };
 
@@ -93,6 +94,12 @@ const reducer = (state = inicialState, { type, payload }) => {
           ...state,
           Cart: payload
         }
+        case 'CHECK_FAV':
+          console.log('estoy en CHECK_FAV:', payload)
+          return {
+            ...state,
+            favorites: payload
+          }
 
       
 
