@@ -37,7 +37,7 @@ function App() {
   <div className="bodyApp">
     <React.Fragment>
         <CssBaseline />
-          <Container  disableGutters='true' maxWidth="xl" height='xl' >        
+          <Container  disableGutters={true} maxWidth="xl" height='xl' >        
             <Typography component="div" style={{ backgroundColor: '#bababa', height: '100%' }}>
                 <Routes>
                   <Route path="/" element={<Home/>} />
@@ -50,6 +50,7 @@ function App() {
                   </PrivateDash>} />
 
                 </Routes>
+              
               </Typography>
           </Container>
     </React.Fragment>    

@@ -7,18 +7,13 @@ import { Box } from "@material-ui/core"
 import { useState } from "react";
 import {CssBaseline, Typography} from '@material-ui/core';
 import {Container} from '@material-ui/core';
+import LinearIndeterminate from '../Loading/Loading2'
 
 
 export default function ContainerCards() {
 const items = useSelector(state => state.items);
 const [desde, setdesde] = useState(0); 
 const [hasta, sethasta] = useState(12); 
-// const dispatch = useDispatch();
-// const { desde, hasta} = useSelector(state => state.paginado)
-
-// useEffect(() => {
-//   dispatch(getAllItems(desde,hasta))}
-//   , [dispatch,desde,hasta]);
 const products = items.slice(desde,hasta);
 
    const handleClick = () => {
@@ -32,7 +27,7 @@ const products = items.slice(desde,hasta);
       sethasta(hasta - 12);
   } 
 
-  const miStorage = window.localStorage;
+  
 
 
 
@@ -44,16 +39,7 @@ return (
       <Grid container 
       padding={2}
            >
-        
-     
-            <Box 
-              sx={{ 
-              hight:'100%',
-              width:'100%',
-              
-            }}
             
-            >
                 <Grid container spacing={5} 
                 position='relative'
               
@@ -62,30 +48,32 @@ return (
                     
                     products.map(item => (    //map para recorrer el array de items
                       <Grid item 
+                        key={item.id}
                         xs={12}
                         sm={6} 
                         md={4}
                         lg={3} 
                         xl={3}
                       >
+                   
                         <BasicCard key={item.id} item={item} /> 
+                 
+
                 </Grid>))
         ):(
-                  <Box sx={{
-                    hight: 'auto',
-                    minWidth: '100%',
-                    marginTop: '17%',
-                    marginBottom: '17%',
-                    marginLeft: 20,
-                    marginRight: 20,
-                  }}>
-                    
-                    <h1>Cargando...</h1>
-                  </Box>
+                <Container
+                maxWidth="xl"
+                >
+                <Box
+                pb={100}
+                >
+                    <LinearIndeterminate />
+                </Box>
+                </Container>
         )
       }
            </Grid>
-          </Box>
+          
           <Grid item xs={12} sm={12} md={12} 
           container
           direction="row"
@@ -109,7 +97,6 @@ return (
                 <Button onClick={handleClick} disabled={products.length!==12} variant='outlined' color='inherit'>Siguiente</Button> 
             </Grid>
           </Grid>
-        
       </Grid>
     </div>
 )

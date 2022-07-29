@@ -26,6 +26,9 @@ export function getAllProduct(name){
     return async (dispatch) =>{
         let allProducts = await axios.get(`${URL}product?name=${name}`)
         console.log(allProducts)
+        if(allProducts.data.length === 0){
+            alert('Producto no encontrado')
+        }
         return dispatch({
             type: GET_PRODUCT,
             payload: allProducts.data
@@ -192,5 +195,49 @@ export const postCart = (carrito, user) => {
             type: 'POST_CART',
             payload: link.data
         })
+    }
+}
+
+export const addCart = () => {
+    const miStorage = window.localStorage;
+    let Productos = Object.values(miStorage)
+    let objetos = Productos.map(producto => {return JSON.parse(producto)})
+    let productos = objetos.filter(producto => producto.hasOwnProperty('product_id'))
+    const cantidad = productos.reduce( (acc,producto) =>acc+producto.cantidad, 0)
+
+    return dispatch => {
+        return dispatch ({
+            type: 'ADD_CART',
+            payload: productos  
+    })
+    }
+}
+
+export const addFavorite = (sub, item ) => {
+    return async () => {
+        console.log(item)
+        let addFavorite = await axios.post(`${URL}favs/${sub}`, item)
+        console.log(addFavorite.data)
+
+    }
+}
+
+export const checkFav = (sub, item ) => {
+   return async dispatch =>{
+    const chequeo = await axios.get(`${URL}favs/${sub}`)
+    console.log(chequeo.data)
+    
+     return dispatch ({
+        type: 'CHECK_FAV',
+        payload: chequeo.data
+     })
+}}
+
+export const deleteFavorite = (sub, item ) => {
+    return async () => {
+        console.log(item, sub)
+        let addFavorite = await axios.delete(`${URL}favs/${sub}`, item)
+        console.log(addFavorite )
+
     }
 }

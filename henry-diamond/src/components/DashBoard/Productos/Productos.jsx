@@ -13,10 +13,10 @@ import { useModal } from "../../Modal/Hooks/UseModal";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { ThemeProvider, makeStyles } from "@material-ui/core/styles";
-import {  useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { capitalizeLetter } from "../../../Utils/utils";
 import CrearProducto from "../CrearProducto/CrearProducto";
-
+import EditarProducto from "../EditarProducto/EditarProducto";
 
 const useStyles = makeStyles((theme) => ({
     iconos: {
@@ -29,21 +29,25 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Productos() {
     const styles = useStyles();
+    
 
     const productos = useSelector((state) => state.items);
-    console.log(productos);
-
-    const [isOpenProducto, openProducto, closeProducto] = useModal(false);
-     
-    const handleOpenCloseCreate = () => {
-        openProducto();
-    };
-
     
+    const [isOpenProducto1, openProducto1, closeProducto1] = useModal(false);
+    const [isOpenProducto2, openProducto2, closeProducto2] = useModal(false);
+
+    const handleOpenModalCrearProducto = () => {
+        openProducto1();
+    };
+    const handleOpenModalEditarProducto = () => {
+        openProducto2();
+    };
+  
+
     return (
         <ThemeProvider>
             <div style={{ height: 400, width: "100%" }}>
-                <Button onClick={handleOpenCloseCreate}>Crear Producto</Button>
+                <Button onClick={handleOpenModalCrearProducto}>Crear Producto</Button>
                 <br />
                 <br />
                 <TableContainer>
@@ -73,7 +77,7 @@ export default function Productos() {
                                     <TableCell>{e.price}</TableCell>
                                     <TableCell>{e.subCategory_id}</TableCell>
                                     <TableCell>
-                                        <EditIcon />
+                                        <EditIcon onClick={handleOpenModalEditarProducto} />
                                         &nbsp;&nbsp;&nbsp;
                                         <DeleteIcon />
                                     </TableCell>
@@ -83,8 +87,11 @@ export default function Productos() {
                     </Table>
                 </TableContainer>
 
-                <Modal isOpen={isOpenProducto} closeModal={closeProducto}>
-                    <CrearProducto closeProducto={closeProducto}/>
+                <Modal isOpen={isOpenProducto1} closeModal={closeProducto1}>
+                    <CrearProducto closeProducto={closeProducto1} />
+                </Modal>
+                <Modal isOpen={isOpenProducto2} closeModal={closeProducto2}>
+                    <EditarProducto closeProducto={closeProducto2} />
                 </Modal>
             </div>
         </ThemeProvider>

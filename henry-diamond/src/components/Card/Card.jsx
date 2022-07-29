@@ -2,8 +2,8 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardMedia from '@mui/material/CardMedia';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CardHeader from '@material-ui/core/CardHeader';
 import Avatar from '@material-ui/core/Avatar';
@@ -18,7 +18,10 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import LogoCard from '../Logo/LogoCard'; 
 import { ThemeProvider , createTheme} from '@material-ui/core';
-
+import { addCart, addFavorite, deleteFavorite } from "../../actions/actions";
+import { useSelect } from '@mui/base';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import {Box} from '@material-ui/core';
 const theme = createTheme({
   palette: {
     primary:{
@@ -89,8 +92,12 @@ export default function BasicCard(props) {
   const {item} = props;
       const dispatch = useDispatch();
       const navigate = useNavigate()
-      const { isAuthenticated } = useAuth0();
+      const { isAuthenticated, user } = useAuth0();
       const [cantidad, setCantindad] = useState(0);
+      const favorites = useSelector(state => state.favorites)
+      const [fav, setFav] = useState(false)
+
+      
   
   
        const handleclick = () => {
@@ -101,38 +108,53 @@ export default function BasicCard(props) {
           localStorage.removeItem(item.product_id ,JSON.stringify(item) )
       }
       const handleUp = () => {
-        if (isAuthenticated){
+        
           setCantindad(cantidad+1)
           item.cantidad=cantidad+1;
           console.log(item)
           localStorage.setItem(item.product_id ,JSON.stringify(item) )
-
-        }else { alert("Para comprar un producto debes estar logueado")}
+          dispatch(addCart())
 
       }
       const handleDown = () => {
-        if (isAuthenticated){
           setCantindad(cantidad-1)
           item.cantidad=cantidad-1;
           console.log(item)
           localStorage.setItem(item.product_id ,JSON.stringify(item) )
-        }else { alert("Para comprar un producto debes estar logueado")}}
+          dispatch(addCart())}
+
+     
+
       const handleFav = () => {
         if (isAuthenticated){
-          localStorage.setItem(item.product_id ,JSON.stringify(item) )
+          dispatch(addFavorite(user.sub, item))
+          setFav(true)
         }else {
           alert("Para agregar a favoritos un producto, debes estar registrado")
         }
       }
       const classes = useStyles();
-      // const [expanded, setExpanded] = React.useState(false);
+      const handleDelete=()=>{
+        dispatch(deleteFavorite(user.sub, item))
+        setFav(false)
+      }
 
-     
+      let estoyFavorito = favorites.filter( f => f.product_id == item.product_id)
+      
+
+  
 
   return (
       <ThemeProvider theme={theme}>
-          <Card  md={{ maxWidth: '100%',height:'100%' }}>
+         
+        <Box 
+        borderRadius={25}
+        bgcolor='white'
+        boxShadow='4px 6px 8px #7a7a7a'
+            
+          >
             <CardHeader
+              onClick = {handleclick}
               className={classes.text}
               avatar={
                 <Avatar aria-label="logo" className={classes.avatar} variant="square">
@@ -147,12 +169,19 @@ export default function BasicCard(props) {
             <CardMedia
               className={classes.media} 
               image={item.image}
-              title="Imagen del producto"
+              title={item.name}
+              onClick = {handleclick}  
             />
         
-            <CardActions disableSpacing='true'>
+            <CardActions disableSpacing>
               <IconButton aria-label="add to favorites">
-                <FavoriteIcon onClick={handleFav} />
+                {
+                  estoyFavorito.length || fav 
+                  ?  <FavoriteIcon  onClick={handleDelete}/>
+                  : <FavoriteBorderIcon onClick={handleFav}/>
+                  
+                }
+                
               </IconButton>
               <IconButton>
                 {"$"+item.price}
@@ -166,12 +195,13 @@ export default function BasicCard(props) {
               
                 
               </IconButton>
-              <IconButton arial-label='detail' onClick={handleclick}>
+              {/* <IconButton arial-label='detail' onClick={handleclick}>
                 <AddIcon />
-              </IconButton>
+              </IconButton> */}
             </CardActions>
             
-          </Card>
+          
+      </Box>
     </ThemeProvider>
   );
 }

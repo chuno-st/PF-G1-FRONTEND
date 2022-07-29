@@ -2,8 +2,6 @@ import React from 'react';
 import { makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import { Button, Link  } from "@material-ui/core";
 import { resetMatch } from "../../actions/actions";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -15,6 +13,7 @@ import Grid from '@material-ui/core/Grid';
 import {ShoppingCartButton} from '../ShoppingCartButton/ShoppingCartButton'
 // import { ThemeProvider } from '@emotion/react';
 import { createTheme } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
 
 
 const theme = createTheme({
@@ -86,7 +85,9 @@ export default function NavMyAccount() {
             <Grid container xs={12}>
 
                     <Grid item xs={12} sm={4} xl={3}>
+                    <Button href="/">
                         <Logo className={classes.logo} />
+                    </Button>
                     </Grid>
 
                     <Grid item xs={12} sm={4} xl={3}>
