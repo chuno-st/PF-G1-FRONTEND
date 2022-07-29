@@ -14,8 +14,13 @@ import {
 } from "./typeActions";
 // import {getProduct} from '../../../../PF-G1-BACKEND/src/controllers/productControllers'
 import axios from "axios";
+<<<<<<< HEAD
 const URL = 'http://localhost:9000/' /* "https://pf-g1-backend-production-3e79.up.railway.app/" */
 
+=======
+const URL = "https://pf-g1-backend-production-3e79.up.railway.app/"
+//import {URL} from "../index"
+>>>>>>> de610ae396fff7bb684dd7b37c49d429ad3e841d
 
 // const axios = require('axios')
 

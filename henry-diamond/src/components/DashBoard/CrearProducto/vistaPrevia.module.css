@@ -1,0 +1,38 @@
+.CardContainer {
+    width: 400px;
+    height: 500px;
+    backdrop-filter: saturate(50%);
+    background-color: var(--background-color);
+    border-radius: 0.8rem;
+    border-style: solid;
+    transition: all 0.2s 0s ease;
+    display: grid;
+    margin-left: 15%;
+    margin-top: 10%;
+    justify-items: center;
+    align-items: center;
+    box-shadow: 5px 5px 5px 2px gray, 8px 8px 8px 5px white;
+
+}
+
+
+
+.CardImage {
+    height: 200px;
+   }
+.imagen {
+    width: auto; 
+    max-height: 100%; 
+   }
+
+.CardInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    height: 200px;
+    color: gray;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
