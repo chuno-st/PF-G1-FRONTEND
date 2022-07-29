@@ -137,6 +137,7 @@ export default function BasicCard(props) {
       const handleDelete=()=>{
         dispatch(deleteFavorite(user.sub, item))
         setFav(false)
+        navigate(0)
       }
 
       let estoyFavorito = favorites.filter( f => f.product_id == item.product_id)

@@ -236,7 +236,7 @@ export const checkFav = (sub, item ) => {
 export const deleteFavorite = (sub, item ) => {
     return async () => {
         console.log(item, sub)
-        let addFavorite = await axios.delete(`${URL}favs/${sub}`, item)
+        let addFavorite = await axios.put(`${URL}favs/${sub}`, item)
         console.log(addFavorite )
 
     }
