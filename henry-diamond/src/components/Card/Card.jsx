@@ -17,16 +17,11 @@ import {useState} from "react";
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import LogoCard from '../Logo/LogoCard'; 
-<<<<<<< HEAD
 import { ThemeProvider , createTheme} from '@material-ui/core';
 import { addCart, addFavorite, checkFav } from "../../actions/actions";
 import { useSelect } from '@mui/base';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-=======
-import { ThemeProvider , createTheme, Box} from '@material-ui/core';
-import { addCart } from "../../actions/actions";
->>>>>>> 4d3e32c1b6662bfb7e531f0a40a05729580390e0
-
+import {Box} from '@material-ui/core';
 const theme = createTheme({
   palette: {
     primary:{

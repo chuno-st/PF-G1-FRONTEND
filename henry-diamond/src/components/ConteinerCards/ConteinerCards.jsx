@@ -55,14 +55,10 @@ return (
                         lg={3} 
                         xl={3}
                       >
-<<<<<<< HEAD
-                        <BasicCard item={item} /> 
-=======
                    
                         <BasicCard key={item.id} item={item} /> 
                  
 
->>>>>>> 4d3e32c1b6662bfb7e531f0a40a05729580390e0
                 </Grid>))
         ):(
                 <Container
