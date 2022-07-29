@@ -124,7 +124,7 @@ const useStyles = makeStyles((theme) => ({
 
     return (
         <div >
-                <AppBar className={classes.root} position="static" >
+         <AppBar className={classes.root} position="static" >
                     <Toolbar>
                       <SideBar />
                         <Typography className={classes.title} variant="h6" noWrap>

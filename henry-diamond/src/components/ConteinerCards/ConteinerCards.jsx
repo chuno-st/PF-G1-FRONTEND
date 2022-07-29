@@ -62,13 +62,14 @@ return (
                     
                     products.map(item => (    //map para recorrer el array de items
                       <Grid item 
+                        key={item.id}
                         xs={12}
                         sm={6} 
                         md={4}
                         lg={3} 
                         xl={3}
                       >
-                        <BasicCard key={item.id} item={item} /> 
+                        <BasicCard item={item} /> 
                 </Grid>))
         ):(
                   <Box sx={{

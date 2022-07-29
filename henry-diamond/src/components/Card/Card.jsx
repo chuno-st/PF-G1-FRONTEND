@@ -150,7 +150,7 @@ export default function BasicCard(props) {
               title="Imagen del producto"
             />
         
-            <CardActions disableSpacing='true'>
+            <CardActions disableSpacing>
               <IconButton aria-label="add to favorites">
                 <FavoriteIcon onClick={handleFav} />
               </IconButton>

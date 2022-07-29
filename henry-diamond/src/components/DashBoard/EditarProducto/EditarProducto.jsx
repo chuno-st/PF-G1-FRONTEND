@@ -1,5 +1,6 @@
-import { React, useState } from "react";
-import { useSelector } from "react-redux";
+import { React, useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import TextField from "@mui/material/TextField";
 import { Container } from "@mui/system";
 import { Button, FormControl, FormHelperText, Grid, Input, InputLabel } from "@mui/material";
@@ -7,18 +8,34 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Validate from "../Utils/Validate";
 import { capitalizeLetter } from "../../../Utils/utils";
-import  axios from "axios";
-import VistaPrevia from "./VistaPrevia";
+import axios from "axios";
+import {getProductById, getAllItems} from "../../../actions/actions"
 
-//import {URL} from "../../../index"
-const URL = "https://pf-g1-backend-production-3e79.up.railway.app/"
-export default function CrearProducto() {
+const URL = "https://pf-g1-backend-production-3e79.up.railway.app/";
+
+
+export default function EditarProducto() {
+    
+    const  {product_id}  = useParams();
+    
+    const dispatch = useDispatch();
+ 
+   
+
+    const todosLosProductos = useSelector((state) => state.items);
     const categorias = useSelector((state) => state.category);
     const subCategorias = useSelector((state) => state.subcategory);
+    
+    
+    const productoEditado = useSelector((state) => state.product);
+    
+    useEffect(()=> {
+        dispatch(getAllItems())
+        dispatch(getProductById(product_id))
+    }, [product_id])
 
-    const [data, setData] = useState([]);
-
-    const [input, setInput] = useState({
+    const [input, setInput] = useState("");
+    const [error, setError] = useState({
         name: "",
         description: "",
         price: "",
@@ -29,18 +46,30 @@ export default function CrearProducto() {
         //stock
     });
 
-    const [error, setError] = useState({
-        name: "",
-        description: "",
-        price:"",
-        image: "",
-        category_id: "",
-        subCategory_id: "",
-        material_id: "",
-        //stock
-    });
 
-    //__________________________________________________
+    const handleEdit = async (e) => {
+        e.preventDefault();
+        try {
+          const response = await axios({
+            method: "put",
+            url: `${URL}product/${product_id}`,
+            data: {
+              name: input.name !== "" ? input.name : productoEditado.name,
+              description: input.description !== "" ? input.description : productoEditado.description,
+              price: input.price !== "" ? input.price : productoEditado.price,
+              image: input.image !== "" ? input.image : productoEditado.image,
+              category_id: input.category_id !== "" ? input.category_id : productoEditado.category_id,
+              subCategory_id : input.subCategory_id !== "" ? input.subCategory_id : productoEditado.subCategory_id,
+              
+            },
+          });
+          console.log(response);
+          alert(response.data.message);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+
 
     function handleChange(e) {
         e.preventDefault();
@@ -53,31 +82,6 @@ export default function CrearProducto() {
             return newState;
         });
     }
-
-    const handleCreate = async () => {
-        const response = await axios.post(`${URL}product`, input)
-        console.log(response)
-        return setData(data.concat(response));
-        
-    };
-
-    // function handleSubmit(e) {
-    //     e.preventDefault();
-    //     if (Object.keys(error).length === 0) {
-    //         setInput({
-    //             nombre: "",
-    //             descripcion: "",
-    //             precio: "",
-    //             imagen: "",
-    //             categoria: "",
-    //             subCategoria: "",
-    //             material_id: "",
-    //             //stock
-    //         });
-    //     } else {
-    //         alert("Por favor completa todas las celdas");
-    //     }
-    // }
 
     return (
         <div
@@ -94,9 +98,9 @@ export default function CrearProducto() {
                 <Grid container>
                     <Grid item md={12} margin={1.5}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
-                            <TextField
+                         <TextField
                                 onChange={handleChange}
-                                error={error.name }
+                                error={error.name}
                                 label="Nombre"
                                 name="name"
                                 helperText={error.name}
@@ -107,7 +111,7 @@ export default function CrearProducto() {
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
-                                error={error.description }
+                                error={error.description}
                                 label="Descripcion"
                                 name="description"
                                 helperText={error.description}
@@ -116,9 +120,9 @@ export default function CrearProducto() {
                     </Grid>
                     <Grid item md={12} margin={1.5}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
-                            <TextField 
+                            <TextField
                                 onChange={handleChange}
-                                error={error.price }
+                                error={error.price}
                                 label="Precio"
                                 name="price"
                                 helperText={error.price}
@@ -129,7 +133,7 @@ export default function CrearProducto() {
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
-                                error={error.image }
+                                error={error.image}
                                 label="Imagen"
                                 name="image"
                                 helperText={error.image}
@@ -140,12 +144,12 @@ export default function CrearProducto() {
                         <FormControl sx={{ minWidth: 230 }}>
                             <InputLabel>Categoria</InputLabel>
                             <Select
-                                error={error.category_id }
+                                error={error.category_id}
                                 label="Categorias"
                                 name="category_id"
                                 onChange={handleChange}
                                 helperText={error.category_id}
-                              >
+                            >
                                 {categorias.map((c) => {
                                     return (
                                         <MenuItem value={c.category_id.toString()}>
@@ -160,12 +164,12 @@ export default function CrearProducto() {
                         <FormControl sx={{ minWidth: 230 }}>
                             <InputLabel>Sub-Categoria</InputLabel>
                             <Select
-                                error={error.subCategory_id }
+                                error={error.subCategory_id}
                                 label="Sub Categorias"
                                 name="subCategory_id"
                                 onChange={handleChange}
                                 helperText={error.subCategory_id}
-                                >
+                            >
                                 {subCategorias.map((c) => {
                                     return (
                                         <MenuItem value={c.subCategory_id.toString()}>
@@ -177,23 +181,8 @@ export default function CrearProducto() {
                         </FormControl>
                     </Grid>
                 </Grid>
-                {/* <VistaPrevia
-                    nombre={input.name}
-                    descripcion={input.description}
-                    precio={input.price}
-                    imagen={input.image}
-                    categoria={input.category}
-                    subcategoria={input.subCategory}
-                    material_id={input.material_id}
-                    //stock
-                /> */}
-                <Button
-                    variant="container"
-                    color="primary"
-                    textAlign="center"
-                    onClick={handleCreate}
-                >
-                    Crear Producto
+                <Button variant="container" color="primary" textAlign="center" onClick={handleEdit}>
+                    Editar Producto
                 </Button>
             </Container>
         </div>
