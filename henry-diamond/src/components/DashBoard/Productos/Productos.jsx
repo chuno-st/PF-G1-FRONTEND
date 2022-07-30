@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React, useState } from "react";
 import {
     Table,
     TableContainer,
@@ -9,14 +9,17 @@ import {
     Button,
 } from "@material-ui/core";
 import Modal from "../../Modal/Modal";
-import { useModal } from "../../Modal/Hooks/UseModal";
+import  {useModal} from "../../Modal/Hooks/UseModal";
+import ModalUpdate from "../../Modal/ModalUpdate";
+import { useModalUpdate } from "../../Modal/Hooks/UseModalUpdate";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { ThemeProvider, makeStyles } from "@material-ui/core/styles";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { capitalizeLetter } from "../../../Utils/utils";
 import CrearProducto from "../CrearProducto/CrearProducto";
 import EditarProducto from "../EditarProducto/EditarProducto";
+import {getProductById} from "../../../actions/actions"
 
 const useStyles = makeStyles((theme) => ({
     iconos: {
@@ -29,18 +32,22 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Productos() {
     const styles = useStyles();
-    
+    const dispatch = useDispatch();
 
     const productos = useSelector((state) => state.items);
     
     const [isOpenProducto1, openProducto1, closeProducto1] = useModal(false);
-    const [isOpenProducto2, openProducto2, closeProducto2] = useModal(false);
+    const [isOpenProducto2, openProducto2, closeProducto2] = useModalUpdate(false);
 
     const handleOpenModalCrearProducto = () => {
         openProducto1();
+        
     };
-    const handleOpenModalEditarProducto = () => {
-        openProducto2();
+
+    const handleOpenModalEditarProducto = (product_id) => {
+        dispatch(getProductById(product_id))
+          openProducto2();
+    
     };
   
 
@@ -77,7 +84,7 @@ export default function Productos() {
                                     <TableCell>{e.price}</TableCell>
                                     <TableCell>{e.subCategory_id}</TableCell>
                                     <TableCell>
-                                        <EditIcon onClick={handleOpenModalEditarProducto} />
+                                        <EditIcon onClick={()=>handleOpenModalEditarProducto(e.product_id)} />
                                         &nbsp;&nbsp;&nbsp;
                                         <DeleteIcon />
                                     </TableCell>
@@ -89,10 +96,12 @@ export default function Productos() {
 
                 <Modal isOpen={isOpenProducto1} closeModal={closeProducto1}>
                     <CrearProducto closeProducto={closeProducto1} />
-                </Modal>
-                <Modal isOpen={isOpenProducto2} closeModal={closeProducto2}>
+                </Modal> 
+                <ModalUpdate isOpen={isOpenProducto2} closeModal={closeProducto2}>
                     <EditarProducto closeProducto={closeProducto2} />
-                </Modal>
+                </ModalUpdate>
+                
+                
             </div>
         </ThemeProvider>
     );

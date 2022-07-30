@@ -1,5 +1,4 @@
 import { React, useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import TextField from "@mui/material/TextField";
 import { Container } from "@mui/system";
@@ -11,12 +10,13 @@ import { capitalizeLetter } from "../../../Utils/utils";
 import axios from "axios";
 import {getProductById, getAllItems} from "../../../actions/actions"
 
+
 const URL = "https://pf-g1-backend-production-3e79.up.railway.app/";
 
 
-export default function EditarProducto() {
+export default function EditarProducto(product_id) {
     
-    const  {product_id}  = useParams();
+
     
     const dispatch = useDispatch();
  
@@ -28,11 +28,11 @@ export default function EditarProducto() {
     
     
     const productoEditado = useSelector((state) => state.product);
-    
+
     useEffect(()=> {
         dispatch(getAllItems())
         dispatch(getProductById(product_id))
-    }, [product_id])
+    }, [])
 
     const [input, setInput] = useState("");
     const [error, setError] = useState({
