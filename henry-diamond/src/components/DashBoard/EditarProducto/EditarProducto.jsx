@@ -11,24 +11,19 @@ import axios from "axios";
 import {getProductById, getAllItems} from "../../../actions/actions"
 
 
+
 const URL = "https://pf-g1-backend-production-3e79.up.railway.app/";
 
 
 export default function EditarProducto(product_id) {
     
-
-    
     const dispatch = useDispatch();
- 
-   
-
-    const todosLosProductos = useSelector((state) => state.items);
+     // const todosLosProductos = useSelector((state) => state.items);
     const categorias = useSelector((state) => state.category);
     const subCategorias = useSelector((state) => state.subcategory);
-    
-    
+        
     const productoEditado = useSelector((state) => state.product);
-
+    console.log(productoEditado)
     useEffect(()=> {
         dispatch(getAllItems())
         dispatch(getProductById(product_id))
@@ -43,7 +38,7 @@ export default function EditarProducto(product_id) {
         category_id: "",
         subCategory_id: "",
         material_id: "",
-        //stock
+        stock:"",
     });
 
 
@@ -51,7 +46,7 @@ export default function EditarProducto(product_id) {
         e.preventDefault();
         try {
           const response = await axios({
-            method: "put",
+            method: "patch",
             url: `${URL}product/${product_id}`,
             data: {
               name: input.name !== "" ? input.name : productoEditado.name,
@@ -60,7 +55,7 @@ export default function EditarProducto(product_id) {
               image: input.image !== "" ? input.image : productoEditado.image,
               category_id: input.category_id !== "" ? input.category_id : productoEditado.category_id,
               subCategory_id : input.subCategory_id !== "" ? input.subCategory_id : productoEditado.subCategory_id,
-              
+              stock : input.stock !== "" ? input.stock : productoEditado.stock,
             },
           });
           console.log(response);
@@ -101,18 +96,19 @@ export default function EditarProducto(product_id) {
                          <TextField
                                 onChange={handleChange}
                                 error={error.name}
-                                label="Nombre"
+                                label={productoEditado.name}
                                 name="name"
                                 helperText={error.name}
-                            />
+                                />
                         </FormControl>
+                                
                     </Grid>
                     <Grid item md={12} margin={1.5}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
                                 error={error.description}
-                                label="Descripcion"
+                                label={productoEditado.description}
                                 name="description"
                                 helperText={error.description}
                             />
@@ -123,7 +119,7 @@ export default function EditarProducto(product_id) {
                             <TextField
                                 onChange={handleChange}
                                 error={error.price}
-                                label="Precio"
+                                label={productoEditado.price}
                                 name="price"
                                 helperText={error.price}
                             />
@@ -134,7 +130,7 @@ export default function EditarProducto(product_id) {
                             <TextField
                                 onChange={handleChange}
                                 error={error.image}
-                                label="Imagen"
+                                label={productoEditado.image}
                                 name="image"
                                 helperText={error.image}
                             />

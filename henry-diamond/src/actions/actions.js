@@ -4,6 +4,7 @@ import {
     ALL_ITEMS,
     ALL_CAREGORY,
     ALL_SUBCATEGORY, 
+    ALL_USERS,
     SET_CATEGORY, 
     SET_SUBCATEGORY,
     ADD_USER,
@@ -48,6 +49,16 @@ export function getAllItems(){
     }
 }
 
+export function getAllUsers(){
+    return async (dispatch) =>{
+        let allUsers = await axios.get(`${URL}adduser`)
+        return dispatch({
+            type: ALL_USERS,
+            payload: allUsers.data
+        })
+    }
+}
+
 export const FilterBy = ({subcategory,price}) => {
     console.log(subcategory,price)
     return dispatch =>{
@@ -59,10 +70,7 @@ export const FilterBy = ({subcategory,price}) => {
             })
         })
     }
-    
-        
-    }
-
+}
 
 export function addUser(data){
     return async (dispatch) =>{
@@ -92,8 +100,29 @@ export const Category = ()=>{
         })        
         })
     }
-
 }
+
+export function createCategory(){
+    return async (dispatch) =>{
+        let response = await axios.post(`${URL}category/`)
+        return dispatch({
+            type: CREATE_CATEGORY,
+            payload: response.data
+        })
+    }
+}
+
+export function createSubCategory(){
+    return async (dispatch) =>{
+        let response = await axios.post(`${URL}subcategory/`)
+        return dispatch({
+            type: CREATE_SUBCATEGORY,
+            payload: response.data
+        })
+    }
+}
+
+
 export const SubCategory = ()=>{
     return dispatch => {
         axios

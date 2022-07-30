@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 
 const ModalUpdate = ({children, isOpen, closeModal}) => {
     const productoEditado = useSelector((state) => state.product);
-    console.log("El PE del MU",productoEditado)
     const handleModalConteinerClick = e => e.stopPropagation();
     return (
         <article className={`modal ${isOpen && "is-open"}`} onClick={closeModal}>

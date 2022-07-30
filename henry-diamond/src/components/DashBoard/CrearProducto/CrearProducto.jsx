@@ -13,6 +13,8 @@ import VistaPrevia from "./VistaPrevia";
 //import config from "../../../config"
 //import {URL} from "../../../index.js"
 const {URL} = require('../../../config')
+
+
 export default function CrearProducto() {
     
     const categorias = useSelector((state) => state.category);
@@ -58,9 +60,7 @@ export default function CrearProducto() {
 
     const handleCreate = async () => {
         const response = await axios.post(`${URL}product`, input)
-        console.log(response)
         return setData(data.concat(response));
-        
     };
 
     // function handleSubmit(e) {
