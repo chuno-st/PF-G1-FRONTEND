@@ -7,7 +7,6 @@ import { createTheme } from "@material-ui/core";
 import { Link } from 'react-router-dom';
 import NavMyAccount from './NavMyAccount';
 import { useAuth0 } from "@auth0/auth0-react";
-import './MyAccount.css';
 import Divider from '@material-ui/core/Divider';
 import {Box, CssBaseline, Button} from '@material-ui/core';
 

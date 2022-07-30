@@ -191,9 +191,6 @@ export default function BasicCard(props) {
               
                 
               </IconButton>
-              {/* <IconButton arial-label='detail' onClick={handleclick}>
-                <AddIcon />
-              </IconButton> */}
             </CardActions>
             
           

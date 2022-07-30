@@ -11,6 +11,12 @@ import Typography from "@material-ui/core/Typography";
 import Button from '@material-ui/core/Button'
 import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import { capitalizeLetter } from "../../Utils/utils.js";
+
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -60,50 +66,56 @@ export default function Detail () {
             <NavMyAccount/>              
           </Grid>
 
-          <Grid 
-            xs={12} sm={12} lg={12} xl={12} 
-            container
-            direction="colum"
-            justifyContent="center"
-            alignItems="center">
+
+      <Grid container>
+
+              <Grid item
+                xs={6} 
+                direction="colum"
+                justifyContent="center"
+                alignItems="center">
           
+                    <Box 
+                      padding={20}
+                      alignContent='center'
+                      alignItems='center'
+                      direction = 'column'
+                    >
+                      <ImageList sx={{ width: 350, height: 350 }} cols={1} rowHeight={50}>
+                            <ImageListItem key={product.img}>
+                              <img
+                                src={`${product.image}?w=164&h=164&fit=crop&auto=format`}
+                                srcSet={`${product.image}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                                alt={product.name}
+                                loading="lazy"
+                                />
+                            </ImageListItem>
+                        </ImageList>
+                    
+            
+                    </Box>
+              </Grid>
+
+              <Grid item
+                xs={6} 
+                direction="colum"
+                justifyContent="center"
+                alignItems="center">
                     <Box 
                       padding={15}
                       alignContent='center'
                       alignItems='center'
                       direction = 'column'
                     >
-                    
-                    <img src={product.image}/>
-                   
+                        <Typography align='center' gutterBottom variant='h5'> 
+                          <h2>{(product.name)}</h2>
+                        </Typography>
+                        <h1>${product.price}</h1>
+                        <Typography align='center' gutterBottom variant='h5'> 
+                          <h2>{product.description}</h2>
+                        </Typography>
                     </Box>
-
-                    <Box 
-                      padding={15}
-                      alignContent='center'
-                      alignItems='center'
-                      direction = 'column'
-                    >
-                    
-                    <Typography align='center' gutterBottom variant='h5'> 
-                      <h2>Producto: {(product.name)}</h2>
-                    </Typography>
-                    <h1> Precio: ${product.price}</h1>
-                    </Box>
-          
-         
-
-
-          <Grid item xs={12}
-           container
-           direction="row"
-           justifyContent="center"
-           alignItems="center"
-           >
-          <Typography align='center' gutterBottom variant='h5'> 
-            <h2>{product.description}</h2>
-          </Typography>
-            </Grid>
+              </Grid>
 
             <Grid item xs={12} sm={12} lg={12} xl={12} >
               <Typography align='center' gutterBottom variant='h5'> 
@@ -125,11 +137,11 @@ export default function Detail () {
               
               })
             } 
-        </Grid> 
+                </Grid> 
       
 
-    </Grid>
-    </Grid>
+            </Grid>
+      </Grid>
 
 
     <Footer />
