@@ -20,6 +20,7 @@ const {URL} = require('../config')
 
 
 
+
 export function getAllProduct(name){
     // console.log('estoy en la action'
     return async (dispatch) =>{
@@ -230,9 +231,13 @@ export const checkFav = (sub, item ) => {
         type: 'CHECK_FAV',
         payload: chequeo.data
      })
-}
+}}
 
+export const deleteFavorite = (sub, item ) => {
+    return async () => {
+        console.log(item, sub)
+        let addFavorite = await axios.put(`${URL}favs/${sub}`, item)
+        console.log(addFavorite )
 
-    
-
+    }
 }

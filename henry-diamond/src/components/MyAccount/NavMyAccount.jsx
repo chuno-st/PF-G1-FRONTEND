@@ -14,6 +14,9 @@ import {ShoppingCartButton} from '../ShoppingCartButton/ShoppingCartButton'
 // import { ThemeProvider } from '@emotion/react';
 import { createTheme } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
+import Hidden from '@material-ui/core/Hidden';
+import Box from '@material-ui/core/Box';
+
 
 
 const theme = createTheme({
@@ -85,13 +88,9 @@ export default function NavMyAccount() {
             <Grid container xs={12}>
 
                     <Grid item xs={12} sm={4} xl={3}>
-                    <Button href="/">
-                        <Logo className={classes.logo} />
-                    </Button>
-                    </Grid>
-
-                    <Grid item xs={12} sm={4} xl={3}>
-                        <Button size="large" variant="contained" className={classes.home} onClick={handleclick} > HOME </Button>
+                        <Button href="/">
+                            <Logo className={classes.logo} />
+                        </Button>
                     </Grid>
                     
                     <Grid item xs={12} sm={4} xl={3}>
@@ -102,12 +101,16 @@ export default function NavMyAccount() {
                                         <ShoppingCartButton />
                                     </ div>
                                     ) : (
+                                    <Hidden mdDown>
                                     <div>
                                         <LoginButton className={classes.loginButton} />
                                     </ div>
+                                    </Hidden>
+
 
                                     )
                                     }
+
 
                     </Grid>
             </Grid>
@@ -117,6 +120,11 @@ export default function NavMyAccount() {
     </div>
   );
 }
+
+
+
+
+
 
 
 
