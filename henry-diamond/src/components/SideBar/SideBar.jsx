@@ -22,6 +22,7 @@ import HowToBuyModal from "../HowToBuyModal/HowToBuyModal"
 import ContactModal from "../ContactModal/ContactModal"
 import { UserInfo } from "../UserInfo/UserInfo"
 import FilterMaterial from "../Filter/FilterMaterial"
+import {ShoppingCartButton} from '../ShoppingCartButton/ShoppingCartButton'
 
 
 const drawerWidth = 300;
@@ -182,6 +183,14 @@ export default function SideBar() {
                 <List>
                   <ListItem button>
                     <ListItemText className={classes.text}>{<Profile />}</ListItemText>
+                  </ListItem>
+                </List>
+                </div>
+
+                <div>
+                <List>
+                  <ListItem button>
+                    <ListItemText className={classes.text}>{<ShoppingCartButton />}</ListItemText>
                   </ListItem>
                 </List>
                 </div>
