@@ -19,7 +19,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { capitalizeLetter } from "../../../Utils/utils";
 import CrearProducto from "../CrearProducto/CrearProducto";
 import EditarProducto from "../EditarProducto/EditarProducto";
-import {getProductById} from "../../../actions/actions"
+import {getProductById, getAllItemsAdmin} from "../../../actions/actions"
 
 const useStyles = makeStyles((theme) => ({
     iconos: {
@@ -34,14 +34,14 @@ export default function Productos() {
     const styles = useStyles();
     const dispatch = useDispatch();
 
-    const productos = useSelector((state) => state.items);
-    
+    const productos = useSelector((state) => state.itemsAdmin);
+
+        
     const [isOpenProducto1, openProducto1, closeProducto1] = useModal(false);
     const [isOpenProducto2, openProducto2, closeProducto2] = useModalUpdate(false);
 
     const handleOpenModalCrearProducto = () => {
         openProducto1();
-        
     };
 
     const handleOpenModalEditarProducto = (product_id) => {

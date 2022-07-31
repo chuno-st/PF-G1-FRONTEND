@@ -17,27 +17,25 @@ import { capitalizeLetter } from "../../../Utils/utils";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Validate from "../Utils/Validate";
-
+import CategoryForm from "../CategoryForm/CategoryForm";
 
 export default function Categorias() {
-    
     const dispatch = useDispatch();
     const categorias = useSelector((state) => state.adminCategory);
-    console.log("Las categorias del admin", categorias)
+    console.log("Las categorias del admin", categorias);
 
     useEffect(() => {
         dispatch(adminCategory());
     }, []);
 
-      const [input, setInput] = useState({
+    const [input, setInput] = useState({
         name: "",
-      });
+    });
 
-      const [state, setState] = useState({
-        
+    const [state, setState] = useState({
         state: "",
-      });
-     
+    });
+
     const [error, setError] = useState({
         nombre: "",
     });
@@ -56,37 +54,26 @@ export default function Categorias() {
         });
     }
 
-    const handleDelete = async (id) => {
-        try {
-            dispatch(disableCategory(id))
-            alert ("La categoria fue borrada correctamente")
-        } catch (error) {
-         console.log(error)  
-        }
-     
-      };
-
     const handleCreate = async (e) => {
-      e.preventDefault();
-      try {
-        if (!input.name){
-            alert ("Por favor ingresar un nombre")
-        } else {
-          dispatch(createCategory(input))
-              setInput({name : ""})
-          alert ("La categoria se creo correctamente")
+        e.preventDefault();
+        try {
+            if (!input.name) {
+                alert("Por favor ingresar un nombre");
+            } else {
+                dispatch(createCategory(input));
+                setInput({ name: "" });
+                alert("La categoria se creo correctamente");
+            }
+        } catch (error) {
+            console.log(error);
         }
-      } catch (error) {
-       console.log(error)  
-      }
-   
     };
 
     return (
         <Container>
             <Grid container>
                 <Grid item md={12} margin={1.5}>
-                    <FormControl >
+                    <FormControl>
                         <TextField
                             error={error.nombre}
                             label="Nombre de la categoria"
@@ -114,22 +101,16 @@ export default function Categorias() {
                                     <TableCell>ID</TableCell>
                                     <TableCell>Imagen de categoria</TableCell>
                                     <TableCell>Estado</TableCell>
-                                    <TableCell>Acciones</TableCell>
+                                    <TableCell>Editar</TableCell>
+                                    <TableCell>Habilitar/Deshabilitar</TableCell>
                                 </TableRow>
                             </TableHead>
 
                             <TableBody>
-                                {categorias.map((e) => (
-                                    <TableRow key={e.category_id}>
-                                        <TableCell>{e.category_id}</TableCell>
-                                        <TableCell>{capitalizeLetter(e.name)}</TableCell>
-                                        <TableCell>{capitalizeLetter(e.state.toString())}</TableCell>
-                                        <TableCell>
-                                            <EditIcon />
-                                            &nbsp;&nbsp;&nbsp;
-                                            <DeleteIcon key={e.category_id} onClick={handleDelete}/>
-                                        </TableCell>
-                                    </TableRow>
+                                {categorias.map((elem) => (
+                                    <CategoryForm
+                                        elem = {elem} 
+                                    />
                                 ))}
                             </TableBody>
                         </Table>

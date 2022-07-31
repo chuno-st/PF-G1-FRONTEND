@@ -2,6 +2,7 @@ import {
     FILTER,
     GET_PRODUCT,
     ALL_ITEMS,
+    ALL_ITEMS_ADMIN,
     ALL_CATEGORY,
     ALL_CATEGORY_ADMIN,
     ALL_SUBCATEGORY,
@@ -42,6 +43,17 @@ export function getAllItems() {
         return dispatch({
             type: ALL_ITEMS,
             payload: allItems.data,
+        });
+    };
+}
+
+
+export function getAllItemsAdmin() {
+    return async (dispatch) => {
+        let allItemsAdmin = await axios.get(`${URL}product/admin`);
+        return dispatch({
+            type: ALL_ITEMS_ADMIN,
+            payload: allItemsAdmin.data,
         });
     };
 }
@@ -129,16 +141,27 @@ export function createCategory(body) {
     };
 }
 
-export function disableCategory(id) {
-    console.log("que soyyyy un ID????", id)
-    return async () => {
-        try {
-            const response = await axios.delete(`${URL}category/${id}?state=false`);
-            console.log("El response de la action delete", response)
-        } catch (error) {
-            console.log(error);
+export function disableCategory(id, state) {
+    if (state){
+        return async (dispatch) => {
+            try {
+                const response = await axios.delete(`${URL}category/${id}?state=false`);
+                dispatch({ type: DISABLE_CATEGORY, payload: response.data});
+    
+            } catch (error) {
+                console.log(error);
+            }
         }
-    };
+    } else {
+        return async (dispatch) => {
+            try {
+                const response = await axios.delete(`${URL}category/${id}?state=true`);
+                dispatch({ type: DISABLE_CATEGORY, payload: response.data});
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    }
 }
 
 

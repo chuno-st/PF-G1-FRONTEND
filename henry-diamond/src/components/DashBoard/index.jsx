@@ -2,14 +2,14 @@ import React from 'react'
 import SideBar from "../DashBoard/SideBar/SideBar"
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { getAllItems, Category, SubCategory } from "../../actions/actions";
+import { getAllItemsAdmin, Category, SubCategory } from "../../actions/actions";
 
 
 export default function Admin() {
   const dispatch = useDispatch();
 
   useEffect(()=>{
-    dispatch(getAllItems())
+    dispatch(getAllItemsAdmin())
    }, [dispatch])
 
    useEffect(()=>{

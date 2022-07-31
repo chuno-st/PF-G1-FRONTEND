@@ -1,5 +1,6 @@
 export const FILTER = "FILTER";
 export const ALL_ITEMS = "ALL_ITEMS";
+export const ALL_ITEMS_ADMIN = "ALL_ITEMS_ADMIN";
 export const GET_PRODUCT = "GET_PRODUCT";
 export const ALL_CATEGORY = "ALL_CATEGORY";
 export const ALL_CATEGORY_ADMIN = "ALL_CATEGORY_ADMIN";

@@ -2,6 +2,7 @@ import {
     FILTER,
     ALL_ITEMS,
     ALL_CATEGORY,
+    DISABLE_CATEGORY,
     ALL_CATEGORY_ADMIN,
     ALL_SUBCATEGORY,
     ALL_USERS,
@@ -12,12 +13,14 @@ import {
     SET_SUBCATEGORY,
     CHECK_ROLE,
     CREATE_PRODUCT,
+    ALL_ITEMS_ADMIN,
 } from "../actions/typeActions";
 
 import { GET_PRODUCT } from "../actions/typeActions";
 const inicialState = {
     allProducts: [],
     items: [],
+    itemsAdmin: [],
     users: [],
     filter: {},
     category: [],
@@ -42,6 +45,9 @@ const reducer = (state = inicialState, { type, payload }) => {
 
         case ALL_ITEMS:
             return { ...state, items: payload };
+
+        case ALL_ITEMS_ADMIN:
+            return { ...state, itemsAdmin: payload };
 
         case FILTER:
             return {
@@ -107,6 +113,12 @@ const reducer = (state = inicialState, { type, payload }) => {
                 ...state,
                 category: state.category.concat(payload),
             };
+
+            case DISABLE_CATEGORY:
+                return {
+                    ...state,
+                    category: payload,
+                };
 
         case CREATE_SUBCATEGORY:
             return {
