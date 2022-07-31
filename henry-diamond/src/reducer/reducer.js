@@ -1,7 +1,8 @@
 import {
     FILTER,
     ALL_ITEMS,
-    ALL_CAREGORY,
+    ALL_CATEGORY,
+    ALL_CATEGORY_ADMIN,
     ALL_SUBCATEGORY,
     ALL_USERS,
     CREATE_CATEGORY,
@@ -12,6 +13,7 @@ import {
     CHECK_ROLE,
     CREATE_PRODUCT,
 } from "../actions/typeActions";
+
 import { GET_PRODUCT } from "../actions/typeActions";
 const inicialState = {
     allProducts: [],
@@ -19,6 +21,7 @@ const inicialState = {
     users: [],
     filter: {},
     category: [],
+    adminCategory: [],
     subcategory: [],
     paginado: {
         desde: 0,
@@ -45,8 +48,11 @@ const reducer = (state = inicialState, { type, payload }) => {
                 ...state,
                 items: payload,
             };
-        case ALL_CAREGORY:
+        case ALL_CATEGORY:
             return { ...state, category: payload };
+
+        case ALL_CATEGORY_ADMIN:
+            return { ...state, adminCategory: payload };
 
         case ALL_SUBCATEGORY:
             return { ...state, subcategory: payload };
@@ -103,10 +109,10 @@ const reducer = (state = inicialState, { type, payload }) => {
             };
 
         case CREATE_SUBCATEGORY:
-                return {
-                    ...state,
-                    subcategory: state.subcategory.concat(payload),
-                };
+            return {
+                ...state,
+                subcategory: state.subcategory.concat(payload),
+            };
 
         case "RESET_MATCH": {
             return { ...state, matches: [] };

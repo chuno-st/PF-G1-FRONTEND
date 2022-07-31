@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Category, createCategory } from "../../../actions/actions";
+import { adminCategory, createCategory, disableCategory } from "../../../actions/actions";
 import TextField from "@mui/material/TextField";
 import { Container } from "@mui/system";
 import { FormControl, FormHelperText, Grid, Input, InputLabel } from "@mui/material";
@@ -18,23 +18,28 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Validate from "../Utils/Validate";
 
+
 export default function Categorias() {
+    
     const dispatch = useDispatch();
-    const categorias = useSelector((state) => state.category);
-    console.log("estas son las categorias", categorias);
+    const categorias = useSelector((state) => state.adminCategory);
+    console.log("Las categorias del admin", categorias)
 
     useEffect(() => {
-        dispatch(Category());
+        dispatch(adminCategory());
     }, []);
 
       const [input, setInput] = useState({
-        nombre: "",
-        categoria: "",
-    });
+        name: "",
+      });
 
+      const [state, setState] = useState({
+        
+        state: "",
+      });
+     
     const [error, setError] = useState({
         nombre: "",
-        categoria: "",
     });
 
     //__________________________________________________
@@ -51,27 +56,49 @@ export default function Categorias() {
         });
     }
 
-    function handleSubmit(e) {
-        e.preventDefault();
-       dispatch(createCategory());
-    }
+    const handleDelete = async (id) => {
+        try {
+            dispatch(disableCategory(id))
+            alert ("La categoria fue borrada correctamente")
+        } catch (error) {
+         console.log(error)  
+        }
+     
+      };
+
+    const handleCreate = async (e) => {
+      e.preventDefault();
+      try {
+        if (!input.name){
+            alert ("Por favor ingresar un nombre")
+        } else {
+          dispatch(createCategory(input))
+              setInput({name : ""})
+          alert ("La categoria se creo correctamente")
+        }
+      } catch (error) {
+       console.log(error)  
+      }
+   
+    };
 
     return (
         <Container>
             <Grid container>
                 <Grid item md={12} margin={1.5}>
-                    <FormControl>
+                    <FormControl >
                         <TextField
-                            error={error.category_id}
+                            error={error.nombre}
                             label="Nombre de la categoria"
-                            name="category_id"
                             onChange={handleChange}
-                            helperText={error.category_id}
+                            name="name"
+                            value={input.name}
+                            helperText={error.nombre}
                         />
                     </FormControl>
                 </Grid>
             </Grid>
-            <Button variant="container" color="primary">
+            <Button variant="container" color="secundary" onClick={handleCreate}>
                 Crear Categoria
             </Button>
             <br />
@@ -86,6 +113,7 @@ export default function Categorias() {
                                 <TableRow>
                                     <TableCell>ID</TableCell>
                                     <TableCell>Imagen de categoria</TableCell>
+                                    <TableCell>Estado</TableCell>
                                     <TableCell>Acciones</TableCell>
                                 </TableRow>
                             </TableHead>
@@ -95,10 +123,11 @@ export default function Categorias() {
                                     <TableRow key={e.category_id}>
                                         <TableCell>{e.category_id}</TableCell>
                                         <TableCell>{capitalizeLetter(e.name)}</TableCell>
+                                        <TableCell>{capitalizeLetter(e.state.toString())}</TableCell>
                                         <TableCell>
                                             <EditIcon />
                                             &nbsp;&nbsp;&nbsp;
-                                            <DeleteIcon />
+                                            <DeleteIcon key={e.category_id} onClick={handleDelete}/>
                                         </TableCell>
                                     </TableRow>
                                 ))}
