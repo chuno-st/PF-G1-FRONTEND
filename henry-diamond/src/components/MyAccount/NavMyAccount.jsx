@@ -14,9 +14,7 @@ import {ShoppingCartButton} from '../ShoppingCartButton/ShoppingCartButton'
 // import { ThemeProvider } from '@emotion/react';
 import { createTheme } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
-import Hidden from '@material-ui/core/Hidden';
-import Box from '@material-ui/core/Box';
-
+import {Box, Hidden} from '@material-ui/core';
 
 
 const theme = createTheme({
@@ -87,31 +85,41 @@ export default function NavMyAccount() {
         <Toolbar variant="dense">
             <Grid container xs={12}>
 
-                    <Grid item xs={12} sm={4} xl={3}>
+                    <Grid item xs={6} ms={6} md={6} lg={6} xl={6}>
+                    <Box pr={60}>
                         <Button href="/">
                             <Logo className={classes.logo} />
                         </Button>
+                    </Box>
+
                     </Grid>
+
                     
-                    <Grid item xs={12} sm={4} xl={3}>
-                    {
-                                isAuthenticated ? (
-                                    <div>
-                                        <Button  size="large"><Profile className={classes.profile}/></Button>
-                                        <ShoppingCartButton />
-                                    </ div>
-                                    ) : (
-                                    <Hidden mdDown>
-                                    <div>
-                                        <LoginButton className={classes.loginButton} />
-                                    </ div>
-                                    </Hidden>
+                    
+                    <Grid item xs={6} ms={6} md={6} lg={6} xl={6}>
+                        <Box pl={25}>
 
+                        {
+                                    isAuthenticated ? (
+                                     
 
-                                    )
-                                    }
+                                        <div>
+                                              <Hidden smDown>
+                                                <Button  size="large"><Profile className={classes.profile}/></Button>
+                                              </Hidden>
 
+                                                <ShoppingCartButton />
 
+                                        </ div>
+                                        ) : (
+                                        <div>
+                                            <LoginButton className={classes.loginButton} />
+                                        </ div>
+
+                                        )
+
+                                        }
+                        </Box>
                     </Grid>
             </Grid>
         </Toolbar>
@@ -120,7 +128,6 @@ export default function NavMyAccount() {
     </div>
   );
 }
-
 
 
 
