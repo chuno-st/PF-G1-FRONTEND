@@ -6,7 +6,6 @@ import { Button } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { postCart } from "../../actions/actions";
 import { addCart } from "../../actions/actions";
-import { Box } from "@material-ui/core";
 
 import { useAuth0 } from "@auth0/auth0-react";
 import NavMyAccount from '../MyAccount/NavMyAccount';
@@ -16,6 +15,7 @@ import { Grid } from "@mui/material";
 import Footer from "../Footer/Footer";
 import { useNavigate, Redirect } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles'
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -85,7 +85,11 @@ export default function ShoppingCart(){
         <Grid item xs={12} sm={12} xl={12}>
           <NavMyAccount/>              
         </Grid>
-        
+        <Grid item xs={12}>
+          <Typography align="center" gutterBottom variant='h4'>
+            Mi Carrito de compras
+          </Typography>
+        </Grid>
         <Grid item xs={12} sm={8} md={9} container spacing={2}>
 
              {
@@ -95,11 +99,8 @@ export default function ShoppingCart(){
               </Grid>
               ))
             } 
+  
         </Grid>
-
-            
-
-
         <Grid item xs={12} sm={4} md={3} gutterBottom variant='h4'>
         <Typography align="center" gutterBottom variant='h4'>
             Mi Carrito:
@@ -116,5 +117,5 @@ export default function ShoppingCart(){
         </Grid>
           <Footer />
       </ThemeProvider>    
-</div>)}
-   
+</div>
+)}
