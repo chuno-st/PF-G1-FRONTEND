@@ -22,6 +22,10 @@ import { addCart, addFavorite, deleteFavorite } from "../../actions/actions";
 import { useSelect } from '@mui/base';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import {Box} from '@material-ui/core';
+import swal from 'sweetalert'
+
+
+
 const theme = createTheme({
   palette: {
     primary:{
@@ -130,7 +134,12 @@ export default function BasicCard(props) {
           dispatch(addFavorite(user.sub, item))
           setFav(true)
         }else {
-          alert("Para agregar a favoritos un producto, debes estar registrado")
+          swal({
+            title: "Error",
+            text: "Para agregar a favoritos un producto, debes estar registrado",
+            icon: "error",
+            button: "Aceptar",
+          });
         }
       }
       const classes = useStyles();

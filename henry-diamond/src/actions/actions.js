@@ -11,13 +11,15 @@ import {
     CREATE_PRODUCT,
     CREATE_CATEGORY,
     CREATE_SUBCATEGORY,
-    GET_USER_ADDRESS,
+    GET_USER,
     POST_USER_ADDRESS,
     UPDATE_USER_ADDRESS
 
 } from "./typeActions";
 //import config from "../config.js"
 import axios from "axios";
+import swal from 'sweetalert'
+
 //import {URL} from "../index.js"
 const {URL} = require('../config')
 //import {URL} from "../index.js"
@@ -31,7 +33,13 @@ export function getAllProduct(name){
         let allProducts = await axios.get(`${URL}product?name=${name}`)
         console.log(allProducts)
         if(allProducts.data.length === 0){
-            alert('Producto no encontrado')
+            swal({
+                title: "Error",
+                text: "Producto no encontrado",
+                icon: "error",
+                button: "Aceptar",
+              });
+            //alert('Producto no encontrado')
         }
         return dispatch({
             type: GET_PRODUCT,
@@ -174,7 +182,13 @@ export const createProduct = (body) => {
     return async function () {
       try {
         await axios.post(`${URL}`, body);
-        alert("El producto fue creado correctamente");
+        swal({
+            title: "Error",
+            text: "El producto fue creado correctamente",
+            icon: "error",
+            button: "Aceptar",
+          });
+        //alert("El producto fue creado correctamente");
         } catch (err) {
         console.log(err);
       }
@@ -248,11 +262,11 @@ export const deleteFavorite = (sub, item ) => {
 
 //USER: 
 
-export const getUserAddress = ()=>{
+export const getUser = ()=>{
     return async function(dispatch){
       return axios.get(`${URL}`, )
         .then(response=>{
-          dispatch({type: GET_USER_ADDRESS, payload: response.data})
+          dispatch({type: GET_USER, payload: response.data})
         }).catch(err => console.log(err))
     }
   }
@@ -277,20 +291,7 @@ export const getUserAddress = ()=>{
   }
   
 
-//Para crear una review:
 
-// export function createReview(id, payload) {
-//     return async function (dispatch) {
-//       await axios.post(`${urlBase}${ratings}${crear}/${id}`, payload);
-  
-//       return dispatch({
-//         type: "CREATE_REVIEW",
-//         payload,
-//       });
-//     };
-//   }
-
-///////////////////////////////////////////////////////////////
 
 
 

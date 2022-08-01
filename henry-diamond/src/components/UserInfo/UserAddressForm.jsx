@@ -1,109 +1,125 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import {
-    postUserAddress,
-    updateUserAddress,
-    getUserAddress
-  } from "../../actions/actions";
+import { postUserAddress, updateUserAddress, getUser } from "../../actions/actions";
+import swal from 'sweetalert'
 
 
 export default function UserAddressForm() {
     const dispatch = useDispatch();
     const [validator, setValidator] = useState("");
     const { id } = useParams();
-    const userAddress = useSelector((state) => state.userAddress);
+    const user = useSelector((state) => state.user);
     const [updated, setUpdated] = useState(false);
-    const user = JSON.parse(localStorage.getItem("user"));
-    const adressId = userAddress[0]?._id
+    const adressId = user.id;
     const navigate = useNavigate()
   
   
   
     const [dataState, setDataState] = useState({
-      name: userAddress[0]?.name,
-      address: userAddress[0]?.address,
-      city: userAddress[0]?.city,
-      province: userAddress[0]?.province,
-      phone_number: userAddress[0]?.phone_number,
-      notes: userAddress[0]?.notes,
+      nombre: user.nombre,
+      apellido: user.apellido,
+      dni: user.dni,
+      telefono: user.telefono,
+      calle: user.calle,
+      numero: user.numero,
+      ciudad: user.ciudad,
+      provincia: user.provincia,
+      codigo_postal: user.codigo_postal,
     });
   
     useEffect(()=>{
-      dispatch(getUserAddress())
+      dispatch(getUser())
     },[])
   
     useEffect(() => {
       setDataState({
-        name: userAddress[0]?.name,
-        address: userAddress[0]?.address,
-        city: userAddress[0]?.city,
-        province: userAddress[0]?.province,
-        phone_number: userAddress[0]?.phone_number,
-        notes: userAddress[0]?.notes,
+        nombre: user.nombre,
+        apellido: user.apellido,
+        dni: user.dni,
+        telefono: user.telefono,
+        calle: user.calle,
+        numero: user.numero,
+        ciudad: user.ciudad,
+        provincia: user.provincia,
+        codigo_postal: user.codigo_postal,
       });
-    }, [userAddress]);
+    }, [user]);
   
   
     const handleSubmit = (e) => {
       e.preventDefault();
-      if (!dataState.name) {
-        setValidator("El nombre de contacto es requerido");
-      } else if (!dataState.address) {
-        setValidator("La direccion de envio es requerida");
-      } else if (!dataState.city) {
+      if (!dataState.nombre) {
+        setValidator("El nombre del contacto es requerido");
+      } else if (!dataState.apellido) {
+        setValidator("El apellido de contacto es requerido");
+      } else if (!dataState.dni) {
+        setValidator("El DNI del contacto es requerido");
+      } else if (!dataState.telefono) {
+        setValidator("El teléfono del contacto es requerido"); 
+      } else if (!dataState.calle) {
+        setValidator("La calle del envio es requerida");      
+      } else if (!dataState.numero) {
+        setValidator("El número del domicilio para el envio es requerido");
+      } else if (!dataState.ciudad) {
         setValidator("La ciudad es requerida");
-      } else if (!dataState.province) {
+      } else if (!dataState.provincia) {
         setValidator("La provincia es requerida");
-      } else if (!dataState.phone_number) {
-        setValidator("La provincia es requerida");
+      } else if (!dataState.codigo_postal) {
+        setValidator("El código postal es requerido");
       } else {
         if (dataState) {
-          if (userAddress.length === 0) {
+          if (user.length === 0) {
           
           dispatch(postUserAddress(dataState))
-        //    return swal({
-        //       title: "Direccion creada corectamente",
-        //       icon: "success",
-        //       button: "Aceptar",})
-        //       .then(()=>{
-        //       window.location.reload()
-        //       })
+           return swal({
+              title: "Direccion creada corectamente",
+              icon: "success",
+              button: "Aceptar",})
+              .then(()=>{
+              window.location.reload()
+              })
           } else  {
            
             dispatch(updateUserAddress(adressId, dataState));
-            // return swal({
-            //   title: "Direccion actualizada corectamente",
-            //   icon: "success",
-            //   button: "Aceptar",})
-            //   .then(()=>{
-            //     navigate("/useraddress");
-            //   })
+            return swal({
+              title: "Direccion actualizada corectamente",
+              icon: "success",
+              button: "Aceptar",})
+              .then(()=>{
+                navigate("/useraddress");
+              })
   
           }
         }
         setValidator("");
         setDataState({
-          name: "",
-          address: "",
-          city: "",
-          province: "",
-          phone_number: "",
-          notes: "",
+          nombre: "",
+          apellido: "",
+          dni: "",
+          telefono: "",
+          calle: "",
+          numero: "",
+          ciudad: "",
+          provincia: "",
+          codigo_postal: "",        
         });
         document.getElementById("form").reset();
       }
     };
   
-    if (id && userAddress && !updated) {
+    if (id && user && !updated) {
       setDataState({
         ...dataState,
-        name: userAddress.name,
-        address: userAddress.address,
-        city: userAddress.city,
-        province: userAddress.province,
-        phone_number: userAddress.phone_number,
-        notes: userAddress.notes,
+        nombre: user.nombre,
+        apellido: user.apellido,
+        dni: user.dni,
+        telefono: user.telefono,
+        calle: user.calle,
+        numero: user.numero,
+        ciudad: user.ciudad,
+        provincia: user.provincia,
+        codigo_postal: user.codigo_postal,
       });
       setDataState(!updated);
     }
@@ -121,11 +137,9 @@ export default function UserAddressForm() {
     <div >
       <div >
         {id ? (
-          <h1>&bull; Actualiza tus datos envio &bull;</h1>
+          <h1>Actualiza tus datos envio</h1>
         ) : (
-          <h1>
-            &bull; Completa tus datos de envio &bull;
-          </h1>
+          <h1>Completa tus datos de envio</h1>
         )}
 
         <form
@@ -136,7 +150,7 @@ export default function UserAddressForm() {
             <label>NOMBRE:</label>
             <input
               required
-              plasceholder="Nombre"
+              placeholder="Nombre"
               type="text"
               name="name"
               key="name"
@@ -148,7 +162,7 @@ export default function UserAddressForm() {
             <label>APELLIDO:</label>
             <input
               required
-              plasceholder="Apellido"
+              placeholder="Apellido"
               type="text"
               name="lastname"
               key="name"
@@ -161,11 +175,9 @@ export default function UserAddressForm() {
             <label>DNI:</label>
             <input
               required
-              plasceholder="dni"
+              placeholder="dni"
               name="dni"
               type="number"
-              minLength="7"
-              maxLength="8"
               key="dni"
               value={dataState.dni}
               onChange={handleChange}
@@ -177,11 +189,9 @@ export default function UserAddressForm() {
             <label>TELEFONO:</label>
             <input
               required
-              plasceholder="Telefono"
+              placeholder="Telefono"
               name="phone_number"
               type="number"
-              minLength="6"
-              maxLength="12"
               key="phone"
               value={dataState.phone_number}
               onChange={handleChange}
@@ -190,7 +200,7 @@ export default function UserAddressForm() {
           <div>
             <label>CALLE:</label>
             <input
-              plasceholder="Direccion"
+              placeholder="Direccion"
               type="text"
               name="address"
               key="address"
@@ -201,7 +211,7 @@ export default function UserAddressForm() {
           <div>
             <label>NÚMERO:</label>
             <input
-              plasceholder="Direccion"
+              placeholder="Direccion"
               type="number"
               name="number"
               key="number"
@@ -213,7 +223,7 @@ export default function UserAddressForm() {
           <div>
             <label>CIUDAD:</label>
             <input
-              plasceholder="Ciudad"
+              placeholder="Ciudad"
               type="text"
               name="city"
               key="city"
@@ -224,7 +234,7 @@ export default function UserAddressForm() {
           <div>
             <label>PROVINCIA:</label>
             <input
-              plasceholder="Provincia"
+              placeholder="Provincia"
               type="text"
               name="province"
               key="province"
@@ -235,7 +245,7 @@ export default function UserAddressForm() {
           <div>
               <label>CODIGO POSTAL:</label>
               <input
-                plasceholder="Codigo Postal"
+                placeholder="Codigo Postal"
                 type="text"
                 name="zipcode"
                 value={dataState.postal}

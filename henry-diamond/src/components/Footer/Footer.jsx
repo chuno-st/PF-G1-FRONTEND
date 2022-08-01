@@ -9,7 +9,7 @@ import { Link  } from 'react-router-dom';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
-
+import LogoMercadopago from '../LogoMercadoPago/LogoMercadoPago'
 import CodeIcon from '@mui/icons-material/Code';
 
 
@@ -51,12 +51,13 @@ export default function Footer (){
                         </Grid>
 
                         <Grid item xs={12} sm={4}>
-                            <Box borderBottom={1}>Servicios</Box>
-                            <Box paddingTop={1} className='itemColumn'>
-                                <Link to="/" size='small' className='link'>Productos</Link>
-                                               
-                            </Box>
-                          
+                            <Box borderBottom={1}>Medios de pago</Box>
+
+                                <Button href='https://www.mercadopago.com.ar/ayuda/medios-de-pago-vendedores_221' target='_blank'>
+                                    <Box align="center" >
+                                        <LogoMercadopago/>  
+                                    </Box>
+                                </Button>
                         </Grid>
 
 

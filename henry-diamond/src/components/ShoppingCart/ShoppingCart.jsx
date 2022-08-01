@@ -15,6 +15,7 @@ import { Grid } from "@mui/material";
 import Footer from "../Footer/Footer";
 import { useNavigate, Redirect } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles'
+import swal from 'sweetalert'
 
 
 
@@ -64,9 +65,16 @@ export default function ShoppingCart(){
       if (isAuthenticated){
         dispatch(postCart(productos, user.sub))
 
-      }else alert("Por favor inicia sesión para poder realizar la compra")
+      }else{
+        swal({
+          title: "Error",
+          text: "Por favor inicia sesión para poder realizar la compra",
+          icon: "error",
+          button: "Aceptar",
+        });
+        //alert("Por favor inicia sesión para poder realizar la compra")
     }
-
+  }
     useEffect(() => {
       dispatch(addCart())
     }, [dispatch]);
