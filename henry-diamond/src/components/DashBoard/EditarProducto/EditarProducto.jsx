@@ -35,15 +35,14 @@ export default function EditarProducto(props) {
     }, [isOpen, productoEditado.product_id]);
   
     const [input, setInput] = useState({
-        product_id: productoEditado.product_id,
-        name: productoEditado.name,
-        description: productoEditado.description,
-        price: productoEditado.price,
-        image: productoEditado.image,
-        category_id: productoEditado.category_id,
-        subCategory_id: productoEditado.subCategory_id,
-        material_id: productoEditado.material_id,
-        stock: productoEditado.stock,
+        product_id: "",
+        name: "",
+        description: "",
+        price: "",
+        category: "",
+        subcategory: "",
+        image: "",
+        stock: "",
     });
     
     const [error, setError] = useState({
@@ -146,7 +145,7 @@ export default function EditarProducto(props) {
                                     name="category_id"
                                     onChange={handleChange}
                                     helperText={error.category_id}
-                                    value={input.category_id}
+                                    value={productoEditado.category_id}
                                 >
                                     {categorias.map((c) => {
                                         return (
@@ -167,7 +166,7 @@ export default function EditarProducto(props) {
                                     name="subCategory_id"
                                     onChange={handleChange}
                                     helperText={error.subCategory_id}
-                                    value={input.subCategory_id}
+                                    value={productoEditado.subCategory_id}
                                 >
                                     {subCategorias.map((c) => {
                                         return (
