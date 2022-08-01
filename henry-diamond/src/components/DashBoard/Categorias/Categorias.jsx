@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { adminCategory, createCategory, disableCategory } from "../../../actions/actions";
+import { adminCategory, createCategory} from "../../../actions/actions";
 import TextField from "@mui/material/TextField";
 import { Container } from "@mui/system";
 import { FormControl, FormHelperText, Grid, Input, InputLabel } from "@mui/material";
@@ -22,18 +22,9 @@ import CategoryForm from "../CategoryForm/CategoryForm";
 export default function Categorias() {
     const dispatch = useDispatch();
     const categorias = useSelector((state) => state.adminCategory);
-    console.log("Las categorias del admin", categorias);
-
-    useEffect(() => {
-        dispatch(adminCategory());
-    }, []);
 
     const [input, setInput] = useState({
         name: "",
-    });
-
-    const [state, setState] = useState({
-        state: "",
     });
 
     const [error, setError] = useState({

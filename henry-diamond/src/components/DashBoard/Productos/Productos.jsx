@@ -82,7 +82,7 @@ export default function Productos() {
                                     </TableCell>
                                     <TableCell>{capitalizeLetter(e.name)}</TableCell>
                                     <TableCell>{e.price}</TableCell>
-                                    <TableCell>{e.subCategory_id}</TableCell>
+                                    <TableCell>{e.stock}</TableCell>
                                     <TableCell>
                                         <EditIcon onClick={()=>handleOpenModalEditarProducto(e.product_id)} />
                                         &nbsp;&nbsp;&nbsp;

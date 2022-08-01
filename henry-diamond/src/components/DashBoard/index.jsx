@@ -2,7 +2,7 @@ import React from 'react'
 import SideBar from "../DashBoard/SideBar/SideBar"
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { getAllItemsAdmin, Category, SubCategory } from "../../actions/actions";
+import { getAllItemsAdmin, adminCategory, adminSubCategory } from "../../actions/actions";
 
 
 export default function Admin() {
@@ -13,11 +13,11 @@ export default function Admin() {
    }, [dispatch])
 
    useEffect(()=>{
-    dispatch(Category())
+    dispatch(adminCategory())
    }, [])
    
    useEffect(()=>{
-    dispatch(SubCategory())
+    dispatch(adminSubCategory())
    }, [])
    
   return (

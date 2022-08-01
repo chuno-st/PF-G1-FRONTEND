@@ -5,6 +5,7 @@ import {
     DISABLE_CATEGORY,
     ALL_CATEGORY_ADMIN,
     ALL_SUBCATEGORY,
+    ALL_SUBCATEGORY_ADMIN,
     ALL_USERS,
     CREATE_CATEGORY,
     CREATE_SUBCATEGORY,
@@ -26,6 +27,7 @@ const inicialState = {
     category: [],
     adminCategory: [],
     subcategory: [],
+    adminSubCategory: [],
     paginado: {
         desde: 0,
         hasta: 12,
@@ -62,6 +64,9 @@ const reducer = (state = inicialState, { type, payload }) => {
 
         case ALL_SUBCATEGORY:
             return { ...state, subcategory: payload };
+
+        case ALL_SUBCATEGORY_ADMIN:
+            return { ...state, adminSubCategory: payload };
 
         case ALL_USERS:
             return { ...state, users: payload };
@@ -114,11 +119,11 @@ const reducer = (state = inicialState, { type, payload }) => {
                 category: state.category.concat(payload),
             };
 
-            case DISABLE_CATEGORY:
-                return {
-                    ...state,
-                    category: payload,
-                };
+        case DISABLE_CATEGORY:
+            return {
+                ...state,
+                category: payload,
+            };
 
         case CREATE_SUBCATEGORY:
             return {

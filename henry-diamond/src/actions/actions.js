@@ -6,6 +6,7 @@ import {
     ALL_CATEGORY,
     ALL_CATEGORY_ADMIN,
     ALL_SUBCATEGORY,
+    ALL_SUBCATEGORY_ADMIN,
     ALL_USERS,
     SET_CATEGORY,
     SET_SUBCATEGORY,
@@ -15,6 +16,7 @@ import {
     CREATE_CATEGORY,
     DISABLE_CATEGORY,
     CREATE_SUBCATEGORY,
+    DISABLE_SUBCATEGORY,
 } from "./typeActions";
 //import config from "../config.js"
 import axios from "axios";
@@ -165,15 +167,36 @@ export function disableCategory(id, state) {
 }
 
 
-export function createSubCategory() {
+export function createSubCategory(body) {
     return async (dispatch) => {
-        let response = await axios.post(`${URL}subcategory/`);
-        return dispatch({
-            type: CREATE_SUBCATEGORY,
-            payload: response.data,
+        try {
+            const response = await axios.post(`${URL}subcategory/`, body);
+            if (response.data.message) {
+                alert(response.data.message);
+            } else {
+                return dispatch({
+                    type: CREATE_SUBCATEGORY,
+                    payload: response.data,
+                });
+            }
+            alert(response.data.message);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+  
+}
+
+export const adminSubCategory = () => {
+    return (dispatch) => {
+        axios.get(`${URL}subcategory/admin`).then((res) => {
+            dispatch({
+                type: ALL_SUBCATEGORY_ADMIN,
+                payload: res.data,
+            });
         });
     };
-}
+};
 
 export const SubCategory = () => {
     return (dispatch) => {
@@ -186,6 +209,29 @@ export const SubCategory = () => {
         });
     };
 };
+
+export function disableSubCategory(id, state) {
+    if (state){
+        return async (dispatch) => {
+            try {
+                const response = await axios.delete(`${URL}subcategory/${id}?state=false`);
+                dispatch({ type: DISABLE_SUBCATEGORY, payload: response.data});
+    
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    } else {
+        return async (dispatch) => {
+            try {
+                const response = await axios.delete(`${URL}subcategory/${id}?state=true`);
+                dispatch({ type: DISABLE_SUBCATEGORY, payload: response.data});
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    }
+}
 
 export const SET_PAGINADO = (payload) => {
     console.log(payload);
@@ -247,14 +293,31 @@ export const addShoppingCart = (obj) => {
 };
 
 export const createProduct = (body) => {
-    return async function () {
+    return async (dispatch) => {
         try {
-            await axios.post(`${URL}`, body);
-            alert("El producto fue creado correctamente");
-        } catch (err) {
-            console.log(err);
+            const response = await axios.post(`${URL}product/`, body);
+            if (response.data.message) {
+                alert(response.data.message);
+            } else {
+                return dispatch({
+                    type: CREATE_PRODUCT,
+                    payload: response.data,
+                });
+            }
+            alert(response.data.message);
+        } catch (error) {
+            console.log(error);
         }
     };
+ 
+    // return async function () {
+    //     try {
+    //         await axios.post(`${URL}product`, body);
+    //         alert("El producto fue creado correctamente");
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // };
 };
 
 export const resetMatch = () => {

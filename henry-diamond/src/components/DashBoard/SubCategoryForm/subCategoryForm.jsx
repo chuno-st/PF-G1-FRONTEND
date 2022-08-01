@@ -4,20 +4,19 @@ import { useDispatch } from "react-redux";
 import { TableCell, TableRow, Button } from "@material-ui/core";
 import { capitalizeLetter } from "../../../Utils/utils";
 import EditIcon from "@mui/icons-material/Edit";
-import { disableCategory } from "../../../actions/actions";
+import { disableSubCategory } from "../../../actions/actions";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 
-export default function CategoryForm(props) {
+export default function SubCategoryForm(props) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    
-
+ 
     const { elem } = props;
 
     const handleDisable = async () => {
         try {
-            dispatch(disableCategory(elem.category_id, elem.state));
+            dispatch(disableSubCategory(elem.subCategory_id, elem.state));
             navigate(0);
         } catch (error) {
             console.log(error);
@@ -25,8 +24,8 @@ export default function CategoryForm(props) {
     };
 
     return (
-        <TableRow key={elem.category_id}>
-            <TableCell>{elem.category_id}</TableCell>
+        <TableRow key={elem.subCategory_id}>
+            <TableCell>{elem.subCategory_id}</TableCell>
             <TableCell>{capitalizeLetter(elem.name)}</TableCell>
             <TableCell>{capitalizeLetter(elem.state.toString())}</TableCell>
             <TableCell>
@@ -35,7 +34,7 @@ export default function CategoryForm(props) {
                 </Button>
             </TableCell>
             <TableCell>
-                <Button key={elem.category_id} onClick={handleDisable}>
+                <Button key={elem.subCategory_id} onClick={handleDisable}>
                     <FormControlLabel control={<Switch defaultChecked={elem.state} />} />
                 </Button>
             </TableCell>
