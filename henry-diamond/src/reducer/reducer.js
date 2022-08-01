@@ -10,7 +10,8 @@ const inicialState = {
       desde: 0,
       hasta: 12
     },
-    
+    userSale:{},
+    postUserSale:[],
     product:{},
     favorites: [],
     matches: [],
@@ -18,6 +19,7 @@ const inicialState = {
     shoppingCart: [],
     Cart:"",
     userAddress: [],
+
 };
 
 const reducer = (state = inicialState, { type, payload }) => {
@@ -119,8 +121,17 @@ const reducer = (state = inicialState, { type, payload }) => {
               ...state,
               userAddress: payload
             }
-
-      
+        case 'GET_REVIEWS':
+          return {
+            ...state,
+            userSale: payload
+          }
+        case 'POST_REVIEWS':
+          return {
+            ...state,
+            postUserSale: payload
+          }
+    
 
 
         default:

@@ -13,7 +13,9 @@ import {
     CREATE_SUBCATEGORY,
     GET_USER_ADDRESS,
     POST_USER_ADDRESS,
-    UPDATE_USER_ADDRESS
+    UPDATE_USER_ADDRESS,
+    GET_REVIEWS,
+    POST_REVIEWS
 
 } from "./typeActions";
 //import config from "../config.js"
@@ -29,7 +31,7 @@ export function getAllProduct(name){
     // console.log('estoy en la action'
     return async (dispatch) =>{
         let allProducts = await axios.get(`${URL}product?name=${name}`)
-        console.log(allProducts)
+        // console.log(allProducts)
         if(allProducts.data.length === 0){
             alert('Producto no encontrado')
         }
@@ -216,6 +218,24 @@ export const addCart = () => {
     })
     }
 }
+
+export const getReviews = () => {
+    
+    return async () => {
+        let getReview = await axios.get(`${URL}addreview/`)
+        return  ({
+            type: 'GET_REVIEWS',
+            payload: getReview.data
+         })
+    }
+};
+
+export const postReview = (obj) => {
+    return async () => {
+        let postReview = await axios.post(`${URL}addreview/`, obj)
+        console.log(postReview.data)
+    }
+};
 
 export const addFavorite = (sub, item ) => {
     return async () => {

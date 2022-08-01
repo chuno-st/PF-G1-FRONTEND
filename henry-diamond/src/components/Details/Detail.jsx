@@ -12,7 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from '@material-ui/core/Button'
 import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import { FeedbackCard } from '../FeedbackCard/FeedbackCard';
+import CardRatting  from '../CardRating/CardRating';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -156,28 +156,22 @@ export default function Detail () {
                     </Box>
               </Grid>
 
-        <Grid item xs={12} ms={12} md={12} xl={12} lg={12}>
-                      <Box 
-                          bgcolor='lightBlue'
-                          p={2}
-                          border={1}
-                          borderColor='black'
-                        >
-                    {/* <FeedbackCard/> */}
+              <Grid item xs={12} ms={12} md={12} xl={12} lg={12}>
+                            <Box 
+                                bgcolor='lightBlue'
+                                p={2}
+                                border={1}
+                                borderColor='black'
+                              >
+                         
+                          <CardRatting 
+                          product = {product}
+                          />
+                         
 
 
-                      </Box>
-
-
-        </Grid>
-
-
-
-
-
-       
-
-
+                            </Box>
+              </Grid>
               <Grid item xs={12}>
                   <Footer></Footer>
               </Grid>
