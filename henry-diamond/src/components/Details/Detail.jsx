@@ -12,6 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from '@material-ui/core/Button'
 import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import { FeedbackCard } from '../FeedbackCard/FeedbackCard';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -149,7 +150,7 @@ export default function Detail () {
                     boxShadow='4px 6px 8px #7a7a7a'
                   >
                     <Typography align='center' gutterBottom variant='h5'> 
-                        <Button variant= 'contained' onClick={handleclick}>Reseñas de Usuarios</Button>          
+                        <Button variant= 'contained'>Reseñas de Usuarios</Button>          
                     </Typography>
                     
                     </Box>
@@ -162,6 +163,7 @@ export default function Detail () {
                           border={1}
                           borderColor='black'
                         >
+                    {/* <FeedbackCard/> */}
 
 
                       </Box>

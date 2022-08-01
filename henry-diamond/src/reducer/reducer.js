@@ -1,4 +1,4 @@
-import { FILTER, ALL_ITEMS, ALL_CAREGORY, ALL_SUBCATEGORY, SET_PAGINADO, SET_CATEGORY, SET_SUBCATEGORY, CHECK_ROLE, CREATE_PRODUCT } from "../actions/typeActions";
+import { FILTER, ALL_ITEMS, ALL_CAREGORY, ALL_SUBCATEGORY, SET_PAGINADO, SET_CATEGORY, SET_SUBCATEGORY, CHECK_ROLE, CREATE_PRODUCT, GET_USER_ADDRESS, POST_USER_ADDRESS, UPDATE_USER_ADDRESS } from "../actions/typeActions";
 import {GET_PRODUCT} from '../actions/typeActions'
 const inicialState = {
     allProducts: [],
@@ -10,12 +10,14 @@ const inicialState = {
       desde: 0,
       hasta: 12
     },
+    
     product:{},
     favorites: [],
     matches: [],
     role:"none",
     shoppingCart: [],
-    Cart:""
+    Cart:"",
+    userAddress: [],
 };
 
 const reducer = (state = inicialState, { type, payload }) => {
@@ -100,6 +102,23 @@ const reducer = (state = inicialState, { type, payload }) => {
             ...state,
             favorites: payload
           }
+
+        case 'GET_USER_ADDRESS':
+            return {
+              ...state,
+              userAddress: payload
+            }  
+
+        case 'POST_USER_ADDRESS':
+            return {
+              ...state
+            } 
+
+        case 'UPDATE_USER_ADDRESS':
+            return {
+              ...state,
+              userAddress: payload
+            }
 
       
 

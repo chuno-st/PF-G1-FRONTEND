@@ -117,5 +117,4 @@ export default function ShoppingCart(){
         </Grid>
           <Footer />
       </ThemeProvider>    
-</div>
-)}
+</div>)}

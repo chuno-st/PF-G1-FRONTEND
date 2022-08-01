@@ -9,7 +9,7 @@ import NavMyAccount from './NavMyAccount';
 import { useAuth0 } from "@auth0/auth0-react";
 import Divider from '@material-ui/core/Divider';
 import {Box, CssBaseline, Button} from '@material-ui/core';
-
+import UserAddressForm from '../UserInfo/UserAddressForm';
 
 const theme = createTheme({
   palette: {
@@ -83,6 +83,17 @@ return (
               e-mail<br/>
               password
           </h5>
+          <Box 
+          bgcolor='pink'
+          textAlign='left'
+          p={5}
+          border={1}
+          borderColor='black'
+          >
+            <UserAddressForm/>
+          </Box>
+          
+
         </Box>
         </Grid>
         <Grid item xs={6}>

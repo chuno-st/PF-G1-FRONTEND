@@ -11,6 +11,10 @@ import {
     CREATE_PRODUCT,
     CREATE_CATEGORY,
     CREATE_SUBCATEGORY,
+    GET_USER_ADDRESS,
+    POST_USER_ADDRESS,
+    UPDATE_USER_ADDRESS
+
 } from "./typeActions";
 //import config from "../config.js"
 import axios from "axios";
@@ -242,6 +246,37 @@ export const deleteFavorite = (sub, item ) => {
     }
 }
 
+//USER: 
+
+export const getUserAddress = ()=>{
+    return async function(dispatch){
+      return axios.get(`${URL}`, )
+        .then(response=>{
+          dispatch({type: GET_USER_ADDRESS, payload: response.data})
+        }).catch(err => console.log(err))
+    }
+  }
+  
+  export const postUserAddress = (data) => {
+    return async function(dispatch){
+      return axios.post(`${URL}`, data, )
+      .then(response => { 
+        console.log(response.data)
+        dispatch({type: POST_USER_ADDRESS, payload: response.data})  
+      }).catch(err => console.log(err))
+    }
+  }
+  
+  export const updateUserAddress = (id, data)=>{
+    return async function(dispatch){
+      return axios.put(`${URL}`, data ,  )
+      .then(response =>{
+        dispatch({type: UPDATE_USER_ADDRESS, payload: response.data})
+        }).catch(err=> console.log(err))
+    }
+  }
+  
+
 //Para crear una review:
 
 // export function createReview(id, payload) {
@@ -256,3 +291,6 @@ export const deleteFavorite = (sub, item ) => {
 //   }
 
 ///////////////////////////////////////////////////////////////
+
+
+

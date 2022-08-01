@@ -48,7 +48,7 @@ export default function About () {
                 </Grid>
 
                 <Grid item xs={12}>
-                  <Box bgcolor='#bdbdbd' boxShadow='4px 1px 8px #7a7a7a' mt={15} mb={3} mx={50} py={2} px={10}>
+                  <Box bgcolor='#bdbdbd' boxShadow='4px 1px 8px #7a7a7a' mt={15} mb={3} mx={10} py={2} px={10}>
                     <Button>
                       <Avatar alt="Lautaro Ferreyra" src="https://ca.slack-edge.com/TPRS7H4PN-U02LGD01DR6-c716d884def6-512" />
                     </Button>
@@ -67,7 +67,7 @@ export default function About () {
 
 
                 <Grid item xs={12}>
-                  <Box bgcolor='#bdbdbd' boxShadow='4px 1px 8px #7a7a7a' my={2} mx={50} py={2} px={10}>
+                  <Box bgcolor='#bdbdbd' boxShadow='4px 1px 8px #7a7a7a' my={2} mx={10} py={2} px={10}>
                     <Button>
                       <Avatar alt="Bruno Ismael Stauber" src="https://ca.slack-edge.com/TPRS7H4PN-U02M252TKTP-6c7093a77c96-512" />
                     </Button>
@@ -85,7 +85,7 @@ export default function About () {
                 </Grid>  
 
                 <Grid item xs={12}>
-                  <Box bgcolor='#bdbdbd' boxShadow='4px 1px 8px #7a7a7a' my={2} mx={50} py={2} px={10}>
+                  <Box bgcolor='#bdbdbd' boxShadow='4px 1px 8px #7a7a7a' my={2} mx={10} py={2} px={10}>
                     <Button>
                       <Avatar alt="Sebastián David Engelstajn" src="https://ca.slack-edge.com/TPRS7H4PN-U02MUQM6N1E-294459a055c9-512" />
                     </Button>
@@ -103,7 +103,7 @@ export default function About () {
                 </Grid>
 
                 <Grid item xs={12}>
-                  <Box bgcolor='#bdbdbd' boxShadow='4px 1px 8px #7a7a7a' my={2} mx={50} py={2} px={10}>
+                  <Box bgcolor='#bdbdbd' boxShadow='4px 1px 8px #7a7a7a' my={2} mx={10} py={2} px={10}>
                     <Button>
                       <Avatar alt="Ariel Agustin Lescano Gonzalez" src="https://ca.slack-edge.com/TPRS7H4PN-U02KC2PBUA3-99b2598e5c67-72" />
                     </Button>
@@ -121,7 +121,7 @@ export default function About () {
                 </Grid>
 
                 <Grid item xs={12}>
-                  <Box bgcolor='#bdbdbd' boxShadow='4px 1px 8px #7a7a7a' my={2} mx={50} py={2} px={10}>
+                  <Box bgcolor='#bdbdbd' boxShadow='4px 1px 8px #7a7a7a' my={2} mx={10} py={2} px={10}>
                     <Button>
                       <Avatar alt="Carolina Castillo Andrada" src="https://ca.slack-edge.com/TPRS7H4PN-U02NESMFADV-cbd78582ff66-72" />
                     </Button>
@@ -139,7 +139,7 @@ export default function About () {
                 </Grid>
 
                 <Grid item xs={12}>
-                  <Box bgcolor='#bdbdbd' boxShadow='4px 1px 8px #7a7a7a' my={2} mx={50} py={2} px={10}>
+                  <Box bgcolor='#bdbdbd' boxShadow='4px 1px 8px #7a7a7a' my={2} mx={10} py={2} px={10}>
                     <Button>
                       <Avatar alt="María Soledad Petrino" src="https://ca.slack-edge.com/TPRS7H4PN-U02MPR7RM88-f4e196896112-48" />
                     </Button>
@@ -157,7 +157,7 @@ export default function About () {
                 </Grid>
 
                 <Grid item xs={12}>
-                  <Box bgcolor='#bdbdbd' boxShadow='4px 1px 8px #7a7a7a' my={2} mx={50} py={2} px={10}>
+                  <Box bgcolor='#bdbdbd' boxShadow='4px 1px 8px #7a7a7a' my={2} mx={10} py={2} px={10}>
                     <Button>
                       <Avatar alt="Francisco Gabriel Siri" src="https://ca.slack-edge.com/TPRS7H4PN-U02KUUVAJE8-d1cbcb9974aa-512" />
                     </Button>
@@ -211,32 +211,3 @@ export default function About () {
 
 
 
-
-
-// import { Link } from "react-router-dom";
-
-// const About = () => {
-//   return (
-//     <div className="landing">
-//       <h3>Creators:</h3>
-//       {/* <img> Imagen de perfil </img> */}
-//       <Link className="link" to="/Home">GitHub Caro</Link>
-//       {/* <img> Imagen de perfil </img> */}
-//       <Link className="link" to="/Home">GitHub Seba</Link>
-//       {/* <img> Imagen de perfil </img> */}
-//       <Link className="link" to="/Home">GitHub Bruno</Link>
-//       {/* <img> Imagen de perfil </img> */}
-//       <Link className="link" to="/Home">GitHub Fran</Link>
-//       {/* <img> Imagen de perfil </img> */}
-//       <Link className="link" to="/Home">GitHub Lauti</Link>
-//       {/* <img> Imagen de perfil </img> */}
-//       <Link className="link" to="/Home">GitHub Sole</Link>
-//       {/* <img> Imagen de perfil </img> */}
-//       <Link className="link" to="/Home">GitHub Agus</Link>
-//       {/* <img> Imagen de perfil </img> */}
-//       <Link className="link" to="/Home">Back to Home</Link>
-//     </div>
-//   );
-// };
-
-// export default About;
