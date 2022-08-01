@@ -45,7 +45,7 @@ export default function Footer (){
                                 justifyContent: 'space-between',
                                 display: 'flex'
                             }}>
-                                <Link to="/" className='link'>Nuestro Contacto</Link>
+                                <Link to="/About" className='link'>Nuestro Contacto</Link>
                                 <ConnectWithoutContactIcon fontSize='small' />
                             </Box>
                         </Grid>

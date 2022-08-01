@@ -138,6 +138,41 @@ export default function Detail () {
             } 
         </Grid> 
 
+        <Grid item xs={12} ms={12} md={12} xl={12} lg={12}
+              alignItems='center'
+              >
+                  <Box 
+                    //bgcolor='lightBlue'
+                    p={2}
+                    //border={1}
+                    //borderColor='black'
+                    boxShadow='4px 6px 8px #7a7a7a'
+                  >
+                    <Typography align='center' gutterBottom variant='h5'> 
+                        <Button variant= 'contained' onClick={handleclick}>Reseñas de Usuarios</Button>          
+                    </Typography>
+                    
+                    </Box>
+              </Grid>
+
+        <Grid item xs={12} ms={12} md={12} xl={12} lg={12}>
+                      <Box 
+                          bgcolor='lightBlue'
+                          p={2}
+                          border={1}
+                          borderColor='black'
+                        >
+
+
+                      </Box>
+
+
+        </Grid>
+
+
+
+
+
        
 
 

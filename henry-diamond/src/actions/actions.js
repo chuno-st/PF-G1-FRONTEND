@@ -241,3 +241,18 @@ export const deleteFavorite = (sub, item ) => {
 
     }
 }
+
+//Para crear una review:
+
+// export function createReview(id, payload) {
+//     return async function (dispatch) {
+//       await axios.post(`${urlBase}${ratings}${crear}/${id}`, payload);
+  
+//       return dispatch({
+//         type: "CREATE_REVIEW",
+//         payload,
+//       });
+//     };
+//   }
+
+///////////////////////////////////////////////////////////////
