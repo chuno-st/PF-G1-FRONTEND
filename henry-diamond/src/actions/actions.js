@@ -13,6 +13,7 @@ import {
     ADD_USER,
     CHECK_ROLE,
     CREATE_PRODUCT,
+    EDITAR_PRODUCTO,
     CREATE_CATEGORY,
     DISABLE_CATEGORY,
     CREATE_SUBCATEGORY,
@@ -184,7 +185,6 @@ export function createSubCategory(body) {
             console.log(error);
         }
     };
-  
 }
 
 export const adminSubCategory = () => {
@@ -309,15 +309,25 @@ export const createProduct = (body) => {
             console.log(error);
         }
     };
- 
-    // return async function () {
-    //     try {
-    //         await axios.post(`${URL}product`, body);
-    //         alert("El producto fue creado correctamente");
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // };
+};
+
+export const editProduct = (body) => {
+    return async (dispatch) => {
+        try {
+            const response = await axios.patch(`${URL}product/`, body);
+            if (response.data.message) {
+                alert(response.data.message);
+            } else {
+                return dispatch({
+                    type: EDITAR_PRODUCTO,
+                    payload: response.data,
+                });
+            }
+            alert(response.data.message);
+        } catch (error) {
+            console.log(error);
+        }
+    };
 };
 
 export const resetMatch = () => {

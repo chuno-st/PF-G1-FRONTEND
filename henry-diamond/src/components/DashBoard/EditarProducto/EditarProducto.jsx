@@ -8,28 +8,35 @@ import Select from "@mui/material/Select";
 import Validate from "../Utils/Validate";
 import { capitalizeLetter } from "../../../Utils/utils";
 import axios from "axios";
-import {getProductById, getAllItems} from "../../../actions/actions"
+import {getProductById, getAllItemsAdmin, editProduct} from "../../../actions/actions"
 
-
-
-const URL = "https://pf-g1-backend-production-3e79.up.railway.app/";
-
-
+// const URL = "https://pf-g1-backend-production-3e79.up.railway.app/";
 export default function EditarProducto(product_id) {
     
     const dispatch = useDispatch();
-     // const todosLosProductos = useSelector((state) => state.items);
+    
     const categorias = useSelector((state) => state.category);
     const subCategorias = useSelector((state) => state.subcategory);
         
     const productoEditado = useSelector((state) => state.product);
-    console.log(productoEditado)
+    
     useEffect(()=> {
-        dispatch(getAllItems())
+        dispatch(getAllItemsAdmin())
         dispatch(getProductById(product_id))
     }, [])
 
-    const [input, setInput] = useState("");
+    const [input, setInput] = useState({
+        name: productoEditado.name,
+        description: productoEditado.description,
+        price: productoEditado.price,
+        image: productoEditado.image,
+        category_id: productoEditado.category_id,
+        subCategory_id: productoEditado.subCategory_id,
+        material_id: productoEditado.material_id,
+        stock:productoEditado.stock,
+    });
+    console.log("El producto editado en input", input)
+    
     const [error, setError] = useState({
         name: "",
         description: "",
@@ -44,25 +51,7 @@ export default function EditarProducto(product_id) {
 
     const handleEdit = async (e) => {
         e.preventDefault();
-        try {
-          const response = await axios({
-            method: "patch",
-            url: `${URL}product/${product_id}`,
-            data: {
-              name: input.name !== "" ? input.name : productoEditado.name,
-              description: input.description !== "" ? input.description : productoEditado.description,
-              price: input.price !== "" ? input.price : productoEditado.price,
-              image: input.image !== "" ? input.image : productoEditado.image,
-              category_id: input.category_id !== "" ? input.category_id : productoEditado.category_id,
-              subCategory_id : input.subCategory_id !== "" ? input.subCategory_id : productoEditado.subCategory_id,
-              stock : input.stock !== "" ? input.stock : productoEditado.stock,
-            },
-          });
-          console.log(response);
-          alert(response.data.message);
-        } catch (err) {
-          console.log(err);
-        }
+        dispatch(editProduct(input))
       };
 
 
@@ -77,7 +66,6 @@ export default function EditarProducto(product_id) {
             return newState;
         });
     }
-
     return (
         <div
             style={{
