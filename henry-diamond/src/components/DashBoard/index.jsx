@@ -10,7 +10,7 @@ export default function Admin() {
 
   useEffect(()=>{
     dispatch(getAllItemsAdmin())
-   }, [dispatch])
+   }, [])
 
    useEffect(()=>{
     dispatch(adminCategory())

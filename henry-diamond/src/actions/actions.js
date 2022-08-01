@@ -201,7 +201,6 @@ export const adminSubCategory = () => {
 export const SubCategory = () => {
     return (dispatch) => {
         axios.get(`${URL}subcategory`).then((res) => {
-            console.log(res);
             dispatch({
                 type: ALL_SUBCATEGORY,
                 payload: res.data,
@@ -312,9 +311,11 @@ export const createProduct = (body) => {
 };
 
 export const editProduct = (body) => {
-    return async (dispatch) => {
+       return async (dispatch) => {
         try {
+            console.log("El body es", body)
             const response = await axios.patch(`${URL}product/`, body);
+            console.log("La response de la accion editProduct", response)
             if (response.data.message) {
                 alert(response.data.message);
             } else {
@@ -323,7 +324,6 @@ export const editProduct = (body) => {
                     payload: response.data,
                 });
             }
-            alert(response.data.message);
         } catch (error) {
             console.log(error);
         }

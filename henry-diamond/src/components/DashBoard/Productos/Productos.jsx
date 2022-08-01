@@ -14,7 +14,6 @@ import  {useModal} from "../../Modal/Hooks/UseModal";
 import { ThemeProvider, makeStyles } from "@material-ui/core/styles";
 import { useSelector, useDispatch } from "react-redux";
 import ProductForm from  "../productForm/productForm";
-
 import CrearProducto from "../CrearProducto/CrearProducto";
 
 
@@ -33,17 +32,13 @@ export default function Productos() {
 
     const productos = useSelector((state) => state.itemsAdmin);
 
-        
     const [isOpenProducto1, openProducto1, closeProducto1] = useModal(false);
    
-
-    const handleOpenModalCrearProducto = () => {
+   const handleOpenModalCrearProducto = () => {
         openProducto1();
     };
 
- 
-
-    return (
+     return (
         <ThemeProvider>
             <div style={{ height: 400, width: "100%" }}>
                 <Button onClick={handleOpenModalCrearProducto}>Crear Producto</Button>
@@ -51,6 +46,7 @@ export default function Productos() {
                 <br />
                 <TableContainer>
                     <Table>
+                       
                         <TableHead>
                             <TableRow>
                                 <TableCell>ID</TableCell>
@@ -61,12 +57,13 @@ export default function Productos() {
                                 <TableCell>Acciones</TableCell>
                             </TableRow>
                         </TableHead>
-
-                        <TableBody>
-                            {productos.map((e) => (
-                               <ProductForm elem={e} style={{ height: "100%", width: "100%" }}/>
-                            ))}
-                        </TableBody>
+ 
+                         <TableBody>
+                             {productos.map((e) => (
+                                // <h1>Hola</h1>
+                                <ProductForm elem={e} style={{ height: "100%", width: "100%" }}/>
+                             ))}
+                         </TableBody> 
                     </Table>
                 </TableContainer>
 
