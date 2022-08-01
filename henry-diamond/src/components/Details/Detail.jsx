@@ -1,3 +1,4 @@
+import ImageDetail from './ImageDetail'
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -11,6 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from '@material-ui/core/Button'
 import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import { FeedbackCard } from '../FeedbackCard/FeedbackCard';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,89 +55,135 @@ export default function Detail () {
     
    
     return (
-      <div>
-      <ThemeProvider theme={theme}>
-        <Grid container >
-          <Grid item xs={12} sm={12} xl={12}>
-            <NavMyAccount/>              
-          </Grid>
 
-          <Grid 
-            xs={12} sm={12} lg={12} xl={12} 
-            container
-            direction="colum"
-            justifyContent="center"
-            alignItems="center">
+      <React.Fragment>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+            <Grid container>
+                <Grid item xs={12}>
+                  <NavMyAccount/>              
+                </Grid>
           
+              <Grid item xs={12} ms={6} md={6} xl={6} lg={6}
+              >
                     <Box 
-                      padding={15}
-                      alignContent='center'
-                      alignItems='center'
-                      direction = 'column'
+                      //bgcolor='pink'
+                      textAlign='left'
+                      pt={20}
+                      pl={10}
+                      m={1}
+                      //border={1}
+                      //borderColor='black'
+
+                     >
+                        <ImageDetail/>
+
+                    </Box>
+              </Grid>
+              <Grid item xs={12} ms={6} md={6} xl={6} lg={6} >
+                    <Box 
+                      //bgcolor='pink'
+                      py={20}
+                      //border={1}
+                      //borderColor='black'
+                      
                     >
-                    
-                    <img src={product.image}/>
-                   
+                      <Typography align='center' gutterBottom variant='h2' > 
+                        <Box boxShadow='4px 1px 8px #7a7a7a'>
+                          <div>{(product.name)}</div>
+                        </Box>
+                      </Typography>
+
+                      <Typography align='center' gutterBottom variant='h3'> 
+                        <div>${product.price}</div>
+                      </Typography>
+                        
+                      <Typography align='center' gutterBottom variant='h4'> 
+                       <div>{product.description}</div>
+                      </Typography>
                     </Box>
 
-                    <Box 
-                      padding={15}
-                      alignContent='center'
-                      alignItems='center'
-                      direction = 'column'
-                    >
-                    
+              </Grid>
+
+              <Grid item xs={12} ms={12} md={12} xl={12} lg={12}
+              alignItems='center'
+              >
+                  <Box 
+                    //bgcolor='lightBlue'
+                    p={2}
+                    //border={1}
+                    //borderColor='black'
+                    boxShadow='4px 6px 8px #7a7a7a'
+                  >
                     <Typography align='center' gutterBottom variant='h5'> 
-                      <h2>Producto: {(product.name)}</h2>
+                        <Button variant= 'contained' onClick={handleclick}>Ver productos similares</Button>          
                     </Typography>
-                    <h1> Precio: ${product.price}</h1>
                     </Box>
-          
-         
+              </Grid>
 
-
-          <Grid item xs={12}
-           container
-           direction="row"
-           justifyContent="center"
-           alignItems="center"
-           >
-          <Typography align='center' gutterBottom variant='h5'> 
-            <h2>{product.description}</h2>
-          </Typography>
-            </Grid>
-
-            <Grid item xs={12} sm={12} lg={12} xl={12} >
-              <Typography align='center' gutterBottom variant='h5'> 
-                <Button variant= 'contained' onClick={handleclick}>Ver productos similares</Button>          
-              </Typography>
-            </Grid>
-
-           
-
-        <Grid item xs={12} sm={8} md={9} container spacing={20}>
+            
+              <Grid item xs={12} sm={8} md={9} container spacing={50}>
             { matches.map( i => {
               if(i.name === product.name) {return}
               return (
 
-                <Grid  xs={12} sm={12} md={4} lg={3} xl={3} container > 
-                  <BasicCard key={i.id} item={i}></BasicCard>
+                <Grid  xs={12} sm={12} md={6} lg={3} xl={3} container > 
+                  <Box my={10} ml={30}>
+                    <BasicCard key={i.id} item={i}></BasicCard>
+                  </Box>
+
                 </Grid> 
             )
               
               })
             } 
         </Grid> 
-      
 
-    </Grid>
-    </Grid>
+        <Grid item xs={12} ms={12} md={12} xl={12} lg={12}
+              alignItems='center'
+              >
+                  <Box 
+                    //bgcolor='lightBlue'
+                    p={2}
+                    //border={1}
+                    //borderColor='black'
+                    boxShadow='4px 6px 8px #7a7a7a'
+                  >
+                    <Typography align='center' gutterBottom variant='h5'> 
+                        <Button variant= 'contained'>Reseñas de Usuarios</Button>          
+                    </Typography>
+                    
+                    </Box>
+              </Grid>
+
+        <Grid item xs={12} ms={12} md={12} xl={12} lg={12}>
+                      <Box 
+                          bgcolor='lightBlue'
+                          p={2}
+                          border={1}
+                          borderColor='black'
+                        >
+                    {/* <FeedbackCard/> */}
 
 
-    <Footer />
+                      </Box>
 
-    </ThemeProvider>
-    </div>
-    
-  )
+
+        </Grid>
+
+
+
+
+
+       
+
+
+              <Grid item xs={12}>
+                  <Footer></Footer>
+              </Grid>
+              </Grid>
+
+      </ThemeProvider>
+    </React.Fragment>
+    );
 }

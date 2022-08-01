@@ -111,6 +111,7 @@ export default function CardCart(props) {
         
         variant='h2'
         title={(item.name.toUpperCase())}
+        onClick={handleclick}
         
       />
 
@@ -118,9 +119,10 @@ export default function CardCart(props) {
         className={classes.media} 
         image={item.image}
         title="imagen producto"
+        onClick={handleclick}
       />
    
-      <CardActions disableSpacing>
+      <CardActions >
         <IconButton aria-label="add to favorites">
           <FavoriteIcon onClick={handleFav} />
         </IconButton>
@@ -135,9 +137,7 @@ export default function CardCart(props) {
         <IconButton aria-label="share" >
           <RemoveShoppingCartIcon onClick={handleBuy} />
         </IconButton>
-        <IconButton arial-label='detail' onClick={handleclick}>
-          <AddIcon />
-        </IconButton>
+  
       </CardActions>
       
     </Card>

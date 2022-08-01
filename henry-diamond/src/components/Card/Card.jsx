@@ -149,9 +149,9 @@ export default function BasicCard(props) {
       <ThemeProvider theme={theme}>
          
         <Box 
-        borderRadius={25}
-        bgcolor='white'
-        boxShadow='4px 6px 8px #7a7a7a'
+          borderRadius={25}
+          bgcolor='white'
+          boxShadow='4px 6px 8px #7a7a7a'
             
           >
             <CardHeader
