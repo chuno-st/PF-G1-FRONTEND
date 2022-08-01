@@ -33,9 +33,9 @@ export default function EditarProducto(props) {
             setInput(productoEditado)
         }
     }, [isOpen, productoEditado.product_id]);
-
+  
     const [input, setInput] = useState({
-        id: productoEditado.product_id,
+        product_id: productoEditado.product_id,
         name: productoEditado.name,
         description: productoEditado.description,
         price: productoEditado.price,
