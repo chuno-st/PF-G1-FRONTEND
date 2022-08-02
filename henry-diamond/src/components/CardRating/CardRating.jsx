@@ -109,6 +109,7 @@ export default function CardRating({ product }) {
               noValidate
               autoComplete="off"
               onSubmit={handlePostReview}
+              
             >
               <TextField
                 required
@@ -117,6 +118,7 @@ export default function CardRating({ product }) {
                 variant="outlined"
                 onChange={handleDescriptionChange}
                 value={description}
+                
               />
             </form>
             <Rating
@@ -139,7 +141,6 @@ export default function CardRating({ product }) {
               variant="contained"
               color="primary"
               style={{ width: "200px" }}
-              
               onClick={handleClickOpen}
             >
               AÑADIR RESEÑA
