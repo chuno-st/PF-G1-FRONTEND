@@ -8,8 +8,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Validate from "../Utils/Validate";
 import { capitalizeLetter } from "../../../Utils/utils";
-import axios from "axios";
-import VistaPrevia from "./VistaPrevia";
+
 const { URL } = require("../../../config");
 
 export default function CrearProducto() {

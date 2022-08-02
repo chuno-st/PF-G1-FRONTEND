@@ -15,6 +15,7 @@ import {
     CHECK_ROLE,
     CREATE_PRODUCT,
     ALL_ITEMS_ADMIN,
+    CREATE_DATOS_USUARIO
 } from "../actions/typeActions";
 
 import { GET_PRODUCT } from "../actions/typeActions";
@@ -113,6 +114,11 @@ const reducer = (state = inicialState, { type, payload }) => {
                 ...state,
                 items: state.items.concat(payload),
             };
+        case CREATE_DATOS_USUARIO:
+                return {
+                    ...state,
+                    user: state.user.concat(payload),
+                };
 
         case CREATE_CATEGORY:
             return {

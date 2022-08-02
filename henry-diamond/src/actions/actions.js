@@ -20,12 +20,12 @@ import {
     GET_USER,
     POST_USER_ADDRESS,
     UPDATE_USER_ADDRESS,
-
+    CREATE_DATOS_USUARIO,
     DISABLE_SUBCATEGORY,
 } from "./typeActions";
 //import config from "../config.js"
 import axios from "axios";
-import swal from 'sweetalert'
+//import swal from 'sweetalert'
 
 //import {URL} from "../index.js"
 const { URL } = require("../config");
@@ -33,25 +33,11 @@ const { URL } = require("../config");
 
 export function getAllProduct(name) {
     // console.log('estoy en la action'
-<<<<<<< HEAD
-    return async (dispatch) =>{
-        let allProducts = await axios.get(`${URL}product?name=${name}`)
-        console.log(allProducts)
-        if(allProducts.data.length === 0){
-            swal({
-                title: "Error",
-                text: "Producto no encontrado",
-                icon: "error",
-                button: "Aceptar",
-              });
-            //alert('Producto no encontrado')
-=======
     return async (dispatch) => {
         let allProducts = await axios.get(`${URL}product?name=${name}`);
         console.log(allProducts);
         if (allProducts.data.length === 0) {
             alert("Producto no encontrado");
->>>>>>> 44721ca5dad877fff58c33ac1dbbe595de0b2174
         }
         return dispatch({
             type: GET_PRODUCT,
@@ -312,21 +298,6 @@ export const addShoppingCart = (obj) => {
 };
 
 export const createProduct = (body) => {
-<<<<<<< HEAD
-    return async function () {
-      try {
-        await axios.post(`${URL}`, body);
-        swal({
-            title: "Error",
-            text: "El producto fue creado correctamente",
-            icon: "error",
-            button: "Aceptar",
-          });
-        //alert("El producto fue creado correctamente");
-        } catch (err) {
-        console.log(err);
-      }
-=======
     return async (dispatch) => {
         try {
             const response = await axios.post(`${URL}product/`, body);
@@ -335,6 +306,25 @@ export const createProduct = (body) => {
             } else {
                 return dispatch({
                     type: CREATE_PRODUCT,
+                    payload: response.data,
+                });
+            }
+            alert(response.data.message);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+};
+
+export const createDatosUsuario = (body) => {
+    return async (dispatch) => {
+        try {
+            const response = await axios.put(`${URL}adduser`, body);
+            if (response.data.message) {
+                alert(response.data.message);
+            } else {
+                return dispatch({
+                    type: CREATE_DATOS_USUARIO,
                     payload: response.data,
                 });
             }
@@ -362,7 +352,6 @@ export const editProduct = (body) => {
         } catch (error) {
             console.log(error);
         }
->>>>>>> 44721ca5dad877fff58c33ac1dbbe595de0b2174
     };
 };
 

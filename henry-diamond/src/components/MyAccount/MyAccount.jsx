@@ -6,7 +6,11 @@ import { createTheme } from "@material-ui/core";
 import NavMyAccount from './NavMyAccount';
 import { useAuth0 } from "@auth0/auth0-react";
 import {Box, CssBaseline, Button} from '@material-ui/core';
-import UserAddressForm from '../UserInfo/UserAddressForm';
+import CrearUserAddres from '../UserInfo/CrearUserAddres';
+import ModalCreateInfoUser from '../MyAccount/ModalCreateInfoUser'
+
+
+
 
 const theme = createTheme({
   palette: {
@@ -80,6 +84,7 @@ return (
               e-mail<br/>
               password
           </h5>
+
           <Box 
           bgcolor='pink'
           textAlign='left'
@@ -87,7 +92,13 @@ return (
           border={1}
           borderColor='black'
           >
-            <UserAddressForm/>
+            {/* <UserAddressForm/> */}
+
+              <ModalCreateInfoUser size='small' style={{ overflow: 'true'}}> 
+              <Box my={0} align='center'>
+                    <CrearUserAddres/>
+              </Box>
+              </ModalCreateInfoUser> 
           </Box>
           
 
