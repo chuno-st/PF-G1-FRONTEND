@@ -38,7 +38,7 @@ const inicialState = {
     role: "none",   
     shoppingCart: [],
     Cart:"",
-    userAddress: [],
+    user: [],
 };
 
 const reducer = (state = inicialState, { type, payload }) => {
@@ -142,10 +142,10 @@ const reducer = (state = inicialState, { type, payload }) => {
             favorites: payload
           }
 
-        case 'GET_USER_ADDRESS':
+        case 'GET_USER':
             return {
               ...state,
-              userAddress: payload
+              user: payload
             }  
 
         case 'POST_USER_ADDRESS':
@@ -156,7 +156,7 @@ const reducer = (state = inicialState, { type, payload }) => {
         case 'UPDATE_USER_ADDRESS':
             return {
               ...state,
-              userAddress: payload
+              user: payload
             }
 
       
