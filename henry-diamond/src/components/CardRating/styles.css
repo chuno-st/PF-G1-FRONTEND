@@ -1,0 +1,44 @@
+.reviewContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffff01;
+  }
+  .reviewTittle {
+    font-size: 2em;
+    text-align: center;
+  }
+  .reviewCard {
+    padding: 15px;
+    width: 75%;
+    height: 100%;
+    background-color: white;
+    color: rgb(20, 15, 15);
+    margin-bottom: 1.5em;
+    border-radius: 10px;
+    -webkit-box-shadow: 4px 4px 15px -5px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 4px 4px 15px -5px rgba(0, 0, 0, 0.6);
+    box-shadow: 4px 4px 15px -5px rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: stretch;
+  }
+  
+  .inputReviewDiv {
+    width: 100%;
+    text-align: center;
+  }
+  .reviewContent {
+    padding-left: 16px;
+    text-align: center;
+    margin: auto;
+  }
+  
+  .reviewRating{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+  .chip{
+    margin: 0.5em;
+  }
