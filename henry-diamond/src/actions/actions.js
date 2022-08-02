@@ -89,12 +89,14 @@ export function getAllUsers() {
 
 export const FilterBy = ({ subcategory='', price }) => {
     console.log('subcategoria'+subcategory, price);
+    const {min='', max=''} = price
     return (dispatch) => {
         axios
             .get(
-                `${URL}product/allfilter?subCategory_id=${subcategory}&min=${price.min}&max=${price.max}`
+                `${URL}product/allfilter?subCategory_id=${subcategory}&min=${min}&max=${max}`
             )
             .then((res) => {
+                console.log(res.data);
                 dispatch({
                     type: FILTER,
                     payload: res.data,

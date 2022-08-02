@@ -9,6 +9,7 @@ import {useDispatch,useSelector} from "react-redux";
 import {checkFav, getAllItems, checkuserBlocked} from "../../actions/actions";
 import { useEffect } from "react";
 import { useAuth0 } from '@auth0/auth0-react'
+import swal from 'sweetalert'
 
 const theme = createTheme({
     palette: {
@@ -52,9 +53,9 @@ export default function Home() {
     }
     
   }, [dispatch,]);
- if(roleUser==='Locked'){
-  alert('Usuario bloqueado')
-  logout({ returnTo: window.location.origin })
+ if (roleUser==='Locked'){ 
+   swal({title: 'Usuario Bloqueado', text: 'Por favor contacte al administrador', icon: 'error', button: 'Aceptar',})
+  .then(() => logout({ returnTo: window.location.origin }))
  }
   
 
