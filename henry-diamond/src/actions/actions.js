@@ -95,12 +95,21 @@ export const FilterBy = ({ subcategory='', price }) => {
             .get(
                 `${URL}product/allfilter?subCategory_id=${subcategory}&min=${min}&max=${max}`
             )
-            .then((res) => {
+            .then(async (res) => {
+                if(res.data.length === 0){
+                    await swal({
+                        title: "Error",
+                        text: "Producto no encontrado",
+                        icon: "error",
+                        button: "Aceptar",
+                      });
+                    window.location.reload(true)
+                }else{
                 console.log(res.data);
                 dispatch({
                     type: FILTER,
                     payload: res.data,
-                });
+                });}
             });
     };
 };
