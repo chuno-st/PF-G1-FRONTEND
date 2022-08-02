@@ -17,8 +17,7 @@ export default function CrearProducto() {
 
     const categorias = useSelector((state) => state.category);
     const subCategorias = useSelector((state) => state.subcategory);
-    console.log("Que me vienee", categorias, subCategorias);
-
+ 
     useEffect(() => {
         dispatch(Category());
         dispatch(SubCategory());
@@ -35,6 +34,7 @@ export default function CrearProducto() {
         subCategory_id: "",
         material_id: "",
         stock:"",
+
     });
 
     const [error, setError] = useState({
@@ -45,7 +45,7 @@ export default function CrearProducto() {
         category_id: "",
         subCategory_id: "",
         material_id: "",
-        //stock
+        stock:"",
     });
 
     //__________________________________________________

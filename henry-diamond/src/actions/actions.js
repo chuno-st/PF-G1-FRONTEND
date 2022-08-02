@@ -13,18 +13,16 @@ import {
     ADD_USER,
     CHECK_ROLE,
     CREATE_PRODUCT,
+    DISABLE_PRODUCT,
     EDITAR_PRODUCTO,
     CREATE_CATEGORY,
     DISABLE_CATEGORY,
+    DISABLE_SUBCATEGORY,
     CREATE_SUBCATEGORY,
-<<<<<<< HEAD
     GET_USER_ADDRESS,
     POST_USER_ADDRESS,
-    UPDATE_USER_ADDRESS
+    UPDATE_USER_ADDRESS,
 
-=======
-    DISABLE_SUBCATEGORY,
->>>>>>> 9090352b099c93ff105b0c893232f8ca01743d79
 } from "./typeActions";
 //import config from "../config.js"
 import axios from "axios";
@@ -66,6 +64,29 @@ export function getAllItemsAdmin() {
             payload: allItemsAdmin.data,
         });
     };
+}
+
+export function disableItemsAdmin(id, state) {
+    if (state){
+        return async (dispatch) => {
+            try {
+                const response = await axios.delete(`${URL}product/${id}?state=false`);
+                dispatch({ type: DISABLE_PRODUCT, payload: response.data});
+    
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    } else {
+        return async (dispatch) => {
+            try {
+                const response = await axios.delete(`${URL}product/${id}?state=true`);
+                dispatch({ type: DISABLE_PRODUCT, payload: response.data});
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    }
 }
 
 export function getAllUsers() {
@@ -397,7 +418,6 @@ export const checkFav = (sub, item) => {
 
 export const deleteFavorite = (sub, item) => {
     return async () => {
-<<<<<<< HEAD
         console.log(item, sub)
         let addFavorite = await axios.put(`${URL}favs/${sub}`, item)
         console.log(addFavorite )
@@ -453,10 +473,4 @@ export const getUserAddress = ()=>{
 
 
 
-=======
-        console.log(item, sub);
-        let addFavorite = await axios.put(`${URL}favs/${sub}`, item);
-        console.log(addFavorite);
-    };
-};
->>>>>>> 9090352b099c93ff105b0c893232f8ca01743d79
+        

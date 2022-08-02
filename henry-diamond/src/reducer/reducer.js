@@ -14,8 +14,9 @@ import {
     SET_SUBCATEGORY,
     CHECK_ROLE,
     CREATE_PRODUCT,
+    DISABLE_PRODUCT,
     ALL_ITEMS_ADMIN,
-    GET_PRODUCT, 
+    GET_PRODUCT,
 } from "../actions/typeActions";
 
 const inicialState = {
@@ -32,12 +33,12 @@ const inicialState = {
         desde: 0,
         hasta: 12,
     },
-    product:{},
+    product: {},
     favorites: [],
     matches: [],
     role: "none",
     shoppingCart: [],
-    Cart:"",
+    Cart: "",
     user: [],
     Cart: "",
 };
@@ -115,6 +116,12 @@ const reducer = (state = inicialState, { type, payload }) => {
                 items: state.items.concat(payload),
             };
 
+        case DISABLE_PRODUCT:
+            return {
+                ...state,
+                items: payload,
+            };
+
         case CREATE_CATEGORY:
             return {
                 ...state,
@@ -136,31 +143,29 @@ const reducer = (state = inicialState, { type, payload }) => {
         case "RESET_MATCH": {
             return { ...state, matches: [] };
         }
-        case 'CHECK_FAV':
-          console.log('estoy en CHECK_FAV:', payload)
-          return {
-            ...state,
-            favorites: payload
-          }
-
-        case 'GET_USER_ADDRESS':
+        case "CHECK_FAV":
+            console.log("estoy en CHECK_FAV:", payload);
             return {
-              ...state,
-              userAddress: payload
-            }  
+                ...state,
+                favorites: payload,
+            };
 
-        case 'POST_USER_ADDRESS':
+        case "GET_USER_ADDRESS":
             return {
-              ...state
-            } 
+                ...state,
+                userAddress: payload,
+            };
 
-        case 'UPDATE_USER_ADDRESS':
+        case "POST_USER_ADDRESS":
             return {
-              ...state,
-              userAddress: payload
-            }
+                ...state,
+            };
 
-      
+        case "UPDATE_USER_ADDRESS":
+            return {
+                ...state,
+                userAddress: payload,
+            };
 
         case "POST_CART":
             return {

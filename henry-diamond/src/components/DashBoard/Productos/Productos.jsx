@@ -31,8 +31,9 @@ export default function Productos() {
     const dispatch = useDispatch();
 
     const productos = useSelector((state) => state.itemsAdmin);
-
-    const [isOpenProducto1, openProducto1, closeProducto1] = useModal(false);
+    
+    const [isOpenProducto1, openProducto1, closeProducto1] = useModal(false); 
+    
    
    const handleOpenModalCrearProducto = () => {
         openProducto1();
@@ -54,13 +55,14 @@ export default function Productos() {
                                 <TableCell>Producto</TableCell>
                                 <TableCell>Precio</TableCell>
                                 <TableCell>Stock</TableCell>
-                                <TableCell>Acciones</TableCell>
+                                <TableCell>Estado</TableCell>
+                                <TableCell>Editar</TableCell>
+                                <TableCell>Habilitar/Deshabilitar</TableCell>
                             </TableRow>
                         </TableHead>
  
                          <TableBody>
                              {productos.map((e) => (
-                                // <h1>Hola</h1>
                                 <ProductForm elem={e} style={{ height: "100%", width: "100%" }}/>
                              ))}
                          </TableBody> 
