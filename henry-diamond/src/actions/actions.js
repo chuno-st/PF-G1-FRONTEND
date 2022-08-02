@@ -13,9 +13,11 @@ import {
     ADD_USER,
     CHECK_ROLE,
     CREATE_PRODUCT,
+    DISABLE_PRODUCT,
     EDITAR_PRODUCTO,
     CREATE_CATEGORY,
     DISABLE_CATEGORY,
+    DISABLE_SUBCATEGORY,
     CREATE_SUBCATEGORY,
     GET_USER,
     POST_USER_ADDRESS,
@@ -23,6 +25,10 @@ import {
     GET_REVIEWS,
     POST_REVIEWS,
     DISABLE_SUBCATEGORY,
+    GET_USER_ADDRESS,
+    POST_USER_ADDRESS,
+    UPDATE_USER_ADDRESS,
+
 } from "./typeActions";
 //import config from "../config.js"
 import axios from "axios";
@@ -75,6 +81,29 @@ export function getAllItemsAdmin() {
             payload: allItemsAdmin.data,
         });
     };
+}
+
+export function disableItemsAdmin(id, state) {
+    if (state){
+        return async (dispatch) => {
+            try {
+                const response = await axios.delete(`${URL}product/${id}?state=false`);
+                dispatch({ type: DISABLE_PRODUCT, payload: response.data});
+    
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    } else {
+        return async (dispatch) => {
+            try {
+                const response = await axios.delete(`${URL}product/${id}?state=true`);
+                dispatch({ type: DISABLE_PRODUCT, payload: response.data});
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    }
 }
 
 export function getAllUsers() {
@@ -471,8 +500,8 @@ export const getUser = ()=>{
   
   export const SetRoles= (obj) => {
     console.log(obj);
-return async () => {
-   let role = await axios.patch(`${URL}adduser/admin`,obj) 
+    return async () => {
+    let role = await axios.patch(`${URL}adduser/admin`,obj) 
     console.log(role.data)
 }
 }

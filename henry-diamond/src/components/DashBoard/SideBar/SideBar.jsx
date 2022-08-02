@@ -91,14 +91,6 @@ export default function SideBar() {
                         </ListItem>
                     ))}
                 </List>
-                {/* <List onClick={()=> setShow("CrearProducto")}>
-                    {["CrearProducto"].map((text) => (
-                        <ListItem component={Link} to="/admin" button key={text}>
-                            <ListItemIcon>{<SportsKabaddiIcon/>}</ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
-                </List> */}
                 <List onClick={()=> setShow("Usuarios")}>
                     {["Usuarios"].map((text) => (
                         <ListItem component={Link} to="/admin" button key={text}>
@@ -129,7 +121,6 @@ export default function SideBar() {
                 <div className={classes.toolbar} />
                 {show === "DashBoard" && <IndexChart />}
                 {show === "Productos" && < Productos />}
-                {/* {show === "CrearProducto" && <CrearProducto/>} */}
                 {show === "Usuarios" && <Usuarios />}
                 {show === "Categorias" && <Categorias />}
                 {show === "SubCategorias" && <SubCategorias/>}

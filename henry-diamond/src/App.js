@@ -48,7 +48,9 @@ function App() {
                   <Route path="/About" element={<About/>}/>
                   <Route path="/admin" element={<PrivateDash> <Admin/> </PrivateDash>} />
                   <Route path="*" element={<Home/>} />
-
+                  <Route path="/admin" element={<PrivateDash>
+                    <Admin/>
+                  </PrivateDash>} />
 
                 </Routes>
               

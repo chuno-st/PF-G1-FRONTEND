@@ -14,10 +14,11 @@ import {
     SET_SUBCATEGORY,
     CHECK_ROLE,
     CREATE_PRODUCT,
+    DISABLE_PRODUCT,
     ALL_ITEMS_ADMIN,
+    GET_PRODUCT,
 } from "../actions/typeActions";
 
-import { GET_PRODUCT } from "../actions/typeActions";
 const inicialState = {
     allProducts: [],
     items: [],
@@ -117,6 +118,12 @@ const reducer = (state = inicialState, { type, payload }) => {
                 items: state.items.concat(payload),
             };
 
+        case DISABLE_PRODUCT:
+            return {
+                ...state,
+                items: payload,
+            };
+
         case CREATE_CATEGORY:
             return {
                 ...state,
@@ -147,16 +154,17 @@ const reducer = (state = inicialState, { type, payload }) => {
 
         case 'GET_USER':
             return {
-              ...state,
-              user: payload
-            }  
+                ...state,
+                favorites: payload,
+            };
 
-        case 'POST_USER_ADDRESS':
+        case "GET_USER_ADDRESS":
             return {
-              ...state
-            } 
+                ...state,
+                userAddress: payload,
+            };
 
-        case 'UPDATE_USER_ADDRESS':
+        case "POST_USER_ADDRESS":
             return {
               ...state,
               user: payload
@@ -171,7 +179,11 @@ const reducer = (state = inicialState, { type, payload }) => {
             ...state,
             postUserSale: payload
           }
-    
+        case "UPDATE_USER_ADDRESS":
+            return {
+                ...state,
+                userAddress: payload,
+            };
 
         case "POST_CART":
             return {

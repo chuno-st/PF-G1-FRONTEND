@@ -9,7 +9,6 @@ import Select from "@mui/material/Select";
 import Validate from "../Utils/Validate";
 import { capitalizeLetter } from "../../../Utils/utils";
 import axios from "axios";
-import VistaPrevia from "./VistaPrevia";
 const { URL } = require("../../../config");
 
 export default function CrearProducto() {
@@ -17,8 +16,7 @@ export default function CrearProducto() {
 
     const categorias = useSelector((state) => state.category);
     const subCategorias = useSelector((state) => state.subcategory);
-    console.log("Que me vienee", categorias, subCategorias);
-
+ 
     useEffect(() => {
         dispatch(Category());
         dispatch(SubCategory());
@@ -35,6 +33,7 @@ export default function CrearProducto() {
         subCategory_id: "",
         material_id: "",
         stock:"",
+
     });
 
     const [error, setError] = useState({
@@ -45,7 +44,7 @@ export default function CrearProducto() {
         category_id: "",
         subCategory_id: "",
         material_id: "",
-        //stock
+        stock:"",
     });
 
     //__________________________________________________
@@ -194,16 +193,6 @@ export default function CrearProducto() {
                         </FormControl>
                     </Grid>
                 </Grid>
-                {/* <VistaPrevia
-                    nombre={input.name}
-                    descripcion={input.description}
-                    precio={input.price}
-                    imagen={input.image}
-                    categoria={input.category}
-                    subcategoria={input.subCategory}
-                    material_id={input.material_id}
-                    //stock
-                /> */}
                 <Button
                     variant="container"
                     color="primary"
