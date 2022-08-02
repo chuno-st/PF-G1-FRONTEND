@@ -151,8 +151,8 @@ export default function Detail () {
                     //borderColor='black'
                     boxShadow='4px 6px 8px #7a7a7a'
                   >
-                    <Typography align='center' gutterBottom variant='h5'> 
-                        <Button variant= 'contained'>Reseñas de Usuarios</Button>          
+                    <Typography align='center' gutterBottom variant='h4'> 
+                        Reseñas de Usuarios        
                     </Typography>
                     
                     </Box>

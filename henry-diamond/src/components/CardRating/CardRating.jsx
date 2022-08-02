@@ -19,7 +19,7 @@ import Axios from "axios";
 import { Chip } from "@material-ui/core";
 import { useAuth0 } from "@auth0/auth0-react";
 import { postReview, getReviews} from '../../actions/actions';
-import swal from 'sweetalert'
+// import swal from 'sweetalert'
 
 // function Alert(props) {
 //   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -74,6 +74,13 @@ export default function CardRating({ product }) {
     dispatch (postReview(obj))
 
   }
+
+  // const handlePostComprador = () => {
+  //   if(isAuthenticated ){
+  //     dispatch(getReviews(user.email))
+  //     setDescription(e.target.value)
+  //   }
+  // }
 
   const handleDescriptionChange = (e) => {
     setDescription(e.target.value);

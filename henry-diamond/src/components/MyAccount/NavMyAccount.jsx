@@ -103,18 +103,18 @@ export default function NavMyAccount() {
                                     isAuthenticated ? (
                                      
 
-                                        <div>
+                                        <Box pt={2}>
                                               <Hidden smDown>
                                                 <Button  size="large"><Profile className={classes.profile}/></Button>
                                               </Hidden>
 
                                                 <ShoppingCartButton />
 
-                                        </ div>
+                                        </ Box>
                                         ) : (
-                                        <div>
+                                        <Box pt={2}>
                                             <LoginButton className={classes.loginButton} />
-                                        </ div>
+                                        </ Box>
 
                                         )
 

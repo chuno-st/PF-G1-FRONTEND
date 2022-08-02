@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar, Grid, Typography } from '@material-ui/core'
+import { Avatar, Container, Grid, Typography } from '@material-ui/core'
 import SearchAppBar from "../Nav/Nav";
 import Footer from "../Footer/Footer";
 import { ThemeProvider } from "@material-ui/core"
@@ -10,6 +10,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Divider from '@material-ui/core/Divider';
 import {Box, CssBaseline, Button} from '@material-ui/core';
 import UserAddressForm from '../UserInfo/UserAddressForm';
+
+
 
 const theme = createTheme({
   palette: {
@@ -43,27 +45,29 @@ return (
           <NavMyAccount/>              
         </Grid>
             <Grid item xs={12}>
-                  <Box 
-                  bgcolor='#e0e0e0'
+                  <Box
                   pt={12}
-                  textAlign='left'
-                  border={0}
+                  pb={2}
+                  textAlign='center'
                   boxShadow='4px 1px 8px #7a7a7a'
                   >
-                  <Button
-                  size='small'
-                  variant='outlined'
-                  >Home</Button>
-
-                  <Button
-                  variant='outlined'
-                  size='small'
-                  >Mi Cuenta</Button>
+                  <Typography display='display' variant='h5'>Mi Cuenta</Typography>
                   </Box>
-                  <Box>
-                          <Typography>Bienvenido,<h3>{user.name}</h3></Typography>
-                          <Avatar src={user.picture} variant='square'
+                  <Box
+                  textAlign='center'
+                  py={2}
+                  >
+                          <Typography><h3>Bienvenido, {(user.name).toUpperCase()}</h3></Typography>
+                          <Box
+                          // paddingX={80}
+                          textAlign='center'
+                          >
+                          <Button>
+                          <Avatar src={user.picture} 
+                          variant='circle'
                           ></Avatar>
+                          </Button>
+                          </Box>
                           <Typography>{user.email}</Typography>
 
                 </Box>
@@ -84,7 +88,7 @@ return (
               e-mail<br/>
               password
           </h5>
-          <Box 
+          {/* <Box 
           bgcolor='pink'
           textAlign='left'
           p={5}
@@ -92,7 +96,7 @@ return (
           borderColor='black'
           >
             <UserAddressForm/>
-          </Box>
+          </Box> */}
           
 
         </Box>
