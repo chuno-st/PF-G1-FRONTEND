@@ -41,6 +41,7 @@ const inicialState = {
     shoppingCart: [],
     Cart:"",
     userAddress: [],
+    salesProduct:[],
 
 };
 
@@ -183,6 +184,11 @@ const reducer = (state = inicialState, { type, payload }) => {
             return {
                 ...state,
                 favorites: payload,
+            };
+        case "ALL_SALE":
+            return {
+                ...state,
+                salesProduct: payload,
             };
 
         default:

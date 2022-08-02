@@ -386,10 +386,11 @@ export const getReviews = () => {
 
 export const postReview = (obj) => {
     return async () => {
-        let postReview = await axios.post(`${URL}addreview/`, obj)
-        console.log(postReview.data)
+        let postReview = await axios.post(`${URL}product/addreview/`, obj)
+        // console.log(postReview.data)
     }
 };
+
 
 export const addFavorite = (sub, item ) => {
     return async () => {
@@ -451,20 +452,17 @@ export const getUserAddress = ()=>{
   }
   
 
-//Para crear una review:
+// traer todos los productos comprados por el usuario
+// get.{URL}sales/user/:id
 
-// export function createReview(id, payload) {
-//     return async function (dispatch) {
-//       await axios.post(`${urlBase}${ratings}${crear}/${id}`, payload);
-  
-//       return dispatch({
-//         type: "CREATE_REVIEW",
-//         payload,
-//       });
-//     };
-//   }
-
-///////////////////////////////////////////////////////////////
-
+export const getAllSales =  (id) => {
+    return async function(dispatch){
+        return axios.get(`${URL}sales/user/${id}`)
+        .then(res => {
+            console.log(res.data)
+            dispatch({type: 'ALL_SALE', payload: res.data.Sales})
+        })
+    }
+}
 
 

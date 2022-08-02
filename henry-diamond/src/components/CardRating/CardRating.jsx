@@ -255,3 +255,13 @@ export default function CardRating({ product }) {
     </Fragment>
   );
 }
+
+//ES DE USER
+// Agregar comentario a producto (PASAR {id, comment, author, rating} POR BODY)
+// post.${URL}product/addreview
+// {
+//     "id": "" ,
+//     "coment": "",
+//     "author": "",
+//     "rating": ""
+// }

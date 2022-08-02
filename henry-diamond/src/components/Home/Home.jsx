@@ -6,7 +6,7 @@ import Footer from "../Footer/Footer";
 import { ThemeProvider, Typography } from "@material-ui/core";
 import { createTheme } from "@material-ui/core";
 import {useDispatch,useSelector} from "react-redux";
-import {checkFav, getAllItems} from "../../actions/actions";
+import {checkFav, getAllItems, getAllSales} from "../../actions/actions";
 import { useEffect } from "react";
 import { useAuth0 } from '@auth0/auth0-react'
 
@@ -46,6 +46,7 @@ export default function Home() {
     dispatch(getAllItems())
     if(isAuthenticated) {
       dispatch(checkFav(user.sub))
+      dispatch(getAllSales(user.sub))
     }
     
   }, [dispatch,]);
