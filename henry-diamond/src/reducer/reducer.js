@@ -41,6 +41,7 @@ const inicialState = {
     shoppingCart: [],
     Cart:"",
     user: [],
+    roleUser:''
 };
 
 const reducer = (state = inicialState, { type, payload }) => {
@@ -183,6 +184,10 @@ const reducer = (state = inicialState, { type, payload }) => {
                 ...state,
                 favorites: payload,
             };
+        case 'CHECK_USER_BLOCK' :
+            return {
+                ...state,
+                roleUser: payload      }
 
         default:
             return state;

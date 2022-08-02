@@ -465,6 +465,14 @@ return async () => {
     console.log(role.data)
 }
 }
+export const checkuserBlocked=(id)=>{
+    return async function(dispatch){
+        return axios.get(`${URL}adduser/checkrole/user/${id}`)
+            .then(response=>{
+            dispatch({type:'CHECK_USER_BLOCK', payload: response.data})
+            }).catch(err => console.log(err))
+        }
+}
 
 
 
