@@ -44,11 +44,11 @@ return (
         </Grid>
             <Grid item xs={12}>
                   <Box 
-                  bgcolor='orange'
-                  pt={10}
+                  bgcolor='#e0e0e0'
+                  pt={12}
                   textAlign='left'
-                  border={1}
-                  borderColor='black'
+                  border={0}
+                  boxShadow='4px 1px 8px #7a7a7a'
                   >
                   <Button
                   size='small'
@@ -59,7 +59,8 @@ return (
                   variant='outlined'
                   size='small'
                   >Mi Cuenta</Button>
-                  
+                  </Box>
+                  <Box>
                           <Typography>Bienvenido,<h3>{user.name}</h3></Typography>
                           <Avatar src={user.picture} variant='square'
                           ></Avatar>
