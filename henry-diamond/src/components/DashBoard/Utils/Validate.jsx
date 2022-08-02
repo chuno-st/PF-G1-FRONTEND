@@ -28,5 +28,8 @@ export default function Validate(input) {
     } else if (typeof input.image !== "string") {
       error.image = "Por favor ingresa la URL de imagen correcta";
     }
+    if (!input.stock) {
+      error.stock = "Por favor ingresa el stock disponible";
+    }
     return error;
   }
