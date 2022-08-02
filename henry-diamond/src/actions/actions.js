@@ -24,10 +24,9 @@ import {
     UPDATE_USER_ADDRESS,
     GET_REVIEWS,
     POST_REVIEWS,
-    DISABLE_SUBCATEGORY,
+   
     GET_USER_ADDRESS,
-    POST_USER_ADDRESS,
-    UPDATE_USER_ADDRESS,
+    
 
 } from "./typeActions";
 //import config from "../config.js"

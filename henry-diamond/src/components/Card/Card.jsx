@@ -105,7 +105,7 @@ export default function BasicCard(props) {
   
   
        const handleclick = () => {
-        navigate(`/detail/${item.product_id}`,{ replace: true })
+        navigate(`/detail/.${item.product_id}`,{ replace: true })
   
       }
       if(item.cantidad===0){
@@ -159,7 +159,7 @@ export default function BasicCard(props) {
           icon: "warning",
           button: "Aceptar",
         });
-        setCantindad(0)
+        setCantindad(cantidad-1)
       }
 
    
