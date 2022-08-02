@@ -65,7 +65,10 @@ export default function ProductoForm(props) {
             </TableCell>
             <TableCell>
             <Button key={elem.product_id} onClick={handleDisable}>
-                    <FormControlLabel control={<Switch defaultChecked={elem.state} />} />
+                    
+                 <FormControlLabel control={<Switch defaultChecked={elem.stock !== 0 ? elem.state : elem.state = false} />} />
+
+                    
                 </Button>
             </TableCell>
             <ModalUpdate isOpen={isOpenProducto2} closeModal={closeProducto2}>

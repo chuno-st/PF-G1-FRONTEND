@@ -141,6 +141,18 @@ export default function EditarProducto(props) {
                             </FormControl>
                         </Grid>
                         <Grid item md={12} margin={1.5}>
+                            <FormControl sx={{ m: 1, minWidth: 120 }}>
+                                <TextField
+                                    onChange={handleChange}
+                                    error={error.stock}
+                                    label="Stock"
+                                    name="stock"
+                                    helperText={error.stock}
+                                    value={input.stock}
+                                />
+                            </FormControl>
+                        </Grid>
+                        <Grid item md={12} margin={1.5}>
                             <FormControl sx={{ minWidth: 230 }}>
                                 <InputLabel>Categoria</InputLabel>
                                 <Select

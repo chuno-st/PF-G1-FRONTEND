@@ -9,7 +9,6 @@ import Select from "@mui/material/Select";
 import Validate from "../Utils/Validate";
 import { capitalizeLetter } from "../../../Utils/utils";
 import axios from "axios";
-import VistaPrevia from "./VistaPrevia";
 const { URL } = require("../../../config");
 
 export default function CrearProducto() {
@@ -194,16 +193,6 @@ export default function CrearProducto() {
                         </FormControl>
                     </Grid>
                 </Grid>
-                {/* <VistaPrevia
-                    nombre={input.name}
-                    descripcion={input.description}
-                    precio={input.price}
-                    imagen={input.image}
-                    categoria={input.category}
-                    subcategoria={input.subCategory}
-                    material_id={input.material_id}
-                    //stock
-                /> */}
                 <Button
                     variant="container"
                     color="primary"
