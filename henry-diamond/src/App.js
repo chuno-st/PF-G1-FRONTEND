@@ -44,12 +44,16 @@ function App() {
                   <Route path="/" element={<Home/>} />
                   <Route path="/myaccount" element={<MyAccount />} />
                   <Route path="/cart" element={<ShoppingCart/>} />
-                  <Route path="/cart" element={<ShoppingCart/>} />
-                  <Route path="/:id" element={<Detail/>}/>
+                  <Route path="/detail/:id" element={<Detail/>}/>
                   <Route path="/About" element={<About/>}/>
+<<<<<<< HEAD
 
                   {/* <Route path="/admin" element={<Admin/>}/> */}
                 
+=======
+                  <Route path="/admin" element={<PrivateDash> <Admin/> </PrivateDash>} />
+                  <Route path="*" element={<Home/>} />
+>>>>>>> 95104cfcfb82947c6a6f23bc47fab0c0ce67fb44
                   <Route path="/admin" element={<PrivateDash>
                     <Admin/>
                   </PrivateDash>} />

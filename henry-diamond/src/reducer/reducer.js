@@ -14,11 +14,15 @@ import {
     SET_SUBCATEGORY,
     CHECK_ROLE,
     CREATE_PRODUCT,
+    DISABLE_PRODUCT,
     ALL_ITEMS_ADMIN,
+<<<<<<< HEAD
     CREATE_DATOS_USUARIO
+=======
+    GET_PRODUCT,
+>>>>>>> 95104cfcfb82947c6a6f23bc47fab0c0ce67fb44
 } from "../actions/typeActions";
 
-import { GET_PRODUCT } from "../actions/typeActions";
 const inicialState = {
     allProducts: [],
     items: [],
@@ -33,13 +37,16 @@ const inicialState = {
         desde: 0,
         hasta: 12,
     },
-    product: {},
+    userSale:{},
+    postUserSale:[],
+    product:{},
     favorites: [],
     matches: [],
     role: "none",   
     shoppingCart: [],
     Cart:"",
     user: [],
+    roleUser:''
 };
 
 const reducer = (state = inicialState, { type, payload }) => {
@@ -120,6 +127,12 @@ const reducer = (state = inicialState, { type, payload }) => {
                     user: state.user.concat(payload),
                 };
 
+        case DISABLE_PRODUCT:
+            return {
+                ...state,
+                items: payload,
+            };
+
         case CREATE_CATEGORY:
             return {
                 ...state,
@@ -150,22 +163,36 @@ const reducer = (state = inicialState, { type, payload }) => {
 
         case 'GET_USER':
             return {
-              ...state,
-              user: payload
-            }  
+                ...state,
+                favorites: payload,
+            };
 
-        case 'POST_USER_ADDRESS':
+        case "GET_USER_ADDRESS":
             return {
-              ...state
-            } 
+                ...state,
+                userAddress: payload,
+            };
 
-        case 'UPDATE_USER_ADDRESS':
+        case "POST_USER_ADDRESS":
             return {
               ...state,
               user: payload
             }
-
-      
+        case 'GET_REVIEWS':
+          return {
+            ...state,
+            userSale: payload
+          }
+        case 'POST_REVIEWS':
+          return {
+            ...state,
+            postUserSale: payload
+          }
+        case "UPDATE_USER_ADDRESS":
+            return {
+                ...state,
+                userAddress: payload,
+            };
 
         case "POST_CART":
             return {
@@ -178,6 +205,10 @@ const reducer = (state = inicialState, { type, payload }) => {
                 ...state,
                 favorites: payload,
             };
+        case 'CHECK_USER_BLOCK' :
+            return {
+                ...state,
+                roleUser: payload      }
 
         default:
             return state;

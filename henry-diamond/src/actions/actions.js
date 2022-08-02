@@ -13,19 +13,31 @@ import {
     ADD_USER,
     CHECK_ROLE,
     CREATE_PRODUCT,
+    DISABLE_PRODUCT,
     EDITAR_PRODUCTO,
     CREATE_CATEGORY,
     DISABLE_CATEGORY,
+    DISABLE_SUBCATEGORY,
     CREATE_SUBCATEGORY,
     GET_USER,
     POST_USER_ADDRESS,
     UPDATE_USER_ADDRESS,
+<<<<<<< HEAD
     CREATE_DATOS_USUARIO,
     DISABLE_SUBCATEGORY,
+=======
+    GET_REVIEWS,
+    POST_REVIEWS,
+   
+    GET_USER_ADDRESS,
+    
+
+>>>>>>> 95104cfcfb82947c6a6f23bc47fab0c0ce67fb44
 } from "./typeActions";
 //import config from "../config.js"
 import axios from "axios";
 //import swal from 'sweetalert'
+
 
 //import {URL} from "../index.js"
 const { URL } = require("../config");
@@ -33,11 +45,27 @@ const { URL } = require("../config");
 
 export function getAllProduct(name) {
     // console.log('estoy en la action'
+<<<<<<< HEAD
     return async (dispatch) => {
         let allProducts = await axios.get(`${URL}product?name=${name}`);
         console.log(allProducts);
         if (allProducts.data.length === 0) {
             alert("Producto no encontrado");
+=======
+    return async (dispatch) =>{
+        
+        let allProducts = await axios.get(`${URL}product?name=${name}`)
+        // console.log(allProducts)
+        if(allProducts.data.length === 0){
+            await swal({
+                title: "Error",
+                text: "Producto no encontrado",
+                icon: "error",
+                button: "Aceptar",
+              });
+            window.location.reload(true)
+            //alert('Producto no encontrado')
+>>>>>>> 95104cfcfb82947c6a6f23bc47fab0c0ce67fb44
         }
         return dispatch({
             type: GET_PRODUCT,
@@ -67,6 +95,29 @@ export function getAllItemsAdmin() {
     };
 }
 
+export function disableItemsAdmin(id, state) {
+    if (state){
+        return async (dispatch) => {
+            try {
+                const response = await axios.delete(`${URL}product/${id}?state=false`);
+                dispatch({ type: DISABLE_PRODUCT, payload: response.data});
+    
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    } else {
+        return async (dispatch) => {
+            try {
+                const response = await axios.delete(`${URL}product/${id}?state=true`);
+                dispatch({ type: DISABLE_PRODUCT, payload: response.data});
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    }
+}
+
 export function getAllUsers() {
     return async (dispatch) => {
         let allUsers = await axios.get(`${URL}adduser`);
@@ -77,18 +128,29 @@ export function getAllUsers() {
     };
 }
 
-export const FilterBy = ({ subcategory, price }) => {
-    console.log(subcategory, price);
+export const FilterBy = ({ subcategory='', price }) => {
+    console.log('subcategoria'+subcategory, price);
+    const {min='', max=''} = price
     return (dispatch) => {
         axios
             .get(
-                `${URL}product/subcategory?subcategory=${subcategory}&min=${price.min}&max=${price.max}`
+                `${URL}product/allfilter?subCategory_id=${subcategory}&min=${min}&max=${max}`
             )
-            .then((res) => {
+            .then(async (res) => {
+                if(res.data.length === 0){
+                    await swal({
+                        title: "Error",
+                        text: "Producto no encontrado",
+                        icon: "error",
+                        button: "Aceptar",
+                      });
+                    window.location.reload(true)
+                }else{
+                console.log(res.data);
                 dispatch({
                     type: FILTER,
                     payload: res.data,
-                });
+                });}
             });
     };
 };
@@ -298,6 +360,7 @@ export const addShoppingCart = (obj) => {
 };
 
 export const createProduct = (body) => {
+<<<<<<< HEAD
     return async (dispatch) => {
         try {
             const response = await axios.post(`${URL}product/`, body);
@@ -313,6 +376,21 @@ export const createProduct = (body) => {
         } catch (error) {
             console.log(error);
         }
+=======
+    return async function () {
+      try {
+        await axios.post(`${URL}`, body);
+        swal({
+            title: "Error",
+            text: "El producto fue creado correctamente",
+            icon: "error",
+            button: "Aceptar",
+          });
+        //alert("El producto fue creado correctamente");
+        } catch (err) {
+        console.log(err);
+      }
+>>>>>>> 95104cfcfb82947c6a6f23bc47fab0c0ce67fb44
     };
 };
 
@@ -393,7 +471,24 @@ export const addCart = () => {
     };
 };
 
-export const addFavorite = (sub, item) => {
+export const getReviews = () => { 
+    return async () => {
+        let getReview = await axios.get(`${URL}addreview/`)
+        return  ({
+            type: 'GET_REVIEWS',
+            payload: getReview.data
+         })
+    }
+};
+
+export const postReview = (obj) => {
+    return async () => {
+        let postReview = await axios.post(`${URL}addreview/`, obj)
+        console.log(postReview.data)
+    }
+};
+
+export const addFavorite = (sub, item ) => {
     return async () => {
         console.log(item);
         let addFavorite = await axios.post(`${URL}favs/${sub}`, item);
@@ -452,7 +547,21 @@ export const getUser = ()=>{
     }
   }
   
-
+  export const SetRoles= (obj) => {
+    console.log(obj);
+    return async () => {
+    let role = await axios.patch(`${URL}adduser/admin`,obj) 
+    console.log(role.data)
+}
+}
+export const checkuserBlocked=(id)=>{
+    return async function(dispatch){
+        return axios.get(`${URL}adduser/checkrole/user/${id}`)
+            .then(response=>{
+            dispatch({type:'CHECK_USER_BLOCK', payload: response.data})
+            }).catch(err => console.log(err))
+        }
+}
 
 
 

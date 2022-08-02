@@ -12,7 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from '@material-ui/core/Button'
 import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import { FeedbackCard } from '../FeedbackCard/FeedbackCard';
+import CardRatting  from '../CardRating/CardRating';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,7 +25,8 @@ const useStyles = makeStyles((theme) => ({
 const theme = createTheme({
     palette: {
       primary:{
-        main: '#e0e0e0'
+        main: '#e0e0e0',
+
       },
       
     },
@@ -34,7 +35,8 @@ const theme = createTheme({
         fontWeightLight: 400,
         fontWeightRegular: 500,
         fontWeightMedium: 600,
-        fontWeightBold: 700
+        fontWeightBold: 700,
+
     }
   })
 export default function Detail () {
@@ -89,7 +91,9 @@ export default function Detail () {
                       
                     >
                       <Typography align='center' gutterBottom variant='h2' > 
-                        <Box boxShadow='4px 1px 8px #7a7a7a'>
+                        <Box 
+                        bgcolor='C8B6FF'
+                        boxShadow='4px 1px 8px #7a7a7a'>
                           <div>{(product.name)}</div>
                         </Box>
                       </Typography>
@@ -109,14 +113,12 @@ export default function Detail () {
               alignItems='center'
               >
                   <Box 
-                    //bgcolor='lightBlue'
+                    bgcolor='#B8C0FF'
                     p={2}
-                    //border={1}
-                    //borderColor='black'
                     boxShadow='4px 6px 8px #7a7a7a'
                   >
                     <Typography align='center' gutterBottom variant='h5'> 
-                        <Button variant= 'contained' onClick={handleclick}>Ver productos similares</Button>          
+                        <Button variant= 'contained'  onClick={handleclick}>Ver productos similares</Button>          
                     </Typography>
                     </Box>
               </Grid>
@@ -143,7 +145,7 @@ export default function Detail () {
               alignItems='center'
               >
                   <Box 
-                    //bgcolor='lightBlue'
+                    bgcolor='#B8C0FF'
                     p={2}
                     //border={1}
                     //borderColor='black'
@@ -156,28 +158,24 @@ export default function Detail () {
                     </Box>
               </Grid>
 
-        <Grid item xs={12} ms={12} md={12} xl={12} lg={12}>
-                      <Box 
-                          bgcolor='lightBlue'
-                          p={2}
-                          border={1}
-                          borderColor='black'
-                        >
-                    {/* <FeedbackCard/> */}
+              <Grid item xs={12} ms={12} md={12} xl={12} lg={12}>
+                            <Box 
+                                // bgcolor='lavenderBlue'
+                                p={5}
+                                border={0}
+                                borderColor='black'
+                                
+                                boxShadow='4px 6px 8px #7a7a7a'
+                              >
+                         
+                          <CardRatting 
+                          product = {product}
+                          />
+                         
 
 
-                      </Box>
-
-
-        </Grid>
-
-
-
-
-
-       
-
-
+                            </Box>
+              </Grid>
               <Grid item xs={12}>
                   <Footer></Footer>
               </Grid>

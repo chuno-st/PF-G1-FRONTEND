@@ -2,18 +2,20 @@ import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import { SubCategory, FilterBy } from "../../actions/actions";
+import { SubCategory, FilterBy , getAllItems} from "../../actions/actions";
 import { Button } from "@mui/material";
 import {Box} from '@material-ui/core';
 
 
 export default function FilterMaterial() {
     const dispatch = useDispatch();
-    const subcategory = useSelector(state => state.subcategory);
+    const subcategorys = useSelector(state => state.subcategory);
     const [filter, setFilter] = useState({
-      price:{min:0, max:100000},
+      price:'',
         subcategory: "",
     });
+    const [price, setPrice] = useState('');
+    const [subcategory, setSubcategory] = useState('');
     useEffect(() => {
         dispatch(SubCategory());
     }, []);
@@ -34,10 +36,19 @@ export default function FilterMaterial() {
         value:{min: 0, max: 1000000}}
         ];
    const product =[]
-   const arraycategories = subcategory.map(e=> product.push({label:e.name, value:e.subCategory_id}));
+   const arraycategories = subcategorys.map(e=> product.push({label:e.name, value:e.subCategory_id}));
    const handleChange = (e) => {
     console.log(filter.subcategory)
     dispatch(FilterBy(filter));
+   }
+   const handleReset = () => {
+    setFilter({
+      price:'',
+        subcategory: "",
+    });
+    setPrice('');
+    setSubcategory('');
+    dispatch(getAllItems());
    }
    
 
@@ -49,9 +60,11 @@ export default function FilterMaterial() {
       id="combo-box-demo"
       options={arrayPrice}
       sx={{ width: 300 }}
+      inputValue={price}
       onChange={(event, newValue) =>{
         if(!newValue) return;
-        setFilter({...filter, price: newValue.value})}}
+        setFilter({...filter, price: newValue.value})
+        setPrice(newValue.label)}}
       renderInput={(params) => <TextField {...params} label="POR PRECIOS" />}
       />
       <br />
@@ -60,9 +73,11 @@ export default function FilterMaterial() {
       id="combo-box-demo"
       options={product}
       sx={{ width: 300 }}
+      value={subcategory}
       onChange={(event, newValue) =>{
         if(!newValue) return;
-        setFilter({...filter, subcategory: newValue.value})}}
+        setFilter({...filter, subcategory: newValue.value})
+        setSubcategory(newValue.label)}}
       renderInput={(params) => <TextField {...params} label="POR PRODUCTOS" />}
       />
             
@@ -75,6 +90,13 @@ export default function FilterMaterial() {
           }}>Filtrar</Button>
       </Box>
 
+      <Button 
+        fullWidth
+        onClick={()=>{
+        console.log('el boton anda')
+        handleChange()
+        }}>Filtrar</Button>
+        <Button onClick={handleReset} >Limpiar filtros</Button>
       </>
   );
 }

@@ -9,6 +9,8 @@ import Validate from "../Utils/Validate";
 import { capitalizeLetter } from "../../../Utils/utils";
 import axios from "axios";
 import { getProductById, getAllItemsAdmin, editProduct } from "../../../actions/actions";
+import { useNavigate } from "react-router-dom";
+import Productos from "../Productos/Productos";
 
 // const URL = "https://pf-g1-backend-production-3e79.up.railway.app/";
 
@@ -17,6 +19,7 @@ export default function EditarProducto(props) {
     const { product_id, isOpen, closeProduct } = props;
 
     const dispatch = useDispatch();
+    const navigate = useNavigate()
 
     const categorias = useSelector((state) => state.category);
     const subCategorias = useSelector((state) => state.subcategory);
@@ -58,8 +61,9 @@ export default function EditarProducto(props) {
 
     const handleEdit = async (e) => {
         e.preventDefault();
-        console.log("que es unput en el HandleEdit", input)
         dispatch(editProduct(input));
+        closeProduct();
+        navigate(0);
     };
 
     function handleChange(e) {
@@ -137,6 +141,18 @@ export default function EditarProducto(props) {
                             </FormControl>
                         </Grid>
                         <Grid item md={12} margin={1.5}>
+                            <FormControl sx={{ m: 1, minWidth: 120 }}>
+                                <TextField
+                                    onChange={handleChange}
+                                    error={error.stock}
+                                    label="Stock"
+                                    name="stock"
+                                    helperText={error.stock}
+                                    value={input.stock}
+                                />
+                            </FormControl>
+                        </Grid>
+                        <Grid item md={12} margin={1.5}>
                             <FormControl sx={{ minWidth: 230 }}>
                                 <InputLabel>Categoria</InputLabel>
                                 <Select
@@ -184,6 +200,7 @@ export default function EditarProducto(props) {
                         color="primary"
                         textAlign="center"
                         onClick={handleEdit}
+                        
                     >
                         Editar Producto
                     </Button>
