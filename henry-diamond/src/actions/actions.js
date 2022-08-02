@@ -28,6 +28,7 @@ import {
 import axios from "axios";
 import swal from 'sweetalert'
 
+
 //import {URL} from "../index.js"
 const { URL } = require("../config");
 //import {URL} from "../index.js"
@@ -35,15 +36,17 @@ const { URL } = require("../config");
 export function getAllProduct(name) {
     // console.log('estoy en la action'
     return async (dispatch) =>{
+        
         let allProducts = await axios.get(`${URL}product?name=${name}`)
         // console.log(allProducts)
         if(allProducts.data.length === 0){
-            swal({
+            await swal({
                 title: "Error",
                 text: "Producto no encontrado",
                 icon: "error",
                 button: "Aceptar",
               });
+            window.location.reload(true)
             //alert('Producto no encontrado')
         }
         return dispatch({

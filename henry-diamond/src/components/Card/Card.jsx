@@ -105,7 +105,7 @@ export default function BasicCard(props) {
   
   
        const handleclick = () => {
-        navigate(`/${item.product_id}`,{ replace: true })
+        navigate(`/detail/${item.product_id}`,{ replace: true })
   
       }
       if(item.cantidad===0){
@@ -152,8 +152,17 @@ export default function BasicCard(props) {
 
       let estoyFavorito = favorites.filter( f => f.product_id == item.product_id)
       
+      if(item.stock===cantidad){
+        swal({
+          title: "Error",
+          text: "No hay stock suficiente",
+          icon: "warning",
+          button: "Aceptar",
+        });
+        setCantindad(0)
+      }
 
-  
+   
 
   return (
       <ThemeProvider theme={theme}>
@@ -200,7 +209,7 @@ export default function BasicCard(props) {
               <IconButton aria-label="share" >
                 { cantidad===0
                 ?  <AddShoppingCartIcon onClick={handleUp} />
-                : <><KeyboardArrowUpIcon onClick={handleUp}/><p>{cantidad}</p> <KeyboardArrowDownIcon onClick={handleDown} /></>
+                : <><KeyboardArrowUpIcon  onClick={handleUp}/><p>{cantidad}</p> <KeyboardArrowDownIcon onClick={handleDown} /></>
 
                 }
               

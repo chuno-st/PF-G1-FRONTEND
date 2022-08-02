@@ -102,7 +102,15 @@ export default function CardCart(props) {
     if(item.cantidad===0){
             handleBuy()
         }
-
+    if(item.stock===cantidad){
+          swal({
+            title: "Error",
+            text: "No hay stock suficiente",
+            icon: "warning",
+            button: "Aceptar",
+          });
+          setCantindad(item.stock-1)
+        }
      
 
   return (
