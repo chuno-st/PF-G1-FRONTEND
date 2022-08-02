@@ -32,7 +32,9 @@ const inicialState = {
         desde: 0,
         hasta: 12,
     },
-    product: {},
+    userSale:{},
+    postUserSale:[],
+    product:{},
     favorites: [],
     matches: [],
     role: "none",   
@@ -158,8 +160,17 @@ const reducer = (state = inicialState, { type, payload }) => {
               ...state,
               user: payload
             }
-
-      
+        case 'GET_REVIEWS':
+          return {
+            ...state,
+            userSale: payload
+          }
+        case 'POST_REVIEWS':
+          return {
+            ...state,
+            postUserSale: payload
+          }
+    
 
         case "POST_CART":
             return {

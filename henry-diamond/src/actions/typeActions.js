@@ -22,3 +22,6 @@ export const CHECK_ROLE = "CHECK_ROLE"
 export const GET_USER = "GET_USER";
 export const POST_USER_ADDRESS = "POST_USER_ADDRESS"
 export const UPDATE_USER_ADDRESS = "UPDATE_USER_ADDRESS"
+
+export const GET_REVIEWS = "GET_REVIEWS"
+export const POST_REVIEWS = "POST_REVIEWS"

@@ -20,7 +20,8 @@ import {
     GET_USER,
     POST_USER_ADDRESS,
     UPDATE_USER_ADDRESS,
-
+    GET_REVIEWS,
+    POST_REVIEWS,
     DISABLE_SUBCATEGORY,
 } from "./typeActions";
 //import config from "../config.js"
@@ -35,7 +36,7 @@ export function getAllProduct(name) {
     // console.log('estoy en la action'
     return async (dispatch) =>{
         let allProducts = await axios.get(`${URL}product?name=${name}`)
-        console.log(allProducts)
+        // console.log(allProducts)
         if(allProducts.data.length === 0){
             swal({
                 title: "Error",
@@ -378,7 +379,24 @@ export const addCart = () => {
     };
 };
 
-export const addFavorite = (sub, item) => {
+export const getReviews = () => { 
+    return async () => {
+        let getReview = await axios.get(`${URL}addreview/`)
+        return  ({
+            type: 'GET_REVIEWS',
+            payload: getReview.data
+         })
+    }
+};
+
+export const postReview = (obj) => {
+    return async () => {
+        let postReview = await axios.post(`${URL}addreview/`, obj)
+        console.log(postReview.data)
+    }
+};
+
+export const addFavorite = (sub, item ) => {
     return async () => {
         console.log(item);
         let addFavorite = await axios.post(`${URL}favs/${sub}`, item);
