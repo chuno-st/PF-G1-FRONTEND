@@ -474,3 +474,14 @@ export const getUserAddress = ()=>{
 
 
         
+        console.log(item, sub);
+        let addFavorite = await axios.put(`${URL}favs/${sub}`, item);
+        console.log(addFavorite);
+
+export const SetRoles= (obj) => {
+    console.log(obj);
+return async () => {
+   let role = await axios.patch(`${URL}adduser/admin`,obj) 
+    console.log(role.data)
+}
+}

@@ -19,6 +19,7 @@ import {
     GET_PRODUCT,
 } from "../actions/typeActions";
 
+
 const inicialState = {
     allProducts: [],
     items: [],
@@ -36,12 +37,12 @@ const inicialState = {
     product: {},
     favorites: [],
     matches: [],
-    role: "none",
+    role: "none",   
     shoppingCart: [],
-    Cart: "",
+    Cart:"",
+    userAddress: [],
     user: [],
-    Cart: "",
-};
+ };
 
 const reducer = (state = inicialState, { type, payload }) => {
     switch (type) {
@@ -143,8 +144,14 @@ const reducer = (state = inicialState, { type, payload }) => {
         case "RESET_MATCH": {
             return { ...state, matches: [] };
         }
-        case "CHECK_FAV":
-            console.log("estoy en CHECK_FAV:", payload);
+        case 'CHECK_FAV':
+          console.log('estoy en CHECK_FAV:', payload)
+          return {
+            ...state,
+            favorites: payload
+          }
+
+        case 'GET_USER_ADDRESS':
             return {
                 ...state,
                 favorites: payload,
