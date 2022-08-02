@@ -48,6 +48,8 @@ function App() {
                   <Route path="/:id" element={<Detail/>}/>
                   <Route path="/About" element={<About/>}/>
 
+                  {/* <Route path="/admin" element={<Admin/>}/> */}
+                
                   <Route path="/admin" element={<PrivateDash>
                     <Admin/>
                   </PrivateDash>} />
