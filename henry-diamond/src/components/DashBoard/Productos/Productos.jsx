@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React, useState } from "react";
 import {
     Table,
     TableContainer,
@@ -9,14 +9,13 @@ import {
     Button,
 } from "@material-ui/core";
 import Modal from "../../Modal/Modal";
-import { useModal } from "../../Modal/Hooks/UseModal";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
+import  {useModal} from "../../Modal/Hooks/UseModal";
+
 import { ThemeProvider, makeStyles } from "@material-ui/core/styles";
-import { useSelector } from "react-redux";
-import { capitalizeLetter } from "../../../Utils/utils";
+import { useSelector, useDispatch } from "react-redux";
+import ProductForm from  "../productForm/productForm";
 import CrearProducto from "../CrearProducto/CrearProducto";
-import EditarProducto from "../EditarProducto/EditarProducto";
+
 
 const useStyles = makeStyles((theme) => ({
     iconos: {
@@ -29,22 +28,17 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Productos() {
     const styles = useStyles();
-    
+    const dispatch = useDispatch();
 
-    const productos = useSelector((state) => state.items);
-    
+    const productos = useSelector((state) => state.itemsAdmin);
+
     const [isOpenProducto1, openProducto1, closeProducto1] = useModal(false);
-    const [isOpenProducto2, openProducto2, closeProducto2] = useModal(false);
-
-    const handleOpenModalCrearProducto = () => {
+   
+   const handleOpenModalCrearProducto = () => {
         openProducto1();
     };
-    const handleOpenModalEditarProducto = () => {
-        openProducto2();
-    };
-  
 
-    return (
+     return (
         <ThemeProvider>
             <div style={{ height: 400, width: "100%" }}>
                 <Button onClick={handleOpenModalCrearProducto}>Crear Producto</Button>
@@ -52,6 +46,7 @@ export default function Productos() {
                 <br />
                 <TableContainer>
                     <Table>
+                       
                         <TableHead>
                             <TableRow>
                                 <TableCell>ID</TableCell>
@@ -62,37 +57,24 @@ export default function Productos() {
                                 <TableCell>Acciones</TableCell>
                             </TableRow>
                         </TableHead>
-
-                        <TableBody>
-                            {productos.map((e) => (
-                                <TableRow key={e.product_id}>
-                                    <TableCell>{e.product_id}</TableCell>
-                                    <TableCell>
-                                        <img
-                                            src={e.image}
-                                            style={{ height: "35px", borderRadius: "5px" }}
-                                        />
-                                    </TableCell>
-                                    <TableCell>{capitalizeLetter(e.name)}</TableCell>
-                                    <TableCell>{e.price}</TableCell>
-                                    <TableCell>{e.subCategory_id}</TableCell>
-                                    <TableCell>
-                                        <EditIcon onClick={handleOpenModalEditarProducto} />
-                                        &nbsp;&nbsp;&nbsp;
-                                        <DeleteIcon />
-                                    </TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
+ 
+                         <TableBody>
+                             {productos.map((e) => (
+                                // <h1>Hola</h1>
+                                <ProductForm elem={e} style={{ height: "100%", width: "100%" }}/>
+                             ))}
+                         </TableBody> 
                     </Table>
                 </TableContainer>
 
                 <Modal isOpen={isOpenProducto1} closeModal={closeProducto1}>
                     <CrearProducto closeProducto={closeProducto1} />
-                </Modal>
-                <Modal isOpen={isOpenProducto2} closeModal={closeProducto2}>
+                </Modal> 
+                {/* <ModalUpdate isOpen={isOpenProducto2} closeModal={closeProducto2}>
                     <EditarProducto closeProducto={closeProducto2} />
-                </Modal>
+                </ModalUpdate> */}
+                
+                
             </div>
         </ThemeProvider>
     );

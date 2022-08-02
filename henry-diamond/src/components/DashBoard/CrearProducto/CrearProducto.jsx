@@ -1,5 +1,6 @@
-import { React, useState } from "react";
-import { useSelector } from "react-redux";
+import { React, useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Category, createProduct, SubCategory } from "../../../actions/actions";
 import TextField from "@mui/material/TextField";
 import { Container } from "@mui/system";
 import { Button, FormControl, FormHelperText, Grid, Input, InputLabel } from "@mui/material";
@@ -7,16 +8,21 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Validate from "../Utils/Validate";
 import { capitalizeLetter } from "../../../Utils/utils";
-import  axios from "axios";
-import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import VistaPrevia from "./VistaPrevia";
-//import config from "../../../config"
-//import {URL} from "../../../index.js"
-const {URL} = require('../../../config')
+const { URL } = require("../../../config");
+
 export default function CrearProducto() {
-    const navigate = useNavigate()
+    const dispatch = useDispatch();
+
     const categorias = useSelector((state) => state.category);
     const subCategorias = useSelector((state) => state.subcategory);
+    console.log("Que me vienee", categorias, subCategorias);
+
+    useEffect(() => {
+        dispatch(Category());
+        dispatch(SubCategory());
+    }, []);
 
     const [data, setData] = useState([]);
 
@@ -28,13 +34,13 @@ export default function CrearProducto() {
         category_id: "",
         subCategory_id: "",
         material_id: "",
-        //stock
+        stock:"",
     });
 
     const [error, setError] = useState({
         name: "",
         description: "",
-        price:"",
+        price: "",
         image: "",
         category_id: "",
         subCategory_id: "",
@@ -56,30 +62,28 @@ export default function CrearProducto() {
         });
     }
 
-    const handleCreate = async () => {
-        const response = await axios.post(`${URL}product`, input)
-        console.log(response)
-        return setData(data.concat(response));
-        
+    const handleCreate = async (e) => {
+        e.preventDefault();
+        try {
+            if (!input.name || !input.description || !input.price || !input.stock ) {
+                alert("Por favor completar las celdas correspondientes");
+            }
+            dispatch(createProduct(input));
+            setInput({
+                name: "",
+                description: "",
+                price: "",
+                image: "",
+                category_id: "",
+                subCategory_id: "",
+                material_id: "",
+                stock: "",
+            });
+            alert("La categoria se creo correctamente");
+        } catch (error) {
+            console.log(error);
+        }
     };
-
-    // function handleSubmit(e) {
-    //     e.preventDefault();
-    //     if (Object.keys(error).length === 0) {
-    //         setInput({
-    //             nombre: "",
-    //             descripcion: "",
-    //             precio: "",
-    //             imagen: "",
-    //             categoria: "",
-    //             subCategoria: "",
-    //             material_id: "",
-    //             //stock
-    //         });
-    //     } else {
-    //         alert("Por favor completa todas las celdas");
-    //     }
-    // }
 
     return (
         <div
@@ -98,7 +102,7 @@ export default function CrearProducto() {
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
-                                error={error.name }
+                                error={error.name}
                                 label="Nombre"
                                 name="name"
                                 helperText={error.name}
@@ -109,7 +113,7 @@ export default function CrearProducto() {
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
-                                error={error.description }
+                                error={error.description}
                                 label="Descripcion"
                                 name="description"
                                 helperText={error.description}
@@ -118,9 +122,9 @@ export default function CrearProducto() {
                     </Grid>
                     <Grid item md={12} margin={1.5}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
-                            <TextField 
+                            <TextField
                                 onChange={handleChange}
-                                error={error.price }
+                                error={error.price}
                                 label="Precio"
                                 name="price"
                                 helperText={error.price}
@@ -131,7 +135,7 @@ export default function CrearProducto() {
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
-                                error={error.image }
+                                error={error.image}
                                 label="Imagen"
                                 name="image"
                                 helperText={error.image}
@@ -142,12 +146,12 @@ export default function CrearProducto() {
                         <FormControl sx={{ minWidth: 230 }}>
                             <InputLabel>Categoria</InputLabel>
                             <Select
-                                error={error.category_id }
+                                error={error.category_id}
                                 label="Categorias"
                                 name="category_id"
                                 onChange={handleChange}
                                 helperText={error.category_id}
-                              >
+                            >
                                 {categorias.map((c) => {
                                     return (
                                         <MenuItem value={c.category_id.toString()}>
@@ -162,12 +166,12 @@ export default function CrearProducto() {
                         <FormControl sx={{ minWidth: 230 }}>
                             <InputLabel>Sub-Categoria</InputLabel>
                             <Select
-                                error={error.subCategory_id }
+                                error={error.subCategory_id}
                                 label="Sub Categorias"
                                 name="subCategory_id"
                                 onChange={handleChange}
                                 helperText={error.subCategory_id}
-                                >
+                            >
                                 {subCategorias.map((c) => {
                                     return (
                                         <MenuItem value={c.subCategory_id.toString()}>
@@ -176,6 +180,17 @@ export default function CrearProducto() {
                                     );
                                 })}
                             </Select>
+                        </FormControl>
+                    </Grid>
+                    <Grid item md={12} margin={1.5}>
+                        <FormControl sx={{ m: 1, minWidth: 120 }}>
+                            <TextField
+                                onChange={handleChange}
+                                error={error.stock}
+                                label="Stock"
+                                name="stock"
+                                helperText={error.stock}
+                            />
                         </FormControl>
                     </Grid>
                 </Grid>

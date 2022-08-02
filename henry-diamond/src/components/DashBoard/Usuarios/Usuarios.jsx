@@ -1,4 +1,6 @@
-import { React } from "react";
+import { React, useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
 import {
     Table,
     TableContainer,
@@ -7,15 +9,17 @@ import {
     TableBody,
     TableRow,
     Button,
-} from "@material-ui/core";
+ } from "@material-ui/core";
 import Modal from "../../Modal/Modal";
 import { useModal } from "../../Modal/Hooks/UseModal";
+import ModalUpdate from "../../Modal/ModalUpdate";
+import { useModalUpdate } from "../../Modal/Hooks/UseModalUpdate";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { ThemeProvider, makeStyles } from "@material-ui/core/styles";
-import { useSelector } from "react-redux";
 import { capitalizeLetter } from "../../../Utils/utils";
-import CrearProducto from "../CrearProducto/CrearProducto";
+import { getAllUsers } from "../../../actions/actions";
+const { URL } = require("../../../config");
 
 const useStyles = makeStyles((theme) => ({
     iconos: {
@@ -26,22 +30,40 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Productos() {
+export default function Usuarios() {
+    const dispatch = useDispatch();
+
     const styles = useStyles();
+    // const dispatch = useDispatch();
+    const usuarios = useSelector((state) => state.users);
+    console.log("yo seria el usuario", usuarios);
+    console.log("yo seria la foto del usuario", usuarios.picture);
+    console.log("yo seria el rol del usuario", usuarios.isAdmin);
 
-    // const productos = useSelector((state) => state.items);
-    // console.log(productos);
+    useEffect(() => {
+        dispatch(getAllUsers());
+    }, []);
 
-    const [isOpenProducto, openProducto, closeProducto] = useModal(false);
+    const [input, setInput] = useState({
+        id: "",
+        name: "",
+    });
 
-    const handleOpenCloseCreate = () => {
-        openProducto();
-    };
+    function handleChange(e) {
+        e.preventDefault();
+        setInput((prevState) => {
+            const newState = {
+                ...prevState,
+                [e.target.name]: e.target.value,
+            };
+            return newState;
+        });
+    }
 
     return (
         <ThemeProvider>
             <div style={{ height: 400, width: "100%" }}>
-                <Button onClick={handleOpenCloseCreate}>Crear Usuario</Button>
+                <Button>Agregar Usuario</Button>
                 <br />
                 <br />
                 <TableContainer>
@@ -50,90 +72,60 @@ export default function Productos() {
                             <TableRow>
                                 <TableCell>ID</TableCell>
                                 <TableCell>Imagen</TableCell>
-                                <TableCell>Nombre</TableCell>
-                                <TableCell>Apellido</TableCell>
+                                <TableCell>Nombre y Apellido</TableCell>
+                                <TableCell>Email</TableCell>
                                 <TableCell>Rol</TableCell>
                                 <TableCell>Acciones</TableCell>
                             </TableRow>
                         </TableHead>
 
                         <TableBody>
-                            <TableRow>
-                                <TableCell>01</TableCell>
-                                <TableCell>Img not found</TableCell>
-                                <TableCell>Francisco</TableCell>
-                                <TableCell>Siri</TableCell>
-                                <TableCell>Admin</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>02</TableCell>
-                                <TableCell>Img not found</TableCell>
-                                <TableCell>Sebastian</TableCell>
-                                <TableCell>Engelstajn</TableCell>
-                                <TableCell>Admin</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>03</TableCell>
-                                <TableCell>Img not found</TableCell>
-                                <TableCell>Bruno</TableCell>
-                                <TableCell>Stauber</TableCell>
-                                <TableCell>Admin</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>04</TableCell>
-                                <TableCell>Img not found</TableCell>
-                                <TableCell>Lautaro</TableCell>
-                                <TableCell>Ferreyra</TableCell>
-                                <TableCell>Admin</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>05</TableCell>
-                                <TableCell>Img not found</TableCell>
-                                <TableCell>Agustin</TableCell>
-                                <TableCell>Lescano</TableCell>
-                                <TableCell>Admin</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>05</TableCell>
-                                <TableCell>Img not found</TableCell>
-                                <TableCell>Carolina</TableCell>
-                                <TableCell>Andrada</TableCell>
-                                <TableCell>Admin</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>05</TableCell>
-                                <TableCell>Img not found</TableCell>
-                                <TableCell>Maria Soledad</TableCell>
-                                <TableCell>Petrino</TableCell>
-                                <TableCell>Admin</TableCell>
-                            </TableRow>
-
-                            {/* {productos.map((e) => (
-                                <TableRow key={e.product_id}>
-                                    <TableCell>{e.product_id}</TableCell>
+                            {usuarios.map((e) => (
+                                <TableRow key={e.id_user}>
+                                    <TableCell>{e.id_user}</TableCell>
                                     <TableCell>
                                         <img
-                                            src={e.image}
+                                            src={e.picture}
                                             style={{ height: "35px", borderRadius: "5px" }}
                                         />
                                     </TableCell>
-                                    <TableCell>{capitalizeLetter(e.name)}</TableCell>
-                                    <TableCell>{e.price}</TableCell>
-                                    <TableCell>{e.subCategory_id}</TableCell>
+                                    <TableCell>{capitalizeLetter(e.userName)}</TableCell>
+                                    <TableCell>{capitalizeLetter(e.email)}</TableCell>
+                                    {/* <TableCell>{e.isAdmin.toString()}</TableCell> */}
                                     <TableCell>
-                                        <EditIcon />
+                                        <Button>
+                                        Usuario
+                                   </Button>
+                                   </TableCell>
+                                    <TableCell>
+                                        <EditIcon
+                                        // onClick={() =>
+                                        //     handleOpenModalEditarProducto(e.product_id)
+                                        // }
+                                        />
                                         &nbsp;&nbsp;&nbsp;
                                         <DeleteIcon />
                                     </TableCell>
                                 </TableRow>
-                            ))} */}
+                            ))}
                         </TableBody>
                     </Table>
                 </TableContainer>
 
-                <Modal isOpen={isOpenProducto} closeModal={closeProducto}>
-                    <CrearProducto closeProducto={closeProducto} />
+                {/* <Modal isOpen={isOpenProducto1} closeModal={closeProducto1}>
+                    <CrearProducto closeProducto={closeProducto1} />
                 </Modal>
+                <ModalUpdate isOpen={isOpenProducto2} closeModal={closeProducto2}>
+                    <EditarProducto closeProducto={closeProducto2} />
+                </ModalUpdate> */}
+                {/* <Button
+                    variant="container"
+                    color="primary"
+                    textAlign="center"
+                    onClick={handleCreate}
+                >
+                    Editar Usuario
+                </Button> */}
             </div>
         </ThemeProvider>
     );

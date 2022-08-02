@@ -143,6 +143,7 @@ export default function BasicCard(props) {
         }
       }
       const classes = useStyles();
+      
       const handleDelete=()=>{
         dispatch(deleteFavorite(user.sub, item))
         setFav(false)
