@@ -437,7 +437,13 @@ export const getUser = ()=>{
     }
   }
   
-
+  export const SetRoles= (obj) => {
+    console.log(obj);
+return async () => {
+   let role = await axios.patch(`${URL}adduser/admin`,obj) 
+    console.log(role.data)
+}
+}
 
 
 
