@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {useSelector,useDispatch} from "react-redux";
 import { useEffect } from "react";
 import CardCart from "../CardCart/CardCart";
@@ -13,7 +13,6 @@ import { ThemeProvider } from "@material-ui/core"
 import { createTheme } from "@material-ui/core";
 import { Grid } from "@mui/material";
 import Footer from "../Footer/Footer";
-import { useNavigate, Redirect } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles'
 import swal from 'sweetalert'
 
@@ -51,7 +50,6 @@ export default function ShoppingCart(){
     const { user,isAuthenticated } = useAuth0();
     const dispatch = useDispatch()
     const link = useSelector(state => state.Cart)
-    const Navigate = useNavigate()
     const productos = useSelector(state => state.shoppingCart)
     // const subTotal = productos[0].map((producto)=>producto.price*producto.cantidad)
     

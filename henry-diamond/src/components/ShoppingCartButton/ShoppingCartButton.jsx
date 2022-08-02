@@ -1,9 +1,8 @@
 import Badge from '@material-ui/core/Badge';
 import IconButton from '@material-ui/core/IconButton';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import { addCart } from "../../actions/actions";
-import { useEffect } from "react";
-import {useSelector, useDispatch} from "react-redux";
+
+import {useSelector} from "react-redux";
 
 
 
@@ -16,7 +15,6 @@ export const ShoppingCartButton = () => {
   let objetos = Productos.map(producto => {return JSON.parse(producto)})
   let productos = objetos.filter(producto => producto.hasOwnProperty('product_id'))
   const cantidad = productos.reduce( (acc,producto) =>acc+producto.cantidad, 0)
-  const dispatch = useDispatch();
 
   // useEffect(() => {
   //   dispatch(addCart())

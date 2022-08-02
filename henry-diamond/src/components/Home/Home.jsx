@@ -3,10 +3,10 @@ import { Grid, Box } from '@material-ui/core'
 import ConteinerCards from "../ConteinerCards/ConteinerCards"
 import SearchAppBar from "../Nav/Nav";
 import Footer from "../Footer/Footer";
-import { ThemeProvider, Typography } from "@material-ui/core";
+import { ThemeProvider } from "@material-ui/core";
 import { createTheme } from "@material-ui/core";
-import {useDispatch,useSelector} from "react-redux";
-import {checkFav, getAllItems} from "../../actions/actions";
+import { useDispatch } from "react-redux";
+import { checkFav, getAllItems } from "../../actions/actions";
 import { useEffect } from "react";
 import { useAuth0 } from '@auth0/auth0-react'
 
