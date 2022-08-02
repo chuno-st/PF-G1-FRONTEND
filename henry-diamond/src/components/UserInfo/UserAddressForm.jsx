@@ -154,7 +154,7 @@ export default function UserAddressForm() {
               type="text"
               name="name"
               key="name"
-              value={dataState.name}
+              value={dataState.nombre}
               onChange={handleChange}
             />
           </div>
@@ -166,7 +166,7 @@ export default function UserAddressForm() {
               type="text"
               name="lastname"
               key="name"
-              value={dataState.lastname}
+              value={dataState.apellido}
               onChange={handleChange}
             />
           </div>
@@ -175,7 +175,7 @@ export default function UserAddressForm() {
             <label>DNI:</label>
             <input
               required
-              placeholder="dni"
+              placeholder="DNI"
               name="dni"
               type="number"
               key="dni"
@@ -193,7 +193,7 @@ export default function UserAddressForm() {
               name="phone_number"
               type="number"
               key="phone"
-              value={dataState.phone_number}
+              value={dataState.telefono}
               onChange={handleChange}
             />
           </div>
@@ -204,7 +204,7 @@ export default function UserAddressForm() {
               type="text"
               name="address"
               key="address"
-              value={dataState.address}
+              value={dataState.calle}
               onChange={handleChange}
             />
           </div>
@@ -215,7 +215,7 @@ export default function UserAddressForm() {
               type="number"
               name="number"
               key="number"
-              value={dataState.number}
+              value={dataState.direccion}
               onChange={handleChange}
             />
           </div>
@@ -227,7 +227,7 @@ export default function UserAddressForm() {
               type="text"
               name="city"
               key="city"
-              value={dataState.city}
+              value={dataState.ciudad}
               onChange={handleChange}
             />
           </div>
@@ -238,7 +238,7 @@ export default function UserAddressForm() {
               type="text"
               name="province"
               key="province"
-              value={dataState.province}
+              value={dataState.provincia}
               onChange={handleChange}
             />
           </div>
