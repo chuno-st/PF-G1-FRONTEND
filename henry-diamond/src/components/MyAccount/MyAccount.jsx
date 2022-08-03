@@ -7,7 +7,10 @@ import NavMyAccount from './NavMyAccount';
 import { useAuth0 } from "@auth0/auth0-react";
 import {Box, CssBaseline, Button} from '@material-ui/core';
 import CrearUserAddres from '../UserInfo/CrearUserAddres';
-import ModalCreateInfoUser from '../MyAccount/ModalCreateInfoUser'
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { getAllSales } from '../../actions/actions';
+// import CurrentSale from './CurrentSale'
 import { Link  } from 'react-router-dom';
 
 
@@ -74,11 +77,11 @@ return (
           justifyContent='flex-start'
           >
           <Box 
-          bgcolor='pink'
+          // bgcolor='pink'
           textAlign='left'
           p={10}
           border={1}
-          borderColor='black'
+          borderColor='lightBlue'
           >
           <h2>Mis Datos</h2>
           <h5>
@@ -86,6 +89,7 @@ return (
               e-mail<br/>
               password
           </h5>
+          </Box>
 
           <Box 
           bgcolor='pink'
@@ -94,23 +98,18 @@ return (
           border={1}
           borderColor='black'
           >
-            {/* <UserAddressForm/> */}
-
-              {/* <ModalCreateInfoUser size='small' style={{ overflow: 'true'}}>  */}
               <Box my={2} align='center'>
               <Link to="/formpage" size='small' className='link'>
-                <Button> Datos para el envio </Button>
+                <Button variant='outlined' color="secondary"> Datos para el envio </Button>
               </Link>
               </Box>
-              {/* </ModalCreateInfoUser>  */}
           </Box>
           
 
-        </Box>
         </Grid>
         <Grid item xs={6}>
           <Box 
-          bgcolor='pink'
+          // bgcolor='pink'
           p={10}
           border={1}
           borderColor='black'
@@ -129,14 +128,44 @@ return (
       <Grid item xs={12}
       alignItems='flex-start'
       >
-          <Box 
-            bgcolor='lightBlue'
-            p={7}
-            border={1}
-            borderColor='black'
-            textAlign='left'
-          >
-          Historial de Pedidos
+        <Box 
+        bgcolor='lightBlue'
+        p={3}
+        textAlign='Center'
+        boxShadow='4px 1px 8px #7a7a7a'
+        >
+
+          <Typography display='display' variant='h5'>Historial de Compras</Typography>
+        </Box>
+        <Box
+        //  bgcolor='lightBlue'
+         borderBottom={1}
+        >
+          <Typography display='display' variant='subtitle1'>
+          {
+            sales.map(e => (
+             <Box
+             borderBottom={1}
+             borderColor='red'
+             boxShadow='4px 1px 8px #7a7a7a'
+             >
+                <Typography display='display' variant='h6'>Productos:</Typography> 
+                    {(e.items).map(i => (
+                      <a>{(i.title).toUpperCase()}, </a>
+                    ))}
+                    
+                    {/* <p>Producto: {e.product_id}</p> */}
+                    <Typography display='display' variant='h6'>Estado de compra:</Typography><p>{(e.status).toUpperCase()}</p>
+                    <Typography display='display' variant='h6'>Fecha de compra:</Typography><p>{e.createdAt}</p>
+                    <Typography display='display' variant='h6'>Cuota:</Typography><p>${e.monto} - Total: ${e.montoTotal}</p>
+                    {console.log(e.items)}
+                
+              </Box>
+            )
+            
+            )
+          }
+          </Typography>
         </Box>
         </Grid>
         <Grid item xs={12}>
@@ -144,6 +173,6 @@ return (
         </Grid>
                
       </ThemeProvider>
-    </React.Fragment>
+    </ React.Fragment>
   );
 }

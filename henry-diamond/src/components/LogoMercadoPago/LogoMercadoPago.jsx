@@ -7,8 +7,8 @@ const Logo = () => {
     return (
        
         <>
-            <img src={'logoMercadopago.jpg'} alt="logo" width="180" />
-        </>
+            <img src={'logoMercadopago.jpg'} alt="logo" width="130"  />
+        </ >
     );
 };
 

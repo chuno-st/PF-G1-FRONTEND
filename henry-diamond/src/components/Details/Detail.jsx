@@ -12,7 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from '@material-ui/core/Button'
 import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import CardRatting  from '../CardRating/CardRating';
+import CardRating  from '../CardRating/CardRating';
 import {capitalizeLetter} from '../../Utils/utils'
 
 const useStyles = makeStyles((theme) => ({
@@ -169,7 +169,7 @@ export default function Detail () {
                                 boxShadow='4px 6px 8px #7a7a7a'
                               >
                          
-                          <CardRatting 
+                          <CardRating 
                           product = {product}
                           />
                          

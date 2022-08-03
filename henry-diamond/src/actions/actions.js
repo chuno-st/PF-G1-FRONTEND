@@ -362,7 +362,6 @@ export const createProduct = (body) => {
 export const createDatosUsuario = (body) => {
 
     return  (dispatch) => {
-        
             axios.put(`${URL}adduser`, body)
             .then (() => alert("Los datos del usuario fueron creados correctamente"))
             console.log( 'Soy body', body)
@@ -370,24 +369,6 @@ export const createDatosUsuario = (body) => {
             }
 }
 
-// export const createDatosUsuario = (body) => {
-//     return async (dispatch) => {
-//         try {
-//             const response = await axios.put(`${URL}adduser`, body);
-//             if (response.data.message) {
-//                 alert(response.data.message);
-//             } else {
-//                 return dispatch({
-//                     type: CREATE_DATOS_USUARIO,
-//                     payload: response.data,
-//                 });
-//             }
-//             alert(response.data.message);
-//         } catch (error) {
-//             console.log(error);
-//         }
-//     };
-// };
 
 export const editProduct = (body) => {
        return async (dispatch) => {

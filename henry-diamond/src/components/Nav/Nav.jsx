@@ -111,7 +111,8 @@ const useStyles = makeStyles((theme) => ({
   
       const handleSearchBar = (e) => {
           setName(e.target.value)
-      }
+          
+      } 
       
       // console.log(name)
   

@@ -48,6 +48,7 @@ export default function Home() {
     dispatch(getAllItems())
     if(isAuthenticated) {
       dispatch(checkFav(user.sub))
+      dispatch(getAllSales(user.sub))
       dispatch(checkuserBlocked(user.sub))
 
     }
