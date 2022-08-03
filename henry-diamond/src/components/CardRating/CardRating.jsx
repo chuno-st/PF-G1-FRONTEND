@@ -53,7 +53,7 @@ export default function CardRating({ product }) {
   const classes = useStyles();
   const { isAuthenticated, user} = useAuth0();
   
-  
+  // const fecha = {e.updatedAt}.substr(0,9)
   const { Reviews } = useSelector(state => state.product);
 
   //la Id del producto deberia llegar como props o como parametro
@@ -176,10 +176,11 @@ export default function CardRating({ product }) {
                   <Chip
                     variant="outlined"
                     color="secondary"
-                    label={`Autor: ${e.author} : ${e.comment} `}
+                    label={`Autor: ${e.author} : ${e.comment} - Fecha:${(e.updatedAt).substr(0,9)} `}
                     size='medium'
                     title={e.description}
-                  /> 
+                    /> 
+                    {console.log(Reviews, 'estoooooy')}
                   </p>
                 </Box>
               </div>

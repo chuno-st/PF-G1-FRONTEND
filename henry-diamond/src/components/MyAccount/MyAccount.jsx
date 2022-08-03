@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar, Grid, Typography } from '@material-ui/core'
+import { Avatar, Grid, IconButton, Typography } from '@material-ui/core'
 import Footer from "../Footer/Footer";
 import { ThemeProvider } from "@material-ui/core"
 import { createTheme } from "@material-ui/core";
@@ -14,7 +14,8 @@ import { getAllSales } from '../../actions/actions';
 // import CrearUserAddres from '../UserInfo/CrearUserAddres';
 // import ModalCreateInfoUser from '../MyAccount/ModalCreateInfoUser'
 import { Link  } from 'react-router-dom';
-
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import LocalShippingIcon from '@material-ui/icons/LocalShipping';
 
 
 
@@ -39,6 +40,7 @@ export default function MyAccount() {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const sales = useSelector(state => state.salesProduct)
 
+ 
   useEffect(() => {
     dispatch(getAllSales(user.sub))
   }, [])
@@ -76,8 +78,7 @@ return (
                           ></Avatar>
                           </Button>
                           </Box>
-                          <Typography>{user.email}</Typography>
-
+                          
                 </Box>
             </Grid>
           <Grid item xs={6}
@@ -90,19 +91,27 @@ return (
           border={1}
           borderColor='lightBlue'
           >
-          <h2>Mis Datos</h2>
-          <h5>
-              nickName <br/>
-              e-mail<br/>
-              password
-          </h5>
+          <Typography display='display' variant='h5'>Mis Datos</Typography>
+
+          <Typography display='display' variant='subtitle2'>
+            {user.nickname} 
+            </Typography>
+            <Typography display='display' variant='subtitle2'>
+            {user.email} 
+            </Typography>
+           
+
+
           <Grid container xs={12} direction='row-reverse'>
-          <Box 
-         
-          my={2} 
-          align='right'>
+              <Box 
+              textAlign='center'
+              border={1}
+              borderColor='lightBlue'
+              >
               <Link to="/formpage" size='small' className='link'>
-                <Button variant='outlined' color="secondary"> Datos para el envio </Button>
+                <Button variant='outlined' 
+                startIcon = {<LocalShippingIcon />}
+                > Datos Envío </Button>
               </Link>
               </Box>
           </Grid>
@@ -117,10 +126,17 @@ return (
           p={10}
           textAlign='Center'
           >
-          <Typography display='display' variant='h5'>Mi Compra</Typography>
-
-              {/* <CurrentSale /> */}
-
+          <Typography display='display' variant='h5'>Seguir Comprando?</Typography> 
+          <Box p={7}>
+          <Link to="/cart" size='small' className='link'>
+                    
+                    <Button
+                        size='small'
+                        variant='outlined'
+                        startIcon= {<ShoppingCartIcon />}
+                    > Mi Carrito</Button>
+        </Link>
+        </Box>
         </Box>
         </Grid>
       </Grid>

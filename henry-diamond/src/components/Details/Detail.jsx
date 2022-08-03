@@ -13,6 +13,7 @@ import Button from '@material-ui/core/Button'
 import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import CardRating  from '../CardRating/CardRating';
+import {capitalizeLetter} from '../../Utils/utils'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -94,7 +95,7 @@ export default function Detail () {
                         <Box 
                         bgcolor='C8B6FF'
                         boxShadow='4px 1px 8px #7a7a7a'>
-                          <div>{(product.name)}</div>
+                          <div>{capitalizeLetter((product.name))}</div>
                         </Box>
                       </Typography>
 
