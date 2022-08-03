@@ -8,6 +8,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import {Box, CssBaseline, Button} from '@material-ui/core';
 import CrearUserAddres from '../UserInfo/CrearUserAddres';
 import ModalCreateInfoUser from '../MyAccount/ModalCreateInfoUser'
+import { Link  } from 'react-router-dom';
 
 
 
@@ -95,11 +96,13 @@ return (
           >
             {/* <UserAddressForm/> */}
 
-              <ModalCreateInfoUser size='small' style={{ overflow: 'true'}}> 
-              <Box my={0} align='center'>
-                    <CrearUserAddres/>
+              {/* <ModalCreateInfoUser size='small' style={{ overflow: 'true'}}>  */}
+              <Box my={2} align='center'>
+              <Link to="/formpage" size='small' className='link'>
+                <Button> Datos para el envio </Button>
+              </Link>
               </Box>
-              </ModalCreateInfoUser> 
+              {/* </ModalCreateInfoUser>  */}
           </Box>
           
 
@@ -127,11 +130,11 @@ return (
       alignItems='flex-start'
       >
           <Box 
-          bgcolor='lightBlue'
-          p={7}
-          border={1}
-          borderColor='black'
-          textAlign='left'
+            bgcolor='lightBlue'
+            p={7}
+            border={1}
+            borderColor='black'
+            textAlign='left'
           >
           Historial de Pedidos
         </Box>

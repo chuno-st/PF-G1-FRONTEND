@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import CrearUserAddres from '../UserInfo/CrearUserAddres'
 
+
+
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
@@ -24,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     position: 'absolute',
     width: 400,
+    height: 700,
     backgroundColor: theme.palette.background.paper,
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
@@ -73,7 +76,6 @@ export default function ModalCreateInfoUser() {
         aria-describedby="simple-modal-description"
         disableScrollLock="false"
         className={classes.modalStyle1}
-        
       >
         {body}
       </Modal>

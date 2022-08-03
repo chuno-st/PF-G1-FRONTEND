@@ -22,21 +22,17 @@ import {
     GET_USER,
     POST_USER_ADDRESS,
     UPDATE_USER_ADDRESS,
-<<<<<<< HEAD
     CREATE_DATOS_USUARIO,
-    DISABLE_SUBCATEGORY,
-=======
     GET_REVIEWS,
     POST_REVIEWS,
    
     GET_USER_ADDRESS,
     
 
->>>>>>> 95104cfcfb82947c6a6f23bc47fab0c0ce67fb44
 } from "./typeActions";
 //import config from "../config.js"
 import axios from "axios";
-//import swal from 'sweetalert'
+import swal from 'sweetalert'
 
 
 //import {URL} from "../index.js"
@@ -45,13 +41,6 @@ const { URL } = require("../config");
 
 export function getAllProduct(name) {
     // console.log('estoy en la action'
-<<<<<<< HEAD
-    return async (dispatch) => {
-        let allProducts = await axios.get(`${URL}product?name=${name}`);
-        console.log(allProducts);
-        if (allProducts.data.length === 0) {
-            alert("Producto no encontrado");
-=======
     return async (dispatch) =>{
         
         let allProducts = await axios.get(`${URL}product?name=${name}`)
@@ -65,7 +54,6 @@ export function getAllProduct(name) {
               });
             window.location.reload(true)
             //alert('Producto no encontrado')
->>>>>>> 95104cfcfb82947c6a6f23bc47fab0c0ce67fb44
         }
         return dispatch({
             type: GET_PRODUCT,
@@ -360,58 +348,46 @@ export const addShoppingCart = (obj) => {
 };
 
 export const createProduct = (body) => {
-<<<<<<< HEAD
-    return async (dispatch) => {
-        try {
-            const response = await axios.post(`${URL}product/`, body);
-            if (response.data.message) {
-                alert(response.data.message);
-            } else {
-                return dispatch({
-                    type: CREATE_PRODUCT,
-                    payload: response.data,
-                });
-            }
-            alert(response.data.message);
-        } catch (error) {
-            console.log(error);
-        }
-=======
     return async function () {
       try {
         await axios.post(`${URL}`, body);
-        swal({
-            title: "Error",
-            text: "El producto fue creado correctamente",
-            icon: "error",
-            button: "Aceptar",
-          });
-        //alert("El producto fue creado correctamente");
+        alert("El producto fue creado correctamente");
         } catch (err) {
         console.log(err);
       }
->>>>>>> 95104cfcfb82947c6a6f23bc47fab0c0ce67fb44
     };
 };
 
+
 export const createDatosUsuario = (body) => {
-    return async (dispatch) => {
-        try {
-            const response = await axios.put(`${URL}adduser`, body);
-            if (response.data.message) {
-                alert(response.data.message);
-            } else {
-                return dispatch({
-                    type: CREATE_DATOS_USUARIO,
-                    payload: response.data,
-                });
-            }
-            alert(response.data.message);
-        } catch (error) {
-            console.log(error);
-        }
+    return async function () {
+      try {
+        await axios.put(`${URL}adduser`, body);
+        alert("Los datos del usuario fueron cargados correctamente");
+        } catch (err) {
+        console.log(err);
+      }
     };
 };
+
+// export const createDatosUsuario = (body) => {
+//     return async (dispatch) => {
+//         try {
+//             const response = await axios.put(`${URL}adduser`, body);
+//             if (response.data.message) {
+//                 alert(response.data.message);
+//             } else {
+//                 return dispatch({
+//                     type: CREATE_DATOS_USUARIO,
+//                     payload: response.data,
+//                 });
+//             }
+//             alert(response.data.message);
+//         } catch (error) {
+//             console.log(error);
+//         }
+//     };
+// };
 
 export const editProduct = (body) => {
        return async (dispatch) => {

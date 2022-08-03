@@ -68,7 +68,7 @@ export default function CrearUserAddres() {
     const handleCreate = async (e) => {
         e.preventDefault();
         try {
-            if (!input.name || !input.lastname || !input.calle || !input.direccion || !input.piso || !input.departamento || !input.codigo_postal || !input.provincia || !input.localidad || !input.telefono || !input.dni) {
+            if (!input.name || !input.lastname || !input.calle || !input.direccion || !input.codigo_postal || !input.provincia || !input.localidad || !input.telefono || !input.dni) {
                 alert("Por favor completar las celdas correspondientes");
             }
             dispatch(createDatosUsuario(input));
@@ -86,7 +86,7 @@ export default function CrearUserAddres() {
                 dni: "",
                 fecha_nacimiento: "",
             });
-            alert("La categoria se creo correctamente");
+            alert("Los datos para el envío fueron cargados correctamente");
         } catch (error) {
             console.log(error);
         }
@@ -104,30 +104,38 @@ export default function CrearUserAddres() {
             }}
         >
             <Container>
-                <Grid container>
-                    <Grid item md={12} margin={1.5}>
-                        <FormControl sx={{ m: 1, minWidth: 120 }}>
-                            <TextField
-                                onChange={handleChange}
-                                error={error.name}
-                                label="Nombre"
-                                name="name"
-                                helperText={error.name}
-                            />
-                        </FormControl>
+                <Grid container xs={12} ms={12} md={12} lg={12} xl={12}>
+                <Box item justifyContent="center"  border={1} borderColor='black'>
+
+                    <Grid item md={8} margin={1.5}>
+                        <Box p={1}>
+                            <FormControl sx={{ m: 1, minWidth: 120 }}>
+                                <TextField
+                                    onChange={handleChange}
+                                    error={error.name}
+                                    label="Nombre"
+                                    name="name"
+                                    helperText={error.name}
+                                />
+                            </FormControl>
+                        </Box>
                     </Grid>
-                    <Grid item md={12} margin={1.5}>
-                        <FormControl sx={{ m: 1, minWidth: 120 }}>
-                            <TextField
-                                onChange={handleChange}
-                                error={error.lastname}
-                                label="Apellido"
-                                name="lastname"
-                                helperText={error.lastname}
-                            />
-                        </FormControl>
+
+                    <Grid item md={8} margin={1.5}>
+                        <Box p={1}>
+                            <FormControl sx={{ m: 1, minWidth: 120 }}>
+                                <TextField
+                                    onChange={handleChange}
+                                    error={error.lastname}
+                                    label="Apellido"
+                                    name="lastname"
+                                    helperText={error.lastname}
+                                />
+                            </FormControl>
+                        </Box>
                     </Grid>
-                    <Grid item md={12} margin={1.5}>
+
+                    <Grid item md={8} margin={1.5}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
@@ -138,7 +146,8 @@ export default function CrearUserAddres() {
                             />
                         </FormControl>
                     </Grid>
-                    <Grid item md={12} margin={1.5}>
+
+                    <Grid item md={8} margin={1.5}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
@@ -150,8 +159,7 @@ export default function CrearUserAddres() {
                         </FormControl>
                     </Grid>
                     
-                    
-                    <Grid item md={12} margin={1.5}>
+                    <Grid item md={8} margin={1.5}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
@@ -163,7 +171,7 @@ export default function CrearUserAddres() {
                         </FormControl>
                     </Grid>
 
-                    <Grid item md={12} margin={1.5}>
+                    <Grid item md={8} margin={1.5}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
@@ -175,7 +183,7 @@ export default function CrearUserAddres() {
                         </FormControl>
                     </Grid>
 
-                    <Grid item md={12} margin={1.5}>
+                    <Grid item md={8} margin={1.5}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
@@ -187,7 +195,7 @@ export default function CrearUserAddres() {
                         </FormControl>
                     </Grid>
 
-                    <Grid item md={12} margin={1.5}>
+                    <Grid item md={8} margin={1.5}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
@@ -199,33 +207,67 @@ export default function CrearUserAddres() {
                         </FormControl>
                     </Grid>
 
+                    <Grid item md={8} margin={1.5}>
+                        <FormControl sx={{ m: 1, minWidth: 120 }}>
+                            <TextField
+                                onChange={handleChange}
+                                error={error.localidad}
+                                label="Localidad"
+                                name="localidad"
+                                helperText={error.provincia}
+                            />
+                        </FormControl>
+                    </Grid>
+                    <Grid item md={8} margin={1.5}>
+                        <FormControl sx={{ m: 1, minWidth: 120 }}>
+                            <TextField
+                                onChange={handleChange}
+                                error={error.telefono}
+                                label="Teléfono"
+                                name="telefono"
+                                helperText={error.provincia}
+                            />
+                        </FormControl>
+                    </Grid>
 
+                    <Grid item md={8} margin={1.5}>
+                        <FormControl sx={{ m: 1, minWidth: 120 }}>
+                            <TextField
+                                onChange={handleChange}
+                                error={error.dni}
+                                label="DNI"
+                                name="dni"
+                                helperText={error.dni}
+                            />
+                        </FormControl>
+                    </Grid>
 
+                    <Grid item md={8} margin={1.5}>
+                        <FormControl sx={{ m: 1, minWidth: 120 }}>
+                            <TextField
+                                onChange={handleChange}
+                                error={error.fecha_nacimiento}
+                                label="Fecha de nacimiento"
+                                name="fecha_nacimiento"
+                                helperText={error.fecha_nacimiento}
+                            />
+                        </FormControl>
+                    </Grid>
 
-
-
-
-
-                </Grid>
-
-                
-
-
-
-
-
-
-                <Box align="center">
-
-                <Button
+                    <Button
                     variant="container"
                     color="primary"
                     textAlign="center"
                     onClick={handleCreate}
-                >
-                    CARGAR INFORMACIÓN 
-                </Button>
-                </Box>
+                    >
+                        ENVIAR
+                    </Button>
+
+                    </Box>
+
+                </Grid>
+                
+                
 
             </Container>
         </div>

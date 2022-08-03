@@ -5,6 +5,7 @@ import './App.css';
 import { Loading } from "./components/Loading/loading.jsx";
 //import { dark } from "@material-ui/core/styles/createPalette.js";
 import MyAccount from '../../henry-diamond/src/components/MyAccount/MyAccount'
+import FormPage from '../src/components/MyAccount/FormPage'
 import Detail from '../src/components/Details/Detail.jsx'
 import About from '../src/components/About/About'
 import Admin from "../src/components/DashBoard/index"
@@ -46,14 +47,9 @@ function App() {
                   <Route path="/cart" element={<ShoppingCart/>} />
                   <Route path="/detail/:id" element={<Detail/>}/>
                   <Route path="/About" element={<About/>}/>
-<<<<<<< HEAD
-
-                  {/* <Route path="/admin" element={<Admin/>}/> */}
-                
-=======
+                  <Route path="/formpage" element={<FormPage/>}/>
                   <Route path="/admin" element={<PrivateDash> <Admin/> </PrivateDash>} />
                   <Route path="*" element={<Home/>} />
->>>>>>> 95104cfcfb82947c6a6f23bc47fab0c0ce67fb44
                   <Route path="/admin" element={<PrivateDash>
                     <Admin/>
                   </PrivateDash>} />

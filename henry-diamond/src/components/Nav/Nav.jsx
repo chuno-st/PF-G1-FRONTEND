@@ -17,8 +17,7 @@ import { ShoppingCartButton } from '../ShoppingCartButton/ShoppingCartButton'
 import Logo from '../Logo/Logo'
 import IconButton from '@mui/material/IconButton';
 import Button from '@material-ui/core/Button';
-
-
+import { HeartFavButton } from '../HeartFavButton/HeartFavButton'
 
 
 
@@ -173,6 +172,8 @@ const useStyles = makeStyles((theme) => ({
                                   )
                                 }
                                     <ShoppingCartButton />
+                                    <HeartFavButton />
+
                         </Hidden>
                         
                                                          

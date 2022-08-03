@@ -16,11 +16,8 @@ import {
     CREATE_PRODUCT,
     DISABLE_PRODUCT,
     ALL_ITEMS_ADMIN,
-<<<<<<< HEAD
-    CREATE_DATOS_USUARIO
-=======
+    CREATE_DATOS_USUARIO,
     GET_PRODUCT,
->>>>>>> 95104cfcfb82947c6a6f23bc47fab0c0ce67fb44
 } from "../actions/typeActions";
 
 const inicialState = {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {useSelector,useDispatch} from "react-redux";
 import { useEffect } from "react";
 import CardCart from "../CardCart/CardCart";
@@ -6,6 +6,7 @@ import { Button } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { postCart } from "../../actions/actions";
 import { addCart } from "../../actions/actions";
+import {Box} from '@material-ui/core';
 
 import { useAuth0 } from "@auth0/auth0-react";
 import NavMyAccount from '../MyAccount/NavMyAccount';
@@ -13,6 +14,7 @@ import { ThemeProvider } from "@material-ui/core"
 import { createTheme } from "@material-ui/core";
 import { Grid } from "@mui/material";
 import Footer from "../Footer/Footer";
+import { useNavigate, Redirect } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles'
 import swal from 'sweetalert'
 
@@ -50,6 +52,7 @@ export default function ShoppingCart(){
     const { user,isAuthenticated } = useAuth0();
     const dispatch = useDispatch()
     const link = useSelector(state => state.Cart)
+    const Navigate = useNavigate()
     const productos = useSelector(state => state.shoppingCart)
     // const subTotal = productos[0].map((producto)=>producto.price*producto.cantidad)
     
@@ -87,15 +90,16 @@ export default function ShoppingCart(){
     return (
     <div>
       <ThemeProvider theme={theme}>
-        <Grid container spacing={3}>
+        <Grid container spacing={10}>
         <Grid item xs={12} sm={12} xl={12}>
           <NavMyAccount/>              
         </Grid>
         <Grid item xs={12}>
-          <Typography align="center" gutterBottom variant='h4'>
-            Mi Carrito de compras
-          </Typography>
+            <Typography align="center" gutterBottom variant='h4'>
+              Mi Carrito de compras
+            </Typography>
         </Grid>
+
         <Grid item xs={12} sm={8} md={9} container spacing={2}>
 
              {
@@ -121,6 +125,11 @@ export default function ShoppingCart(){
           </Typography>
         </Grid>
         </Grid>
-          <Footer />
+        <Grid item xs={12}>
+        <Box pt={20}>
+            <Footer/>
+        </Box>
+        </Grid>
       </ThemeProvider>    
 </div>)}
+
