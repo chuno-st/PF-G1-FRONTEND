@@ -15,6 +15,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
+import LinearIndeterminate  from './components/Loading/Loading2'
 
 
 // export default function SimpleContainer() {
@@ -33,7 +34,7 @@ import Container from '@material-ui/core/Container';
 function App() {
   const {isLoading} = useAuth0();
 
-  if (isLoading) return <Loading />;
+  if (isLoading) return <LinearIndeterminate />;
 
   return (
   <div className="bodyApp">

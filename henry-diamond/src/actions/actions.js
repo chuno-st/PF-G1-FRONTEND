@@ -22,6 +22,7 @@ import {
     GET_USER,
     POST_USER_ADDRESS,
     UPDATE_USER_ADDRESS,
+<<<<<<< HEAD
     CREATE_DATOS_USUARIO,
     GET_REVIEWS,
     POST_REVIEWS,
@@ -29,6 +30,11 @@ import {
     GET_USER_ADDRESS,
     
 
+=======
+    GET_REVIEWS,
+    POST_REVIEWS,
+    DISABLE_SUBCATEGORY,
+>>>>>>> 1747fdde0d3ee8b1263f375f9b45f229c9b29287
 } from "./typeActions";
 //import config from "../config.js"
 import axios from "axios";
@@ -46,6 +52,7 @@ export function getAllProduct(name) {
         let allProducts = await axios.get(`${URL}product?name=${name}`)
         // console.log(allProducts)
         if(allProducts.data.length === 0){
+<<<<<<< HEAD
             await swal({
                 title: "Error",
                 text: "Producto no encontrado",
@@ -54,6 +61,9 @@ export function getAllProduct(name) {
               });
             window.location.reload(true)
             //alert('Producto no encontrado')
+=======
+            alert('Producto no encontrado')
+>>>>>>> 1747fdde0d3ee8b1263f375f9b45f229c9b29287
         }
         return dispatch({
             type: GET_PRODUCT,
@@ -447,7 +457,12 @@ export const addCart = () => {
     };
 };
 
+<<<<<<< HEAD
 export const getReviews = () => { 
+=======
+export const getReviews = () => {
+    
+>>>>>>> 1747fdde0d3ee8b1263f375f9b45f229c9b29287
     return async () => {
         let getReview = await axios.get(`${URL}addreview/`)
         return  ({
@@ -459,10 +474,11 @@ export const getReviews = () => {
 
 export const postReview = (obj) => {
     return async () => {
-        let postReview = await axios.post(`${URL}addreview/`, obj)
-        console.log(postReview.data)
+        let postReview = await axios.post(`${URL}product/addreview/`, obj)
+        // console.log(postReview.data)
     }
 };
+
 
 export const addFavorite = (sub, item ) => {
     return async () => {
@@ -539,6 +555,20 @@ export const checkuserBlocked=(id)=>{
         }
 }
 
+<<<<<<< HEAD
+=======
+// traer todos los productos comprados por el usuario
+// get.{URL}sales/user/:id
+>>>>>>> 1747fdde0d3ee8b1263f375f9b45f229c9b29287
 
+export const getAllSales =  (id) => {
+    return async function(dispatch){
+        return axios.get(`${URL}sales/user/${id}`)
+        .then(res => {
+            console.log(res.data)
+            dispatch({type: 'ALL_SALE', payload: res.data.Sales})
+        })
+    }
+}
 
 
