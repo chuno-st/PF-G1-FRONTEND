@@ -105,7 +105,7 @@ export default function BasicCard(props) {
   
   
        const handleclick = () => {
-        navigate(`/detail/.${item.product_id}`,{ replace: true })
+        navigate(`/detail/${item.product_id}`,{ replace: true })
   
       }
       if(item.cantidad===0){
