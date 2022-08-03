@@ -46,10 +46,10 @@ return (
         </Grid>
             <Grid item xs={12}>
                   <Box 
-                    bgcolor='#e0e0e0'
+                    bgcolor='pink'
                     pt={11}
                     pb={1}
-                    textAlign='center'
+                    align='center'
                     border={0}
                     boxShadow='4px 1px 8px #7a7a7a'
                   >
@@ -67,7 +67,7 @@ return (
 
                   </Box>
                     <Box 
-                        bgcolor='#e0e0e0'
+                        bgcolor='red'
                         pt={1}
                         align='center'
                         border={0}
@@ -77,17 +77,17 @@ return (
                     </Box>
             </Grid>
           <Grid item xs={6}
-          justifyContent='flex-start'
+          justifyContent='center'
           >
-              <Box my={2} align='center'>
+              <Box my={2} >
                     <CrearUserAddres/>
               </Box>
         </Grid>
       </Grid>
+      </ThemeProvider>
         <Grid item xs={12}>
             <Footer/>
         </Grid>  
-      </ThemeProvider>
     </React.Fragment>
   );
 }

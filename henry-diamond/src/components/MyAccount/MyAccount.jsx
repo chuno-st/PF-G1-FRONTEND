@@ -6,13 +6,13 @@ import { createTheme } from "@material-ui/core";
 import NavMyAccount from './NavMyAccount';
 import { useAuth0 } from "@auth0/auth0-react";
 import {Box, CssBaseline, Button} from '@material-ui/core';
-import UserAddressForm from '../UserInfo/UserAddressForm';
+// import UserAddressForm from '../UserInfo/UserAddressForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getAllSales } from '../../actions/actions';
 // import CurrentSale from './CurrentSale'
-import CrearUserAddres from '../UserInfo/CrearUserAddres';
-import ModalCreateInfoUser from '../MyAccount/ModalCreateInfoUser'
+// import CrearUserAddres from '../UserInfo/CrearUserAddres';
+// import ModalCreateInfoUser from '../MyAccount/ModalCreateInfoUser'
 import { Link  } from 'react-router-dom';
 
 
@@ -84,11 +84,11 @@ return (
           justifyContent='flex-start'
           >
           <Box 
-          bgcolor='pink'
+          // bgcolor='pink'
           textAlign='left'
           p={10}
           border={1}
-          borderColor='black'
+          borderColor='lightBlue'
           >
           <h2>Mis Datos</h2>
           <h5>
@@ -96,34 +96,31 @@ return (
               e-mail<br/>
               password
           </h5>
-          {/* <Box 
-
+          <Grid container xs={12} direction='row-reverse'>
           <Box 
-          bgcolor='pink'
-          textAlign='left'
-          p={5}
-          border={1}
-          borderColor='black'
-          >
-            <UserAddressForm/>
-          </Box> */}
-            {/* <UserAddressForm/> */}
-
-              {/* <ModalCreateInfoUser size='small' style={{ overflow: 'true'}}>  */}
-              <Box my={2} align='center'>
+         
+          my={2} 
+          align='right'>
               <Link to="/formpage" size='small' className='link'>
-                <Button> Datos para el envio </Button>
+                <Button variant='outlined' color="secondary"> Datos para el envio </Button>
               </Link>
               </Box>
-              {/* </ModalCreateInfoUser>  */}
-          {/* </Box> */}
+          </Grid>
+          </Box>
+         
+           {/* <UserAddressForm/> */}
+
+             
+            
+               
+          
           
 
-        </Box>
+      
         </Grid>
         <Grid item xs={6}>
           <Box 
-          bgcolor='pink'
+          // bgcolor='pink'
           p={10}
           textAlign='Center'
           >
@@ -182,6 +179,6 @@ return (
         </Grid>
                
       </ThemeProvider>
-    </React.Fragment>
+    </ React.Fragment>
   );
 }

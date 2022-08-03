@@ -183,11 +183,7 @@ const reducer = (state = inicialState, { type, payload }) => {
             ...state,
             userSale: payload
           }
-        case 'POST_REVIEWS':
-          return {
-            ...state,
-            postUserSale: payload
-          }
+        
         case "UPDATE_USER_ADDRESS":
             return {
                 ...state,

@@ -17,16 +17,11 @@ import {
     EDITAR_PRODUCTO,
     CREATE_CATEGORY,
     DISABLE_CATEGORY,
-    DISABLE_SUBCATEGORY,
     CREATE_SUBCATEGORY,
     GET_USER,
     POST_USER_ADDRESS,
     UPDATE_USER_ADDRESS,
-<<<<<<< HEAD
-    GET_REVIEWS,
-    POST_REVIEWS,
     DISABLE_SUBCATEGORY,
-=======
     CREATE_DATOS_USUARIO,
     GET_REVIEWS,
     POST_REVIEWS,
@@ -34,7 +29,6 @@ import {
     GET_USER_ADDRESS,
     
 
->>>>>>> b1481fbf2c3c7a05a32b8403e8a7f9cc4783dd43
 } from "./typeActions";
 //import config from "../config.js"
 import axios from "axios";
@@ -52,9 +46,6 @@ export function getAllProduct(name) {
         let allProducts = await axios.get(`${URL}product?name=${name}`)
         // console.log(allProducts)
         if(allProducts.data.length === 0){
-<<<<<<< HEAD
-            alert('Producto no encontrado')
-=======
             await swal({
                 title: "Error",
                 text: "Producto no encontrado",
@@ -63,7 +54,6 @@ export function getAllProduct(name) {
               });
             window.location.reload(true)
             //alert('Producto no encontrado')
->>>>>>> b1481fbf2c3c7a05a32b8403e8a7f9cc4783dd43
         }
         return dispatch({
             type: GET_PRODUCT,
@@ -457,12 +447,7 @@ export const addCart = () => {
     };
 };
 
-<<<<<<< HEAD
-export const getReviews = () => {
-    
-=======
 export const getReviews = () => { 
->>>>>>> b1481fbf2c3c7a05a32b8403e8a7f9cc4783dd43
     return async () => {
         let getReview = await axios.get(`${URL}addreview/`)
         return  ({
@@ -473,9 +458,9 @@ export const getReviews = () => {
 };
 
 export const postReview = (obj) => {
+    console.log(obj)
     return async () => {
         let postReview = await axios.post(`${URL}product/addreview/`, obj)
-        // console.log(postReview.data)
     }
 };
 
@@ -555,11 +540,8 @@ export const checkuserBlocked=(id)=>{
         }
 }
 
-<<<<<<< HEAD
 // traer todos los productos comprados por el usuario
 // get.{URL}sales/user/:id
-=======
->>>>>>> b1481fbf2c3c7a05a32b8403e8a7f9cc4783dd43
 
 export const getAllSales =  (id) => {
     return async function(dispatch){

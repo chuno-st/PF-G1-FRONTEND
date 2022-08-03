@@ -4,7 +4,7 @@ import { createDatosUsuario } from "../../actions/actions";
 import TextField from "@mui/material/TextField";
 import { Container } from "@mui/system";
 import { Button, FormControl, FormHelperText, Grid, Input, InputLabel } from "@mui/material";
-
+import Typography from '@material-ui/core/Typography';
 import Validate from "./Utils/Validate";
 import {Box} from '@material-ui/core';
 
@@ -103,11 +103,14 @@ export default function CrearUserAddres() {
                 alignItems: "center",
             }}
         >
-            <Container>
-                <Grid container xs={12} ms={12} md={12} lg={12} xl={12}>
-                <Box item justifyContent="center"  border={1} borderColor='black'>
+             <Container maxWidth="lg">
+                <Typography component="div" 
+                style={{ backgroundColor: '#e0e0e0', height: '100vh'}}>
+            
+                {/* <Grid container xs={12} ms={12} md={12} lg={12} xl={12}> */}
+                {/* <Box item justifyContent="center"  border={1} borderColor='black'> */}
 
-                    <Grid item md={8} margin={1.5}>
+                    <Grid item md={12} lg={6} margin={1.5}>
                         <Box p={1}>
                             <FormControl sx={{ m: 1, minWidth: 120 }}>
                                 <TextField
@@ -121,7 +124,7 @@ export default function CrearUserAddres() {
                         </Box>
                     </Grid>
 
-                    <Grid item md={8} margin={1.5}>
+                    <Grid item md={12} lg={6} margin={1.5}>
                         <Box p={1}>
                             <FormControl sx={{ m: 1, minWidth: 120 }}>
                                 <TextField
@@ -135,7 +138,7 @@ export default function CrearUserAddres() {
                         </Box>
                     </Grid>
 
-                    <Grid item md={8} margin={1.5}>
+                    <Grid item md={12} margin={1.5}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
@@ -147,7 +150,7 @@ export default function CrearUserAddres() {
                         </FormControl>
                     </Grid>
 
-                    <Grid item md={8} margin={1.5}>
+                    <Grid item md={12} margin={1.5}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
@@ -159,7 +162,7 @@ export default function CrearUserAddres() {
                         </FormControl>
                     </Grid>
                     
-                    <Grid item md={8} margin={1.5}>
+                    <Grid item md={12} margin={1.5}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
@@ -171,7 +174,7 @@ export default function CrearUserAddres() {
                         </FormControl>
                     </Grid>
 
-                    <Grid item md={8} margin={1.5}>
+                    <Grid item md={12} margin={1.5}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
@@ -183,7 +186,7 @@ export default function CrearUserAddres() {
                         </FormControl>
                     </Grid>
 
-                    <Grid item md={8} margin={1.5}>
+                    <Grid item md={12} margin={1.5}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
@@ -195,7 +198,7 @@ export default function CrearUserAddres() {
                         </FormControl>
                     </Grid>
 
-                    <Grid item md={8} margin={1.5}>
+                    <Grid item md={12} margin={1.5}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
@@ -207,7 +210,7 @@ export default function CrearUserAddres() {
                         </FormControl>
                     </Grid>
 
-                    <Grid item md={8} margin={1.5}>
+                    <Grid item md={12} margin={1.5}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
@@ -218,7 +221,7 @@ export default function CrearUserAddres() {
                             />
                         </FormControl>
                     </Grid>
-                    <Grid item md={8} margin={1.5}>
+                    <Grid item md={12} margin={1.5}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
@@ -230,7 +233,7 @@ export default function CrearUserAddres() {
                         </FormControl>
                     </Grid>
 
-                    <Grid item md={8} margin={1.5}>
+                    <Grid item md={12} margin={1.5}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
@@ -242,7 +245,7 @@ export default function CrearUserAddres() {
                         </FormControl>
                     </Grid>
 
-                    <Grid item md={8} margin={1.5}>
+                    <Grid item md={12} margin={1.5}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
@@ -253,19 +256,25 @@ export default function CrearUserAddres() {
                             />
                         </FormControl>
                     </Grid>
-
+                    <Grid container direction='row-reverse' >
+                        <Box
+                        pr={10}
+                        >
                     <Button
-                    variant="container"
-                    color="primary"
+                    variant='outlined' 
+                    color="secondary"
                     textAlign="center"
                     onClick={handleCreate}
+                    
                     >
                         ENVIAR
                     </Button>
-
                     </Box>
+                    </Grid>
+                    {/* </Box> */}
 
-                </Grid>
+                {/* </Grid> */}
+                </Typography>
                 
                 
 
