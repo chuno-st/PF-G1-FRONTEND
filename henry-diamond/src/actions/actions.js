@@ -11,6 +11,8 @@ import {
     SET_CATEGORY,
     SET_SUBCATEGORY,
     ADD_USER,
+    GET_VENTAS,
+    VENTAS_STATUS,
     CHECK_ROLE,
     CREATE_PRODUCT,
     DISABLE_PRODUCT,
@@ -65,6 +67,30 @@ export function getAllItemsAdmin() {
         });
     };
 }
+
+export function getAllVentas() {
+    return async (dispatch) => {
+        let response = await axios.get(`${URL}sales`);
+        return dispatch({
+            type: GET_VENTAS,
+            payload: response.data,
+        });
+    };
+}
+
+export function ventasStatus(body) {
+    console.log("el body", body)
+    return async (dispatch) => {
+            try {
+                const response = await axios.patch(`${URL}sales/`, body);
+                console.log(response.data)
+                dispatch({ type: VENTAS_STATUS, payload: response.data});
+    
+            } catch (error) {
+                console.log(error);
+            }
+        }
+   }
 
 export function disableItemsAdmin(id, state) {
     if (state){
@@ -474,9 +500,9 @@ export const getUserAddress = ()=>{
 
 
         
-        console.log(item, sub);
-        let addFavorite = await axios.put(`${URL}favs/${sub}`, item);
-        console.log(addFavorite);
+        // console.log(item, sub);
+        // let addFavorite = await axios.put(`${URL}favs/${sub}`, item);
+        // console.log(addFavorite);
 
 export const SetRoles= (obj) => {
     console.log(obj);

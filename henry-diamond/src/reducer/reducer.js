@@ -17,14 +17,15 @@ import {
     DISABLE_PRODUCT,
     ALL_ITEMS_ADMIN,
     GET_PRODUCT,
+    GET_VENTAS,
 } from "../actions/typeActions";
-
 
 const inicialState = {
     allProducts: [],
     items: [],
     itemsAdmin: [],
     users: [],
+    ventas: [],
     filter: {},
     category: [],
     adminCategory: [],
@@ -37,17 +38,20 @@ const inicialState = {
     product: {},
     favorites: [],
     matches: [],
-    role: "none",   
+    role: "none",
     shoppingCart: [],
-    Cart:"",
+    Cart: "",
     userAddress: [],
     user: [],
- };
+};
 
 const reducer = (state = inicialState, { type, payload }) => {
     switch (type) {
         case GET_PRODUCT:
             return { ...state, items: payload };
+
+        case GET_VENTAS:
+            return { ...state, ventas: payload };
 
         case ALL_ITEMS:
             return { ...state, items: payload };
@@ -144,14 +148,14 @@ const reducer = (state = inicialState, { type, payload }) => {
         case "RESET_MATCH": {
             return { ...state, matches: [] };
         }
-        case 'CHECK_FAV':
-          console.log('estoy en CHECK_FAV:', payload)
-          return {
-            ...state,
-            favorites: payload
-          }
+        case "CHECK_FAV":
+            console.log("estoy en CHECK_FAV:", payload);
+            return {
+                ...state,
+                favorites: payload,
+            };
 
-        case 'GET_USER_ADDRESS':
+        case "GET_USER_ADDRESS":
             return {
                 ...state,
                 favorites: payload,
