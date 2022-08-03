@@ -42,14 +42,13 @@ const inicialState = {
     role: "none",   
     shoppingCart: [],
     Cart:"",
-<<<<<<< HEAD
     user: [],
-    roleUser:''
-=======
+    roleUser:'',
     userAddress: [],
     salesProduct:[],
+    heartFav: [],
 
->>>>>>> 1747fdde0d3ee8b1263f375f9b45f229c9b29287
+
 };
 
 const reducer = (state = inicialState, { type, payload }) => {
@@ -208,18 +207,21 @@ const reducer = (state = inicialState, { type, payload }) => {
                 ...state,
                 favorites: payload,
             };
-<<<<<<< HEAD
         case 'CHECK_USER_BLOCK' :
             return {
                 ...state,
                 roleUser: payload      }
-=======
         case "ALL_SALE":
             return {
                 ...state,
                 salesProduct: payload,
             };
->>>>>>> 1747fdde0d3ee8b1263f375f9b45f229c9b29287
+        case "HEART_FAV": {
+                return {
+                    ...state,
+                    heartFav: [...state.heartFav, payload],
+                };
+            }
 
         default:
             return state;

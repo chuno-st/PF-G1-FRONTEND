@@ -6,11 +6,7 @@ import Footer from "../Footer/Footer";
 import { ThemeProvider } from "@material-ui/core";
 import { createTheme } from "@material-ui/core";
 import {useDispatch,useSelector} from "react-redux";
-<<<<<<< HEAD
-import {checkFav, getAllItems, checkuserBlocked} from "../../actions/actions";
-=======
-import {checkFav, getAllItems, getAllSales} from "../../actions/actions";
->>>>>>> 1747fdde0d3ee8b1263f375f9b45f229c9b29287
+import {checkFav, getAllItems, checkuserBlocked, getAllSales} from "../../actions/actions";
 import { useEffect } from "react";
 import { useAuth0 } from '@auth0/auth0-react'
 import swal from 'sweetalert'
@@ -52,12 +48,8 @@ export default function Home() {
     dispatch(getAllItems())
     if(isAuthenticated) {
       dispatch(checkFav(user.sub))
-<<<<<<< HEAD
       dispatch(checkuserBlocked(user.sub))
 
-=======
-      dispatch(getAllSales(user.sub))
->>>>>>> 1747fdde0d3ee8b1263f375f9b45f229c9b29287
     }
     
   }, [dispatch,]);

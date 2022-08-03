@@ -19,15 +19,13 @@ export const HeartFavButton = () => {
   //   dispatch(addCart())
   // }, [dispatch]);
 
-  const fillCart = useSelector (state => state.shoppingCart)
-  console.log(fillCart)
+  const fillHeart = useSelector (state => state.shoppingCart)
+  console.log(fillHeart)
 
       
     return (
       <IconButton aria-label="show cart items" color="black" href="/cart">
-        <Badge badgeContent={cantidad} color='primary'> 
               <FavoriteIcon />
-        </Badge>
       </IconButton>
 
       );

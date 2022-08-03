@@ -22,7 +22,6 @@ import {
     GET_USER,
     POST_USER_ADDRESS,
     UPDATE_USER_ADDRESS,
-<<<<<<< HEAD
     CREATE_DATOS_USUARIO,
     GET_REVIEWS,
     POST_REVIEWS,
@@ -30,11 +29,6 @@ import {
     GET_USER_ADDRESS,
     
 
-=======
-    GET_REVIEWS,
-    POST_REVIEWS,
-    DISABLE_SUBCATEGORY,
->>>>>>> 1747fdde0d3ee8b1263f375f9b45f229c9b29287
 } from "./typeActions";
 //import config from "../config.js"
 import axios from "axios";
@@ -52,7 +46,6 @@ export function getAllProduct(name) {
         let allProducts = await axios.get(`${URL}product?name=${name}`)
         // console.log(allProducts)
         if(allProducts.data.length === 0){
-<<<<<<< HEAD
             await swal({
                 title: "Error",
                 text: "Producto no encontrado",
@@ -61,9 +54,6 @@ export function getAllProduct(name) {
               });
             window.location.reload(true)
             //alert('Producto no encontrado')
-=======
-            alert('Producto no encontrado')
->>>>>>> 1747fdde0d3ee8b1263f375f9b45f229c9b29287
         }
         return dispatch({
             type: GET_PRODUCT,
@@ -367,18 +357,18 @@ export const createProduct = (body) => {
       }
     };
 };
-
+//put.${URL}adduser
 
 export const createDatosUsuario = (body) => {
-    return async function () {
-      try {
-        await axios.put(`${URL}adduser`, body);
-        alert("Los datos del usuario fueron cargados correctamente");
-        } catch (err) {
-        console.log(err);
-      }
-    };
-};
+
+    return  (dispatch) => {
+        
+            axios.put(`${URL}adduser`, body)
+            .then (() => alert("Los datos del usuario fueron creados correctamente"))
+            console.log( 'Soy body', body)
+            .catch ((err)=> alert ("Los datos del usuario no fueron cargados"))
+            }
+}
 
 // export const createDatosUsuario = (body) => {
 //     return async (dispatch) => {
@@ -457,12 +447,10 @@ export const addCart = () => {
     };
 };
 
-<<<<<<< HEAD
-export const getReviews = () => { 
-=======
+
+
 export const getReviews = () => {
     
->>>>>>> 1747fdde0d3ee8b1263f375f9b45f229c9b29287
     return async () => {
         let getReview = await axios.get(`${URL}addreview/`)
         return  ({
@@ -555,11 +543,8 @@ export const checkuserBlocked=(id)=>{
         }
 }
 
-<<<<<<< HEAD
-=======
 // traer todos los productos comprados por el usuario
 // get.{URL}sales/user/:id
->>>>>>> 1747fdde0d3ee8b1263f375f9b45f229c9b29287
 
 export const getAllSales =  (id) => {
     return async function(dispatch){

@@ -4,6 +4,7 @@ import { createDatosUsuario } from "../../actions/actions";
 import TextField from "@mui/material/TextField";
 import { Container } from "@mui/system";
 import { Button, FormControl, FormHelperText, Grid, Input, InputLabel } from "@mui/material";
+import { useAuth0 } from '@auth0/auth0-react'
 
 import Validate from "./Utils/Validate";
 import {Box} from '@material-ui/core';
@@ -14,6 +15,7 @@ const { URL } = require("../../config");
 
 export default function CrearUserAddres() {
     const dispatch = useDispatch();
+    const { user, isAuthenticated, isLoading, logout } = useAuth0();
 
    
 
@@ -21,9 +23,11 @@ export default function CrearUserAddres() {
 
     const [data, setData] = useState([]);
 
+
     const [input, setInput] = useState({
+        id: user.sub,
         name: "",
-        lastname: "",
+        lastName: "",
         calle: "",
         direccion: "",
         piso: "",
@@ -38,7 +42,7 @@ export default function CrearUserAddres() {
 
     const [error, setError] = useState({
         name: "",
-        lastname: "",
+        lastName: "",
         calle: "",
         direccion: "",
         piso: "",
@@ -68,13 +72,13 @@ export default function CrearUserAddres() {
     const handleCreate = async (e) => {
         e.preventDefault();
         try {
-            if (!input.name || !input.lastname || !input.calle || !input.direccion || !input.codigo_postal || !input.provincia || !input.localidad || !input.telefono || !input.dni) {
+            if (!input.name || !input.lastName || !input.calle || !input.direccion || !input.codigo_postal || !input.provincia || !input.localidad || !input.telefono || !input.dni) {
                 alert("Por favor completar las celdas correspondientes");
             }
             dispatch(createDatosUsuario(input));
             setInput({
                 name: "",
-                lastname: "",
+                lastName: "",
                 calle: "",
                 direccion: "",
                 piso: "",
@@ -116,6 +120,7 @@ export default function CrearUserAddres() {
                                     label="Nombre"
                                     name="name"
                                     helperText={error.name}
+                                    // type="text"
                                 />
                             </FormControl>
                         </Box>
@@ -126,10 +131,11 @@ export default function CrearUserAddres() {
                             <FormControl sx={{ m: 1, minWidth: 120 }}>
                                 <TextField
                                     onChange={handleChange}
-                                    error={error.lastname}
+                                    error={error.lastName}
                                     label="Apellido"
-                                    name="lastname"
-                                    helperText={error.lastname}
+                                    name="lastName"
+                                    helperText={error.lastName}
+                                    type="text"
                                 />
                             </FormControl>
                         </Box>
@@ -143,6 +149,7 @@ export default function CrearUserAddres() {
                                 label="Calle"
                                 name="calle"
                                 helperText={error.calle}
+                                type="text"
                             />
                         </FormControl>
                     </Grid>
@@ -155,6 +162,7 @@ export default function CrearUserAddres() {
                                 label="Direccion"
                                 name="direccion"
                                 helperText={error.direccion}
+                                type="number"
                             />
                         </FormControl>
                     </Grid>
@@ -167,6 +175,7 @@ export default function CrearUserAddres() {
                                 label="Piso"
                                 name="piso"
                                 helperText={error.piso}
+                                type="text"
                             />
                         </FormControl>
                     </Grid>
@@ -179,6 +188,7 @@ export default function CrearUserAddres() {
                                 label="Departamento"
                                 name="departamento"
                                 helperText={error.departamento}
+                                type="text"
                             />
                         </FormControl>
                     </Grid>
@@ -191,6 +201,7 @@ export default function CrearUserAddres() {
                                 label="CP"
                                 name="codigo_postal"
                                 helperText={error.codigo_postal}
+                                type="number"
                             />
                         </FormControl>
                     </Grid>
@@ -203,6 +214,7 @@ export default function CrearUserAddres() {
                                 label="Provincia"
                                 name="provincia"
                                 helperText={error.provincia}
+                                type="text"
                             />
                         </FormControl>
                     </Grid>
@@ -215,6 +227,7 @@ export default function CrearUserAddres() {
                                 label="Localidad"
                                 name="localidad"
                                 helperText={error.provincia}
+                                type="text"
                             />
                         </FormControl>
                     </Grid>
@@ -226,6 +239,7 @@ export default function CrearUserAddres() {
                                 label="Teléfono"
                                 name="telefono"
                                 helperText={error.provincia}
+                                type="number"
                             />
                         </FormControl>
                     </Grid>
@@ -238,6 +252,7 @@ export default function CrearUserAddres() {
                                 label="DNI"
                                 name="dni"
                                 helperText={error.dni}
+                                type="number"
                             />
                         </FormControl>
                     </Grid>
@@ -250,15 +265,16 @@ export default function CrearUserAddres() {
                                 label="Fecha de nacimiento"
                                 name="fecha_nacimiento"
                                 helperText={error.fecha_nacimiento}
+                                type="date"
                             />
                         </FormControl>
                     </Grid>
 
                     <Button
-                    variant="container"
-                    color="primary"
-                    textAlign="center"
-                    onClick={handleCreate}
+                        variant="container"
+                        color="primary"
+                        textAlign="center"
+                        onClick={handleCreate}   
                     >
                         ENVIAR
                     </Button>

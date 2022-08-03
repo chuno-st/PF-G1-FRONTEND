@@ -23,6 +23,7 @@ import ContactModal from "../ContactModal/ContactModal"
 import { UserInfo } from "../UserInfo/UserInfo"
 import FilterMaterial from "../Filter/FilterMaterial"
 import {ShoppingCartButton} from '../ShoppingCartButton/ShoppingCartButton'
+import {Box} from '@material-ui/core';
 
 
 const drawerWidth = 300;
@@ -174,24 +175,18 @@ export default function SideBar() {
                 <div>
                 <List>
                   <ListItem button>
-                    <ListItemText className={classes.text}>{<UserInfo />}</ListItemText>
+                    <ListItemText className={classes.text}><Box align='center'>{<UserInfo />}</Box></ListItemText>
                   </ListItem>
                 </List>
                 </div>
 
                 <div>
-                <List>
-                  <ListItem button>
-                    <ListItemText className={classes.text}>{<Profile />}</ListItemText>
-                  </ListItem>
-                </List>
+                    <Box align='center'>{<Profile />}</Box>
                 </div>
 
                 <div>
                 <List>
-                  <ListItem button>
-                    <ListItemText className={classes.text}>{<ShoppingCartButton />}</ListItemText>
-                  </ListItem>
+                    <ListItemText className={classes.text}><Box align='center'>{<ShoppingCartButton />}</Box></ListItemText>
                 </List>
                 </div>
 
@@ -201,9 +196,7 @@ export default function SideBar() {
           ) : (
             <div>
             <List>
-                  <ListItem button>
                     <ListItemText className={classes.text}>{ <LoginButton />}</ListItemText>
-                  </ListItem>
                 </List>
             </div>
              
