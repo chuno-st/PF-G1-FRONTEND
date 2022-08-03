@@ -7,7 +7,6 @@ import NavMyAccount from './NavMyAccount';
 import { useAuth0 } from "@auth0/auth0-react";
 import {Box, CssBaseline, Button} from '@material-ui/core';
 import CrearUserAddres from '../UserInfo/CrearUserAddres';
-import ModalCreateInfoUser from '../MyAccount/ModalCreateInfoUser'
 import { Link  } from 'react-router-dom';
 
 
