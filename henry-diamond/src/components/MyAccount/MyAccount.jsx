@@ -110,13 +110,6 @@ return (
          
            {/* <UserAddressForm/> */}
 
-             
-            
-               
-          
-          
-
-      
         </Grid>
         <Grid item xs={6}>
           <Box 
