@@ -13,19 +13,34 @@ import {
     ADD_USER,
     CHECK_ROLE,
     CREATE_PRODUCT,
+    DISABLE_PRODUCT,
     EDITAR_PRODUCTO,
     CREATE_CATEGORY,
     DISABLE_CATEGORY,
+    DISABLE_SUBCATEGORY,
     CREATE_SUBCATEGORY,
-    GET_USER_ADDRESS,
+    GET_USER,
     POST_USER_ADDRESS,
     UPDATE_USER_ADDRESS,
+<<<<<<< HEAD
     GET_REVIEWS,
     POST_REVIEWS,
     DISABLE_SUBCATEGORY,
+=======
+    CREATE_DATOS_USUARIO,
+    GET_REVIEWS,
+    POST_REVIEWS,
+   
+    GET_USER_ADDRESS,
+    
+
+>>>>>>> b1481fbf2c3c7a05a32b8403e8a7f9cc4783dd43
 } from "./typeActions";
 //import config from "../config.js"
 import axios from "axios";
+import swal from 'sweetalert'
+
+
 //import {URL} from "../index.js"
 const { URL } = require("../config");
 //import {URL} from "../index.js"
@@ -33,10 +48,22 @@ const { URL } = require("../config");
 export function getAllProduct(name) {
     // console.log('estoy en la action'
     return async (dispatch) =>{
+        
         let allProducts = await axios.get(`${URL}product?name=${name}`)
         // console.log(allProducts)
         if(allProducts.data.length === 0){
+<<<<<<< HEAD
             alert('Producto no encontrado')
+=======
+            await swal({
+                title: "Error",
+                text: "Producto no encontrado",
+                icon: "error",
+                button: "Aceptar",
+              });
+            window.location.reload(true)
+            //alert('Producto no encontrado')
+>>>>>>> b1481fbf2c3c7a05a32b8403e8a7f9cc4783dd43
         }
         return dispatch({
             type: GET_PRODUCT,
@@ -66,6 +93,29 @@ export function getAllItemsAdmin() {
     };
 }
 
+export function disableItemsAdmin(id, state) {
+    if (state){
+        return async (dispatch) => {
+            try {
+                const response = await axios.delete(`${URL}product/${id}?state=false`);
+                dispatch({ type: DISABLE_PRODUCT, payload: response.data});
+    
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    } else {
+        return async (dispatch) => {
+            try {
+                const response = await axios.delete(`${URL}product/${id}?state=true`);
+                dispatch({ type: DISABLE_PRODUCT, payload: response.data});
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    }
+}
+
 export function getAllUsers() {
     return async (dispatch) => {
         let allUsers = await axios.get(`${URL}adduser`);
@@ -76,18 +126,29 @@ export function getAllUsers() {
     };
 }
 
-export const FilterBy = ({ subcategory, price }) => {
-    console.log(subcategory, price);
+export const FilterBy = ({ subcategory='', price }) => {
+    console.log('subcategoria'+subcategory, price);
+    const {min='', max=''} = price
     return (dispatch) => {
         axios
             .get(
-                `${URL}product/subcategory?subcategory=${subcategory}&min=${price.min}&max=${price.max}`
+                `${URL}product/allfilter?subCategory_id=${subcategory}&min=${min}&max=${max}`
             )
-            .then((res) => {
+            .then(async (res) => {
+                if(res.data.length === 0){
+                    await swal({
+                        title: "Error",
+                        text: "Producto no encontrado",
+                        icon: "error",
+                        button: "Aceptar",
+                      });
+                    window.location.reload(true)
+                }else{
+                console.log(res.data);
                 dispatch({
                     type: FILTER,
                     payload: res.data,
-                });
+                });}
             });
     };
 };
@@ -297,23 +358,46 @@ export const addShoppingCart = (obj) => {
 };
 
 export const createProduct = (body) => {
-    return async (dispatch) => {
-        try {
-            const response = await axios.post(`${URL}product/`, body);
-            if (response.data.message) {
-                alert(response.data.message);
-            } else {
-                return dispatch({
-                    type: CREATE_PRODUCT,
-                    payload: response.data,
-                });
-            }
-            alert(response.data.message);
-        } catch (error) {
-            console.log(error);
-        }
+    return async function () {
+      try {
+        await axios.post(`${URL}`, body);
+        alert("El producto fue creado correctamente");
+        } catch (err) {
+        console.log(err);
+      }
     };
 };
+
+
+export const createDatosUsuario = (body) => {
+    return async function () {
+      try {
+        await axios.put(`${URL}adduser`, body);
+        alert("Los datos del usuario fueron cargados correctamente");
+        } catch (err) {
+        console.log(err);
+      }
+    };
+};
+
+// export const createDatosUsuario = (body) => {
+//     return async (dispatch) => {
+//         try {
+//             const response = await axios.put(`${URL}adduser`, body);
+//             if (response.data.message) {
+//                 alert(response.data.message);
+//             } else {
+//                 return dispatch({
+//                     type: CREATE_DATOS_USUARIO,
+//                     payload: response.data,
+//                 });
+//             }
+//             alert(response.data.message);
+//         } catch (error) {
+//             console.log(error);
+//         }
+//     };
+// };
 
 export const editProduct = (body) => {
        return async (dispatch) => {
@@ -373,8 +457,12 @@ export const addCart = () => {
     };
 };
 
+<<<<<<< HEAD
 export const getReviews = () => {
     
+=======
+export const getReviews = () => { 
+>>>>>>> b1481fbf2c3c7a05a32b8403e8a7f9cc4783dd43
     return async () => {
         let getReview = await axios.get(`${URL}addreview/`)
         return  ({
@@ -423,11 +511,11 @@ export const deleteFavorite = (sub, item) => {
 
 //USER: 
 
-export const getUserAddress = ()=>{
+export const getUser = ()=>{
     return async function(dispatch){
       return axios.get(`${URL}`, )
         .then(response=>{
-          dispatch({type: GET_USER_ADDRESS, payload: response.data})
+          dispatch({type: GET_USER, payload: response.data})
         }).catch(err => console.log(err))
     }
   }
@@ -451,9 +539,27 @@ export const getUserAddress = ()=>{
     }
   }
   
+  export const SetRoles= (obj) => {
+    console.log(obj);
+    return async () => {
+    let role = await axios.patch(`${URL}adduser/admin`,obj) 
+    console.log(role.data)
+}
+}
+export const checkuserBlocked=(id)=>{
+    return async function(dispatch){
+        return axios.get(`${URL}adduser/checkrole/user/${id}`)
+            .then(response=>{
+            dispatch({type:'CHECK_USER_BLOCK', payload: response.data})
+            }).catch(err => console.log(err))
+        }
+}
 
+<<<<<<< HEAD
 // traer todos los productos comprados por el usuario
 // get.{URL}sales/user/:id
+=======
+>>>>>>> b1481fbf2c3c7a05a32b8403e8a7f9cc4783dd43
 
 export const getAllSales =  (id) => {
     return async function(dispatch){

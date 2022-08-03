@@ -1,19 +1,21 @@
 import React from 'react';
-import { Avatar, Container, Grid, Typography } from '@material-ui/core'
-import SearchAppBar from "../Nav/Nav";
+import { Avatar, Grid, Typography } from '@material-ui/core'
 import Footer from "../Footer/Footer";
 import { ThemeProvider } from "@material-ui/core"
 import { createTheme } from "@material-ui/core";
-import { Link } from 'react-router-dom';
 import NavMyAccount from './NavMyAccount';
 import { useAuth0 } from "@auth0/auth0-react";
-import Divider from '@material-ui/core/Divider';
 import {Box, CssBaseline, Button} from '@material-ui/core';
 import UserAddressForm from '../UserInfo/UserAddressForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getAllSales } from '../../actions/actions';
 // import CurrentSale from './CurrentSale'
+import CrearUserAddres from '../UserInfo/CrearUserAddres';
+import ModalCreateInfoUser from '../MyAccount/ModalCreateInfoUser'
+import { Link  } from 'react-router-dom';
+
+
 
 
 const theme = createTheme({
@@ -95,6 +97,8 @@ return (
               password
           </h5>
           {/* <Box 
+
+          <Box 
           bgcolor='pink'
           textAlign='left'
           p={5}
@@ -103,6 +107,16 @@ return (
           >
             <UserAddressForm/>
           </Box> */}
+            {/* <UserAddressForm/> */}
+
+              {/* <ModalCreateInfoUser size='small' style={{ overflow: 'true'}}>  */}
+              <Box my={2} align='center'>
+              <Link to="/formpage" size='small' className='link'>
+                <Button> Datos para el envio </Button>
+              </Link>
+              </Box>
+              {/* </ModalCreateInfoUser>  */}
+          {/* </Box> */}
           
 
         </Box>

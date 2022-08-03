@@ -22,6 +22,10 @@ import { addCart, addFavorite, deleteFavorite } from "../../actions/actions";
 import { useSelect } from '@mui/base';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import {Box} from '@material-ui/core';
+import swal from 'sweetalert'
+
+
+
 const theme = createTheme({
   palette: {
     primary:{
@@ -101,7 +105,7 @@ export default function BasicCard(props) {
   
   
        const handleclick = () => {
-        navigate(`/${item.product_id}`,{ replace: true })
+        navigate(`/detail/${item.product_id}`,{ replace: true })
   
       }
       if(item.cantidad===0){
@@ -130,7 +134,12 @@ export default function BasicCard(props) {
           dispatch(addFavorite(user.sub, item))
           setFav(true)
         }else {
-          alert("Para agregar a favoritos un producto, debes estar registrado")
+          swal({
+            title: "Error",
+            text: "Para agregar a favoritos un producto, debes estar registrado",
+            icon: "error",
+            button: "Aceptar",
+          });
         }
       }
       const classes = useStyles();
@@ -143,8 +152,17 @@ export default function BasicCard(props) {
 
       let estoyFavorito = favorites.filter( f => f.product_id == item.product_id)
       
+      if(item.stock===cantidad){
+        swal({
+          title: "Error",
+          text: "No hay stock suficiente",
+          icon: "warning",
+          button: "Aceptar",
+        });
+        setCantindad(cantidad-1)
+      }
 
-  
+   
 
   return (
       <ThemeProvider theme={theme}>
@@ -191,7 +209,7 @@ export default function BasicCard(props) {
               <IconButton aria-label="share" >
                 { cantidad===0
                 ?  <AddShoppingCartIcon onClick={handleUp} />
-                : <><KeyboardArrowUpIcon onClick={handleUp}/><p>{cantidad}</p> <KeyboardArrowDownIcon onClick={handleDown} /></>
+                : <><KeyboardArrowUpIcon  onClick={handleUp}/><p>{cantidad}</p> <KeyboardArrowDownIcon onClick={handleDown} /></>
 
                 }
               

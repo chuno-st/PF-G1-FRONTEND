@@ -21,9 +21,9 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { postReview, getReviews} from '../../actions/actions';
 // import swal from 'sweetalert'
 
-// function Alert(props) {
-//   return <MuiAlert elevation={6} variant="filled" {...props} />;
-// }
+// // function Alert(props) {
+// //   return <MuiAlert elevation={6} variant="filled" {...props} />;
+// // }
 
 const labels = {
   1: "Malo",
@@ -75,12 +75,12 @@ export default function CardRating({ product }) {
 
   }
 
-  // const handlePostComprador = () => {
-  //   if(isAuthenticated ){
-  //     dispatch(getReviews(user.email))
-  //     setDescription(e.target.value)
-  //   }
-  // }
+  const handlePostComprador = () => {
+    if(isAuthenticated ){
+      dispatch(getReviews(user.email))
+      setDescription(e.target.value)
+    }
+  }
 
   const handleDescriptionChange = (e) => {
     setDescription(e.target.value);
@@ -264,4 +264,3 @@ export default function CardRating({ product }) {
 //     "coment": "",
 //     "author": "",
 //     "rating": ""
-// }

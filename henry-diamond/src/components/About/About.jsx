@@ -107,7 +107,7 @@ export default function About () {
                     <Button>
                       <Avatar alt="Ariel Agustin Lescano Gonzalez" src="https://ca.slack-edge.com/TPRS7H4PN-U02KC2PBUA3-99b2598e5c67-72" />
                     </Button>
-                    Ariel Agustin Lescano Gonzalez:
+                    Agustin Lescano Gonzalez:
                     <Button href={'https://github.com/Agustlescano'} target='_blank'>
                       <GitHubIcon/>
                     </Button>      

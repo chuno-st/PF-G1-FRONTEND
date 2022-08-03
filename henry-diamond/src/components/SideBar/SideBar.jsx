@@ -99,7 +99,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SideBar() {
-  const { loginWithRedirect,  user, isAuthenticated, isLoading } = useAuth0();
+  const { isAuthenticated } = useAuth0();
   const classes = useStyles();
   
   const theme = useTheme();

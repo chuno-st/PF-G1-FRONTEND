@@ -3,12 +3,13 @@ import { Grid, Box } from '@material-ui/core'
 import ConteinerCards from "../ConteinerCards/ConteinerCards"
 import SearchAppBar from "../Nav/Nav";
 import Footer from "../Footer/Footer";
-import { ThemeProvider, Typography } from "@material-ui/core";
+import { ThemeProvider } from "@material-ui/core";
 import { createTheme } from "@material-ui/core";
 import {useDispatch,useSelector} from "react-redux";
-import {checkFav, getAllItems, getAllSales} from "../../actions/actions";
+import {checkFav, getAllItems, getAllSales, checkuserBlocked} from "../../actions/actions";
 import { useEffect } from "react";
 import { useAuth0 } from '@auth0/auth0-react'
+import swal from 'sweetalert'
 
 const theme = createTheme({
     palette: {
@@ -39,7 +40,8 @@ const theme = createTheme({
 export default function Home() {
 
   const dispatch = useDispatch();
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { user, isAuthenticated, isLoading, logout } = useAuth0();
+  const roleUser = useSelector(state => state.roleUser);
   
 
   useEffect(() => {
@@ -47,10 +49,15 @@ export default function Home() {
     if(isAuthenticated) {
       dispatch(checkFav(user.sub))
       dispatch(getAllSales(user.sub))
+      dispatch(checkuserBlocked(user.sub))
+
     }
     
   }, [dispatch,]);
-
+ if (roleUser==='Locked'){ 
+   swal({title: 'Usuario Bloqueado', text: 'Por favor contacte al administrador', icon: 'error', button: 'Aceptar',})
+  .then(() => logout({ returnTo: window.location.origin }))
+ }
   
 
  
