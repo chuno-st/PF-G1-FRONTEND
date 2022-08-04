@@ -7,10 +7,9 @@ import { createTheme } from "@material-ui/core";
 import { Link } from 'react-router-dom';
 import NavMyAccount from './NavMyAccount';
 import { useAuth0 } from "@auth0/auth0-react";
-import './MyAccount.css';
 import Divider from '@material-ui/core/Divider';
 import {Box, CssBaseline, Button} from '@material-ui/core';
-
+import UserAddressForm from '../UserInfo/UserAddressForm';
 
 const theme = createTheme({
   palette: {
@@ -45,11 +44,11 @@ return (
         </Grid>
             <Grid item xs={12}>
                   <Box 
-                  bgcolor='orange'
-                  pt={10}
+                  bgcolor='#e0e0e0'
+                  pt={12}
                   textAlign='left'
-                  border={1}
-                  borderColor='black'
+                  border={0}
+                  boxShadow='4px 1px 8px #7a7a7a'
                   >
                   <Button
                   size='small'
@@ -60,7 +59,8 @@ return (
                   variant='outlined'
                   size='small'
                   >Mi Cuenta</Button>
-                  
+                  </Box>
+                  <Box>
                           <Typography>Bienvenido,<h3>{user.name}</h3></Typography>
                           <Avatar src={user.picture} variant='square'
                           ></Avatar>
@@ -84,6 +84,17 @@ return (
               e-mail<br/>
               password
           </h5>
+          <Box 
+          bgcolor='pink'
+          textAlign='left'
+          p={5}
+          border={1}
+          borderColor='black'
+          >
+            <UserAddressForm/>
+          </Box>
+          
+
         </Box>
         </Grid>
         <Grid item xs={6}>

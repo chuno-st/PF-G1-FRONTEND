@@ -9,15 +9,14 @@ import CardHeader from '@material-ui/core/CardHeader';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
-import AddIcon from '@material-ui/icons/Add';
 import { blueGrey } from '@material-ui/core/colors';
 import { useAuth0 } from "@auth0/auth0-react";
 import Logo from '../Logo/Logo'
 import {useState} from "react";
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import swal from 'sweetalert'
 
 
 
@@ -75,7 +74,13 @@ export default function CardCart(props) {
         if (isAuthenticated){
           localStorage.setItem(item.product_id ,JSON.stringify(item) )
         }else {
-          alert("Para agregar un producto a favoritos, debes estar logueado")
+          swal({
+            title: "Error",
+            text: "Para agregar un producto a favoritos, debes estar logueado",
+            icon: "error",
+            button: "Aceptar",
+          });
+          //alert("Para agregar un producto a favoritos, debes estar logueado")
         }
       }
       const classes = useStyles();
@@ -97,7 +102,15 @@ export default function CardCart(props) {
     if(item.cantidad===0){
             handleBuy()
         }
-
+    if(item.stock===cantidad){
+          swal({
+            title: "Error",
+            text: "No hay stock suficiente",
+            icon: "warning",
+            button: "Aceptar",
+          });
+          setCantindad(item.stock-1)
+        }
      
 
   return (
@@ -111,6 +124,7 @@ export default function CardCart(props) {
         
         variant='h2'
         title={(item.name.toUpperCase())}
+        onClick={handleclick}
         
       />
 
@@ -118,9 +132,10 @@ export default function CardCart(props) {
         className={classes.media} 
         image={item.image}
         title="imagen producto"
+        onClick={handleclick}
       />
    
-      <CardActions disableSpacing>
+      <CardActions >
         <IconButton aria-label="add to favorites">
           <FavoriteIcon onClick={handleFav} />
         </IconButton>
@@ -135,9 +150,7 @@ export default function CardCart(props) {
         <IconButton aria-label="share" >
           <RemoveShoppingCartIcon onClick={handleBuy} />
         </IconButton>
-        <IconButton arial-label='detail' onClick={handleclick}>
-          <AddIcon />
-        </IconButton>
+  
       </CardActions>
       
     </Card>

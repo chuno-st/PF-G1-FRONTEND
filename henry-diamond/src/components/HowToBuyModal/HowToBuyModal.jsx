@@ -34,7 +34,10 @@ export default function HowToBuyModal() {
           <Typography>
           <h4>¡Comprar en nuestra tienda online es muy fácil!
           <p>-Elegí el producto que querés comprar.</p>
-          <p>-Hacé click en el botón "Agregar al Carrito". De esta manera se agregará el producto a tu carrito.</p>
+          <p>-Haz click en el 🛒 asociado al producto y selecciona las unidades que desees comprar. </p>
+          <p>-Haz click en el 🛒 que se encuentra en el margen superior derecho, puedes modificar la cantidad o eliminar productos del mismo.</p>
+          <p>-Una vez seleccionados los productos que desea adquirir, apretar el botón de comprar. </p>
+
           </h4>
           </Typography>
         </Box>

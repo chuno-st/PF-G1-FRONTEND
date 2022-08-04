@@ -119,7 +119,9 @@ const useStyles = makeStyles((theme) => ({
   
       const handleSubmit =(e) => {
           e.preventDefault() // para que no refresque la pag si no hay info nueva, con el click.
+          setName("")
           dispatch(getAllProduct(name))
+          
       }
   
 
@@ -150,6 +152,7 @@ const useStyles = makeStyles((theme) => ({
                                           root: classes.inputRoot,
                                           input: classes.inputInput,
                                         }}
+                                        value={name}
                                         inputProps={{ 'aria-label': 'search' }}
                                         onChange={handleSearchBar}
                                         />
