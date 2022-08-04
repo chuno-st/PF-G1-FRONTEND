@@ -1,12 +1,10 @@
 import React from "react";
 import  AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-//import InputBase from '@material-ui/core/InputBase';
+import InputBase from '@material-ui/core/InputBase';
 import  Typography  from "@material-ui/core/Typography";
 import SearchIcon from '@material-ui/icons/Search';
 import  {makeStyles} from "@material-ui/core/styles";
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
 import { useState} from "react";
 import {useDispatch, useSelector} from 'react-redux';
 import { getAllProduct } from "../../actions/actions";
@@ -19,8 +17,7 @@ import { ShoppingCartButton } from '../ShoppingCartButton/ShoppingCartButton'
 import Logo from '../Logo/Logo'
 import IconButton from '@mui/material/IconButton';
 import Button from '@material-ui/core/Button';
-import { capitalizeLetter } from "../../Utils/utils";
-import { HeartFavButton } from '../HeartFavButton/HeartFavButton'
+
 
 
 
@@ -113,16 +110,18 @@ const useStyles = makeStyles((theme) => ({
     const [name, setName] = useState("")
    
   
-      
+    const handleSearchBar = (e) => {
+      setName(e.target.value)
+  }
 
   
       const handleSubmit =(e) => {
-          e.preventDefault() // para que no refresque la pag si no hay info nueva, con el click.
+        e.preventDefault() // para que no refresque la pag si no hay info nueva, con el click.
+
           dispatch(getAllProduct(name))
           setName("")
-          
       }
-  
+
 
     return (
         <div >
@@ -135,20 +134,21 @@ const useStyles = makeStyles((theme) => ({
                           </Button>
                         </Typography>
                        
-                          
+                                  <InputBase
+                                        className={classes.search}
+                                        mdDown='true'
+                                        placeholder="Buscar..."
+                                        label="Outlined secondary"
+                                        classes={{
+                                          root: classes.inputRoot,
+                                          input: classes.inputInput,
+                                        }}
+                                        value={name}
+                                        inputProps={{ 'aria-label': 'search' }}
+                                        onChange={handleSearchBar}
+                                        />
                            
-                              <Autocomplete
-                               classes={{
-                                 root: classes.inputRoot,
-                                 input: classes.inputInput,
-                               }}
-                               disablePortal
-                               id="combo-box-demo"
-                               options={items.map(e => { return capitalizeLetter(e.name)})}
-                               sx={{ width: 300 }}
-                               renderInput={(params) => <TextField {...params} label="Buscar..." />}
-                               onChange={(e, ne)=>{setName(ne)}}
-                               />
+                              
                             <div >
                                 
                                 
