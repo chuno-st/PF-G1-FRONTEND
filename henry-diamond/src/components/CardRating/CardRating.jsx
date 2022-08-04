@@ -1,10 +1,8 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useState } from "react";
 import {useDispatch} from 'react-redux'
-// import '../CardRating/styles';
 import { Rating } from '@material-ui/lab';
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import { useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -15,11 +13,10 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/lab/Alert";
-import Axios from "axios";
 import { Chip } from "@material-ui/core";
 import { useAuth0 } from "@auth0/auth0-react";
-import { postReview, getReviews} from '../../actions/actions';
-import swal from 'sweetalert'
+import { postReview} from '../../actions/actions';
+
 
 // function Alert(props) {
 //   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -44,8 +41,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CardRating({ product }) {
 
-  const [reviews, setReviews] = useState([]);
-  const [value, setValue] = useState(null);
+  const [reviews] = useState([]);
   const [valueNew, setNewValue] = useState(0);
   const [hover, setHover] = useState(-1);
   const [open, setOpen] = useState(false);
@@ -54,13 +50,8 @@ export default function CardRating({ product }) {
   const classes = useStyles();
   const { isAuthenticated, user} = useAuth0();
 
-  const { getReviews } = useSelector(state => state.product);
+ 
 
-  //la Id del producto deberia llegar como props o como parametro
-  //const id = product.id
-  // useEffect(() => {
-  //   if (product.id) getReviews();
-  // }, [product.id]);
 
   const dispatch = useDispatch();
 

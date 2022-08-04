@@ -2,7 +2,6 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardMedia from '@mui/material/CardMedia';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -53,7 +52,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CardCart(props) {
   const {item} = props;
-      const dispatch = useDispatch();
       const navigate = useNavigate()
       const { isAuthenticated } = useAuth0();
         const [cantidad, setCantindad] = useState(item.cantidad);

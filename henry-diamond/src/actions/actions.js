@@ -10,9 +10,7 @@ import {
     ALL_USERS,
     SET_CATEGORY,
     SET_SUBCATEGORY,
-    ADD_USER,
     CHECK_ROLE,
-    CREATE_PRODUCT,
     DISABLE_PRODUCT,
     EDITAR_PRODUCTO,
     CREATE_CATEGORY,
@@ -22,12 +20,6 @@ import {
     GET_USER,
     POST_USER_ADDRESS,
     UPDATE_USER_ADDRESS,
-    GET_REVIEWS,
-    POST_REVIEWS,
-   
-    GET_USER_ADDRESS,
-    
-
 } from "./typeActions";
 //import config from "../config.js"
 import axios from "axios";
@@ -144,7 +136,7 @@ export const FilterBy = ({ subcategory='', price }) => {
 
 export function addUser(data) {
     return async (dispatch) => {
-        let user = await axios.post(`${URL}adduser`, data);
+        await axios.post(`${URL}adduser`, data);
     };
 }
 
@@ -411,7 +403,7 @@ export const addCart = () => {
         return JSON.parse(producto);
     });
     let productos = objetos.filter((producto) => producto.hasOwnProperty("product_id"));
-    const cantidad = productos.reduce((acc, producto) => acc + producto.cantidad, 0);
+    productos.reduce((acc, producto) => acc + producto.cantidad, 0);
 
     return (dispatch) => {
         return dispatch({

@@ -1,11 +1,11 @@
-import { useEffect } from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {getAllItems} from "../../actions/actions";
+
+import {useSelector} from "react-redux";
+
 import BasicCard from "../Card/Card";
 import { Grid, Button} from "@mui/material";
 import { Box } from "@material-ui/core"
 import { useState } from "react";
-import {CssBaseline, Typography} from '@material-ui/core';
+import {CssBaseline} from '@material-ui/core';
 import {Container} from '@material-ui/core';
 import LinearIndeterminate from '../Loading/Loading2'
 
@@ -88,7 +88,7 @@ return (
             >
                 <Button onClick={handleClick2} disabled={desde<=0}  variant='outlined' color='inherit'>Anterior</Button>
             </Grid>
-            <Grid  
+            <Grid
             alignItems="center" 
             direction="column"
             

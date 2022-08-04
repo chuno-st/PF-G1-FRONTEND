@@ -3,7 +3,7 @@ import NavMyAccount from "../MyAccount/NavMyAccount";
 import Footer from "../Footer/Footer";
 import { Box, Button } from "@material-ui/core";
 import {CssBaseline} from '@material-ui/core';
-import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles';
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -12,12 +12,7 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    padding: "2 rem",
-  },
-}));
+
 
 
 const theme = createTheme({

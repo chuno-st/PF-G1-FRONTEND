@@ -1,16 +1,16 @@
-import Card from '@mui/material/Card';
+
 import CardActions from '@mui/material/CardActions';
 import CardMedia from '@mui/material/CardMedia';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CardHeader from '@material-ui/core/CardHeader';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-import AddIcon from '@material-ui/icons/Add';
+
 import { blueGrey } from '@material-ui/core/colors';
 import { useAuth0 } from "@auth0/auth0-react";
 import {useState} from "react";
@@ -19,7 +19,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import LogoCard from '../Logo/LogoCard'; 
 import { ThemeProvider , createTheme} from '@material-ui/core';
 import { addCart, addFavorite, deleteFavorite } from "../../actions/actions";
-import { useSelect } from '@mui/base';
+
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import {Box} from '@material-ui/core';
 import swal from 'sweetalert'
@@ -150,7 +150,7 @@ export default function BasicCard(props) {
         navigate(0)
       }
 
-      let estoyFavorito = favorites.filter( f => f.product_id == item.product_id)
+      let estoyFavorito = favorites.filter( f => f.product_id === item.product_id)
       
       if(item.stock===cantidad){
         swal({
