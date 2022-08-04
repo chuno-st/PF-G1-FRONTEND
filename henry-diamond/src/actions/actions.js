@@ -375,7 +375,7 @@ export const addShoppingCart = (obj) => {
 export const createProduct = (body) => {
     return async function () {
       try {
-        await axios.post(`${URL}`, body);
+        await axios.post(`${URL}product`, body);
         alert("El producto fue creado correctamente");
         } catch (err) {
         console.log(err);

@@ -4,7 +4,7 @@ export default function Validate(input) {
     let max = 500000;
     if (input.nombre.length === 0) {
       error.nombre = "Por favor ingresar el nombre";
-    } else if (input.nombre.length < 3) {
+    } else if (input.nombre.length <= 2) {
       error.nombre = "El nombre no puede tener menos de 8 caracteres";
     }
     if (!input.descripcion) {
