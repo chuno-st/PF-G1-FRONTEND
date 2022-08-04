@@ -9,6 +9,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import Avatar from '@material-ui/core/Avatar';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import NavTwo from '../Nav/NavTwo'
 
 
 
@@ -44,7 +45,7 @@ export default function About () {
           <CssBaseline />
             <Grid container>
                 <Grid item xs={12}>
-                  <NavMyAccount/>              
+                  <NavTwo/>              
                 </Grid>
 
                 <Grid item xs={12}>

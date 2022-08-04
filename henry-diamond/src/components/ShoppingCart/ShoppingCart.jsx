@@ -17,6 +17,7 @@ import Footer from "../Footer/Footer";
 import { useNavigate, Redirect } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles'
 import swal from 'sweetalert'
+import NavTwo from '../Nav/NavTwo'
 
 
 
@@ -92,7 +93,7 @@ export default function ShoppingCart(){
       <ThemeProvider theme={theme}>
         <Grid container spacing={10}>
         <Grid item xs={12} sm={12} xl={12}>
-          <NavMyAccount/>              
+          <NavTwo/>              
         </Grid>
         <Grid item xs={12}>
             <Typography align="center" gutterBottom variant='h4'>

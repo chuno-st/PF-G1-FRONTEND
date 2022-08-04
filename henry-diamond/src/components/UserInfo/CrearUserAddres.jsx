@@ -165,7 +165,7 @@ export default function CrearUserAddres() {
                             <TextField
                                 onChange={handleChange}
                                 error={error.direccion}
-                                label="Direccion"
+                                label="Número"
                                 name="direccion"
                                 helperText={error.direccion}
                                 type="number"
@@ -232,7 +232,7 @@ export default function CrearUserAddres() {
                                 error={error.localidad}
                                 label="Localidad"
                                 name="localidad"
-                                helperText={error.provincia}
+                                helperText={error.localidad}
                                 type="text"
                                 InputLabelProps={{shrink: true}}
 

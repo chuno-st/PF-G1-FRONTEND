@@ -11,13 +11,11 @@ import { getAllProduct } from "../../actions/actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton } from "../Login/Login";
 import { Profile } from "../Profile/Profile";
-import SideBar from "../SideBar/SideBar"
 import { createTheme, Hidden } from "@material-ui/core";
 import { ShoppingCartButton } from '../ShoppingCartButton/ShoppingCartButton'
 import Logo from '../Logo/Logo'
 import IconButton from '@mui/material/IconButton';
 import Button from '@material-ui/core/Button';
-import { HeartFavButton } from '../HeartFavButton/HeartFavButton'
 
 
 
@@ -102,7 +100,7 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 
-  export default function SearchAppBar() {
+  export default function NavTwo() {
     const { isAuthenticated } = useAuth0();
     const classes = useStyles()
     const dispatch = useDispatch();
@@ -126,42 +124,12 @@ const useStyles = makeStyles((theme) => ({
         <div >
          <AppBar className={classes.root} position="static" >
                     <Toolbar>
-                      <SideBar />
                         <Typography className={classes.title} variant="h6" noWrap>
                           <Button href="/">
                               <Logo />
                           </Button>
-                        </Typography>
-                       
-                          
-                           
-                            <div >
-                                <div className={classes.searchIcon}>
-                                
-                                </div>
-                                    <InputBase
-                                        className={classes.search}
-                                        mdDown='true'
-                                        placeholder="Buscar..."
-                                        label="Outlined secondary"
-                                        classes={{
-                                          root: classes.inputRoot,
-                                          input: classes.inputInput,
-                                        }}
-                                        inputProps={{ 'aria-label': 'search' }}
-                                        onChange={handleSearchBar}
-                                        />
-                           
-                                <IconButton  
-                                      className='Search' 
-                                      type='submit' 
-                                      onClick={(e) => handleSubmit(e)}
-                                      > <SearchIcon />
-                                </IconButton>
-                          </div>
+                        </Typography>                         
                           <Hidden smDown>
-                      
-                                 
                             {
                               isAuthenticated ? (
                                 <div>
@@ -172,10 +140,7 @@ const useStyles = makeStyles((theme) => ({
                                   )
                                 }
                                     <ShoppingCartButton />
-
-                        </Hidden>
-                        
-                                                         
+                        </Hidden>                         
                     </Toolbar>
                 </AppBar>
           

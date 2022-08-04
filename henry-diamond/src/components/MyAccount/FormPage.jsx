@@ -9,6 +9,7 @@ import {Box, CssBaseline, Button} from '@material-ui/core';
 import CrearUserAddres from '../UserInfo/CrearUserAddres';
 import ModalCreateInfoUser from '../MyAccount/ModalCreateInfoUser'
 import { Link  } from 'react-router-dom';
+import NavTwo from '../Nav/NavTwo'
 
 
 
@@ -42,7 +43,7 @@ return (
     <CssBaseline />
       <Grid container>
         <Grid item xs={12}>
-          <NavMyAccount/>              
+          <NavTwo/>              
         </Grid>
             <Grid item xs={12}>
                   <Box 

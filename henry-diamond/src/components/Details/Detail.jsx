@@ -14,6 +14,9 @@ import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles
 import Grid from '@material-ui/core/Grid';
 import CardRatting  from '../CardRating/CardRating';
 import {capitalizeLetter} from '../../Utils/utils'
+import NavTwo from '../Nav/NavTwo'
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,7 +67,7 @@ export default function Detail () {
           <CssBaseline />
             <Grid container>
                 <Grid item xs={12}>
-                  <NavMyAccount/>              
+                  <NavTwo/>              
                 </Grid>
           
               <Grid item xs={12} ms={6} md={6} xl={6} lg={6}
