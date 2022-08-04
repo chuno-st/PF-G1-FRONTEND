@@ -1,14 +1,13 @@
 import Badge from '@material-ui/core/Badge';
 import IconButton from '@material-ui/core/IconButton';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-
+import FavoriteIcon from '@material-ui/icons/Favorite';
 import {useSelector} from "react-redux";
 
 
 
 
 
-export const ShoppingCartButton = () => {
+export const HeartFavButton = () => {
 
   const miStorage = window.localStorage;
   let Productos = Object.values(miStorage)
@@ -20,15 +19,13 @@ export const ShoppingCartButton = () => {
   //   dispatch(addCart())
   // }, [dispatch]);
 
-  const fillCart = useSelector (state => state.shoppingCart)
-  console.log(fillCart)
+  const fillHeart = useSelector (state => state.shoppingCart)
+  console.log(fillHeart)
 
       
     return (
       <IconButton aria-label="show cart items" color="black" href="/cart">
-        <Badge badgeContent={cantidad} color='primary'> 
-              <ShoppingCartIcon />
-        </Badge>
+              <FavoriteIcon />
       </IconButton>
 
       );

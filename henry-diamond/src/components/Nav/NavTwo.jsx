@@ -1,26 +1,21 @@
 import React from "react";
 import  AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-//import InputBase from '@material-ui/core/InputBase';
+import InputBase from '@material-ui/core/InputBase';
 import  Typography  from "@material-ui/core/Typography";
 import SearchIcon from '@material-ui/icons/Search';
 import  {makeStyles} from "@material-ui/core/styles";
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
 import { useState} from "react";
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import { getAllProduct } from "../../actions/actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton } from "../Login/Login";
 import { Profile } from "../Profile/Profile";
-import SideBar from "../SideBar/SideBar"
 import { createTheme, Hidden } from "@material-ui/core";
 import { ShoppingCartButton } from '../ShoppingCartButton/ShoppingCartButton'
 import Logo from '../Logo/Logo'
 import IconButton from '@mui/material/IconButton';
 import Button from '@material-ui/core/Button';
-import { capitalizeLetter } from "../../Utils/utils";
-import { HeartFavButton } from '../HeartFavButton/HeartFavButton'
 
 
 
@@ -105,65 +100,36 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 
-  export default function SearchAppBar() {
-    const items = useSelector(state => state.items);
+  export default function NavTwo() {
     const { isAuthenticated } = useAuth0();
     const classes = useStyles()
     const dispatch = useDispatch();
     const [name, setName] = useState("")
    
   
+      const handleSearchBar = (e) => {
+          setName(e.target.value)
+      }
       
-
+      // console.log(name)
   
       const handleSubmit =(e) => {
           e.preventDefault() // para que no refresque la pag si no hay info nueva, con el click.
           dispatch(getAllProduct(name))
-          setName("")
-          
       }
   
+
 
     return (
         <div >
          <AppBar className={classes.root} position="static" >
                     <Toolbar>
-                      <SideBar />
                         <Typography className={classes.title} variant="h6" noWrap>
                           <Button href="/">
                               <Logo />
                           </Button>
-                        </Typography>
-                       
-                          
-                           
-                              <Autocomplete
-                               classes={{
-                                 root: classes.inputRoot,
-                                 input: classes.inputInput,
-                               }}
-                               disablePortal
-                               id="combo-box-demo"
-                               options={items.map(e => { return capitalizeLetter(e.name)})}
-                               sx={{ width: 300 }}
-                               renderInput={(params) => <TextField {...params} label="Buscar..." />}
-                               onChange={(e, ne)=>{setName(ne)}}
-                               />
-                            <div >
-                                
-                                
-                                <IconButton  
-                                      className='Search' 
-                                      type='submit' 
-                                      onClick={(e) => handleSubmit(e)}
-                                      > <SearchIcon />
-                                </IconButton>
-                            
-                           
-                          </div>
+                        </Typography>                         
                           <Hidden smDown>
-                      
-                                 
                             {
                               isAuthenticated ? (
                                 <div>
@@ -174,10 +140,7 @@ const useStyles = makeStyles((theme) => ({
                                   )
                                 }
                                     <ShoppingCartButton />
-
-                        </Hidden>
-                        
-                                                         
+                        </Hidden>                         
                     </Toolbar>
                 </AppBar>
           

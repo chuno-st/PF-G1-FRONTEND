@@ -10,16 +10,26 @@ import {
     ALL_USERS,
     SET_CATEGORY,
     SET_SUBCATEGORY,
+    ADD_USER,
+    GET_VENTAS,
+    VENTAS_STATUS,
     CHECK_ROLE,
     DISABLE_PRODUCT,
     EDITAR_PRODUCTO,
     CREATE_CATEGORY,
     DISABLE_CATEGORY,
-    DISABLE_SUBCATEGORY,
     CREATE_SUBCATEGORY,
     GET_USER,
     POST_USER_ADDRESS,
     UPDATE_USER_ADDRESS,
+    DISABLE_SUBCATEGORY,
+    CREATE_DATOS_USUARIO,
+    GET_REVIEWS,
+    POST_REVIEWS,
+   
+    GET_USER_ADDRESS,
+    
+
 } from "./typeActions";
 //import config from "../config.js"
 import axios from "axios";
@@ -73,6 +83,30 @@ export function getAllItemsAdmin() {
         });
     };
 }
+
+export function getAllVentas() {
+    return async (dispatch) => {
+        let response = await axios.get(`${URL}sales`);
+        return dispatch({
+            type: GET_VENTAS,
+            payload: response.data,
+        });
+    };
+}
+
+export function ventasStatus(body) {
+    console.log("el body", body)
+    return async (dispatch) => {
+            try {
+                const response = await axios.patch(`${URL}sales/`, body);
+                console.log(response.data)
+                dispatch({ type: VENTAS_STATUS, payload: response.data});
+    
+            } catch (error) {
+                console.log(error);
+            }
+        }
+   }
 
 export function disableItemsAdmin(id, state) {
     if (state){
@@ -342,18 +376,45 @@ export const createProduct = (body) => {
     return async function () {
       try {
         await axios.post(`${URL}`, body);
-        swal({
-            title: "Error",
-            text: "El producto fue creado correctamente",
-            icon: "error",
-            button: "Aceptar",
-          });
-        //alert("El producto fue creado correctamente");
+        alert("El producto fue creado correctamente");
         } catch (err) {
         console.log(err);
       }
     };
 };
+//put.${URL}adduser
+
+export const createDatosUsuario = (body) => {
+
+    return  (dispatch) => {
+            axios.put(`${URL}adduser`, body)
+            .then ( swal({
+                title: "Los datos fueron cargados",
+                text: "Los datos para el envío fueron cargados correctamente ",
+                icon: "success",
+                button: "Aceptar",
+              }).then (()=> window.history.back()) )
+            }
+}
+
+// export const createDatosUsuario = (body) => {
+//     return async (dispatch) => {
+//         try {
+//             const response = await axios.put(`${URL}adduser`, body);
+//             if (response.data.message) {
+//                 alert(response.data.message);
+//             } else {
+//                 return dispatch({
+//                     type: CREATE_DATOS_USUARIO,
+//                     payload: response.data,
+//                 });
+//             }
+//             alert(response.data.message);
+//         } catch (error) {
+//             console.log(error);
+//         }
+//     };
+// };
 
 export const editProduct = (body) => {
        return async (dispatch) => {
@@ -424,11 +485,12 @@ export const getReviews = () => {
 };
 
 export const postReview = (obj) => {
+    console.log(obj)
     return async () => {
-        let postReview = await axios.post(`${URL}addreview/`, obj)
-        console.log(postReview.data)
+        let postReview = await axios.post(`${URL}product/addreview/`, obj)
     }
 };
+
 
 export const addFavorite = (sub, item ) => {
     return async () => {
@@ -461,9 +523,9 @@ export const deleteFavorite = (sub, item) => {
 
 //USER: 
 
-export const getUser = ()=>{
+export const getUser = (id)=>{
     return async function(dispatch){
-      return axios.get(`${URL}`, )
+      return axios.get(`${URL}adduser/${id}`, )
         .then(response=>{
           dispatch({type: GET_USER, payload: response.data})
         }).catch(err => console.log(err))
@@ -505,6 +567,17 @@ export const checkuserBlocked=(id)=>{
         }
 }
 
+// traer todos los productos comprados por el usuario
+// get.{URL}sales/user/:id
 
+export const getAllSales =  (id) => {
+    return async function(dispatch){
+        return axios.get(`${URL}sales/user/${id}`)
+        .then(res => {
+            console.log(res.data)
+            dispatch({type: 'ALL_SALE', payload: res.data.Sales})
+        })
+    }
+}
 
 

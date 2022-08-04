@@ -16,7 +16,9 @@ import {
     CREATE_PRODUCT,
     DISABLE_PRODUCT,
     ALL_ITEMS_ADMIN,
+    CREATE_DATOS_USUARIO,
     GET_PRODUCT,
+    GET_VENTAS,
 } from "../actions/typeActions";
 
 const inicialState = {
@@ -24,6 +26,7 @@ const inicialState = {
     items: [],
     itemsAdmin: [],
     users: [],
+    ventas: [],
     filter: {},
     category: [],
     adminCategory: [],
@@ -38,17 +41,24 @@ const inicialState = {
     product:{},
     favorites: [],
     matches: [],
-    role: "none",   
+    role: "none",
     shoppingCart: [],
     Cart:"",
     user: [],
-    roleUser:''
+    roleUser:'',
+    userAddress: [],
+    salesProduct:[],
+    heartFav: [],
+    userInfo: [],
 };
 
 const reducer = (state = inicialState, { type, payload }) => {
     switch (type) {
         case GET_PRODUCT:
             return { ...state, items: payload };
+
+        case GET_VENTAS:
+            return { ...state, ventas: payload };
 
         case ALL_ITEMS:
             return { ...state, items: payload };
@@ -117,6 +127,11 @@ const reducer = (state = inicialState, { type, payload }) => {
                 ...state,
                 items: state.items.concat(payload),
             };
+        case CREATE_DATOS_USUARIO:
+                return {
+                    ...state,
+                    user: state.user.concat(payload),
+                };
 
         case DISABLE_PRODUCT:
             return {
@@ -145,18 +160,19 @@ const reducer = (state = inicialState, { type, payload }) => {
         case "RESET_MATCH": {
             return { ...state, matches: [] };
         }
-        case 'CHECK_FAV':
-          console.log('estoy en CHECK_FAV:', payload)
-          return {
-            ...state,
-            favorites: payload
-          }
-
-        case 'GET_USER':
+        case "CHECK_FAV":
+            console.log("estoy en CHECK_FAV:", payload);
             return {
                 ...state,
                 favorites: payload,
             };
+
+        case 'GET_USER':
+            return {
+                ...state,
+                userInfo: payload,
+            };
+        
 
         case "GET_USER_ADDRESS":
             return {
@@ -174,11 +190,7 @@ const reducer = (state = inicialState, { type, payload }) => {
             ...state,
             userSale: payload
           }
-        case 'POST_REVIEWS':
-          return {
-            ...state,
-            postUserSale: payload
-          }
+        
         case "UPDATE_USER_ADDRESS":
             return {
                 ...state,
@@ -186,6 +198,7 @@ const reducer = (state = inicialState, { type, payload }) => {
             };
 
         case "POST_CART":
+            console.log(payload);
             return {
                 ...state,
                 Cart: payload,
@@ -200,7 +213,15 @@ const reducer = (state = inicialState, { type, payload }) => {
             return {
                 ...state,
                 roleUser: payload      }
-
+        case "ALL_SALE":
+            return {
+                ...state,
+                salesProduct: payload,
+            };
+        case 'CHECK_USER_BLOCK' :
+            return {
+                ...state,
+                roleUser: payload}
         default:
             return state;
     }

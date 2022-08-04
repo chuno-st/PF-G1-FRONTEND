@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { TableCell, TableRow, Button } from "@material-ui/core";
 import { capitalizeLetter } from "../../../Utils/utils";
 import EditIcon from "@mui/icons-material/Edit";
-import { disableSubCategory } from "../../../actions/actions";
+import { disableSubCategory, adminSubCategory } from "../../../actions/actions";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 
@@ -17,7 +17,9 @@ export default function SubCategoryForm(props) {
     const handleDisable = async () => {
         try {
             dispatch(disableSubCategory(elem.subCategory_id, elem.state));
-            navigate(0);
+            setTimeout(function(){
+                dispatch(adminSubCategory())
+            }, 1500);
         } catch (error) {
             console.log(error);
         }

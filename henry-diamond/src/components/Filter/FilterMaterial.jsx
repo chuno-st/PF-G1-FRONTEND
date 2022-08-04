@@ -4,6 +4,10 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { SubCategory, FilterBy , getAllItems} from "../../actions/actions";
 import { Button } from "@mui/material";
+import {Box} from '@material-ui/core';
+import Divider from '@material-ui/core/Divider';
+
+
 
 export default function FilterMaterial() {
     const dispatch = useDispatch();
@@ -78,13 +82,20 @@ export default function FilterMaterial() {
         setSubcategory(newValue.label)}}
       renderInput={(params) => <TextField {...params} label="POR PRODUCTOS" />}
       />
-      <Button 
-        fullWidth
-        onClick={()=>{
-        console.log('el boton anda')
-        handleChange()
+      <Box align='center'>
+        <Button 
+          fullWidth
+          onClick={()=>{
+          console.log('el boton anda')
+          handleChange()
         }}>Filtrar</Button>
-        <Button onClick={handleReset} >Limpiar filtros</Button>
+                <Divider />
+
+        <Button 
+          fullWidth
+          onClick={handleReset} 
+        >Limpiar filtros</Button>
+      </Box>
       </>
   );
 }

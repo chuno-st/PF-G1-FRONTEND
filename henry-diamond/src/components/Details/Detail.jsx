@@ -1,5 +1,5 @@
 import ImageDetail from './ImageDetail'
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {getProductById, FilterBy, findMatch} from '../../actions/actions';
@@ -12,7 +12,8 @@ import Typography from "@material-ui/core/Typography";
 import Button from '@material-ui/core/Button'
 import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import CardRatting  from '../CardRating/CardRating';
+import CardRating  from '../CardRating/CardRating';
+import {capitalizeLetter} from '../../Utils/utils'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -45,15 +46,22 @@ export default function Detail () {
     const dispatch = useDispatch()
     const product = useSelector(state => state.product)
     // const nameUpper = product.name.toUpperCase()
-
+    const [showProducts, setShowProducts] = useState(false)
+    
+    // console.log(prodSimil, 'detaildetail')
+    
     useEffect(() => {
-        dispatch(getProductById(id))
-        
+      dispatch(getProductById(id))
+      
+      
     },[id])
     
+    
     const handleclick = () => {
-        dispatch(findMatch(product.subCategory_id))    
+      if(product) dispatch(findMatch(product.subCategory_id))
+      setShowProducts(!showProducts)    
     }
+    
     
    
     return (
@@ -63,7 +71,7 @@ export default function Detail () {
           <CssBaseline />
             <Grid container>
                 <Grid item xs={12}>
-                  <NavMyAccount/>              
+              <NavMyAccount/>            
                 </Grid>
           
               <Grid item xs={12} ms={6} md={6} xl={6} lg={6}
@@ -94,7 +102,7 @@ export default function Detail () {
                         <Box 
                         bgcolor='C8B6FF'
                         boxShadow='4px 1px 8px #7a7a7a'>
-                          <div>{(product.name)}</div>
+                          <div>{capitalizeLetter((product.name))}</div>
                         </Box>
                       </Typography>
 
@@ -119,12 +127,16 @@ export default function Detail () {
                   >
                     <Typography align='center' gutterBottom variant='h5'> 
                         <Button variant= 'contained'  onClick={handleclick}>Ver productos similares</Button>          
+                        {/* <Button variant= 'contained' onClick={handleClose}>Ver Menos</Button> */}
                     </Typography>
                     </Box>
               </Grid>
 
-            
-              <Grid item xs={12} sm={8} md={9} container spacing={50}>
+            {
+             
+             showProducts && <Grid item xs={12} sm={8} md={9} container spacing={50}>
+
+
             { matches.map( i => {
               if(i.name === product.name) {return}
               return (
@@ -140,6 +152,7 @@ export default function Detail () {
               })
             } 
         </Grid> 
+            }
 
         <Grid item xs={12} ms={12} md={12} xl={12} lg={12}
               alignItems='center'
@@ -151,8 +164,8 @@ export default function Detail () {
                     //borderColor='black'
                     boxShadow='4px 6px 8px #7a7a7a'
                   >
-                    <Typography align='center' gutterBottom variant='h5'> 
-                        <Button variant= 'contained'>Reseñas de Usuarios</Button>          
+                    <Typography align='center' gutterBottom variant='h4'> 
+                        Reseñas de Usuarios        
                     </Typography>
                     
                     </Box>
@@ -168,7 +181,7 @@ export default function Detail () {
                                 boxShadow='4px 6px 8px #7a7a7a'
                               >
                          
-                          <CardRatting 
+                          <CardRating 
                           product = {product}
                           />
                          

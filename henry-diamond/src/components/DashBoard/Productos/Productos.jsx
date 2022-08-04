@@ -12,7 +12,7 @@ import Modal from "../../Modal/Modal";
 import  {useModal} from "../../Modal/Hooks/UseModal";
 
 import { ThemeProvider, makeStyles } from "@material-ui/core/styles";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector} from "react-redux";
 import ProductForm from  "../productForm/productForm";
 import CrearProducto from "../CrearProducto/CrearProducto";
 
@@ -28,7 +28,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Productos() {
     const styles = useStyles();
-    const dispatch = useDispatch();
 
     const productos = useSelector((state) => state.itemsAdmin);
     

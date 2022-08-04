@@ -1,17 +1,15 @@
 import * as React from 'react'
-
 import Container from '@mui/material/Container'
 import styles from './Footer.css' //! no sacar le da estilo a los <Link/>
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid'
 import { Link  } from 'react-router-dom';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import InstagramIcon from '@mui/icons-material/Instagram';
-import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
 import LogoMercadopago from '../LogoMercadoPago/LogoMercadoPago'
 import CodeIcon from '@mui/icons-material/Code';
-
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
+import { Typography } from '@material-ui/core';
 
 
 
@@ -41,20 +39,14 @@ export default function Footer (){
                                 }}/>
                             </Box>
 
-                            <Box className='itemColumn' sx={{
-                                justifyContent: 'space-between',
-                                display: 'flex'
-                            }}>
-                                <Link to="/About" className='link'>Nuestro Contacto</Link>
-                                <ConnectWithoutContactIcon fontSize='small' />
-                            </Box>
+                            
                         </Grid>
 
                         <Grid item xs={12} sm={4}>
                             <Box borderBottom={1}>Medios de pago</Box>
 
                                 <Button href='https://www.mercadopago.com.ar/ayuda/medios-de-pago-vendedores_221' target='_blank'>
-                                    <Box align="center" >
+                                    <Box  >
                                         <LogoMercadopago/>  
                                     </Box>
                                 </Button>
@@ -62,13 +54,16 @@ export default function Footer (){
 
 
                         <Grid item xs={12} sm={4}>
-                            <Box borderBottom={1} >Seguinos</Box>
+                            <Box borderBottom={1} >Contactanos</Box>
                             <Box paddingTop={1} sx={{
                                 justifyContent: 'space-between',
                                 display: 'flex'
                             }}>
-                                <Link to="/" className='link'>Whatsapp</Link>
-                                <WhatsAppIcon fontSize='small'/>
+                                <a href='mailto:henrydiamons@gmail.com?' className='link'>E-mail</a>
+
+                                <a href='mailto:henrydiamons@gmail.com?' className='link'>
+                                    <MailOutlineIcon fontSize='small'/>
+                                </a>
                             </Box>
 
                             <Box className='itemColumn'sx={{
@@ -92,6 +87,7 @@ export default function Footer (){
                         mb:0,
                         display:'flex',
                         justifyContent: 'center'
+                        
                     }}>
                         <p className='diamond'>Henry Diamond </p> 
                         <p className='reserved'> - Marca Registrada &reg; {new Date().getFullYear()}</p>

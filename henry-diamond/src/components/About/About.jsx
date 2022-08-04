@@ -9,6 +9,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import Avatar from '@material-ui/core/Avatar';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import NavTwo from '../Nav/NavTwo'
 
 
 
@@ -39,7 +40,7 @@ export default function About () {
           <CssBaseline />
             <Grid container>
                 <Grid item xs={12}>
-                  <NavMyAccount/>              
+                  <NavTwo/>              
                 </Grid>
 
                 <Grid item xs={12}>
@@ -102,7 +103,7 @@ export default function About () {
                     <Button>
                       <Avatar alt="Ariel Agustin Lescano Gonzalez" src="https://ca.slack-edge.com/TPRS7H4PN-U02KC2PBUA3-99b2598e5c67-72" />
                     </Button>
-                    Ariel Agustin Lescano Gonzalez:
+                    Agustin Lescano Gonzalez:
                     <Button href={'https://github.com/Agustlescano'} target='_blank'>
                       <GitHubIcon/>
                     </Button>      

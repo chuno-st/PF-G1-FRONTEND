@@ -5,7 +5,8 @@ import CardCart from "../CardCart/CardCart";
 import { Button } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { postCart } from "../../actions/actions";
-import { addCart } from "../../actions/actions";
+import { addCart, getUser } from "../../actions/actions";
+import {Box} from '@material-ui/core';
 
 import { useAuth0 } from "@auth0/auth0-react";
 import NavMyAccount from '../MyAccount/NavMyAccount';
@@ -16,6 +17,7 @@ import Footer from "../Footer/Footer";
 import { useNavigate, Redirect } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles'
 import swal from 'sweetalert'
+import NavTwo from '../Nav/NavTwo'
 
 
 
@@ -54,16 +56,21 @@ export default function ShoppingCart(){
     const Navigate = useNavigate()
     const productos = useSelector(state => state.shoppingCart)
     // const subTotal = productos[0].map((producto)=>producto.price*producto.cantidad)
-    
+    const info = useSelector(state => state.userInfo)
+    console.log(info)
+
 
     if(link.length>0) {
         console.log(link)
         window.location = `${link}` 
     }
-
+    console.log(productos[0])
     const handlerSubmit = () =>{
-      if (isAuthenticated){
+      if (isAuthenticated && info.calle){
         dispatch(postCart(productos, user.sub))
+        .then(()=>productos[0].map((producto)=>{ return localStorage.removeItem(producto.product_id)}))
+      } else if (isAuthenticated && !info.calle ) {
+        Navigate('/formpage')
 
       }else{
         swal({
@@ -72,12 +79,17 @@ export default function ShoppingCart(){
           icon: "error",
           button: "Aceptar",
         });
-        //alert("Por favor inicia sesión para poder realizar la compra")
     }
   }
     useEffect(() => {
       dispatch(addCart())
+      if(isAuthenticated ){
+        dispatch(getUser(user.sub))
+      }
+      
     }, [dispatch]);
+
+
     
     const handlesubtotal=()=>{
       if(productos.length){
@@ -89,15 +101,16 @@ export default function ShoppingCart(){
     return (
     <div>
       <ThemeProvider theme={theme}>
-        <Grid container spacing={3}>
+        <Grid container spacing={10}>
         <Grid item xs={12} sm={12} xl={12}>
-          <NavMyAccount/>              
+          <NavTwo/>              
         </Grid>
         <Grid item xs={12}>
-          <Typography align="center" gutterBottom variant='h4'>
-            Mi Carrito de compras
-          </Typography>
+            <Typography align="center" gutterBottom variant='h4'>
+              Mi Carrito de compras
+            </Typography>
         </Grid>
+
         <Grid item xs={12} sm={8} md={9} container spacing={2}>
 
              {
@@ -123,6 +136,11 @@ export default function ShoppingCart(){
           </Typography>
         </Grid>
         </Grid>
-          <Footer />
+        <Grid item xs={12}>
+        <Box pt={20}>
+            <Footer/>
+        </Box>
+        </Grid>
       </ThemeProvider>    
 </div>)}
+

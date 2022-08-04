@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { LoginButton } from "../Login/Login";
 import { Profile } from "../Profile/Profile";
 import { useAuth0 } from "@auth0/auth0-react";
-import Logo from '../Logo/Logo';
+import Logo from '../Logo/Logo'
 import Grid from '@material-ui/core/Grid';
 import {ShoppingCartButton} from '../ShoppingCartButton/ShoppingCartButton'
 // import { ThemeProvider } from '@emotion/react';
@@ -88,7 +88,7 @@ export default function NavMyAccount() {
                     <Grid item xs={6} ms={6} md={6} lg={6} xl={6}>
                     <Box pr={60}>
                         <Button href="/">
-                            <Logo className={classes.logo} />
+                            <Logo  />
                         </Button>
                     </Box>
 
@@ -103,18 +103,18 @@ export default function NavMyAccount() {
                                     isAuthenticated ? (
                                      
 
-                                        <div>
+                                        <Box pt={2}>
                                               <Hidden smDown>
                                                 <Button  size="large"><Profile className={classes.profile}/></Button>
                                               </Hidden>
 
                                                 <ShoppingCartButton />
 
-                                        </ div>
+                                        </ Box>
                                         ) : (
-                                        <div>
+                                        <Box pt={2}>
                                             <LoginButton className={classes.loginButton} />
-                                        </ div>
+                                        </ Box>
 
                                         )
 

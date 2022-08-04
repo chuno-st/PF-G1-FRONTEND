@@ -5,6 +5,7 @@ import './App.css';
 import { Loading } from "./components/Loading/loading.jsx";
 //import { dark } from "@material-ui/core/styles/createPalette.js";
 import MyAccount from '../../henry-diamond/src/components/MyAccount/MyAccount'
+import FormPage from '../src/components/MyAccount/FormPage'
 import Detail from '../src/components/Details/Detail.jsx'
 import About from '../src/components/About/About'
 import Admin from "../src/components/DashBoard/index"
@@ -14,6 +15,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
+import LinearIndeterminate  from './components/Loading/Loading2'
 
 
 // export default function SimpleContainer() {
@@ -32,7 +34,7 @@ import Container from '@material-ui/core/Container';
 function App() {
   const {isLoading} = useAuth0();
 
-  if (isLoading) return <Loading />;
+  if (isLoading) return <LinearIndeterminate />;
 
   return (
   <div className="bodyApp">
@@ -46,6 +48,7 @@ function App() {
                   <Route path="/cart" element={<ShoppingCart/>} />
                   <Route path="/detail/:id" element={<Detail/>}/>
                   <Route path="/About" element={<About/>}/>
+                  <Route path="/formpage" element={<FormPage/>}/>
                   <Route path="/admin" element={<PrivateDash> <Admin/> </PrivateDash>} />
                   <Route path="*" element={<Home/>} />
                   <Route path="/admin" element={<PrivateDash>

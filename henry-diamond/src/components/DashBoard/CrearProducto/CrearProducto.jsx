@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Category, createProduct, SubCategory } from "../../../actions/actions";
+import { Category, createProduct, SubCategory, getAllItemsAdmin } from "../../../actions/actions";
 import TextField from "@mui/material/TextField";
 import { Container } from "@mui/system";
 import { Button, FormControl, FormHelperText, Grid, Input, InputLabel } from "@mui/material";
@@ -8,7 +8,6 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Validate from "../Utils/Validate";
 import { capitalizeLetter } from "../../../Utils/utils";
-import axios from "axios";
 const { URL } = require("../../../config");
 
 export default function CrearProducto() {
@@ -78,7 +77,11 @@ export default function CrearProducto() {
                 material_id: "",
                 stock: "",
             });
-            alert("La categoria se creo correctamente");
+            alert("El producto se creo correctamente");
+            
+            setTimeout(function(){
+                dispatch(getAllItemsAdmin())
+            }, 1500);
         } catch (error) {
             console.log(error);
         }

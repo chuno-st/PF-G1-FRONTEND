@@ -85,6 +85,7 @@ export default function CategoriaBarChart() {
 
     return (
         <div style={{"width":"40%"}}>
+            <h1 style={{display: "flex", flexDirection: "row", flexWrap: "wrap", alignContent: "center", justifyContent: "space-around", alignItems: "center", marginTop: "150px"}}>Ventas de categorias</h1>
             <Bar data={data} options={options} />
         </div>
     );
