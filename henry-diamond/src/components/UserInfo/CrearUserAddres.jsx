@@ -6,6 +6,7 @@ import { Container } from "@mui/system";
 import { Button, FormControl, FormHelperText, Grid, Input, InputLabel } from "@mui/material";
 import { useAuth0 } from '@auth0/auth0-react'
 
+import Typography from '@material-ui/core/Typography';
 import Validate from "./Utils/Validate";
 import {Box} from '@material-ui/core';
 
@@ -98,21 +99,15 @@ export default function CrearUserAddres() {
 
     return (
         <div
-            style={{
-                display: "flex",
-                flexDirection: "row",
-                flexWrap: "wrap",
-                alignContent: "center",
-                justifyContent: "space-around",
-                alignItems: "center",
-            }}
+            // style={{
+            //     display: "flex",
+            //     flexDirection: "row",
+            //     flexWrap: "wrap",
+            //     alignContent: "center",
+            //     justifyContent: "space-around",
+            //     alignItems: "center",
+            // }}
         >
-            <Container>
-                <Grid container xs={12} ms={12} md={12} lg={12} xl={12}>
-                <Box item justifyContent="center"  border={1} borderColor='black'>
-
-                    <Grid item md={8} margin={1.5}>
-                        <Box p={1}>
                             <FormControl sx={{ m: 1, minWidth: 120 }}>
                                 <TextField
                                     onChange={handleChange}
@@ -121,13 +116,12 @@ export default function CrearUserAddres() {
                                     name="name"
                                     helperText={error.name}
                                     // type="text"
+                                    InputLabelProps={{shrink: true}}
+
                                 />
                             </FormControl>
-                        </Box>
-                    </Grid>
+                      
 
-                    <Grid item md={8} margin={1.5}>
-                        <Box p={1}>
                             <FormControl sx={{ m: 1, minWidth: 120 }}>
                                 <TextField
                                     onChange={handleChange}
@@ -136,12 +130,24 @@ export default function CrearUserAddres() {
                                     name="lastName"
                                     helperText={error.lastName}
                                     type="text"
+                                    InputLabelProps={{shrink: true}}
+
                                 />
                             </FormControl>
-                        </Box>
-                    </Grid>
 
-                    <Grid item md={8} margin={1.5}>
+                            <FormControl sx={{ m: 1, minWidth: 120 }}>
+                            <TextField
+                                onChange={handleChange}
+                                error={error.dni}
+                                label="DNI"
+                                name="dni"
+                                helperText={error.dni}
+                                type="number"
+                                InputLabelProps={{shrink: true}}
+
+                            />
+                            </FormControl>
+
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
@@ -150,11 +156,11 @@ export default function CrearUserAddres() {
                                 name="calle"
                                 helperText={error.calle}
                                 type="text"
+                                InputLabelProps={{shrink: true}}
+
                             />
                         </FormControl>
-                    </Grid>
 
-                    <Grid item md={8} margin={1.5}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
@@ -163,11 +169,11 @@ export default function CrearUserAddres() {
                                 name="direccion"
                                 helperText={error.direccion}
                                 type="number"
+                                InputLabelProps={{shrink: true}}
+
                             />
                         </FormControl>
-                    </Grid>
                     
-                    <Grid item md={8} margin={1.5}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
@@ -176,11 +182,11 @@ export default function CrearUserAddres() {
                                 name="piso"
                                 helperText={error.piso}
                                 type="text"
+                                InputLabelProps={{shrink: true}}
+
                             />
                         </FormControl>
-                    </Grid>
 
-                    <Grid item md={8} margin={1.5}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
@@ -189,11 +195,11 @@ export default function CrearUserAddres() {
                                 name="departamento"
                                 helperText={error.departamento}
                                 type="text"
+                                InputLabelProps={{shrink: true}}
+
                             />
                         </FormControl>
-                    </Grid>
 
-                    <Grid item md={8} margin={1.5}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
@@ -202,11 +208,11 @@ export default function CrearUserAddres() {
                                 name="codigo_postal"
                                 helperText={error.codigo_postal}
                                 type="number"
+                                InputLabelProps={{shrink: true}}
+
                             />
                         </FormControl>
-                    </Grid>
 
-                    <Grid item md={8} margin={1.5}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
@@ -215,11 +221,11 @@ export default function CrearUserAddres() {
                                 name="provincia"
                                 helperText={error.provincia}
                                 type="text"
+                                InputLabelProps={{shrink: true}}
+
                             />
                         </FormControl>
-                    </Grid>
 
-                    <Grid item md={8} margin={1.5}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
@@ -228,36 +234,26 @@ export default function CrearUserAddres() {
                                 name="localidad"
                                 helperText={error.provincia}
                                 type="text"
+                                InputLabelProps={{shrink: true}}
+
                             />
                         </FormControl>
-                    </Grid>
-                    <Grid item md={8} margin={1.5}>
+
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
                                 error={error.telefono}
                                 label="Teléfono"
                                 name="telefono"
-                                helperText={error.provincia}
+                                helperText={error.telefono}
                                 type="number"
+                                InputLabelProps={{shrink: true}}
+
                             />
                         </FormControl>
-                    </Grid>
 
-                    <Grid item md={8} margin={1.5}>
-                        <FormControl sx={{ m: 1, minWidth: 120 }}>
-                            <TextField
-                                onChange={handleChange}
-                                error={error.dni}
-                                label="DNI"
-                                name="dni"
-                                helperText={error.dni}
-                                type="number"
-                            />
-                        </FormControl>
-                    </Grid>
+                       
 
-                    <Grid item md={8} margin={1.5}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <TextField
                                 onChange={handleChange}
@@ -266,10 +262,12 @@ export default function CrearUserAddres() {
                                 name="fecha_nacimiento"
                                 helperText={error.fecha_nacimiento}
                                 type="date"
+                                InputLabelProps={{shrink: true}}
+
                             />
                         </FormControl>
-                    </Grid>
 
+                    
                     <Button
                         variant="container"
                         color="primary"
@@ -278,14 +276,6 @@ export default function CrearUserAddres() {
                     >
                         ENVIAR
                     </Button>
-
-                    </Box>
-
-                </Grid>
-                
-                
-
-            </Container>
         </div>
     );
 }

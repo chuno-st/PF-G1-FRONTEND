@@ -76,10 +76,10 @@ return (
                             
                     </Box>
             </Grid>
-          <Grid item xs={6}
+          <Grid item xs={12}
           justifyContent='flex-start'
           >
-              <Box my={2} align='center'>
+              <Box my={6} align='center'>
                     <CrearUserAddres/>
               </Box>
         </Grid>
