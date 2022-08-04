@@ -1,5 +1,5 @@
-import React, { Fragment, useState } from "react";
-import {useDispatch} from 'react-redux'
+import React, { Fragment, useState, useEffect } from "react";
+import {useDispatch, useSelector} from 'react-redux'
 import { Rating } from '@material-ui/lab';
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
@@ -15,7 +15,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/lab/Alert";
 import { Chip } from "@material-ui/core";
 import { useAuth0 } from "@auth0/auth0-react";
-import { postReview} from '../../actions/actions';
+import { postReview, getReviews} from '../../actions/actions';
 
 
 // function Alert(props) {
