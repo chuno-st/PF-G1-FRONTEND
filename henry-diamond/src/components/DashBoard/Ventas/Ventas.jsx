@@ -37,7 +37,7 @@ export default function Ventas() {
 
     useEffect((body) => {
         dispatch(getAllVentas());
-    }, []);
+    }, [dispatch]);
 
     const [isOpenDetalle1, openDetalle1, closeDetalle1] = useModal(false);
 

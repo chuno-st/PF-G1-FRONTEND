@@ -14,7 +14,7 @@ import ViewListIcon from "@mui/icons-material/ViewList";
 import { capitalizeLetter } from "../../../Utils/utils";
 import { React, useState } from "react";
 import Select from "react-select";
-import { ventasStatus } from "../../../actions/actions.js";
+import { ventasStatus, getAllVentas } from "../../../actions/actions.js";
 
 export default function VentasForm(props) {
     const { elem } = props;
@@ -39,7 +39,10 @@ export default function VentasForm(props) {
             id: elem.id,
             status: estado,
         };
-        dispatch(ventasStatus(body));
+
+        dispatch(ventasStatus(body))
+
+        setTimeout(() => dispatch(getAllVentas()),2000)
     };
 
     return (
