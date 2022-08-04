@@ -65,7 +65,10 @@ export default function ProductoForm(props) {
             <TableCell>{elem.stock}</TableCell>
             <TableCell>{elem.state.toString()}</TableCell>
             <TableCell>
-                <EditIcon onClick={() => handleOpenModalEditarProducto(elem.product_id)} />
+                <Button disabled={elem.state.toString()==='false'}>
+
+                <EditIcon  onClick={() => handleOpenModalEditarProducto(elem.product_id)} />
+                </Button>
             </TableCell>
             <TableCell>
             <Button key={elem.product_id} onClick={handleDisable}>
