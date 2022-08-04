@@ -6,9 +6,9 @@ import {
     TableCell,
     TableBody,
     TableRow,
-    MenuItem
+    MenuItem,
+    Select,
 } from "@material-ui/core";
-import Select from "react-select";
 import Modal from "../../Modal/Modal";
 import { useModal } from "../../Modal/Hooks/UseModal";
 import { ThemeProvider } from "@material-ui/core/styles";
@@ -37,7 +37,6 @@ export default function Ventas() {
 
     useEffect((body) => {
         dispatch(getAllVentas());
-        dispatch(ventasStatus(body));
     }, []);
 
     const [isOpenDetalle1, openDetalle1, closeDetalle1] = useModal(false);
@@ -45,8 +44,11 @@ export default function Ventas() {
     return (
         <ThemeProvider>
             <div style={{ height: 400, width: "100%" }}>
-                <Select options={statusFilter} value={estado} onChange={(e) => setEstado(e.value)}>
-                    <MenuItem value={"all"}>Todas las ventas</MenuItem>
+                <Select value={estado} onChange={(e) => {
+                 setEstado(e.target.value)}
+                }
+                >
+                    <MenuItem default value={"all"}>Todas las ventas</MenuItem>
                     <MenuItem value={"dispatch"}>Despachado</MenuItem>
                     <MenuItem value={"ANULED"}>Anulado</MenuItem>
                     <MenuItem value={"approved"}>Aprobado</MenuItem>
@@ -66,7 +68,10 @@ export default function Ventas() {
                         </TableHead>
 
                         <TableBody>
-                            {ventas.map((elem) => (
+                            {ventas.filter((ventas)=>{
+                                if (estado === "all") return true
+                                return ventas.status === estado
+                            }).map((elem) => (
                                 <VentasForm key={elem.id} elem={elem} />
                             ))}
                         </TableBody>
