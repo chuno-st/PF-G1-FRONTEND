@@ -180,7 +180,7 @@ export default function CardRating({ product }) {
                   <Chip
                     variant="outlined"
                     color="secondary"
-                    label={`Autor: ${e.author} : ${e.comment} - Fecha:${(e.updatedAt).substr(0,9)} `}
+                    label={`Autor: ${e.author} : ${e.comment} - Fecha:${(e.updatedAt).substr(0,10)} `}
                     size='medium'
                     title={e.description}
                     /> 
