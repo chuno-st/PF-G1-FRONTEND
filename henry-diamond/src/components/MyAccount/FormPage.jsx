@@ -14,6 +14,7 @@ import NavTwo from '../Nav/NavTwo'
 
 
 
+
 const theme = createTheme({
   palette: {
     primary:{
@@ -41,55 +42,70 @@ return (
  <React.Fragment>
   <ThemeProvider theme={theme}>
     <CssBaseline />
-      <Grid container>
+      <Grid container direction='column'>
         <Grid item xs={12}>
           <NavTwo/>              
         </Grid>
-            <Grid item xs={12}>
+            <Grid item>
                   <Box 
-                    bgcolor='#e0e0e0'
-                    pt={2}
+                    pt={15}
                     pb={1}
-                    textAlign='center'
-                    border={0}
-                    boxShadow='4px 1px 8px #7a7a7a'
+                    align='left'
+                    p={10}
                   >
                   
                     <Link to="/myaccount" size='small' className='link'>
-                    <Button
-                        size='small'
-                    > Mi Cuenta</Button>
+                      
+                        <Button
+                            size='small'
+                            variant='outlined' 
+                            color="secondary"
+                            padding={2}
+                          
+                        > Mi Cuenta</Button>
+                    
                     </Link>
+                  
                     <Link to="/cart" size='small' className='link'>
+                    
                     <Button
                         size='small'
+                        variant='outlined' 
+                        color="secondary"
+                        
                     > Mi Carrito</Button>
+                   
                     </Link>
-
+                 
                   </Box>
-                    <Box 
-                        bgcolor='#e0e0e0'
-                        pt={1}
-                        align='center'
-                        border={0}
-                        boxShadow='4px 1px 8px #7a7a7a'>
-                          <Typography><Avatar src={user.picture} variant='square'/> Bienvenid@, {user.name} ({user.email})</Typography>
-                            
+                    <Box   
+                      px={10}
+                      align='left'
+                      border={0}
+                      >
+                        <Box align='left' py={2} >
+                            <Avatar src={user.picture} variant='square'/>
+                        </Box> 
+                    <Typography display='display' variant='h5'>
+                      ¡Hola, {user.name}! 
+                      </Typography>
+                      <Typography display='display' variant='subtitle2'>
+                        ({user.email})
+                      </Typography>
                     </Box>
             </Grid>
-          <Grid item xs={12}
+          <Grid item xs={6}
+          justifyContent='center'
           >
-              <Box my={6} align='center'>
+              <Box my={2} >
                     <CrearUserAddres/>
               </Box>
         </Grid>
       </Grid>
-
-      
+      </ThemeProvider>
         <Grid item xs={12}>
             <Footer/>
         </Grid>  
-      </ThemeProvider>
     </React.Fragment>
   );
 }

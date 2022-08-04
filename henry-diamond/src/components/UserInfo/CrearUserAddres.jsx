@@ -2,8 +2,11 @@ import { React, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { createDatosUsuario } from "../../actions/actions";
 import TextField from "@mui/material/TextField";
-import { Button, FormControl } from "@mui/material";
+import { FormControl } from "@mui/material";
 import { useAuth0 } from '@auth0/auth0-react'
+import { Container } from "@mui/system";
+import { Button, FormControl, FormHelperText, Grid, Input, InputLabel } from "@mui/material";
+import Typography from '@material-ui/core/Typography';
 import Validate from "./Utils/Validate";
 import {Box} from '@material-ui/core';
 import swal from 'sweetalert'

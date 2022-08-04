@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar, Grid, Typography } from '@material-ui/core'
+import { Avatar, Grid, IconButton, Typography } from '@material-ui/core'
 import Footer from "../Footer/Footer";
 import { ThemeProvider } from "@material-ui/core"
 import { createTheme } from "@material-ui/core";
@@ -7,10 +7,16 @@ import NavMyAccount from './NavMyAccount';
 import { useAuth0 } from "@auth0/auth0-react";
 import {Box, CssBaseline, Button} from '@material-ui/core';
 import CrearUserAddres from '../UserInfo/CrearUserAddres';
-import ModalCreateInfoUser from '../MyAccount/ModalCreateInfoUser'
-import { Link  } from 'react-router-dom';
-import NavTwo from '../Nav/NavTwo'
 
+import NavTwo from '../Nav/NavTwo'
+// import UserAddressForm from '../UserInfo/UserAddressForm';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { getAllSales } from '../../actions/actions';
+
+import { Link  } from 'react-router-dom';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import LocalShippingIcon from '@material-ui/icons/LocalShipping';
 
 
 
@@ -34,7 +40,10 @@ export default function MyAccount() {
   
   const { user, isAuthenticated, isLoading } = useAuth0();
 
-
+ 
+  useEffect(() => {
+    dispatch(getAllSales(user.sub))
+  }, [])
 
 
 return (
@@ -69,49 +78,52 @@ return (
                           ></Avatar>
                           <Typography>{user.email}</Typography>
 
+                          
+                       
+                          
                 </Box>
             </Grid>
           <Grid item xs={6}
           justifyContent='flex-start'
           >
           <Box 
-          bgcolor='pink'
+          // bgcolor='pink'
           textAlign='left'
           p={10}
           border={1}
-          borderColor='black'
+          borderColor='lightBlue'
           >
-          <h2>Mis Datos</h2>
-          <h5>
-              nickName <br/>
-              e-mail<br/>
-              password
-          </h5>
+          <Typography display='display' variant='h5'>Mis Datos</Typography>
 
-          <Box 
-          bgcolor='pink'
-          textAlign='left'
-          p={5}
-          border={1}
-          borderColor='black'
-          >
-            {/* <UserAddressForm/> */}
+          <Typography display='display' variant='subtitle2'>
+            {user.nickname} 
+            </Typography>
+            <Typography display='display' variant='subtitle2'>
+            {user.email} 
+            </Typography>
+           
 
-              {/* <ModalCreateInfoUser size='small' style={{ overflow: 'true'}}>  */}
-              <Box my={2} align='center'>
+
+          <Grid container xs={12} direction='row-reverse'>
+              <Box 
+              textAlign='center'
+              border={1}
+              borderColor='lightBlue'
+              >
               <Link to="/formpage" size='small' className='link'>
-                <Button> Datos para el envio </Button>
+                <Button variant='outlined' 
+                startIcon = {<LocalShippingIcon />}
+                > Datos Envío </Button>
               </Link>
               </Box>
-              {/* </ModalCreateInfoUser>  */}
+          </Grid>
           </Box>
           
 
-        </Box>
         </Grid>
         <Grid item xs={6}>
           <Box 
-          bgcolor='pink'
+          // bgcolor='pink'
           p={10}
           border={1}
           borderColor='black'
@@ -124,6 +136,17 @@ return (
               Acceso de DETAIL
               </h5>
 
+          <Typography display='display' variant='h5'>Seguir Comprando?</Typography> 
+          <Box p={7}>
+          <Link to="/cart" size='small' className='link'>
+                    
+                    <Button
+                        size='small'
+                        variant='outlined'
+                        startIcon= {<ShoppingCartIcon />}
+                    > Mi Carrito</Button>
+        </Link>
+        </Box>
         </Box>
         </Grid>
       </Grid>
@@ -138,6 +161,46 @@ return (
             textAlign='left'
           >
           Historial de Pedidos
+          </Box>
+        <Box 
+        bgcolor='lightBlue'
+        p={3}
+        textAlign='Center'
+        boxShadow='4px 1px 8px #7a7a7a'
+        >
+
+          <Typography display='display' variant='h5'>Historial de Compras</Typography>
+        </Box>
+        <Box
+        //  bgcolor='lightBlue'
+         borderBottom={1}
+        >
+          <Typography display='display' variant='subtitle1'>
+          {
+            sales.map(e => (
+             <Box
+             borderBottom={1}
+             borderColor='red'
+             boxShadow='4px 1px 8px #7a7a7a'
+             >
+                <Typography display='display' variant='h6'>Productos:</Typography> 
+                    {(e.items).map(i => (
+                      <a>{(i.title).toUpperCase()}, </a>
+                    ))}
+                    
+                    {/* <p>Producto: {e.product_id}</p> */}
+                    <Typography display='display' variant='h6'>Estado de compra:</Typography><p>{(e.status).toUpperCase()}</p>
+                    <Typography display='display' variant='h6'>Fecha de compra:</Typography><p>{e.createdAt}</p>
+                    {/* <Typography display='display' variant='h6'>Cantidad: </Typography><p>{e.quantity[0]}</p> */}
+                    <Typography display='display' variant='h6'>Cuota:</Typography><p>${e.monto} - Total: ${e.montoTotal}</p>
+                    {console.log(e.items, 'obj item')}
+                
+              </Box>
+            )
+            
+            )
+          }
+          </Typography>
         </Box>
         </Grid>
         <Grid item xs={12}>
@@ -145,6 +208,6 @@ return (
         </Grid>
                
       </ThemeProvider>
-    </React.Fragment>
+    </ React.Fragment>
   );
 }

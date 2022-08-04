@@ -50,8 +50,6 @@ const inicialState = {
     salesProduct:[],
     heartFav: [],
     userInfo: [],
-
-
 };
 
 const reducer = (state = inicialState, { type, payload }) => {
@@ -192,11 +190,7 @@ const reducer = (state = inicialState, { type, payload }) => {
             ...state,
             userSale: payload
           }
-        case 'POST_REVIEWS':
-          return {
-            ...state,
-            postUserSale: payload
-          }
+        
         case "UPDATE_USER_ADDRESS":
             return {
                 ...state,
@@ -224,13 +218,10 @@ const reducer = (state = inicialState, { type, payload }) => {
                 ...state,
                 salesProduct: payload,
             };
-        case "HEART_FAV": {
-                return {
-                    ...state,
-                    heartFav: [...state.heartFav, payload],
-                };
-            }
-
+        case 'CHECK_USER_BLOCK' :
+            return {
+                ...state,
+                roleUser: payload}
         default:
             return state;
     }

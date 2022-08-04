@@ -19,11 +19,11 @@ import {
     EDITAR_PRODUCTO,
     CREATE_CATEGORY,
     DISABLE_CATEGORY,
-    DISABLE_SUBCATEGORY,
     CREATE_SUBCATEGORY,
     GET_USER,
     POST_USER_ADDRESS,
     UPDATE_USER_ADDRESS,
+    DISABLE_SUBCATEGORY,
     CREATE_DATOS_USUARIO,
     GET_REVIEWS,
     POST_REVIEWS,
@@ -475,10 +475,7 @@ export const addCart = () => {
     };
 };
 
-
-
-export const getReviews = () => {
-    
+export const getReviews = () => { 
     return async () => {
         let getReview = await axios.get(`${URL}addreview/`)
         return  ({
@@ -489,9 +486,9 @@ export const getReviews = () => {
 };
 
 export const postReview = (obj) => {
+    console.log(obj)
     return async () => {
         let postReview = await axios.post(`${URL}product/addreview/`, obj)
-        // console.log(postReview.data)
     }
 };
 
@@ -555,10 +552,7 @@ export const getUser = (id)=>{
     }
   }
   
-
-
-
-export const SetRoles= (obj) => {
+  export const SetRoles= (obj) => {
     console.log(obj);
     return async () => {
     let role = await axios.patch(`${URL}adduser/admin`,obj) 
@@ -574,6 +568,8 @@ export const checkuserBlocked=(id)=>{
         }
 }
 
+// traer todos los productos comprados por el usuario
+// get.{URL}sales/user/:id
 
 export const getAllSales =  (id) => {
     return async function(dispatch){

@@ -43,7 +43,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function CardRating({ product }) {
-
   const [reviews, setReviews] = useState([]);
   const [value, setValue] = useState(null);
   const [valueNew, setNewValue] = useState(0);
@@ -53,27 +52,41 @@ export default function CardRating({ product }) {
   const [description, setDescription] = useState("");
   const classes = useStyles();
   const { isAuthenticated, user} = useAuth0();
-
-  const { getReviews } = useSelector(state => state.product);
+  
+  // const fecha = {e.updatedAt}.substr(0,9)
+  const { Reviews } = useSelector(state => state.product);
 
   //la Id del producto deberia llegar como props o como parametro
   //const id = product.id
-  // useEffect(() => {
-  //   if (product.id) getReviews();
-  // }, [product.id]);
+
+  
+  useEffect(() => {
+    if (product.id) dispatch (getReviews());
+  }, [product.id]);
 
   const dispatch = useDispatch();
 
   const handlePostReview = () => {
     const obj = {
-      id: product.id,
+      id: product.product_id,
       comment: description,
-      author: user.sub,
-      rating: valueNew
+      author: user.name,
+      rating: valueNew,
+      
     }
     dispatch (postReview(obj))
-
+    dispatch (getReviews())
+    setOpen(false)
   }
+
+  
+  
+  // const handlePostComprador = () => {
+  //   if(isAuthenticated ){
+  //     dispatch(getReviews(user.email))
+  //     setDescription(e.target.value)
+  //   }
+  // }
 
   const handleDescriptionChange = (e) => {
     setDescription(e.target.value);
@@ -92,6 +105,7 @@ export default function CardRating({ product }) {
   };
   const handleSnack = () => {
     setSnack(false);
+    
   };
 
   
@@ -150,11 +164,11 @@ export default function CardRating({ product }) {
         
         }
 
-        <h3 >
-          Mira las críticas de {product.name}{" "}
-        </h3>
-        {reviews.length > 0 ? (
-          reviews.map((e) => (
+        <Typography align='center' gutterBottom variant='h5' >
+          Mirá las críticas de {product.name}{" "}
+        </Typography>
+        {Reviews  ? (
+          Reviews.map((e) => (
             <div >
               <div >
                 <Box
@@ -162,15 +176,18 @@ export default function CardRating({ product }) {
                   mb={1} 
                   borderColor="transparent"
                 >
-                  <Typography component="legend">Valoracion: </Typography>
-                  <Rating name="read-only" value={e.value} readOnly />
-                  <p style={{alignSelf:"flex-start"}}> <Chip
+                 <Typography align='left' gutterBottom variant='overline' > Valoracion: </Typography>
+                  <Rating name="pristine" size="large" value={e.rating} readOnly />
+                  <p style={{alignSelf:"flex-start"}}> 
+                  <Chip
                     variant="outlined"
-                    color="primary"
-                    label={`Autor: ${e.author.name} (Usuario ID: #${e.author.id}) `}
-                    
+                    color="secondary"
+                    label={`Autor: ${e.author} : ${e.comment} - Fecha:${(e.updatedAt).substr(0,9)} `}
+                    size='medium'
                     title={e.description}
-                  /> </p>
+                    /> 
+                    {console.log(Reviews, 'estoooooy')}
+                  </p>
                 </Box>
               </div>
               <div>
@@ -212,7 +229,7 @@ export default function CardRating({ product }) {
             Cancelar
           </Button>
           <Button
-            onClick={handleCloseDelete}
+            onClick={handlePostReview}
             color="primary"
             autoFocus
             style={{
@@ -238,7 +255,7 @@ export default function CardRating({ product }) {
         })
         } */}
         <Alert
-          onClose={handleSnack}
+          onClose={handlePostReview}
           severity="success"
           style={{ backgroundColor: "#3f51b5", color: "white" }}
         >
