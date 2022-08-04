@@ -6,14 +6,13 @@ import { createTheme } from "@material-ui/core";
 import NavMyAccount from './NavMyAccount';
 import { useAuth0 } from "@auth0/auth0-react";
 import {Box, CssBaseline, Button} from '@material-ui/core';
-import CrearUserAddres from '../UserInfo/CrearUserAddres';
-
-import NavTwo from '../Nav/NavTwo'
 // import UserAddressForm from '../UserInfo/UserAddressForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getAllSales } from '../../actions/actions';
-
+// import CurrentSale from './CurrentSale'
+// import CrearUserAddres from '../UserInfo/CrearUserAddres';
+// import ModalCreateInfoUser from '../MyAccount/ModalCreateInfoUser'
 import { Link  } from 'react-router-dom';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import LocalShippingIcon from '@material-ui/icons/LocalShipping';
@@ -37,8 +36,9 @@ const theme = createTheme({
 })
 
 export default function MyAccount() {
-  
+  const dispatch = useDispatch();
   const { user, isAuthenticated, isLoading } = useAuth0();
+  const sales = useSelector(state => state.salesProduct)
 
  
   useEffect(() => {
@@ -52,34 +52,32 @@ return (
     <CssBaseline />
       <Grid container>
         <Grid item xs={12}>
-          <NavTwo/>              
+          <NavMyAccount/>              
         </Grid>
             <Grid item xs={12}>
-                  <Box 
-                  bgcolor='#e0e0e0'
+                  <Box
                   pt={12}
-                  textAlign='left'
-                  border={0}
+                  pb={2}
+                  textAlign='center'
                   boxShadow='4px 1px 8px #7a7a7a'
                   >
-                  <Button
-                  size='small'
-                  variant='outlined'
-                  >Home</Button>
-
-                  <Button
-                  variant='outlined'
-                  size='small'
-                  >Mi Cuenta</Button>
+                  <Typography display='display' variant='h5'>Mi Cuenta</Typography>
                   </Box>
-                  <Box>
-                          <Typography>Bienvenido,<h3>{user.name}</h3></Typography>
-                          <Avatar src={user.picture} variant='square'
+                  <Box
+                  textAlign='center'
+                  py={2}
+                  >
+                          <Typography><h3>¡ Hola ! {(user.name).toUpperCase()}</h3></Typography>
+                          <Box
+                          // paddingX={80}
+                          textAlign='center'
+                          >
+                          <Button>
+                          <Avatar src={user.picture} 
+                          variant='circle'
                           ></Avatar>
-                          <Typography>{user.email}</Typography>
-
-                          
-                       
+                          </Button>
+                          </Box>
                           
                 </Box>
             </Grid>
@@ -118,25 +116,17 @@ return (
               </Box>
           </Grid>
           </Box>
-          
+         
+           {/* <UserAddressForm/> */}
 
         </Grid>
         <Grid item xs={6}>
           <Box 
           // bgcolor='pink'
           p={10}
-          border={1}
-          borderColor='black'
+          textAlign='Center'
           >
-          <h2>Mi compra</h2>
-
-              <h5>
-              Redirección al carrito <br/>
-              Detail<br/>
-              Acceso de DETAIL
-              </h5>
-
-          <Typography display='display' variant='h5'>Seguir Comprando?</Typography> 
+          <Typography display='display' variant='h5'>¿Seguir Comprando?</Typography> 
           <Box p={7}>
           <Link to="/cart" size='small' className='link'>
                     
@@ -153,15 +143,6 @@ return (
       <Grid item xs={12}
       alignItems='flex-start'
       >
-          <Box 
-            bgcolor='lightBlue'
-            p={7}
-            border={1}
-            borderColor='black'
-            textAlign='left'
-          >
-          Historial de Pedidos
-          </Box>
         <Box 
         bgcolor='lightBlue'
         p={3}

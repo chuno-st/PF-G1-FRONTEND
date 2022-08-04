@@ -2,7 +2,6 @@ import { React, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { createDatosUsuario } from "../../actions/actions";
 import TextField from "@mui/material/TextField";
-import { FormControl } from "@mui/material";
 import { useAuth0 } from '@auth0/auth0-react'
 import { Container } from "@mui/system";
 import { Button, FormControl, FormHelperText, Grid, Input, InputLabel } from "@mui/material";

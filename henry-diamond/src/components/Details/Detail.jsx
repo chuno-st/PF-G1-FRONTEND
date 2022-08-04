@@ -71,7 +71,7 @@ export default function Detail () {
           <CssBaseline />
             <Grid container>
                 <Grid item xs={12}>
-                  <NavTwo/>              
+              <NavMyAccount/>            
                 </Grid>
           
               <Grid item xs={12} ms={6} md={6} xl={6} lg={6}
