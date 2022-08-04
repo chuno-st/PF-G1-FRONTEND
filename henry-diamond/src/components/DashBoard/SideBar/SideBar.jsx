@@ -16,13 +16,14 @@ import DiamondIcon from "@mui/icons-material/Diamond";
 import PersonIcon from "@mui/icons-material/Person";
 import CategoryIcon from "@mui/icons-material/Category";
 import DashboardIcon from "@mui/icons-material/Dashboard";
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import Productos from "../Productos/Productos"
 import Usuarios from "../Usuarios/Usuarios"
 import Categorias from "../Categorias/Categorias"
 import SubCategorias from "../SubCategorias/SubCategorias"
-import CrearProducto from "../CrearProducto/CrearProducto.jsx";
-import SportsKabaddiIcon from '@mui/icons-material/SportsKabaddi';
+import Ventas from "../Ventas/Ventas";
+
 
 const drawerWidth = 240;
 
@@ -91,6 +92,14 @@ export default function SideBar() {
                         </ListItem>
                     ))}
                 </List>
+                <List onClick={()=> setShow("Ventas")}>
+                    {["Ventas"].map((text) => (
+                        <ListItem component={Link} to="/admin" button key={text}>
+                            <ListItemIcon>{<ShoppingBagIcon />}</ListItemIcon>
+                            <ListItemText primary={text} />
+                        </ListItem>
+                    ))}
+                </List>
                 <List onClick={()=> setShow("Usuarios")}>
                     {["Usuarios"].map((text) => (
                         <ListItem component={Link} to="/admin" button key={text}>
@@ -121,6 +130,7 @@ export default function SideBar() {
                 <div className={classes.toolbar} />
                 {show === "DashBoard" && <IndexChart />}
                 {show === "Productos" && < Productos />}
+                {show === "Ventas" && < Ventas />}
                 {show === "Usuarios" && <Usuarios />}
                 {show === "Categorias" && <Categorias />}
                 {show === "SubCategorias" && <SubCategorias/>}

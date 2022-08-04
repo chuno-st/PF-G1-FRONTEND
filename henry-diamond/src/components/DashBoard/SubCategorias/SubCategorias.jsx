@@ -59,6 +59,9 @@ export default function SubCategorias() {
                 setInput({ name: "" });
                 alert("La subCategoria se creo correctamente");
             }
+            setTimeout(function(){
+                dispatch(adminSubCategory())
+            }, 1500);
         } catch (error) {
             console.log(error);
         }

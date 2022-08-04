@@ -10,9 +10,7 @@ import { capitalizeLetter } from "../../../Utils/utils";
 import axios from "axios";
 import { getProductById, getAllItemsAdmin, editProduct } from "../../../actions/actions";
 import { useNavigate } from "react-router-dom";
-import Productos from "../Productos/Productos";
 
-// const URL = "https://pf-g1-backend-production-3e79.up.railway.app/";
 
 export default function EditarProducto(props) {
 
@@ -63,7 +61,9 @@ export default function EditarProducto(props) {
         e.preventDefault();
         dispatch(editProduct(input));
         closeProduct();
-        navigate(0);
+        setTimeout(function(){
+            dispatch(getAllItemsAdmin())
+        }, 1500);
     };
 
     function handleChange(e) {

@@ -11,6 +11,8 @@ import {
     SET_CATEGORY,
     SET_SUBCATEGORY,
     ADD_USER,
+    GET_VENTAS,
+    VENTAS_STATUS,
     CHECK_ROLE,
     CREATE_PRODUCT,
     DISABLE_PRODUCT,
@@ -82,6 +84,30 @@ export function getAllItemsAdmin() {
         });
     };
 }
+
+export function getAllVentas() {
+    return async (dispatch) => {
+        let response = await axios.get(`${URL}sales`);
+        return dispatch({
+            type: GET_VENTAS,
+            payload: response.data,
+        });
+    };
+}
+
+export function ventasStatus(body) {
+    console.log("el body", body)
+    return async (dispatch) => {
+            try {
+                const response = await axios.patch(`${URL}sales/`, body);
+                console.log(response.data)
+                dispatch({ type: VENTAS_STATUS, payload: response.data});
+    
+            } catch (error) {
+                console.log(error);
+            }
+        }
+   }
 
 export function disableItemsAdmin(id, state) {
     if (state){
@@ -529,7 +555,10 @@ export const getUser = (id)=>{
     }
   }
   
-  export const SetRoles= (obj) => {
+
+
+
+export const SetRoles= (obj) => {
     console.log(obj);
     return async () => {
     let role = await axios.patch(`${URL}adduser/admin`,obj) 
@@ -545,8 +574,6 @@ export const checkuserBlocked=(id)=>{
         }
 }
 
-// traer todos los productos comprados por el usuario
-// get.{URL}sales/user/:id
 
 export const getAllSales =  (id) => {
     return async function(dispatch){

@@ -18,6 +18,7 @@ import {
     ALL_ITEMS_ADMIN,
     CREATE_DATOS_USUARIO,
     GET_PRODUCT,
+    GET_VENTAS,
 } from "../actions/typeActions";
 
 const inicialState = {
@@ -25,6 +26,7 @@ const inicialState = {
     items: [],
     itemsAdmin: [],
     users: [],
+    ventas: [],
     filter: {},
     category: [],
     adminCategory: [],
@@ -39,7 +41,7 @@ const inicialState = {
     product:{},
     favorites: [],
     matches: [],
-    role: "none",   
+    role: "none",
     shoppingCart: [],
     Cart:"",
     user: [],
@@ -56,6 +58,9 @@ const reducer = (state = inicialState, { type, payload }) => {
     switch (type) {
         case GET_PRODUCT:
             return { ...state, items: payload };
+
+        case GET_VENTAS:
+            return { ...state, ventas: payload };
 
         case ALL_ITEMS:
             return { ...state, items: payload };
@@ -157,12 +162,12 @@ const reducer = (state = inicialState, { type, payload }) => {
         case "RESET_MATCH": {
             return { ...state, matches: [] };
         }
-        case 'CHECK_FAV':
-          console.log('estoy en CHECK_FAV:', payload)
-          return {
-            ...state,
-            favorites: payload
-          }
+        case "CHECK_FAV":
+            console.log("estoy en CHECK_FAV:", payload);
+            return {
+                ...state,
+                favorites: payload,
+            };
 
         case 'GET_USER':
             return {
