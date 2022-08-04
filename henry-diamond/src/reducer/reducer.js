@@ -47,6 +47,7 @@ const inicialState = {
     userAddress: [],
     salesProduct:[],
     heartFav: [],
+    userInfo: [],
 
 
 };
@@ -166,8 +167,9 @@ const reducer = (state = inicialState, { type, payload }) => {
         case 'GET_USER':
             return {
                 ...state,
-                favorites: payload,
+                userInfo: payload,
             };
+        
 
         case "GET_USER_ADDRESS":
             return {
@@ -197,6 +199,7 @@ const reducer = (state = inicialState, { type, payload }) => {
             };
 
         case "POST_CART":
+            console.log(payload);
             return {
                 ...state,
                 Cart: payload,

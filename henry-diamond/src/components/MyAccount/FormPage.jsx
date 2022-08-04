@@ -48,7 +48,7 @@ return (
             <Grid item xs={12}>
                   <Box 
                     bgcolor='#e0e0e0'
-                    pt={11}
+                    pt={2}
                     pb={1}
                     textAlign='center'
                     border={0}
@@ -78,13 +78,14 @@ return (
                     </Box>
             </Grid>
           <Grid item xs={12}
-          justifyContent='flex-start'
           >
               <Box my={6} align='center'>
                     <CrearUserAddres/>
               </Box>
         </Grid>
       </Grid>
+
+      
         <Grid item xs={12}>
             <Footer/>
         </Grid>  

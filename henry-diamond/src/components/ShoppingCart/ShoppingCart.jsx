@@ -5,7 +5,7 @@ import CardCart from "../CardCart/CardCart";
 import { Button } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { postCart } from "../../actions/actions";
-import { addCart } from "../../actions/actions";
+import { addCart, getUser } from "../../actions/actions";
 import {Box} from '@material-ui/core';
 
 import { useAuth0 } from "@auth0/auth0-react";
@@ -56,7 +56,9 @@ export default function ShoppingCart(){
     const Navigate = useNavigate()
     const productos = useSelector(state => state.shoppingCart)
     // const subTotal = productos[0].map((producto)=>producto.price*producto.cantidad)
-    
+    const info = useSelector(state => state.userInfo)
+    console.log(info)
+
 
     if(link.length>0) {
         console.log(link)
@@ -64,8 +66,10 @@ export default function ShoppingCart(){
     }
 
     const handlerSubmit = () =>{
-      if (isAuthenticated){
+      if (isAuthenticated && info.calle){
         dispatch(postCart(productos, user.sub))
+      } else if (isAuthenticated && !info.calle ) {
+        Navigate('/formpage')
 
       }else{
         swal({
@@ -74,12 +78,15 @@ export default function ShoppingCart(){
           icon: "error",
           button: "Aceptar",
         });
-        //alert("Por favor inicia sesión para poder realizar la compra")
     }
   }
     useEffect(() => {
       dispatch(addCart())
+      dispatch(getUser(user.sub))
+      
     }, [dispatch]);
+
+
     
     const handlesubtotal=()=>{
       if(productos.length){

@@ -362,11 +362,13 @@ export const createProduct = (body) => {
 export const createDatosUsuario = (body) => {
 
     return  (dispatch) => {
-        
             axios.put(`${URL}adduser`, body)
-            .then (() => alert("Los datos del usuario fueron creados correctamente"))
-            console.log( 'Soy body', body)
-            .catch ((err)=> alert ("Los datos del usuario no fueron cargados"))
+            .then ( swal({
+                title: "Los datos fueron cargados",
+                text: "Los datos para el envío fueron cargados correctamente ",
+                icon: "success",
+                button: "Aceptar",
+              }).then (()=> window.history.back()) )
             }
 }
 
@@ -499,9 +501,9 @@ export const deleteFavorite = (sub, item) => {
 
 //USER: 
 
-export const getUser = ()=>{
+export const getUser = (id)=>{
     return async function(dispatch){
-      return axios.get(`${URL}`, )
+      return axios.get(`${URL}adduser/${id}`, )
         .then(response=>{
           dispatch({type: GET_USER, payload: response.data})
         }).catch(err => console.log(err))
