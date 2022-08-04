@@ -64,10 +64,11 @@ export default function ShoppingCart(){
         console.log(link)
         window.location = `${link}` 
     }
-
+    console.log(productos[0])
     const handlerSubmit = () =>{
       if (isAuthenticated && info.calle){
         dispatch(postCart(productos, user.sub))
+        .then(()=>productos[0].map((producto)=>{ return localStorage.removeItem(producto.product_id)}))
       } else if (isAuthenticated && !info.calle ) {
         Navigate('/formpage')
 
@@ -82,7 +83,9 @@ export default function ShoppingCart(){
   }
     useEffect(() => {
       dispatch(addCart())
-      dispatch(getUser(user.sub))
+      if(isAuthenticated ){
+        dispatch(getUser(user.sub))
+      }
       
     }, [dispatch]);
 
