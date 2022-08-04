@@ -1,5 +1,5 @@
 import ImageDetail from './ImageDetail'
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {getProductById, FilterBy, findMatch} from '../../actions/actions';
@@ -46,15 +46,22 @@ export default function Detail () {
     const dispatch = useDispatch()
     const product = useSelector(state => state.product)
     // const nameUpper = product.name.toUpperCase()
-
+    const [showProducts, setShowProducts] = useState(false)
+    
+    // console.log(prodSimil, 'detaildetail')
+    
     useEffect(() => {
-        dispatch(getProductById(id))
-        
+      dispatch(getProductById(id))
+      
+      
     },[id])
     
+    
     const handleclick = () => {
-        dispatch(findMatch(product.subCategory_id))    
+      if(product) dispatch(findMatch(product.subCategory_id))
+      setShowProducts(!showProducts)    
     }
+    
     
    
     return (
@@ -120,12 +127,16 @@ export default function Detail () {
                   >
                     <Typography align='center' gutterBottom variant='h5'> 
                         <Button variant= 'contained'  onClick={handleclick}>Ver productos similares</Button>          
+                        {/* <Button variant= 'contained' onClick={handleClose}>Ver Menos</Button> */}
                     </Typography>
                     </Box>
               </Grid>
 
-            
-              <Grid item xs={12} sm={8} md={9} container spacing={50}>
+            {
+             
+             showProducts && <Grid item xs={12} sm={8} md={9} container spacing={50}>
+
+
             { matches.map( i => {
               if(i.name === product.name) {return}
               return (
@@ -141,6 +152,7 @@ export default function Detail () {
               })
             } 
         </Grid> 
+            }
 
         <Grid item xs={12} ms={12} md={12} xl={12} lg={12}
               alignItems='center'

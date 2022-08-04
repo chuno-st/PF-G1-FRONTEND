@@ -58,9 +58,11 @@ export default function CardRating({ product }) {
 
   //la Id del producto deberia llegar como props o como parametro
   //const id = product.id
-  // useEffect(() => {
-  //   if (product.id) getReviews();
-  // }, [product.id]);
+
+  
+  useEffect(() => {
+    if (product.id) dispatch (getReviews());
+  }, [product.id]);
 
   const dispatch = useDispatch();
 
@@ -68,13 +70,16 @@ export default function CardRating({ product }) {
     const obj = {
       id: product.product_id,
       comment: description,
-      author: user.sub,
-      rating: valueNew
+      author: user.name,
+      rating: valueNew,
+      
     }
     dispatch (postReview(obj))
+    dispatch (getReviews())
     setOpen(false)
   }
 
+  
   
   // const handlePostComprador = () => {
   //   if(isAuthenticated ){
@@ -100,6 +105,7 @@ export default function CardRating({ product }) {
   };
   const handleSnack = () => {
     setSnack(false);
+    
   };
 
   

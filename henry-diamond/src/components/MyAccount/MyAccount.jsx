@@ -172,8 +172,9 @@ return (
                     {/* <p>Producto: {e.product_id}</p> */}
                     <Typography display='display' variant='h6'>Estado de compra:</Typography><p>{(e.status).toUpperCase()}</p>
                     <Typography display='display' variant='h6'>Fecha de compra:</Typography><p>{e.createdAt}</p>
+                    {/* <Typography display='display' variant='h6'>Cantidad: </Typography><p>{e.quantity[0]}</p> */}
                     <Typography display='display' variant='h6'>Cuota:</Typography><p>${e.monto} - Total: ${e.montoTotal}</p>
-                    {console.log(e.items)}
+                    {console.log(e.items, 'obj item')}
                 
               </Box>
             )
