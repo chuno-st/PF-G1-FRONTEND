@@ -1,13 +1,15 @@
 import React from "react";
 import  AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import InputBase from '@material-ui/core/InputBase';
+//import InputBase from '@material-ui/core/InputBase';
 import  Typography  from "@material-ui/core/Typography";
 import SearchIcon from '@material-ui/icons/Search';
-import Container from '@material-ui/core/Container';
+//import Container from '@material-ui/core/Container';
 import  {makeStyles} from "@material-ui/core/styles";
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
 import { useState} from "react";
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { getAllProduct } from "../../actions/actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton } from "../Login/Login";
@@ -18,7 +20,7 @@ import { ShoppingCartButton } from '../ShoppingCartButton/ShoppingCartButton'
 import Logo from '../Logo/Logo'
 import IconButton from '@mui/material/IconButton';
 import Button from '@material-ui/core/Button';
-
+import { capitalizeLetter } from "../../Utils/utils";
 
 
 
@@ -105,26 +107,24 @@ const useStyles = makeStyles((theme) => ({
 
 
   export default function SearchAppBar() {
+    const items = useSelector(state => state.items);
     const { isAuthenticated } = useAuth0();
     const classes = useStyles()
     const dispatch = useDispatch();
     const [name, setName] = useState("")
    
   
-      const handleSearchBar = (e) => {
-          setName(e.target.value)
-      }
+
       
-      // console.log(name)
+
   
       const handleSubmit =(e) => {
           e.preventDefault() // para que no refresque la pag si no hay info nueva, con el click.
-          setName("")
           dispatch(getAllProduct(name))
+          setName("")
           
       }
   
-
 
     return (
         <div >
@@ -139,30 +139,29 @@ const useStyles = makeStyles((theme) => ({
                        
                           
                            
+                              <Autocomplete
+                               classes={{
+                                 root: classes.inputRoot,
+                                 input: classes.inputInput,
+                               }}
+                               disablePortal
+                               id="combo-box-demo"
+                               options={items.map(e => { return capitalizeLetter(e.name)})}
+                               sx={{ width: 300 }}
+                               renderInput={(params) => <TextField {...params} label="Buscar..." />}
+                               onChange={(e, ne)=>{setName(ne)}}
+                               />
                             <div >
-                                <div className={classes.searchIcon}>
                                 
-                                </div>
-                                    <InputBase
-                                        className={classes.search}
-                                        mdDown='true'
-                                        placeholder="Buscar..."
-                                        label="Outlined secondary"
-                                        classes={{
-                                          root: classes.inputRoot,
-                                          input: classes.inputInput,
-                                        }}
-                                        value={name}
-                                        inputProps={{ 'aria-label': 'search' }}
-                                        onChange={handleSearchBar}
-                                        />
-                           
+                                
                                 <IconButton  
                                       className='Search' 
                                       type='submit' 
                                       onClick={(e) => handleSubmit(e)}
                                       > <SearchIcon />
                                 </IconButton>
+                            
+                           
                           </div>
                           <Hidden smDown>
                       
