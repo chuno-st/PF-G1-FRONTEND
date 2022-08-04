@@ -44,7 +44,11 @@ export default function ProductoForm(props) {
     const handleDisable = async () => {
         try {
             dispatch(disableItemsAdmin(elem.product_id, elem.state));
-            navigate(0);
+            // navigate(0);
+            setTimeout(function(){
+                dispatch(getAllItemsAdmin())
+            }, 1500);
+
         } catch (error) {
             console.log(error);
         }

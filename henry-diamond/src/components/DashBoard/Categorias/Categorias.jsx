@@ -55,6 +55,9 @@ export default function Categorias() {
                 setInput({ name: "" });
                 alert("La categoria se creo correctamente");
             }
+            setTimeout(function(){
+                dispatch(adminCategory())
+            }, 1500);
         } catch (error) {
             console.log(error);
         }

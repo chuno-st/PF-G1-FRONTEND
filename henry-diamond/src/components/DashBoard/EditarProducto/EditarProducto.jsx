@@ -63,7 +63,7 @@ export default function EditarProducto(props) {
         closeProduct();
         setTimeout(function(){
             dispatch(getAllItemsAdmin())
-        }, 2000);
+        }, 1500);
     };
 
     function handleChange(e) {

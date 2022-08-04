@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { TableCell, TableRow, Button } from "@material-ui/core";
 import { capitalizeLetter } from "../../../Utils/utils";
 import EditIcon from "@mui/icons-material/Edit";
-import { disableCategory } from "../../../actions/actions";
+import { disableCategory, adminCategory } from "../../../actions/actions";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 
@@ -18,7 +18,9 @@ export default function CategoryForm(props) {
     const handleDisable = async () => {
         try {
             dispatch(disableCategory(elem.category_id, elem.state));
-            navigate(0);
+            setTimeout(function(){
+                dispatch(adminCategory())
+            }, 1500);
         } catch (error) {
             console.log(error);
         }

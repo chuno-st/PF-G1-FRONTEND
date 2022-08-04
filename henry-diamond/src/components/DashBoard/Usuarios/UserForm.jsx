@@ -3,7 +3,7 @@ import {Table,TableContainer,TableHead,TableCell,TableBody,TableRow,Button,} fro
 import { capitalizeLetter } from "../../../Utils/utils";
 import { React, useState } from "react";
 import Select from 'react-select'
-import { SetRoles } from "../../../actions/actions.js";
+import { SetRoles, getAllUsers } from "../../../actions/actions.js";
 export default function UserForm(props){
     const {elem} = props;
     const dispatch =useDispatch();
@@ -19,6 +19,9 @@ const handleClick =()=>{
         roles: role
     }
     dispatch(SetRoles(obj));
+    setTimeout(function(){
+      dispatch(getAllUsers())
+  }, 1500);
 }
 
 console.log(elem)
