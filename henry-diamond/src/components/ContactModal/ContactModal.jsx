@@ -32,11 +32,14 @@ export default function ContactModal() {
       >
         <Box sx={style}>
         <Typography>
-        <h4>Podes contactarte con nosotros:
+        <h4>Podes contactarte con nosotros:</h4>
+        <br/>
             <p>Por email: henrydiamons@gmail.com</p>
-            <p>Por teléfono: +54-XXX-XXXXXXX</p>
+            <br/>
+            <p>Por teléfono: +54-123-4567890</p>
+            <br/>
             <p>Por nuestras redes sociales: ...</p>
-        </h4>
+        
           </Typography>
         </Box>
       </Modal>

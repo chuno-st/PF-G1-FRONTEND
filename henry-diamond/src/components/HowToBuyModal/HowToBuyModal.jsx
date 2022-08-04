@@ -32,13 +32,19 @@ export default function HowToBuyModal() {
       >
         <Box sx={style}>
           <Typography>
-          <h4>¡Comprar en nuestra tienda online es muy fácil!
+          <h4>¡Comprar en nuestra tienda online es muy fácil!</h4>
+          <br/>
           <p>-Elegí el producto que querés comprar.</p>
+          <br/>
           <p>-Haz click en el 🛒 asociado al producto y selecciona las unidades que desees comprar. </p>
+          <br/>
           <p>-Haz click en el 🛒 que se encuentra en el margen superior derecho, puedes modificar la cantidad o eliminar productos del mismo.</p>
+          <br/>
           <p>-Una vez seleccionados los productos que desea adquirir, apretar el botón de comprar. </p>
+          <br/>
+          <p>-En el caso de que no haya iniciado sesión, se le pedirá hacerlo</p>
 
-          </h4>
+          
           </Typography>
         </Box>
       </Modal>
