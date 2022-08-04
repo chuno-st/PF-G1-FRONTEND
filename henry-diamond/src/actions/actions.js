@@ -73,6 +73,8 @@ export function addUser(data){
 export function checkRole (id){
     return async (dispatch) =>{
         let Role = await axios.get(`${URL}adduser/checkrole?id=${id}`)
+        console.log("TIRANDO EL ROLE.DATa", Role.data)
+        console.log("TIRANDO EL ROLE", Role)
         return dispatch ({
             type: CHECK_ROLE,
             payload: Role.data
