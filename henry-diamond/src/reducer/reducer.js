@@ -50,6 +50,7 @@ const inicialState = {
     salesProduct:[],
     heartFav: [],
     userInfo: [],
+    productAdmin: {},
 };
 
 const reducer = (state = inicialState, { type, payload }) => {
@@ -221,7 +222,12 @@ const reducer = (state = inicialState, { type, payload }) => {
         case 'CHECK_USER_BLOCK' :
             return {
                 ...state,
+
                 roleUser: payload}
+        case "GET_PRODUCT_ADMIN_ID":
+            return {
+                ...state,
+                productAdmin: payload}
         default:
             return state;
     }

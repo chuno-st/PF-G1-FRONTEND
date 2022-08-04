@@ -8,7 +8,7 @@ import Select from "@mui/material/Select";
 import Validate from "../Utils/Validate";
 import { capitalizeLetter } from "../../../Utils/utils";
 import axios from "axios";
-import { getProductById, getAllItemsAdmin, editProduct } from "../../../actions/actions";
+import { getProductByIdAdmin, getAllItemsAdmin, editProduct } from "../../../actions/actions";
 import { useNavigate } from "react-router-dom";
 
 
@@ -22,18 +22,18 @@ export default function EditarProducto(props) {
     const categorias = useSelector((state) => state.category);
     const subCategorias = useSelector((state) => state.subcategory);
 
-    const productoEditado = useSelector((state) => state.product);
+    const productoEditado = useSelector((state) => state.productAdmin);
     console.log("producto editado", productoEditado)
 
 
     useEffect(() => {
         if (isOpen) {
-            dispatch(getProductById(product_id));
+            dispatch(getProductByIdAdmin(product_id));
         }
         if (productoEditado.product_id){
             setInput(productoEditado)
         }
-    }, [isOpen, productoEditado.product_id]);
+    }, [isOpen, productoEditado]);
   
     const [input, setInput] = useState({
         product_id: "",
@@ -78,7 +78,7 @@ export default function EditarProducto(props) {
         });
     }
 
-    if (isOpen) {
+    if (isOpen && productoEditado.product_id) {
         return (
             <div
                 style={{
@@ -161,7 +161,7 @@ export default function EditarProducto(props) {
                                     name="category_id"
                                     onChange={handleChange}
                                     helperText={error.category_id}
-                                    value={productoEditado.category_id}
+                                    value={productoEditado && productoEditado.category_id}
                                 >
                                     {categorias.map((c) => {
                                         return (
@@ -182,7 +182,7 @@ export default function EditarProducto(props) {
                                     name="subCategory_id"
                                     onChange={handleChange}
                                     helperText={error.subCategory_id}
-                                    value={productoEditado.subCategory_id}
+                                    value={productoEditado && productoEditado.subCategory_id}
                                 >
                                     {subCategorias.map((c) => {
                                         return (

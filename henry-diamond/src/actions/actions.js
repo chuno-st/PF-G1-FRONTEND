@@ -350,6 +350,15 @@ export const getProductById = (id) => {
         });
     };
 };
+export const getProductByIdAdmin = (id) => {
+    return async (dispatch) => {
+        const productID = await axios.get(`${URL}product/admin/${id}`);
+        dispatch({
+            type: "GET_PRODUCT_ADMIN_ID",
+            payload: productID.data,
+        });
+    };
+};
 
 export const findMatch = (subcategory) => {
     return async (dispatch) => {
