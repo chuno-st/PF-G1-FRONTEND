@@ -61,7 +61,9 @@ export default function EditarProducto(props) {
         e.preventDefault();
         dispatch(editProduct(input));
         closeProduct();
-        navigate(0);
+        setTimeout(function(){
+            dispatch(getAllItemsAdmin())
+        }, 2000);
     };
 
     function handleChange(e) {

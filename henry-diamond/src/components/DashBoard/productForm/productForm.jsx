@@ -57,7 +57,7 @@ export default function ProductoForm(props) {
                 <img src={elem.image} style={{ height: "35px", borderRadius: "5px" }} />
             </TableCell>
             <TableCell>{capitalizeLetter(elem.name)}</TableCell>
-            <TableCell>{elem.price}</TableCell>
+            <TableCell>${elem.price}</TableCell>
             <TableCell>{elem.stock}</TableCell>
             <TableCell>{elem.state.toString()}</TableCell>
             <TableCell>

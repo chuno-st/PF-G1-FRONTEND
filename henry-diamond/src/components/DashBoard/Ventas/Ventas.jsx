@@ -6,7 +6,7 @@ import {
     TableCell,
     TableBody,
     TableRow,
-    Button,
+    MenuItem
 } from "@material-ui/core";
 import Select from "react-select";
 import Modal from "../../Modal/Modal";
@@ -26,13 +26,14 @@ export default function Ventas() {
     const [ventaItems, setVentaItems] = useState([]);
 
     // const [ventaID, setVentaId] = useState("");
-    // const [estado, setEstado] = useState("");
+    const [estado, setEstado] = useState("all");
 
-    // const status = [
-    //     { value: "dispatch", label: "Despachado" },
-    //     { value: "ANULED", label: "Anulado" },
-    //     { value: "approved", label: "Aprobado" },
-    // ];
+    const statusFilter = [
+        { value: "all", label: "Todas las ventas" },
+        { value: "dispatch", label: "Despachado" },
+        { value: "ANULED", label: "Anulado" },
+        { value: "approved", label: "Aprobado" },
+    ];
 
     useEffect((body) => {
         dispatch(getAllVentas());
@@ -44,6 +45,12 @@ export default function Ventas() {
     return (
         <ThemeProvider>
             <div style={{ height: 400, width: "100%" }}>
+                <Select options={statusFilter} value={estado} onChange={(e) => setEstado(e.value)}>
+                    <MenuItem value={"all"}>Todas las ventas</MenuItem>
+                    <MenuItem value={"dispatch"}>Despachado</MenuItem>
+                    <MenuItem value={"ANULED"}>Anulado</MenuItem>
+                    <MenuItem value={"approved"}>Aprobado</MenuItem>
+                </Select>
                 <TableContainer>
                     <Table>
                         <TableHead>
@@ -60,7 +67,7 @@ export default function Ventas() {
 
                         <TableBody>
                             {ventas.map((elem) => (
-                                <VentasForm key={elem.id} elem={elem} />                               
+                                <VentasForm key={elem.id} elem={elem} />
                             ))}
                         </TableBody>
                     </Table>
