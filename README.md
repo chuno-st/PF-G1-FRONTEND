@@ -30,6 +30,12 @@ En este e-commerce se puede:
 <p>
 <img src="https://github.com/soledadpetrino/soledadpetrino/blob/main/images/home1.png" width="auto" height="auto">
 <img src="https://github.com/soledadpetrino/soledadpetrino/blob/main/images/home2.png" width="auto" height="auto">
+<br/>
+<img src="https://github.com/soledadpetrino/soledadpetrino/blob/main/images/home3.png" width="auto" height="auto">
+<br/>
+<img src="https://github.com/soledadpetrino/soledadpetrino/blob/main/images/checkout.png" width="auto" height="auto">
+   
+   
 </p>
 
 
