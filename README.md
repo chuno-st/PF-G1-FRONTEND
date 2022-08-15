@@ -9,25 +9,34 @@ Las tecnológicas utilizadas para el desarrollo del mismo son:
 * DESCRIPCIÓN GENERAL:
 
 En este e-commerce se puede:
-<li>
-✅ Ver la lista completa de productos, para ver todo lo que hay disponible.
-</li>
-<li>
-✅ Creación de usuario por medio de Auth0.
-</li>
 
-✅ Filtrar productos por precio y por categoría.
-✅ Buscar un producto en particular.
-✅ Ver los detalles de un producto individual (incluida las fotos, descripciones, reviews, etc.).
-✅ Dejar reviews a los productos en caso de que el usuario haya comprado dicho artículo.
-✅ Agregar, eliminar y editar cantidades de los productos de mi carrito.
-✅ Pagar por medio de Mercado Pago y recibir la compra en la dirección especificada en el formulario de registro de datos del comprador.
-✅ Recibir un e-mail para la confirmación y notificación de despacho de la compra.
-✅ Ver el historial de compras realizadas.
-✅ Crear y editar productos (Admin).
-✅ Poder crear, agregar o sacar categorias de los items (Admin).
-✅ Gestionar stock (Admin).
-✅ Ver una lista de todas las ordenes y gestionar las mismas (Admin).
-✅ Gestión de usuarios (Admin).
-</p>
+<ul style="list-style: none">
+   <li>✅ Ver la lista completa de productos, para ver todo lo que hay disponible.</li>
+   <li>✅ Creación de usuario por medio de Auth0.</li>
+   <li>✅ Filtrar productos por precio y por categoría.</li>
+   <li>✅ Buscar un producto en particular.</li>
+   <li>✅ Ver los detalles de un producto individual (incluida las fotos, descripciones, reviews, etc.).</li>
+   <li>✅ Dejar reviews a los productos en caso de que el usuario haya comprado dicho artículo.</li>
+   <li>✅ Agregar, eliminar y editar cantidades de los productos de mi carrito.</li>
+   <li>✅ Pagar por medio de Mercado Pago y recibir la compra en la dirección especificada en el formulario de registro de datos del comprador.      </li>
+   <li>✅ Recibir un e-mail para la confirmación y notificación de despacho de la compra.</li>
+   <li>✅ Ver el historial de compras realizadas.</li>
+   <li>✅ Crear y editar productos (Admin).</li>
+   <li>✅ Poder crear, agregar o sacar categorias de los items (Admin).</li>
+   <li>✅ Gestionar stock (Admin).</li>
+   <li>✅ Ver una lista de todas las ordenes y gestionar las mismas (Admin).</li>
+   <li>✅ Gestión de usuarios (Admin).</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
 
