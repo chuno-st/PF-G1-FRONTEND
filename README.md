@@ -28,8 +28,8 @@ En este e-commerce se puede:
    <p>✅ Gestión de usuarios (Admin).</p>
 </ul>
 <p>
-<img src="https://github.com/soledadpetrino/soledadpetrino/blob/main/images/home1.png" width="800" height="800">
-<img src="https://github.com/soledadpetrino/soledadpetrino/blob/main/images/home2.png" width="800" height="800">
+<img src="https://github.com/soledadpetrino/soledadpetrino/blob/main/images/home1.png" width="1200" height="800">
+<img src="https://github.com/soledadpetrino/soledadpetrino/blob/main/images/home2.png" width="1200" height="800">
 </p>
 
 
