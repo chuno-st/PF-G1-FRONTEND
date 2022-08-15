@@ -28,14 +28,20 @@ En este e-commerce se puede:
    <p>✅ Gestión de usuarios (Admin).</p>
 </ul>
 <p>
+<p>HOME</p>
+<br/>
 <img src="https://github.com/soledadpetrino/soledadpetrino/blob/main/images/home1.png" width="auto" height="auto">
+<br/>
 <img src="https://github.com/soledadpetrino/soledadpetrino/blob/main/images/home2.png" width="auto" height="auto">
 <br/>
 <img src="https://github.com/soledadpetrino/soledadpetrino/blob/main/images/home3.png" width="auto" height="auto">
 <br/>
+<p>CHECKOUT</p> 
+<br/>
 <img src="https://github.com/soledadpetrino/soledadpetrino/blob/main/images/checkout.png" width="auto" height="auto">
 <br/>
 <p>DASHBOARD</p>   
+<br/>
 <img src="https://github.com/soledadpetrino/soledadpetrino/blob/main/images/admin1.png" height="auto">
 <br/>
 <img src="https://github.com/soledadpetrino/soledadpetrino/blob/main/images/admin2.png" height="auto">
@@ -43,6 +49,12 @@ En este e-commerce se puede:
 <img src="https://github.com/soledadpetrino/soledadpetrino/blob/main/images/admin3.png" height="auto">
 <br/>
 <img src="https://github.com/soledadpetrino/soledadpetrino/blob/main/images/admin4.png" height="auto">
+<br/>
+<p>TEAM</p>
+<br/>
+<img src="https://github.com/soledadpetrino/soledadpetrino/blob/main/images/responsive.png" height="auto">
+<br/>
+
 </p>
 
 
