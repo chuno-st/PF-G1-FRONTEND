@@ -9,9 +9,13 @@ Las tecnológicas utilizadas para el desarrollo del mismo son:
 * DESCRIPCIÓN GENERAL:
 
 En este e-commerce se puede:
-
+<li>
 ✅ Ver la lista completa de productos, para ver todo lo que hay disponible.
+</li>
+<li>
 ✅ Creación de usuario por medio de Auth0.
+</li>
+
 ✅ Filtrar productos por precio y por categoría.
 ✅ Buscar un producto en particular.
 ✅ Ver los detalles de un producto individual (incluida las fotos, descripciones, reviews, etc.).
@@ -25,3 +29,5 @@ En este e-commerce se puede:
 ✅ Gestionar stock (Admin).
 ✅ Ver una lista de todas las ordenes y gestionar las mismas (Admin).
 ✅ Gestión de usuarios (Admin).
+</p>
+
