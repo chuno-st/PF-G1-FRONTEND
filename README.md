@@ -27,6 +27,10 @@ En este e-commerce se puede:
    <p>✅ Ver una lista de todas las ordenes y gestionar las mismas (Admin).</p>
    <p>✅ Gestión de usuarios (Admin).</p>
 </ul>
+<p>
+<img src="https://github.com/soledadpetrino/soledadpetrino/blob/main/images/HOME.png">
+</p>
+
 
 
 
