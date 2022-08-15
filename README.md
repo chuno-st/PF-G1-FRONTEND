@@ -34,8 +34,14 @@ En este e-commerce se puede:
 <img src="https://github.com/soledadpetrino/soledadpetrino/blob/main/images/home3.png" width="auto" height="auto">
 <br/>
 <img src="https://github.com/soledadpetrino/soledadpetrino/blob/main/images/checkout.png" width="auto" height="auto">
-   
-   
+<br/>
+<img src="https://github.com/soledadpetrino/soledadpetrino/blob/main/images/admin1.png" height="auto">
+<br/>
+<img src="https://github.com/soledadpetrino/soledadpetrino/blob/main/images/admin2.png" height="auto">
+<br/>
+<img src="https://github.com/soledadpetrino/soledadpetrino/blob/main/images/admin3.png" height="auto">
+<br/>
+<img src="https://github.com/soledadpetrino/soledadpetrino/blob/main/images/admin4.png" height="auto">
 </p>
 
 
