@@ -35,6 +35,7 @@ En este e-commerce se puede:
 <br/>
 <img src="https://github.com/soledadpetrino/soledadpetrino/blob/main/images/checkout.png" width="auto" height="auto">
 <br/>
+<p>DASHBOARD</p>   
 <img src="https://github.com/soledadpetrino/soledadpetrino/blob/main/images/admin1.png" height="auto">
 <br/>
 <img src="https://github.com/soledadpetrino/soledadpetrino/blob/main/images/admin2.png" height="auto">
