@@ -11,8 +11,8 @@ Las tecnológicas utilizadas para el desarrollo del mismo son:
 En este e-commerce se puede:
 
 <ul style="list-style: none">
-   <li>✅ Ver la lista completa de productos, para ver todo lo que hay disponible.</li>
-   <li>✅ Creación de usuario por medio de Auth0.</li>
+   <li style="list-style: none">✅ Ver la lista completa de productos, para ver todo lo que hay disponible.</li>
+   <li style="list-style: none">✅ Creación de usuario por medio de Auth0.</li>
    <li>✅ Filtrar productos por precio y por categoría.</li>
    <li>✅ Buscar un producto en particular.</li>
    <li>✅ Ver los detalles de un producto individual (incluida las fotos, descripciones, reviews, etc.).</li>
